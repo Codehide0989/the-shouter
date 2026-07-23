@@ -5,7 +5,7 @@ import { THEMES, useTheme } from "@/lib/theme";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — THE SHOOTERS" },
+      { title: "Settings — The Shooter" },
       { name: "description", content: "Notification, theme, and Discord sync settings." },
       { name: "robots", content: "noindex" },
     ],

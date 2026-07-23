@@ -32,13 +32,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "THE SHOOTERS — Discord Event Platform" },
+      { title: "The Shooter — Discord Event Platform" },
       {
         name: "description",
         content:
           "Run tournaments, artwork showcases, and pic battles from Discord. Team registration, live reaction sync, admin tooling — all in one bold neobrutalist hub.",
       },
-      { property: "og:title", content: "THE SHOOTERS" },
+      { property: "og:title", content: "The Shooter" },
       { property: "og:description", content: "Discord-first event platform for creators and squads." },
     ],
   }),

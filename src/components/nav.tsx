@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Crosshair, Bell, Search } from "lucide-react";
+import { Crosshair, Bell } from "lucide-react";
 import { useState } from "react";
 import { NeoButton, NeoBadge } from "./neo";
 import { ThemeSwitcher } from "./theme-switcher";
@@ -25,7 +25,7 @@ export function Nav() {
               <Crosshair className="h-4 w-4" strokeWidth={2.5} />
             </span>
             <span className="font-display text-base sm:text-lg tracking-tight leading-none">
-              THE<span className="sm:ml-1">SHOOTERS</span>
+              The<span className="sm:ml-1">Shooter</span>
             </span>
             <NeoBadge variant="accent" className="hidden sm:inline-flex">Beta</NeoBadge>
           </Link>
@@ -49,12 +49,6 @@ export function Nav() {
 
           {/* Right cluster */}
           <div className="ml-auto md:ml-0 flex items-center gap-2">
-            <button
-              aria-label="Search"
-              className="hidden sm:grid neo-border neo-shadow-sm neo-press bg-background rounded-md h-9 w-9 place-items-center"
-            >
-              <Search className="h-4 w-4" />
-            </button>
             <Link
               to="/notifications"
               aria-label="Notifications"

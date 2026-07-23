@@ -7,7 +7,7 @@ import { Trophy, Users, Flame, Star } from "lucide-react";
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "My Dashboard — THE SHOOTERS" },
+      { title: "My Dashboard — The Shooter" },
       { name: "description", content: "Your registered events, teams, and activity." },
       { name: "robots", content: "noindex" },
     ],
