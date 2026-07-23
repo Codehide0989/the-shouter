@@ -1,12 +1,13 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 
-export type SeasonTheme = "summer" | "halloween" | "winter" | "spring";
+export type SeasonTheme = "summer" | "halloween" | "winter" | "spring" | "cyber";
 
 export const THEMES: { id: SeasonTheme; label: string; emoji: string }[] = [
-  { id: "summer", label: "Summer Heat", emoji: "🔥" },
+  { id: "summer", label: "Summer Heat", emoji: "🌴" },
   { id: "halloween", label: "Halloween", emoji: "🎃" },
   { id: "winter", label: "Winter Crazy", emoji: "❄️" },
   { id: "spring", label: "Spring Bloom", emoji: "🌸" },
+  { id: "cyber", label: "Cyber Nights", emoji: "🌃" },
 ];
 
 const ThemeCtx = createContext<{ theme: SeasonTheme; setTheme: (t: SeasonTheme) => void }>({
