@@ -1,20 +1,36 @@
 import { THEMES, useTheme } from "@/lib/theme";
 import { Palette } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const current = THEMES.find((t) => t.id === theme)!;
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [open]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="neo-border neo-shadow-sm bg-card rounded-md px-3 py-2 text-sm font-display uppercase tracking-wide inline-flex items-center gap-2"
+        aria-label={`Theme: ${current.label}`}
+        title={`Theme: ${current.label}`}
+        className={cn(
+          "neo-border neo-shadow-sm neo-press bg-background rounded-md h-9 w-9 grid place-items-center relative",
+          open && "bg-primary text-primary-foreground",
+        )}
       >
         <Palette className="h-4 w-4" />
-        <span className="hidden sm:inline">{current.emoji} {current.label}</span>
-        <span className="sm:hidden">{current.emoji}</span>
+        <span className="absolute -bottom-1 -right-1 text-[10px] leading-none">{current.emoji}</span>
       </button>
       {open && (
         <div className="absolute right-0 top-full mt-2 w-48 neo-border neo-shadow bg-card rounded-md p-2 z-50">
