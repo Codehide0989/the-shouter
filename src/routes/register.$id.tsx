@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
-import { eventById } from "@/lib/mock-data";
+import { eventById, type MockEvent } from "@/lib/mock-data";
 import { Check } from "lucide-react";
 
 export const Route = createFileRoute("/register/$id")({
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/register/$id")({
 });
 
 function Register() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   const [step, setStep] = useState(1);
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">

@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
-import { eventById, MOCK_TEAMS } from "@/lib/mock-data";
+import { eventById, MOCK_TEAMS, type MockEvent } from "@/lib/mock-data";
 import { Trophy, Users, Radio } from "lucide-react";
 
 export const Route = createFileRoute("/events/$id/dashboard")({
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/events/$id/dashboard")({
 });
 
 function EventDashboard() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <div className="flex flex-wrap items-center justify-between gap-3">

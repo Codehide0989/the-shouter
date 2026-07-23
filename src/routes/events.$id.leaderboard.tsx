@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoCard } from "@/components/neo";
-import { eventById, MOCK_LEADERBOARD } from "@/lib/mock-data";
+import { eventById, MOCK_LEADERBOARD, type MockEvent } from "@/lib/mock-data";
 import { Crown, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/events/$id/leaderboard")({
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/events/$id/leaderboard")({
 });
 
 function Leaderboard() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   const [gold, silver, bronze, ...rest] = MOCK_LEADERBOARD;
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">

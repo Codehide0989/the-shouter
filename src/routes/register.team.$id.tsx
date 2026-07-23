@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
-import { eventById } from "@/lib/mock-data";
+import { eventById, type MockEvent } from "@/lib/mock-data";
 import { Check, Clock, X } from "lucide-react";
 
 export const Route = createFileRoute("/register/team/$id")({
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/register/team/$id")({
 });
 
 function TeamRegister() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   const size = event.teamSize ?? 4;
   const [teamName, setTeamName] = useState("");
   const [members, setMembers] = useState<{ discord: string; status: "leader" | "invited" | "verified" | "pending" }[]>(

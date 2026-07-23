@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
-import { eventById, MOCK_GALLERY } from "@/lib/mock-data";
+import { eventById, MOCK_GALLERY, type MockEvent } from "@/lib/mock-data";
 import { Heart, Flame, Star } from "lucide-react";
 
 export const Route = createFileRoute("/events/$id/gallery")({
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/events/$id/gallery")({
 });
 
 function Gallery() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <NeoBadge variant="accent">Gallery</NeoBadge>

@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoCard } from "@/components/neo";
-import { eventById } from "@/lib/mock-data";
+import { eventById, type MockEvent } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/events/$id/bracket")({
   loader: ({ params }) => {
@@ -42,7 +42,7 @@ const ROUNDS = [
 ];
 
 function Bracket() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <NeoBadge variant="accent">Bracket</NeoBadge>
