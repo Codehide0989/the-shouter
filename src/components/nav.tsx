@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Crosshair, Bell } from "lucide-react";
+import { Bell } from "lucide-react";
 import { useState } from "react";
 import { NeoButton, NeoBadge } from "./neo";
 import { ThemeSwitcher } from "./theme-switcher";
 import { cn } from "@/lib/utils";
+import logoUrl from "@/assets/logo.png";
 
 const LINKS = [
   { to: "/explore", label: "Explore" },
