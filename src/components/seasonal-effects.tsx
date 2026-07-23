@@ -41,8 +41,7 @@ export function SeasonalEffects() {
   const pumpkins = useParticles(10, { minSize: 22, maxSize: 40, minDur: 12, maxDur: 22, salt: 3 });
   const bats = useParticles(8, { minSize: 18, maxSize: 30, minDur: 14, maxDur: 26, salt: 4 });
   const flakes = useParticles(40, { minSize: 8, maxSize: 22, minDur: 7, maxDur: 16, salt: 5 });
-  const burningClothes = useParticles(14, { minSize: 26, maxSize: 44, minDur: 10, maxDur: 20, salt: 6 });
-  const embers = useParticles(28, { minSize: 8, maxSize: 16, minDur: 6, maxDur: 14, salt: 7 });
+  const burningClothes = useParticles(16, { minSize: 14, maxSize: 24, minDur: 12, maxDur: 22, salt: 6 });
 
   if (theme === "spring") {
     return (
