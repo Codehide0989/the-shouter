@@ -19,18 +19,17 @@ export function Nav() {
     <header className="sticky top-0 z-40">
       {/* Main bar — chunky, no bottom border (wave provides it) */}
       <div className="bg-card/95 backdrop-blur border-b-0">
-        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center gap-3">
+        <div className="mx-auto max-w-7xl px-4 py-2 flex items-center gap-3">
           <Link to="/" className="flex items-center gap-2 shrink-0 group">
-            <span className="neo-border neo-shadow-sm bg-primary text-primary-foreground rounded-md p-1.5 rotate-[-6deg] group-hover:rotate-[6deg] transition-transform">
-              <Crosshair className="h-5 w-5" strokeWidth={2.5} />
+            <span className="neo-border neo-shadow-sm bg-primary text-primary-foreground rounded-md p-1 rotate-[-6deg] group-hover:rotate-[6deg] transition-transform">
+              <Crosshair className="h-4 w-4" strokeWidth={2.5} />
             </span>
-            <span className="font-display text-xl tracking-tight leading-none">
-              THE
-              <br className="sm:hidden" />
-              <span className="sm:ml-1">SHOOTERS</span>
+            <span className="font-display text-base sm:text-lg tracking-tight leading-none">
+              THE<span className="sm:ml-1">SHOOTERS</span>
             </span>
             <NeoBadge variant="accent" className="hidden sm:inline-flex">Beta</NeoBadge>
           </Link>
+
 
           {/* Center capsule nav */}
           <nav className="ml-auto hidden md:flex items-center gap-1 neo-border neo-shadow-sm bg-background rounded-full p-1">
@@ -70,7 +69,7 @@ export function Nav() {
             </Link>
             <button
               className={cn(
-                "md:hidden neo-border neo-shadow-sm neo-press rounded-md h-10 w-10 grid place-items-center transition-colors",
+                "md:hidden neo-border neo-shadow-sm neo-press rounded-md h-9 w-9 grid place-items-center transition-colors",
                 open ? "bg-primary text-primary-foreground" : "bg-background",
               )}
               onClick={() => setOpen(!open)}
@@ -103,7 +102,7 @@ export function Nav() {
       </div>
 
       {/* Wavy bottom edge — mirrors footer's wave silhouette */}
-      <div className="relative h-6 md:h-8 -mt-px">
+      <div className="relative h-4 md:h-5 -mt-px">
         <svg
           className="absolute inset-0 h-full w-full block"
           viewBox="0 0 1200 40"
