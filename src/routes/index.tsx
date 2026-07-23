@@ -90,29 +90,30 @@ const FEATURES = [
     title: "Bot-Powered",
     copy: "Prefix commands, Canva-style embeds, temp event channels spun up on demand.",
     number: "01",
-    image: coverTournament,
+    image: featureBot,
   },
   {
     icon: Radio,
     title: "Live Sync",
     copy: "Reactions, registrations, and team updates mirrored to the dashboard instantly.",
     number: "02",
-    image: coverPicbattle,
+    image: featureLive,
   },
   {
     icon: Trophy,
     title: "Team Registration",
     copy: "Configurable squad sizes with per-member Discord verification & waitlists.",
     number: "03",
-    image: coverArtwork,
+    image: featureTeams,
   },
   {
     icon: ShieldCheck,
     title: "Admin Control",
     copy: "Manage events, teams, submissions, themes and bot sync from one console.",
     number: "04",
-    image: coverCommunity,
+    image: featureAdmin,
   },
+
 ];
 
 

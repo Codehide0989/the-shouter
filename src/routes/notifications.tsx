@@ -11,10 +11,11 @@ import {
   Filter,
   type LucideIcon,
 } from "lucide-react";
-import coverTournament from "@/assets/cover-tournament.jpg";
-import coverArtwork from "@/assets/cover-artwork.jpg";
-import coverPicbattle from "@/assets/cover-picbattle.jpg";
-import coverCommunity from "@/assets/cover-community.jpg";
+import noticeTeam from "@/assets/notice-team.jpg";
+import noticeMatch from "@/assets/notice-match.jpg";
+import noticeReaction from "@/assets/notice-reaction.jpg";
+import noticeDrop from "@/assets/notice-drop.jpg";
+
 
 export const Route = createFileRoute("/notifications")({
   head: () => ({
@@ -36,10 +37,11 @@ type NoteKind = {
 };
 
 const KINDS: NoteKind[] = [
-  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary", bg: coverCommunity },
-  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary", bg: coverTournament },
-  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent", bg: coverArtwork },
-  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success", bg: coverPicbattle },
+  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary", bg: noticeTeam },
+  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary", bg: noticeMatch },
+  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent", bg: noticeReaction },
+  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success", bg: noticeDrop },
+
 ];
 
 function Notifications() {
