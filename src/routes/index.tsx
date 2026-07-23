@@ -224,14 +224,31 @@ function Landing() {
           subtitle="From casual pic battles to bracketed BGMI wars — the platform bends to your server."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {EVENT_TYPES.map((t) => (
-            <NeoCard key={t.title} className="flex flex-col gap-3">
-              <div className="neo-border rounded-md bg-primary text-primary-foreground p-2 w-fit">
-                <t.icon className="h-5 w-5" />
+          {EVENT_TYPES.map((t, i) => (
+            <div
+              key={t.title}
+              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md p-5 flex flex-col gap-4 transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg"
+            >
+              <span className="absolute top-3 right-3 font-display text-xs opacity-40">
+                0{i + 1}
+              </span>
+              <div className="flex items-center gap-3">
+                <div className={`neo-border neo-shadow-sm rounded-md p-3 ${t.accent}`}>
+                  <t.icon className="h-6 w-6" strokeWidth={2.5} />
+                </div>
+                <NeoBadge variant="muted">{t.tag}</NeoBadge>
               </div>
-              <h3 className="text-xl">{t.title}</h3>
-              <p className="text-sm text-muted-foreground">{t.copy}</p>
-            </NeoCard>
+              <div>
+                <h3 className="font-display text-xl uppercase leading-tight">{t.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.copy}</p>
+              </div>
+              <div className="mt-auto pt-3 border-t-2 border-dashed border-border/60 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-widest font-black">
+                  {t.stat}
+                </span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -256,16 +273,37 @@ function Landing() {
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* FEATURES / WHY SHOOTERS */}
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <SectionHeader eyebrow="Why Shooters" title="Discord is the source of truth" />
+        <SectionHeader
+          eyebrow="Why Shooters"
+          title="Discord is the source of truth"
+          subtitle="Built for community managers who want less spreadsheet, more hype."
+        />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f) => (
-            <NeoCard key={f.title}>
-              <f.icon className="h-6 w-6 text-accent mb-3" />
-              <h3 className="text-lg">{f.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{f.copy}</p>
-            </NeoCard>
+            <div
+              key={f.title}
+              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md overflow-hidden transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg"
+            >
+              {/* Top color strip */}
+              <div className="h-2 bg-accent border-b-4 border-border" />
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="neo-border neo-shadow-sm rounded-md bg-background p-3">
+                    <f.icon className="h-6 w-6 text-accent" strokeWidth={2.5} />
+                  </div>
+                  <span className="font-display text-3xl leading-none opacity-20">
+                    {f.number}
+                  </span>
+                </div>
+                <h3 className="font-display text-lg uppercase leading-tight">{f.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.copy}</p>
+                <div className="mt-4 inline-flex items-center gap-1 text-[10px] uppercase tracking-widest font-black text-accent">
+                  <Sparkles className="h-3 w-3" /> Ready out of the box
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </section>
