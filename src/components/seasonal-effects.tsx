@@ -171,30 +171,32 @@ export function SeasonalEffects() {
           🌴
         </span>
 
-        {/* Burning clothes falling */}
+        {/* Burning clothes falling — real 4K photographic images */}
         {burningClothes.map((p, i) => {
-          const items = ["👕", "👖", "🧥", "👗", "🧢"];
+          const items = [burningShirt, burningJeans, burningJacket];
           const item = items[i % items.length];
+          const px = Math.round(parseFloat(p.size) * 3.4);
           return (
-            <span
+            <img
               key={`cloth-${i}`}
-              className="absolute -top-10 select-none animate-season-fall will-change-transform"
+              src={item}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              className="absolute -top-24 select-none animate-season-fall will-change-transform"
               style={{
                 left: p.left,
                 animationDelay: p.delay,
                 animationDuration: p.duration,
-                fontSize: p.size,
+                width: `${px}px`,
+                height: "auto",
                 // @ts-expect-error CSS custom prop
                 "--drift": p.drift,
                 "--spin": p.rotate,
-                filter: "drop-shadow(0 0 10px oklch(0.78 0.24 40 / 0.85)) drop-shadow(0 0 4px oklch(0.9 0.2 60 / 0.9))",
+                filter:
+                  "drop-shadow(0 0 14px oklch(0.78 0.24 40 / 0.85)) drop-shadow(0 0 28px oklch(0.9 0.2 60 / 0.5))",
               }}
-            >
-              <span className="relative inline-block">
-                {item}
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[0.7em] animate-ice-flame">🔥</span>
-              </span>
-            </span>
+            />
           );
         })}
         {embers.map((p, i) => (
