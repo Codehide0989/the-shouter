@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DashboardPage } from "@/components/dashboard-page";
-import { Link } from "@tanstack/react-router";
 import { NeoCard, NeoBadge } from "@/components/neo";
 
 export const Route = createFileRoute("/bot")({
@@ -40,12 +39,12 @@ function Page() {
           {slug:"webhooks",label:"Webhooks"},
           {slug:"templates",label:"Message Templates"},
         ].map((f) => (
-          <Link key={f.slug} to={"/bot/$slug" as any} params={{slug:f.slug}}>
+          <a key={f.slug} href={`/bot/$slug`.replace("$slug", f.slug)}>
             <NeoCard className="p-5 hover:-translate-y-1 transition-transform h-full">
               <NeoBadge variant="secondary">Bot</NeoBadge>
               <div className="font-display text-xl mt-2">{f.label}</div>
             </NeoCard>
-          </Link>
+          </a>
         ))}
       </div>
     </DashboardPage>

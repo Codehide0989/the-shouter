@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DashboardPage } from "@/components/dashboard-page";
-import { Link } from "@tanstack/react-router";
 import { NeoCard, NeoBadge } from "@/components/neo";
 
 export const Route = createFileRoute("/teams")({
@@ -35,13 +34,13 @@ function Page() {
           {slug:"ready-check",label:"Ready Check",tag:"Everyone lock-in"},
           {slug:"check-in",label:"Check-In",tag:"Confirm attendance"},
         ].map((f) => (
-          <Link key={f.slug} to={"/teams/$slug" as any} params={{slug:f.slug}}>
+          <a key={f.slug} href={`/teams/$slug`.replace("$slug", f.slug)}>
             <NeoCard className="p-5 hover:-translate-y-1 transition-transform h-full">
               <NeoBadge variant="accent">Team</NeoBadge>
               <div className="font-display text-xl mt-2">{f.label}</div>
               <div className="text-xs text-muted-foreground mt-2">{f.tag}</div>
             </NeoCard>
-          </Link>
+          </a>
         ))}
       </div>
     </DashboardPage>
