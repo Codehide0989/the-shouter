@@ -44,34 +44,38 @@ const EVENT_TYPES = [
   {
     icon: Palette,
     title: "Artwork Showcase",
-    copy: "Drop your art. Community votes on Discord in real time.",
+    copy: "Drop your best pieces. The community reacts in real time and top drops climb the podium — zero spreadsheets, all vibes.",
     tag: "Creative",
     accent: "bg-secondary text-secondary-foreground",
     stat: "1.2k drops",
+    image: coverArtwork,
   },
   {
     icon: Camera,
     title: "Pic Battle",
-    copy: "1v1 bracketed photo battles with live reactions & judges.",
+    copy: "Head-to-head photo brackets with live reaction scoring, judge overrides, and instant next-round matchups.",
     tag: "Bracket",
     accent: "bg-accent text-accent-foreground",
     stat: "64-slot",
+    image: coverPicbattle,
   },
   {
     icon: Gamepad2,
     title: "Game Tournaments",
-    copy: "BGMI, Free Fire, Minecraft, Roblox — auto lobbies included.",
+    copy: "BGMI, Free Fire, Minecraft, Roblox — auto lobbies, room codes on demand, and prize pool tracking baked in.",
     tag: "Esports",
     accent: "bg-primary text-primary-foreground",
     stat: "Prize pools",
+    image: coverTournament,
   },
   {
     icon: Users,
     title: "Community Events",
-    copy: "Custom formats for your server. Fully configurable modules.",
+    copy: "Design any custom format your server dreams up. Modules for quizzes, raids, watch-parties — all fully configurable.",
     tag: "Flex",
     accent: "bg-[color:var(--success)] text-black",
     stat: "Any size",
+    image: coverCommunity,
   },
 ];
 
@@ -81,26 +85,31 @@ const FEATURES = [
     title: "Bot-Powered",
     copy: "Prefix commands, Canva-style embeds, temp event channels spun up on demand.",
     number: "01",
+    image: coverTournament,
   },
   {
     icon: Radio,
     title: "Live Sync",
     copy: "Reactions, registrations, and team updates mirrored to the dashboard instantly.",
     number: "02",
+    image: coverPicbattle,
   },
   {
     icon: Trophy,
     title: "Team Registration",
     copy: "Configurable squad sizes with per-member Discord verification & waitlists.",
     number: "03",
+    image: coverArtwork,
   },
   {
     icon: ShieldCheck,
     title: "Admin Control",
     copy: "Manage events, teams, submissions, themes and bot sync from one console.",
     number: "04",
+    image: coverCommunity,
   },
 ];
+
 
 function Landing() {
   const featured = MOCK_EVENTS.slice(0, 3);
