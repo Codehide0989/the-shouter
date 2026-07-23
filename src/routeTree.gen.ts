@@ -20,8 +20,58 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BotStatusRouteImport } from './routes/bot-status'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
+import { Route as DashboardXpRouteImport } from './routes/dashboard.xp'
+import { Route as DashboardWinRateRouteImport } from './routes/dashboard.win-rate'
+import { Route as DashboardVotingRouteImport } from './routes/dashboard.voting'
+import { Route as DashboardUpcomingRouteImport } from './routes/dashboard.upcoming'
+import { Route as DashboardTournamentsRouteImport } from './routes/dashboard.tournaments'
+import { Route as DashboardTicketsRouteImport } from './routes/dashboard.tickets'
+import { Route as DashboardThemeRouteImport } from './routes/dashboard.theme'
+import { Route as DashboardTeamRouteImport } from './routes/dashboard.team'
+import { Route as DashboardSubmissionsRouteImport } from './routes/dashboard.submissions'
+import { Route as DashboardStatsRouteImport } from './routes/dashboard.stats'
+import { Route as DashboardSessionsRouteImport } from './routes/dashboard.sessions'
+import { Route as DashboardServersRouteImport } from './routes/dashboard.servers'
+import { Route as DashboardSecurityRouteImport } from './routes/dashboard.security'
+import { Route as DashboardSeasonRankRouteImport } from './routes/dashboard.season-rank'
+import { Route as DashboardSeasonRouteImport } from './routes/dashboard.season'
+import { Route as DashboardSavedTeamsRouteImport } from './routes/dashboard.saved-teams'
+import { Route as DashboardRewardsRouteImport } from './routes/dashboard.rewards'
+import { Route as DashboardRegisteredRouteImport } from './routes/dashboard.registered'
+import { Route as DashboardReferralsRouteImport } from './routes/dashboard.referrals'
+import { Route as DashboardRecentUploadsRouteImport } from './routes/dashboard.recent-uploads'
+import { Route as DashboardReactionsRouteImport } from './routes/dashboard.reactions'
+import { Route as DashboardQuickActionsRouteImport } from './routes/dashboard.quick-actions'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardPrivacyRouteImport } from './routes/dashboard.privacy'
+import { Route as DashboardPictureBattlesRouteImport } from './routes/dashboard.picture-battles'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
+import { Route as DashboardMvpRouteImport } from './routes/dashboard.mvp'
+import { Route as DashboardMatchHistoryRouteImport } from './routes/dashboard.match-history'
+import { Route as DashboardLiveRouteImport } from './routes/dashboard.live'
+import { Route as DashboardLinkedAccountsRouteImport } from './routes/dashboard.linked-accounts'
+import { Route as DashboardKillsRouteImport } from './routes/dashboard.kills'
+import { Route as DashboardInviteFriendsRouteImport } from './routes/dashboard.invite-friends'
+import { Route as DashboardInvitationsPendingRouteImport } from './routes/dashboard.invitations-pending'
+import { Route as DashboardInvitationsAcceptedRouteImport } from './routes/dashboard.invitations-accepted'
+import { Route as DashboardFavoritesRouteImport } from './routes/dashboard.favorites'
+import { Route as DashboardDownloadsRouteImport } from './routes/dashboard.downloads'
+import { Route as DashboardDiscordPresenceRouteImport } from './routes/dashboard.discord-presence'
+import { Route as DashboardDiscordRouteImport } from './routes/dashboard.discord'
+import { Route as DashboardDeleteAccountRouteImport } from './routes/dashboard.delete-account'
+import { Route as DashboardCoinsRouteImport } from './routes/dashboard.coins'
+import { Route as DashboardCalendarRouteImport } from './routes/dashboard.calendar'
+import { Route as DashboardBookmarksRouteImport } from './routes/dashboard.bookmarks'
+import { Route as DashboardBadgesRouteImport } from './routes/dashboard.badges'
+import { Route as DashboardAssistsRouteImport } from './routes/dashboard.assists'
+import { Route as DashboardArtworkRouteImport } from './routes/dashboard.artwork'
+import { Route as DashboardAppearanceRouteImport } from './routes/dashboard.appearance'
+import { Route as DashboardApiKeysRouteImport } from './routes/dashboard.api-keys'
+import { Route as DashboardActivityRouteImport } from './routes/dashboard.activity'
+import { Route as DashboardAchievementsRouteImport } from './routes/dashboard.achievements'
 import { Route as RegisterTeamIdRouteImport } from './routes/register.team.$id'
 import { Route as EventsIdLeaderboardRouteImport } from './routes/events.$id.leaderboard'
 import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery'
@@ -83,6 +133,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const RegisterIdRoute = RegisterIdRouteImport.update({
   id: '/register/$id',
   path: '/register/$id',
@@ -92,6 +147,254 @@ const EventsIdRoute = EventsIdRouteImport.update({
   id: '/events/$id',
   path: '/events/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardXpRoute = DashboardXpRouteImport.update({
+  id: '/xp',
+  path: '/xp',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardWinRateRoute = DashboardWinRateRouteImport.update({
+  id: '/win-rate',
+  path: '/win-rate',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardVotingRoute = DashboardVotingRouteImport.update({
+  id: '/voting',
+  path: '/voting',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardUpcomingRoute = DashboardUpcomingRouteImport.update({
+  id: '/upcoming',
+  path: '/upcoming',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTournamentsRoute = DashboardTournamentsRouteImport.update({
+  id: '/tournaments',
+  path: '/tournaments',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTicketsRoute = DashboardTicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardThemeRoute = DashboardThemeRouteImport.update({
+  id: '/theme',
+  path: '/theme',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTeamRoute = DashboardTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSubmissionsRoute = DashboardSubmissionsRouteImport.update({
+  id: '/submissions',
+  path: '/submissions',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardStatsRoute = DashboardStatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSessionsRoute = DashboardSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardServersRoute = DashboardServersRouteImport.update({
+  id: '/servers',
+  path: '/servers',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSeasonRankRoute = DashboardSeasonRankRouteImport.update({
+  id: '/season-rank',
+  path: '/season-rank',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSeasonRoute = DashboardSeasonRouteImport.update({
+  id: '/season',
+  path: '/season',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSavedTeamsRoute = DashboardSavedTeamsRouteImport.update({
+  id: '/saved-teams',
+  path: '/saved-teams',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRewardsRoute = DashboardRewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRegisteredRoute = DashboardRegisteredRouteImport.update({
+  id: '/registered',
+  path: '/registered',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardReferralsRoute = DashboardReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRecentUploadsRoute = DashboardRecentUploadsRouteImport.update({
+  id: '/recent-uploads',
+  path: '/recent-uploads',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardReactionsRoute = DashboardReactionsRouteImport.update({
+  id: '/reactions',
+  path: '/reactions',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardQuickActionsRoute = DashboardQuickActionsRouteImport.update({
+  id: '/quick-actions',
+  path: '/quick-actions',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPrivacyRoute = DashboardPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPictureBattlesRoute = DashboardPictureBattlesRouteImport.update({
+  id: '/picture-battles',
+  path: '/picture-battles',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMvpRoute = DashboardMvpRouteImport.update({
+  id: '/mvp',
+  path: '/mvp',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMatchHistoryRoute = DashboardMatchHistoryRouteImport.update({
+  id: '/match-history',
+  path: '/match-history',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLiveRoute = DashboardLiveRouteImport.update({
+  id: '/live',
+  path: '/live',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLinkedAccountsRoute = DashboardLinkedAccountsRouteImport.update({
+  id: '/linked-accounts',
+  path: '/linked-accounts',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardKillsRoute = DashboardKillsRouteImport.update({
+  id: '/kills',
+  path: '/kills',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardInviteFriendsRoute = DashboardInviteFriendsRouteImport.update({
+  id: '/invite-friends',
+  path: '/invite-friends',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardInvitationsPendingRoute =
+  DashboardInvitationsPendingRouteImport.update({
+    id: '/invitations-pending',
+    path: '/invitations-pending',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardInvitationsAcceptedRoute =
+  DashboardInvitationsAcceptedRouteImport.update({
+    id: '/invitations-accepted',
+    path: '/invitations-accepted',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardFavoritesRoute = DashboardFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDownloadsRoute = DashboardDownloadsRouteImport.update({
+  id: '/downloads',
+  path: '/downloads',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDiscordPresenceRoute =
+  DashboardDiscordPresenceRouteImport.update({
+    id: '/discord-presence',
+    path: '/discord-presence',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardDiscordRoute = DashboardDiscordRouteImport.update({
+  id: '/discord',
+  path: '/discord',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDeleteAccountRoute = DashboardDeleteAccountRouteImport.update({
+  id: '/delete-account',
+  path: '/delete-account',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCoinsRoute = DashboardCoinsRouteImport.update({
+  id: '/coins',
+  path: '/coins',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCalendarRoute = DashboardCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBookmarksRoute = DashboardBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBadgesRoute = DashboardBadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAssistsRoute = DashboardAssistsRouteImport.update({
+  id: '/assists',
+  path: '/assists',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardArtworkRoute = DashboardArtworkRouteImport.update({
+  id: '/artwork',
+  path: '/artwork',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppearanceRoute = DashboardAppearanceRouteImport.update({
+  id: '/appearance',
+  path: '/appearance',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardApiKeysRoute = DashboardApiKeysRouteImport.update({
+  id: '/api-keys',
+  path: '/api-keys',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardActivityRoute = DashboardActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAchievementsRoute = DashboardAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => DashboardRoute,
 } as any)
 const RegisterTeamIdRoute = RegisterTeamIdRouteImport.update({
   id: '/register/team/$id',
@@ -123,7 +426,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -131,8 +434,58 @@ export interface FileRoutesByFullPath {
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
+  '/dashboard/achievements': typeof DashboardAchievementsRoute
+  '/dashboard/activity': typeof DashboardActivityRoute
+  '/dashboard/api-keys': typeof DashboardApiKeysRoute
+  '/dashboard/appearance': typeof DashboardAppearanceRoute
+  '/dashboard/artwork': typeof DashboardArtworkRoute
+  '/dashboard/assists': typeof DashboardAssistsRoute
+  '/dashboard/badges': typeof DashboardBadgesRoute
+  '/dashboard/bookmarks': typeof DashboardBookmarksRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/coins': typeof DashboardCoinsRoute
+  '/dashboard/delete-account': typeof DashboardDeleteAccountRoute
+  '/dashboard/discord': typeof DashboardDiscordRoute
+  '/dashboard/discord-presence': typeof DashboardDiscordPresenceRoute
+  '/dashboard/downloads': typeof DashboardDownloadsRoute
+  '/dashboard/favorites': typeof DashboardFavoritesRoute
+  '/dashboard/invitations-accepted': typeof DashboardInvitationsAcceptedRoute
+  '/dashboard/invitations-pending': typeof DashboardInvitationsPendingRoute
+  '/dashboard/invite-friends': typeof DashboardInviteFriendsRoute
+  '/dashboard/kills': typeof DashboardKillsRoute
+  '/dashboard/linked-accounts': typeof DashboardLinkedAccountsRoute
+  '/dashboard/live': typeof DashboardLiveRoute
+  '/dashboard/match-history': typeof DashboardMatchHistoryRoute
+  '/dashboard/mvp': typeof DashboardMvpRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/picture-battles': typeof DashboardPictureBattlesRoute
+  '/dashboard/privacy': typeof DashboardPrivacyRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/quick-actions': typeof DashboardQuickActionsRoute
+  '/dashboard/reactions': typeof DashboardReactionsRoute
+  '/dashboard/recent-uploads': typeof DashboardRecentUploadsRoute
+  '/dashboard/referrals': typeof DashboardReferralsRoute
+  '/dashboard/registered': typeof DashboardRegisteredRoute
+  '/dashboard/rewards': typeof DashboardRewardsRoute
+  '/dashboard/saved-teams': typeof DashboardSavedTeamsRoute
+  '/dashboard/season': typeof DashboardSeasonRoute
+  '/dashboard/season-rank': typeof DashboardSeasonRankRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
+  '/dashboard/servers': typeof DashboardServersRoute
+  '/dashboard/sessions': typeof DashboardSessionsRoute
+  '/dashboard/stats': typeof DashboardStatsRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard/team': typeof DashboardTeamRoute
+  '/dashboard/theme': typeof DashboardThemeRoute
+  '/dashboard/tickets': typeof DashboardTicketsRoute
+  '/dashboard/tournaments': typeof DashboardTournamentsRoute
+  '/dashboard/upcoming': typeof DashboardUpcomingRoute
+  '/dashboard/voting': typeof DashboardVotingRoute
+  '/dashboard/win-rate': typeof DashboardWinRateRoute
+  '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -143,7 +496,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -151,8 +503,58 @@ export interface FileRoutesByTo {
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
+  '/dashboard/achievements': typeof DashboardAchievementsRoute
+  '/dashboard/activity': typeof DashboardActivityRoute
+  '/dashboard/api-keys': typeof DashboardApiKeysRoute
+  '/dashboard/appearance': typeof DashboardAppearanceRoute
+  '/dashboard/artwork': typeof DashboardArtworkRoute
+  '/dashboard/assists': typeof DashboardAssistsRoute
+  '/dashboard/badges': typeof DashboardBadgesRoute
+  '/dashboard/bookmarks': typeof DashboardBookmarksRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/coins': typeof DashboardCoinsRoute
+  '/dashboard/delete-account': typeof DashboardDeleteAccountRoute
+  '/dashboard/discord': typeof DashboardDiscordRoute
+  '/dashboard/discord-presence': typeof DashboardDiscordPresenceRoute
+  '/dashboard/downloads': typeof DashboardDownloadsRoute
+  '/dashboard/favorites': typeof DashboardFavoritesRoute
+  '/dashboard/invitations-accepted': typeof DashboardInvitationsAcceptedRoute
+  '/dashboard/invitations-pending': typeof DashboardInvitationsPendingRoute
+  '/dashboard/invite-friends': typeof DashboardInviteFriendsRoute
+  '/dashboard/kills': typeof DashboardKillsRoute
+  '/dashboard/linked-accounts': typeof DashboardLinkedAccountsRoute
+  '/dashboard/live': typeof DashboardLiveRoute
+  '/dashboard/match-history': typeof DashboardMatchHistoryRoute
+  '/dashboard/mvp': typeof DashboardMvpRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/picture-battles': typeof DashboardPictureBattlesRoute
+  '/dashboard/privacy': typeof DashboardPrivacyRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/quick-actions': typeof DashboardQuickActionsRoute
+  '/dashboard/reactions': typeof DashboardReactionsRoute
+  '/dashboard/recent-uploads': typeof DashboardRecentUploadsRoute
+  '/dashboard/referrals': typeof DashboardReferralsRoute
+  '/dashboard/registered': typeof DashboardRegisteredRoute
+  '/dashboard/rewards': typeof DashboardRewardsRoute
+  '/dashboard/saved-teams': typeof DashboardSavedTeamsRoute
+  '/dashboard/season': typeof DashboardSeasonRoute
+  '/dashboard/season-rank': typeof DashboardSeasonRankRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
+  '/dashboard/servers': typeof DashboardServersRoute
+  '/dashboard/sessions': typeof DashboardSessionsRoute
+  '/dashboard/stats': typeof DashboardStatsRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard/team': typeof DashboardTeamRoute
+  '/dashboard/theme': typeof DashboardThemeRoute
+  '/dashboard/tickets': typeof DashboardTicketsRoute
+  '/dashboard/tournaments': typeof DashboardTournamentsRoute
+  '/dashboard/upcoming': typeof DashboardUpcomingRoute
+  '/dashboard/voting': typeof DashboardVotingRoute
+  '/dashboard/win-rate': typeof DashboardWinRateRoute
+  '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -164,7 +566,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -172,8 +574,58 @@ export interface FileRoutesById {
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
+  '/dashboard/achievements': typeof DashboardAchievementsRoute
+  '/dashboard/activity': typeof DashboardActivityRoute
+  '/dashboard/api-keys': typeof DashboardApiKeysRoute
+  '/dashboard/appearance': typeof DashboardAppearanceRoute
+  '/dashboard/artwork': typeof DashboardArtworkRoute
+  '/dashboard/assists': typeof DashboardAssistsRoute
+  '/dashboard/badges': typeof DashboardBadgesRoute
+  '/dashboard/bookmarks': typeof DashboardBookmarksRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/coins': typeof DashboardCoinsRoute
+  '/dashboard/delete-account': typeof DashboardDeleteAccountRoute
+  '/dashboard/discord': typeof DashboardDiscordRoute
+  '/dashboard/discord-presence': typeof DashboardDiscordPresenceRoute
+  '/dashboard/downloads': typeof DashboardDownloadsRoute
+  '/dashboard/favorites': typeof DashboardFavoritesRoute
+  '/dashboard/invitations-accepted': typeof DashboardInvitationsAcceptedRoute
+  '/dashboard/invitations-pending': typeof DashboardInvitationsPendingRoute
+  '/dashboard/invite-friends': typeof DashboardInviteFriendsRoute
+  '/dashboard/kills': typeof DashboardKillsRoute
+  '/dashboard/linked-accounts': typeof DashboardLinkedAccountsRoute
+  '/dashboard/live': typeof DashboardLiveRoute
+  '/dashboard/match-history': typeof DashboardMatchHistoryRoute
+  '/dashboard/mvp': typeof DashboardMvpRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/picture-battles': typeof DashboardPictureBattlesRoute
+  '/dashboard/privacy': typeof DashboardPrivacyRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/quick-actions': typeof DashboardQuickActionsRoute
+  '/dashboard/reactions': typeof DashboardReactionsRoute
+  '/dashboard/recent-uploads': typeof DashboardRecentUploadsRoute
+  '/dashboard/referrals': typeof DashboardReferralsRoute
+  '/dashboard/registered': typeof DashboardRegisteredRoute
+  '/dashboard/rewards': typeof DashboardRewardsRoute
+  '/dashboard/saved-teams': typeof DashboardSavedTeamsRoute
+  '/dashboard/season': typeof DashboardSeasonRoute
+  '/dashboard/season-rank': typeof DashboardSeasonRankRoute
+  '/dashboard/security': typeof DashboardSecurityRoute
+  '/dashboard/servers': typeof DashboardServersRoute
+  '/dashboard/sessions': typeof DashboardSessionsRoute
+  '/dashboard/stats': typeof DashboardStatsRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard/team': typeof DashboardTeamRoute
+  '/dashboard/theme': typeof DashboardThemeRoute
+  '/dashboard/tickets': typeof DashboardTicketsRoute
+  '/dashboard/tournaments': typeof DashboardTournamentsRoute
+  '/dashboard/upcoming': typeof DashboardUpcomingRoute
+  '/dashboard/voting': typeof DashboardVotingRoute
+  '/dashboard/win-rate': typeof DashboardWinRateRoute
+  '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -194,8 +646,58 @@ export interface FileRouteTypes {
     | '/rules'
     | '/settings'
     | '/terms'
+    | '/dashboard/achievements'
+    | '/dashboard/activity'
+    | '/dashboard/api-keys'
+    | '/dashboard/appearance'
+    | '/dashboard/artwork'
+    | '/dashboard/assists'
+    | '/dashboard/badges'
+    | '/dashboard/bookmarks'
+    | '/dashboard/calendar'
+    | '/dashboard/coins'
+    | '/dashboard/delete-account'
+    | '/dashboard/discord'
+    | '/dashboard/discord-presence'
+    | '/dashboard/downloads'
+    | '/dashboard/favorites'
+    | '/dashboard/invitations-accepted'
+    | '/dashboard/invitations-pending'
+    | '/dashboard/invite-friends'
+    | '/dashboard/kills'
+    | '/dashboard/linked-accounts'
+    | '/dashboard/live'
+    | '/dashboard/match-history'
+    | '/dashboard/mvp'
+    | '/dashboard/notifications'
+    | '/dashboard/picture-battles'
+    | '/dashboard/privacy'
+    | '/dashboard/profile'
+    | '/dashboard/quick-actions'
+    | '/dashboard/reactions'
+    | '/dashboard/recent-uploads'
+    | '/dashboard/referrals'
+    | '/dashboard/registered'
+    | '/dashboard/rewards'
+    | '/dashboard/saved-teams'
+    | '/dashboard/season'
+    | '/dashboard/season-rank'
+    | '/dashboard/security'
+    | '/dashboard/servers'
+    | '/dashboard/sessions'
+    | '/dashboard/stats'
+    | '/dashboard/submissions'
+    | '/dashboard/team'
+    | '/dashboard/theme'
+    | '/dashboard/tickets'
+    | '/dashboard/tournaments'
+    | '/dashboard/upcoming'
+    | '/dashboard/voting'
+    | '/dashboard/win-rate'
+    | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -206,7 +708,6 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/bot-status'
-    | '/dashboard'
     | '/explore'
     | '/notifications'
     | '/privacy'
@@ -214,8 +715,58 @@ export interface FileRouteTypes {
     | '/rules'
     | '/settings'
     | '/terms'
+    | '/dashboard/achievements'
+    | '/dashboard/activity'
+    | '/dashboard/api-keys'
+    | '/dashboard/appearance'
+    | '/dashboard/artwork'
+    | '/dashboard/assists'
+    | '/dashboard/badges'
+    | '/dashboard/bookmarks'
+    | '/dashboard/calendar'
+    | '/dashboard/coins'
+    | '/dashboard/delete-account'
+    | '/dashboard/discord'
+    | '/dashboard/discord-presence'
+    | '/dashboard/downloads'
+    | '/dashboard/favorites'
+    | '/dashboard/invitations-accepted'
+    | '/dashboard/invitations-pending'
+    | '/dashboard/invite-friends'
+    | '/dashboard/kills'
+    | '/dashboard/linked-accounts'
+    | '/dashboard/live'
+    | '/dashboard/match-history'
+    | '/dashboard/mvp'
+    | '/dashboard/notifications'
+    | '/dashboard/picture-battles'
+    | '/dashboard/privacy'
+    | '/dashboard/profile'
+    | '/dashboard/quick-actions'
+    | '/dashboard/reactions'
+    | '/dashboard/recent-uploads'
+    | '/dashboard/referrals'
+    | '/dashboard/registered'
+    | '/dashboard/rewards'
+    | '/dashboard/saved-teams'
+    | '/dashboard/season'
+    | '/dashboard/season-rank'
+    | '/dashboard/security'
+    | '/dashboard/servers'
+    | '/dashboard/sessions'
+    | '/dashboard/stats'
+    | '/dashboard/submissions'
+    | '/dashboard/team'
+    | '/dashboard/theme'
+    | '/dashboard/tickets'
+    | '/dashboard/tournaments'
+    | '/dashboard/upcoming'
+    | '/dashboard/voting'
+    | '/dashboard/win-rate'
+    | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -234,8 +785,58 @@ export interface FileRouteTypes {
     | '/rules'
     | '/settings'
     | '/terms'
+    | '/dashboard/achievements'
+    | '/dashboard/activity'
+    | '/dashboard/api-keys'
+    | '/dashboard/appearance'
+    | '/dashboard/artwork'
+    | '/dashboard/assists'
+    | '/dashboard/badges'
+    | '/dashboard/bookmarks'
+    | '/dashboard/calendar'
+    | '/dashboard/coins'
+    | '/dashboard/delete-account'
+    | '/dashboard/discord'
+    | '/dashboard/discord-presence'
+    | '/dashboard/downloads'
+    | '/dashboard/favorites'
+    | '/dashboard/invitations-accepted'
+    | '/dashboard/invitations-pending'
+    | '/dashboard/invite-friends'
+    | '/dashboard/kills'
+    | '/dashboard/linked-accounts'
+    | '/dashboard/live'
+    | '/dashboard/match-history'
+    | '/dashboard/mvp'
+    | '/dashboard/notifications'
+    | '/dashboard/picture-battles'
+    | '/dashboard/privacy'
+    | '/dashboard/profile'
+    | '/dashboard/quick-actions'
+    | '/dashboard/reactions'
+    | '/dashboard/recent-uploads'
+    | '/dashboard/referrals'
+    | '/dashboard/registered'
+    | '/dashboard/rewards'
+    | '/dashboard/saved-teams'
+    | '/dashboard/season'
+    | '/dashboard/season-rank'
+    | '/dashboard/security'
+    | '/dashboard/servers'
+    | '/dashboard/sessions'
+    | '/dashboard/stats'
+    | '/dashboard/submissions'
+    | '/dashboard/team'
+    | '/dashboard/theme'
+    | '/dashboard/tickets'
+    | '/dashboard/tournaments'
+    | '/dashboard/upcoming'
+    | '/dashboard/voting'
+    | '/dashboard/win-rate'
+    | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -247,7 +848,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   BotStatusRoute: typeof BotStatusRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   ExploreRoute: typeof ExploreRoute
   NotificationsRoute: typeof NotificationsRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -339,6 +940,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/register/$id': {
       id: '/register/$id'
       path: '/register/$id'
@@ -352,6 +960,349 @@ declare module '@tanstack/react-router' {
       fullPath: '/events/$id'
       preLoaderRoute: typeof EventsIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/xp': {
+      id: '/dashboard/xp'
+      path: '/xp'
+      fullPath: '/dashboard/xp'
+      preLoaderRoute: typeof DashboardXpRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/win-rate': {
+      id: '/dashboard/win-rate'
+      path: '/win-rate'
+      fullPath: '/dashboard/win-rate'
+      preLoaderRoute: typeof DashboardWinRateRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/voting': {
+      id: '/dashboard/voting'
+      path: '/voting'
+      fullPath: '/dashboard/voting'
+      preLoaderRoute: typeof DashboardVotingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/upcoming': {
+      id: '/dashboard/upcoming'
+      path: '/upcoming'
+      fullPath: '/dashboard/upcoming'
+      preLoaderRoute: typeof DashboardUpcomingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/tournaments': {
+      id: '/dashboard/tournaments'
+      path: '/tournaments'
+      fullPath: '/dashboard/tournaments'
+      preLoaderRoute: typeof DashboardTournamentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/tickets': {
+      id: '/dashboard/tickets'
+      path: '/tickets'
+      fullPath: '/dashboard/tickets'
+      preLoaderRoute: typeof DashboardTicketsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/theme': {
+      id: '/dashboard/theme'
+      path: '/theme'
+      fullPath: '/dashboard/theme'
+      preLoaderRoute: typeof DashboardThemeRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/team': {
+      id: '/dashboard/team'
+      path: '/team'
+      fullPath: '/dashboard/team'
+      preLoaderRoute: typeof DashboardTeamRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/submissions': {
+      id: '/dashboard/submissions'
+      path: '/submissions'
+      fullPath: '/dashboard/submissions'
+      preLoaderRoute: typeof DashboardSubmissionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/stats': {
+      id: '/dashboard/stats'
+      path: '/stats'
+      fullPath: '/dashboard/stats'
+      preLoaderRoute: typeof DashboardStatsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/sessions': {
+      id: '/dashboard/sessions'
+      path: '/sessions'
+      fullPath: '/dashboard/sessions'
+      preLoaderRoute: typeof DashboardSessionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/servers': {
+      id: '/dashboard/servers'
+      path: '/servers'
+      fullPath: '/dashboard/servers'
+      preLoaderRoute: typeof DashboardServersRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/security': {
+      id: '/dashboard/security'
+      path: '/security'
+      fullPath: '/dashboard/security'
+      preLoaderRoute: typeof DashboardSecurityRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/season-rank': {
+      id: '/dashboard/season-rank'
+      path: '/season-rank'
+      fullPath: '/dashboard/season-rank'
+      preLoaderRoute: typeof DashboardSeasonRankRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/season': {
+      id: '/dashboard/season'
+      path: '/season'
+      fullPath: '/dashboard/season'
+      preLoaderRoute: typeof DashboardSeasonRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/saved-teams': {
+      id: '/dashboard/saved-teams'
+      path: '/saved-teams'
+      fullPath: '/dashboard/saved-teams'
+      preLoaderRoute: typeof DashboardSavedTeamsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/rewards': {
+      id: '/dashboard/rewards'
+      path: '/rewards'
+      fullPath: '/dashboard/rewards'
+      preLoaderRoute: typeof DashboardRewardsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/registered': {
+      id: '/dashboard/registered'
+      path: '/registered'
+      fullPath: '/dashboard/registered'
+      preLoaderRoute: typeof DashboardRegisteredRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/referrals': {
+      id: '/dashboard/referrals'
+      path: '/referrals'
+      fullPath: '/dashboard/referrals'
+      preLoaderRoute: typeof DashboardReferralsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/recent-uploads': {
+      id: '/dashboard/recent-uploads'
+      path: '/recent-uploads'
+      fullPath: '/dashboard/recent-uploads'
+      preLoaderRoute: typeof DashboardRecentUploadsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/reactions': {
+      id: '/dashboard/reactions'
+      path: '/reactions'
+      fullPath: '/dashboard/reactions'
+      preLoaderRoute: typeof DashboardReactionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/quick-actions': {
+      id: '/dashboard/quick-actions'
+      path: '/quick-actions'
+      fullPath: '/dashboard/quick-actions'
+      preLoaderRoute: typeof DashboardQuickActionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/privacy': {
+      id: '/dashboard/privacy'
+      path: '/privacy'
+      fullPath: '/dashboard/privacy'
+      preLoaderRoute: typeof DashboardPrivacyRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/picture-battles': {
+      id: '/dashboard/picture-battles'
+      path: '/picture-battles'
+      fullPath: '/dashboard/picture-battles'
+      preLoaderRoute: typeof DashboardPictureBattlesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/mvp': {
+      id: '/dashboard/mvp'
+      path: '/mvp'
+      fullPath: '/dashboard/mvp'
+      preLoaderRoute: typeof DashboardMvpRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/match-history': {
+      id: '/dashboard/match-history'
+      path: '/match-history'
+      fullPath: '/dashboard/match-history'
+      preLoaderRoute: typeof DashboardMatchHistoryRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/live': {
+      id: '/dashboard/live'
+      path: '/live'
+      fullPath: '/dashboard/live'
+      preLoaderRoute: typeof DashboardLiveRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/linked-accounts': {
+      id: '/dashboard/linked-accounts'
+      path: '/linked-accounts'
+      fullPath: '/dashboard/linked-accounts'
+      preLoaderRoute: typeof DashboardLinkedAccountsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/kills': {
+      id: '/dashboard/kills'
+      path: '/kills'
+      fullPath: '/dashboard/kills'
+      preLoaderRoute: typeof DashboardKillsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/invite-friends': {
+      id: '/dashboard/invite-friends'
+      path: '/invite-friends'
+      fullPath: '/dashboard/invite-friends'
+      preLoaderRoute: typeof DashboardInviteFriendsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/invitations-pending': {
+      id: '/dashboard/invitations-pending'
+      path: '/invitations-pending'
+      fullPath: '/dashboard/invitations-pending'
+      preLoaderRoute: typeof DashboardInvitationsPendingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/invitations-accepted': {
+      id: '/dashboard/invitations-accepted'
+      path: '/invitations-accepted'
+      fullPath: '/dashboard/invitations-accepted'
+      preLoaderRoute: typeof DashboardInvitationsAcceptedRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/favorites': {
+      id: '/dashboard/favorites'
+      path: '/favorites'
+      fullPath: '/dashboard/favorites'
+      preLoaderRoute: typeof DashboardFavoritesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/downloads': {
+      id: '/dashboard/downloads'
+      path: '/downloads'
+      fullPath: '/dashboard/downloads'
+      preLoaderRoute: typeof DashboardDownloadsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/discord-presence': {
+      id: '/dashboard/discord-presence'
+      path: '/discord-presence'
+      fullPath: '/dashboard/discord-presence'
+      preLoaderRoute: typeof DashboardDiscordPresenceRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/discord': {
+      id: '/dashboard/discord'
+      path: '/discord'
+      fullPath: '/dashboard/discord'
+      preLoaderRoute: typeof DashboardDiscordRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/delete-account': {
+      id: '/dashboard/delete-account'
+      path: '/delete-account'
+      fullPath: '/dashboard/delete-account'
+      preLoaderRoute: typeof DashboardDeleteAccountRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/coins': {
+      id: '/dashboard/coins'
+      path: '/coins'
+      fullPath: '/dashboard/coins'
+      preLoaderRoute: typeof DashboardCoinsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/calendar': {
+      id: '/dashboard/calendar'
+      path: '/calendar'
+      fullPath: '/dashboard/calendar'
+      preLoaderRoute: typeof DashboardCalendarRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/bookmarks': {
+      id: '/dashboard/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/dashboard/bookmarks'
+      preLoaderRoute: typeof DashboardBookmarksRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/badges': {
+      id: '/dashboard/badges'
+      path: '/badges'
+      fullPath: '/dashboard/badges'
+      preLoaderRoute: typeof DashboardBadgesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/assists': {
+      id: '/dashboard/assists'
+      path: '/assists'
+      fullPath: '/dashboard/assists'
+      preLoaderRoute: typeof DashboardAssistsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/artwork': {
+      id: '/dashboard/artwork'
+      path: '/artwork'
+      fullPath: '/dashboard/artwork'
+      preLoaderRoute: typeof DashboardArtworkRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/appearance': {
+      id: '/dashboard/appearance'
+      path: '/appearance'
+      fullPath: '/dashboard/appearance'
+      preLoaderRoute: typeof DashboardAppearanceRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/api-keys': {
+      id: '/dashboard/api-keys'
+      path: '/api-keys'
+      fullPath: '/dashboard/api-keys'
+      preLoaderRoute: typeof DashboardApiKeysRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/activity': {
+      id: '/dashboard/activity'
+      path: '/activity'
+      fullPath: '/dashboard/activity'
+      preLoaderRoute: typeof DashboardActivityRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/achievements': {
+      id: '/dashboard/achievements'
+      path: '/achievements'
+      fullPath: '/dashboard/achievements'
+      preLoaderRoute: typeof DashboardAchievementsRouteImport
+      parentRoute: typeof DashboardRoute
     }
     '/register/team/$id': {
       id: '/register/team/$id'
@@ -391,6 +1342,116 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardAchievementsRoute: typeof DashboardAchievementsRoute
+  DashboardActivityRoute: typeof DashboardActivityRoute
+  DashboardApiKeysRoute: typeof DashboardApiKeysRoute
+  DashboardAppearanceRoute: typeof DashboardAppearanceRoute
+  DashboardArtworkRoute: typeof DashboardArtworkRoute
+  DashboardAssistsRoute: typeof DashboardAssistsRoute
+  DashboardBadgesRoute: typeof DashboardBadgesRoute
+  DashboardBookmarksRoute: typeof DashboardBookmarksRoute
+  DashboardCalendarRoute: typeof DashboardCalendarRoute
+  DashboardCoinsRoute: typeof DashboardCoinsRoute
+  DashboardDeleteAccountRoute: typeof DashboardDeleteAccountRoute
+  DashboardDiscordRoute: typeof DashboardDiscordRoute
+  DashboardDiscordPresenceRoute: typeof DashboardDiscordPresenceRoute
+  DashboardDownloadsRoute: typeof DashboardDownloadsRoute
+  DashboardFavoritesRoute: typeof DashboardFavoritesRoute
+  DashboardInvitationsAcceptedRoute: typeof DashboardInvitationsAcceptedRoute
+  DashboardInvitationsPendingRoute: typeof DashboardInvitationsPendingRoute
+  DashboardInviteFriendsRoute: typeof DashboardInviteFriendsRoute
+  DashboardKillsRoute: typeof DashboardKillsRoute
+  DashboardLinkedAccountsRoute: typeof DashboardLinkedAccountsRoute
+  DashboardLiveRoute: typeof DashboardLiveRoute
+  DashboardMatchHistoryRoute: typeof DashboardMatchHistoryRoute
+  DashboardMvpRoute: typeof DashboardMvpRoute
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
+  DashboardPictureBattlesRoute: typeof DashboardPictureBattlesRoute
+  DashboardPrivacyRoute: typeof DashboardPrivacyRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardQuickActionsRoute: typeof DashboardQuickActionsRoute
+  DashboardReactionsRoute: typeof DashboardReactionsRoute
+  DashboardRecentUploadsRoute: typeof DashboardRecentUploadsRoute
+  DashboardReferralsRoute: typeof DashboardReferralsRoute
+  DashboardRegisteredRoute: typeof DashboardRegisteredRoute
+  DashboardRewardsRoute: typeof DashboardRewardsRoute
+  DashboardSavedTeamsRoute: typeof DashboardSavedTeamsRoute
+  DashboardSeasonRoute: typeof DashboardSeasonRoute
+  DashboardSeasonRankRoute: typeof DashboardSeasonRankRoute
+  DashboardSecurityRoute: typeof DashboardSecurityRoute
+  DashboardServersRoute: typeof DashboardServersRoute
+  DashboardSessionsRoute: typeof DashboardSessionsRoute
+  DashboardStatsRoute: typeof DashboardStatsRoute
+  DashboardSubmissionsRoute: typeof DashboardSubmissionsRoute
+  DashboardTeamRoute: typeof DashboardTeamRoute
+  DashboardThemeRoute: typeof DashboardThemeRoute
+  DashboardTicketsRoute: typeof DashboardTicketsRoute
+  DashboardTournamentsRoute: typeof DashboardTournamentsRoute
+  DashboardUpcomingRoute: typeof DashboardUpcomingRoute
+  DashboardVotingRoute: typeof DashboardVotingRoute
+  DashboardWinRateRoute: typeof DashboardWinRateRoute
+  DashboardXpRoute: typeof DashboardXpRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAchievementsRoute: DashboardAchievementsRoute,
+  DashboardActivityRoute: DashboardActivityRoute,
+  DashboardApiKeysRoute: DashboardApiKeysRoute,
+  DashboardAppearanceRoute: DashboardAppearanceRoute,
+  DashboardArtworkRoute: DashboardArtworkRoute,
+  DashboardAssistsRoute: DashboardAssistsRoute,
+  DashboardBadgesRoute: DashboardBadgesRoute,
+  DashboardBookmarksRoute: DashboardBookmarksRoute,
+  DashboardCalendarRoute: DashboardCalendarRoute,
+  DashboardCoinsRoute: DashboardCoinsRoute,
+  DashboardDeleteAccountRoute: DashboardDeleteAccountRoute,
+  DashboardDiscordRoute: DashboardDiscordRoute,
+  DashboardDiscordPresenceRoute: DashboardDiscordPresenceRoute,
+  DashboardDownloadsRoute: DashboardDownloadsRoute,
+  DashboardFavoritesRoute: DashboardFavoritesRoute,
+  DashboardInvitationsAcceptedRoute: DashboardInvitationsAcceptedRoute,
+  DashboardInvitationsPendingRoute: DashboardInvitationsPendingRoute,
+  DashboardInviteFriendsRoute: DashboardInviteFriendsRoute,
+  DashboardKillsRoute: DashboardKillsRoute,
+  DashboardLinkedAccountsRoute: DashboardLinkedAccountsRoute,
+  DashboardLiveRoute: DashboardLiveRoute,
+  DashboardMatchHistoryRoute: DashboardMatchHistoryRoute,
+  DashboardMvpRoute: DashboardMvpRoute,
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
+  DashboardPictureBattlesRoute: DashboardPictureBattlesRoute,
+  DashboardPrivacyRoute: DashboardPrivacyRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardQuickActionsRoute: DashboardQuickActionsRoute,
+  DashboardReactionsRoute: DashboardReactionsRoute,
+  DashboardRecentUploadsRoute: DashboardRecentUploadsRoute,
+  DashboardReferralsRoute: DashboardReferralsRoute,
+  DashboardRegisteredRoute: DashboardRegisteredRoute,
+  DashboardRewardsRoute: DashboardRewardsRoute,
+  DashboardSavedTeamsRoute: DashboardSavedTeamsRoute,
+  DashboardSeasonRoute: DashboardSeasonRoute,
+  DashboardSeasonRankRoute: DashboardSeasonRankRoute,
+  DashboardSecurityRoute: DashboardSecurityRoute,
+  DashboardServersRoute: DashboardServersRoute,
+  DashboardSessionsRoute: DashboardSessionsRoute,
+  DashboardStatsRoute: DashboardStatsRoute,
+  DashboardSubmissionsRoute: DashboardSubmissionsRoute,
+  DashboardTeamRoute: DashboardTeamRoute,
+  DashboardThemeRoute: DashboardThemeRoute,
+  DashboardTicketsRoute: DashboardTicketsRoute,
+  DashboardTournamentsRoute: DashboardTournamentsRoute,
+  DashboardUpcomingRoute: DashboardUpcomingRoute,
+  DashboardVotingRoute: DashboardVotingRoute,
+  DashboardWinRateRoute: DashboardWinRateRoute,
+  DashboardXpRoute: DashboardXpRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 interface EventsIdRouteChildren {
   EventsIdBracketRoute: typeof EventsIdBracketRoute
   EventsIdDashboardRoute: typeof EventsIdDashboardRoute
@@ -413,7 +1474,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   BotStatusRoute: BotStatusRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   ExploreRoute: ExploreRoute,
   NotificationsRoute: NotificationsRoute,
   PrivacyRoute: PrivacyRoute,
@@ -428,3 +1489,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
