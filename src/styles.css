@@ -109,6 +109,32 @@
   --success: oklch(0.72 0.2 145);
 }
 
+.theme-cyber {
+  --background: oklch(0.13 0.08 280);
+  --foreground: oklch(0.98 0.02 200);
+  --card: oklch(0.19 0.1 280);
+  --card-foreground: oklch(0.98 0.02 200);
+  --primary: oklch(0.78 0.2 200);           /* cyan */
+  --primary-foreground: oklch(0.12 0.06 280);
+  --secondary: oklch(0.72 0.28 330);        /* pink */
+  --secondary-foreground: oklch(0.12 0.06 280);
+  --accent: oklch(0.7 0.26 300);            /* purple */
+  --accent-foreground: oklch(0.98 0.02 200);
+  --muted: oklch(0.22 0.08 280);
+  --muted-foreground: oklch(0.82 0.08 220);
+  --border: oklch(0.82 0.2 200);            /* glowing cyan border */
+  --ring: oklch(0.72 0.28 330);
+  --destructive: oklch(0.65 0.28 20);
+  --success: oklch(0.8 0.22 160);
+}
+/* Cyber-specific glow overlays that respect neo utilities */
+.theme-cyber {
+  --neo-glow: 0 0 0 0 var(--color-border), 0 0 18px color-mix(in oklab, var(--primary) 70%, transparent);
+}
+.theme-cyber .neo-shadow { box-shadow: 6px 6px 0 0 var(--color-border), 0 0 22px color-mix(in oklab, var(--primary) 55%, transparent); }
+.theme-cyber .neo-shadow-sm { box-shadow: 3px 3px 0 0 var(--color-border), 0 0 12px color-mix(in oklab, var(--primary) 45%, transparent); }
+.theme-cyber .neo-shadow-lg { box-shadow: 10px 10px 0 0 var(--color-border), 0 0 32px color-mix(in oklab, var(--secondary) 55%, transparent); }
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -211,6 +237,15 @@
     radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--color-accent) 20%, transparent) 0, transparent 28%);
   background-size: cover;
 }
+.theme-cyber .theme-decor {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-primary) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-secondary) 22%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-accent) 35%, transparent) 0, transparent 30%),
+    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-secondary) 30%, transparent) 0, transparent 30%);
+  background-size: 48px 48px, 48px 48px, cover, cover;
+  opacity: 0.6;
+}
 
 /* Falling particle animation used by SeasonalEffects (spring/halloween/winter) */
 @keyframes season-fall {
@@ -263,6 +298,50 @@
 @utility animate-summer-marquee-slow {
   animation: summer-marquee-left 110s linear infinite;
 }
+
+/* Cyber theme animations */
+@keyframes cyber-streak {
+  0% { transform: translateX(-20%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+@keyframes cyber-float {
+  0%, 100% { transform: translateY(0) rotate(var(--spin, 0deg)); }
+  50% { transform: translateY(-24px) rotate(calc(var(--spin, 0deg) + 20deg)); }
+}
+@keyframes cyber-pulse {
+  0%, 100% { opacity: 0.55; filter: blur(0.5px); }
+  50% { opacity: 1; filter: blur(0px); }
+}
+@keyframes cyber-grid-scroll {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 48px 48px, -48px 48px; }
+}
+@utility animate-cyber-streak { animation: cyber-streak linear infinite; }
+@utility animate-cyber-float { animation: cyber-float ease-in-out infinite; }
+@utility animate-cyber-pulse { animation: cyber-pulse ease-in-out infinite; }
+.theme-cyber .theme-decor { animation: cyber-grid-scroll 24s linear infinite; }
+
+/* Summer ambient effects */
+@keyframes summer-drift {
+  0% { transform: translate3d(0, -10vh, 0) rotate(var(--spin, 0deg)); }
+  50% { transform: translate3d(var(--drift, 0px), 55vh, 0) rotate(calc(var(--spin, 0deg) + 140deg)); }
+  100% { transform: translate3d(calc(var(--drift, 0px) * -0.5), 115vh, 0) rotate(calc(var(--spin, 0deg) + 280deg)); }
+}
+@keyframes summer-bubble {
+  0% { transform: translate3d(0, 110vh, 0) scale(0.8); opacity: 0; }
+  10% { opacity: 0.7; }
+  100% { transform: translate3d(var(--drift, 0px), -15vh, 0) scale(1.1); opacity: 0; }
+}
+@keyframes sun-ray {
+  0%, 100% { opacity: 0.25; transform: rotate(0deg); }
+  50% { opacity: 0.55; transform: rotate(6deg); }
+}
+@utility animate-summer-drift { animation: summer-drift linear infinite; }
+@utility animate-summer-bubble { animation: summer-bubble linear infinite; }
+@utility animate-sun-ray { animation: sun-ray 6s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-summer-marquee-left,
   .animate-summer-marquee-right,
@@ -270,8 +349,16 @@
   .animate-season-fall,
   .animate-ice-bob,
   .animate-ice-flame,
-  .animate-heat-haze { animation: none; }
+  .animate-heat-haze,
+  .animate-cyber-streak,
+  .animate-cyber-float,
+  .animate-cyber-pulse,
+  .animate-summer-drift,
+  .animate-summer-bubble,
+  .animate-sun-ray { animation: none; }
+  .theme-cyber .theme-decor { animation: none; }
 }
+
 
 
 
