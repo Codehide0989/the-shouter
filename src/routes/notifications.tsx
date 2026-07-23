@@ -108,10 +108,11 @@ function Notifications() {
                 className="absolute inset-0"
                 style={{
                   background: n.unread
-                    ? "linear-gradient(90deg, color-mix(in oklab, var(--color-card) 92%, transparent) 0%, color-mix(in oklab, var(--color-card) 72%, transparent) 60%, color-mix(in oklab, var(--color-card) 30%, transparent) 100%)"
-                    : "linear-gradient(90deg, color-mix(in oklab, var(--color-muted) 95%, transparent) 0%, color-mix(in oklab, var(--color-muted) 80%, transparent) 100%)",
+                    ? "linear-gradient(90deg, color-mix(in oklab, var(--color-card) 88%, transparent) 0%, color-mix(in oklab, var(--color-card) 55%, transparent) 55%, color-mix(in oklab, var(--color-card) 15%, transparent) 100%)"
+                    : "linear-gradient(90deg, color-mix(in oklab, var(--color-muted) 90%, transparent) 0%, color-mix(in oklab, var(--color-muted) 60%, transparent) 100%)",
                 }}
               />
+
               {/* Left accent rail for unread */}
               {n.unread && (
                 <span className="absolute left-0 top-0 bottom-0 w-1 bg-destructive border-r-2 border-border z-10" />
