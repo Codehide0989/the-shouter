@@ -11,10 +11,11 @@ import {
   Filter,
   type LucideIcon,
 } from "lucide-react";
-import coverTournament from "@/assets/cover-tournament.jpg";
-import coverArtwork from "@/assets/cover-artwork.jpg";
-import coverPicbattle from "@/assets/cover-picbattle.jpg";
-import coverCommunity from "@/assets/cover-community.jpg";
+import noticeTeam from "@/assets/notice-team.jpg";
+import noticeMatch from "@/assets/notice-match.jpg";
+import noticeReaction from "@/assets/notice-reaction.jpg";
+import noticeDrop from "@/assets/notice-drop.jpg";
+
 
 export const Route = createFileRoute("/notifications")({
   head: () => ({
@@ -36,10 +37,11 @@ type NoteKind = {
 };
 
 const KINDS: NoteKind[] = [
-  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary", bg: coverCommunity },
-  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary", bg: coverTournament },
-  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent", bg: coverArtwork },
-  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success", bg: coverPicbattle },
+  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary", bg: noticeTeam },
+  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary", bg: noticeMatch },
+  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent", bg: noticeReaction },
+  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success", bg: noticeDrop },
+
 ];
 
 function Notifications() {
@@ -106,10 +108,11 @@ function Notifications() {
                 className="absolute inset-0"
                 style={{
                   background: n.unread
-                    ? "linear-gradient(90deg, color-mix(in oklab, var(--color-card) 92%, transparent) 0%, color-mix(in oklab, var(--color-card) 72%, transparent) 60%, color-mix(in oklab, var(--color-card) 30%, transparent) 100%)"
-                    : "linear-gradient(90deg, color-mix(in oklab, var(--color-muted) 95%, transparent) 0%, color-mix(in oklab, var(--color-muted) 80%, transparent) 100%)",
+                    ? "linear-gradient(90deg, color-mix(in oklab, var(--color-card) 88%, transparent) 0%, color-mix(in oklab, var(--color-card) 55%, transparent) 55%, color-mix(in oklab, var(--color-card) 15%, transparent) 100%)"
+                    : "linear-gradient(90deg, color-mix(in oklab, var(--color-muted) 90%, transparent) 0%, color-mix(in oklab, var(--color-muted) 60%, transparent) 100%)",
                 }}
               />
+
               {/* Left accent rail for unread */}
               {n.unread && (
                 <span className="absolute left-0 top-0 bottom-0 w-1 bg-destructive border-r-2 border-border z-10" />

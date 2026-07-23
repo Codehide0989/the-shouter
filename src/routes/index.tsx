@@ -4,10 +4,15 @@ import { EventCard } from "@/components/event-card";
 import { MOCK_EVENTS } from "@/lib/mock-data";
 import heroSquad from "@/assets/hero-squad.jpg";
 import heroTrophy from "@/assets/hero-trophy.jpg";
-import coverTournament from "@/assets/cover-tournament.jpg";
-import coverArtwork from "@/assets/cover-artwork.jpg";
-import coverPicbattle from "@/assets/cover-picbattle.jpg";
-import coverCommunity from "@/assets/cover-community.jpg";
+import coverTournament from "@/assets/type-tournament.jpg";
+import coverArtwork from "@/assets/type-artwork.jpg";
+import coverPicbattle from "@/assets/type-picbattle.jpg";
+import coverCommunity from "@/assets/type-community.jpg";
+import featureBot from "@/assets/feature-bot.jpg";
+import featureLive from "@/assets/feature-live.jpg";
+import featureTeams from "@/assets/feature-teams.jpg";
+import featureAdmin from "@/assets/feature-admin.jpg";
+
 import {
   Bot,
   Users,
@@ -85,29 +90,30 @@ const FEATURES = [
     title: "Bot-Powered",
     copy: "Prefix commands, Canva-style embeds, temp event channels spun up on demand.",
     number: "01",
-    image: coverTournament,
+    image: featureBot,
   },
   {
     icon: Radio,
     title: "Live Sync",
     copy: "Reactions, registrations, and team updates mirrored to the dashboard instantly.",
     number: "02",
-    image: coverPicbattle,
+    image: featureLive,
   },
   {
     icon: Trophy,
     title: "Team Registration",
     copy: "Configurable squad sizes with per-member Discord verification & waitlists.",
     number: "03",
-    image: coverArtwork,
+    image: featureTeams,
   },
   {
     icon: ShieldCheck,
     title: "Admin Control",
     copy: "Manage events, teams, submissions, themes and bot sync from one console.",
     number: "04",
-    image: coverCommunity,
+    image: featureAdmin,
   },
+
 ];
 
 
