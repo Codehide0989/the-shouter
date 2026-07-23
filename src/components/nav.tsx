@@ -137,26 +137,36 @@ export function Nav() {
 
       {open && (
         <div className="md:hidden -mt-3 border-t-4 border-border bg-card animate-in slide-in-from-top-2 duration-200">
-          <nav className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
-            {LINKS.map((l) => (
+          <nav className="mx-auto max-w-7xl px-4 py-4 grid grid-cols-2 gap-2.5">
+            {[...LINKS, ...MOBILE_EXTRA].map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-md font-display text-sm uppercase tracking-wide hover:bg-muted neo-border border-transparent hover:border-border"
-                activeProps={{ className: "bg-secondary text-secondary-foreground neo-border" }}
+                className="group relative overflow-hidden neo-border neo-shadow-sm neo-press-hover rounded-md bg-background aspect-[5/3]"
+                activeProps={{ className: "ring-2 ring-primary" }}
               >
-                {l.label}
+                <img
+                  src={l.img}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+                <span className="absolute bottom-1.5 left-2 right-2 font-display text-xs uppercase tracking-wide leading-tight">
+                  {l.label}
+                </span>
               </Link>
             ))}
-            <Link to="/profile" onClick={() => setOpen(false)}>
-              <NeoButton size="sm" variant="primary" className="w-full mt-2">
+            <Link to="/profile" onClick={() => setOpen(false)} className="col-span-2">
+              <NeoButton size="sm" variant="primary" className="w-full mt-1">
                 Login with Discord
               </NeoButton>
             </Link>
           </nav>
         </div>
       )}
+
     </header>
   );
 }
