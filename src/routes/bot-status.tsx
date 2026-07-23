@@ -10,7 +10,7 @@ import botIntegrations from "@/assets/bot-integrations.jpg";
 export const Route = createFileRoute("/bot-status")({
   head: () => ({
     meta: [
-      { title: "Bot Status — The Shooter" },
+      { title: "Bot Status — The Shouter" },
       { name: "description", content: "Live Discord bot uptime, command usage, and sync stats." },
       { property: "og:title", content: "Bot Status" },
       { property: "og:description", content: "Real-time Discord bot health." },
@@ -87,7 +87,7 @@ function BotStatus() {
             </div>
           </div>
           <div className="relative min-h-56 md:min-h-full bg-secondary/30 border-t-4 md:border-t-0 md:border-l-4 border-border overflow-hidden">
-            <img src={botMascot} alt="Shooters bot mascot" width={1024} height={1024} className="absolute inset-0 h-full w-full object-contain p-4" />
+            <img src={botMascot} alt="Shouters bot mascot" width={1024} height={1024} className="absolute inset-0 h-full w-full object-contain p-4" />
             <span className="absolute top-3 right-3 neo-border neo-shadow-sm bg-[color:var(--success)] text-black font-display text-xs px-2 py-1 rotate-3">
               ● LIVE
             </span>

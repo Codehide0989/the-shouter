@@ -18,7 +18,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<SeasonTheme>("summer");
 
   useEffect(() => {
-    const saved = (typeof window !== "undefined" && localStorage.getItem("shooters-theme")) as
+    const saved = (typeof window !== "undefined" && localStorage.getItem("shouters-theme")) as
       | SeasonTheme
       | null;
     if (saved && THEMES.some((t) => t.id === saved)) {
@@ -30,7 +30,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const cls = document.documentElement.classList;
     THEMES.forEach((t) => cls.remove(`theme-${t.id}`));
     cls.add(`theme-${theme}`);
-    localStorage.setItem("shooters-theme", theme);
+    localStorage.setItem("shouters-theme", theme);
   }, [theme]);
 
   const setTheme = useCallback((t: SeasonTheme) => setThemeState(t), []);

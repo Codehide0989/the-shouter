@@ -21,7 +21,7 @@ import noticeHero from "@/assets/notice-hero.jpg";
 export const Route = createFileRoute("/notifications")({
   head: () => ({
     meta: [
-      { title: "Notifications — The Shooter" },
+      { title: "Notifications — The Shouter" },
       { name: "description", content: "Event alerts, team updates, and Discord activity." },
       { name: "robots", content: "noindex" },
     ],

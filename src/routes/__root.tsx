@@ -81,13 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Shooter — Discord Event Platform" },
+      { title: "The Shouter — Discord Event Platform" },
       {
         name: "description",
         content:
           "Run tournaments, artwork battles, and community events straight from Discord. Registration, teams, and live sync in one bold platform.",
       },
-      { property: "og:title", content: "The Shooter — Discord Event Platform" },
+      { property: "og:title", content: "The Shouter — Discord Event Platform" },
       {
         property: "og:description",
         content: "The neobrutalist Discord event hub for tournaments, pic battles, and artwork wars.",
