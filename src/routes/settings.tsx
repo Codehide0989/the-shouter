@@ -42,7 +42,7 @@ function Settings() {
             loading="lazy"
             width={1024}
             height={1024}
-            className="h-32 w-32 md:h-44 md:w-44 object-contain drop-shadow-[6px_6px_0_var(--color-border)] animate-[spin_18s_linear_infinite]"
+            className="h-32 w-32 md:h-44 md:w-44 object-contain drop-shadow-[6px_6px_0_var(--color-border)]"
           />
         </div>
       </div>
