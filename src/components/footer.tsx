@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t-4 border-border py-4 text-center text-xs uppercase font-display tracking-widest text-primary-foreground/80">
-          © 2026 The Shooters — Locked & Loaded
+          © 2026 The Shooter — Locked & Loaded
         </div>
       </div>
     </footer>
