@@ -2,13 +2,23 @@ import { Link } from "@tanstack/react-router";
 import { Users, Trophy, Radio } from "lucide-react";
 import { NeoBadge, NeoButton } from "./neo";
 import { TYPE_LABEL, STATUS_LABEL, type MockEvent } from "@/lib/mock-data";
+import { EVENT_IMAGE } from "@/lib/event-images";
 import { cn } from "@/lib/utils";
 
 export function EventCard({ event }: { event: MockEvent }) {
   return (
     <div className="neo-border neo-shadow neo-press neo-press-hover bg-card rounded-md overflow-hidden flex flex-col">
-      <div className={cn("h-36 bg-gradient-to-br relative", event.cover)}>
-        <div className="absolute top-3 left-3 flex gap-2">
+      <div className={cn("h-44 bg-gradient-to-br relative overflow-hidden", event.cover)}>
+        <img
+          src={EVENT_IMAGE[event.type]}
+          alt=""
+          loading="lazy"
+          width={1024}
+          height={1024}
+          className="absolute inset-0 h-full w-full object-cover mix-blend-multiply"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
           <NeoBadge variant="secondary">{TYPE_LABEL[event.type]}</NeoBadge>
           {event.status === "live" && (
             <NeoBadge variant="destructive" className="animate-pulse">
