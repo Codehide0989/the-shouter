@@ -154,19 +154,9 @@ export function SeasonalEffects() {
   }
 
   if (theme === "summer") {
-    // Sun + palms + burning ice cube + heat haze
+    // Beach vibes — palms, watermelon, beach ball, waves, burning ice cube
     return (
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        {/* Blazing sun top-left */}
-        <div className="absolute -top-10 -left-10 h-56 w-56 rounded-full opacity-70 animate-ice-flame"
-          style={{ background: "radial-gradient(circle, oklch(0.9 0.2 85) 0%, oklch(0.8 0.22 55 / 0.5) 40%, transparent 70%)" }}
-        />
-        <span className="absolute top-6 left-6 text-6xl md:text-7xl animate-ice-bob select-none"
-          style={{ filter: "drop-shadow(0 4px 0 var(--color-border))" }}
-        >
-          ☀️
-        </span>
-
         {/* Palm silhouettes bottom corners */}
         <span className="absolute -bottom-4 -left-2 text-7xl md:text-8xl select-none opacity-90 rotate-[-12deg]"
           style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}
@@ -179,12 +169,42 @@ export function SeasonalEffects() {
           🌴
         </span>
 
-        {/* Heat haze bottom */}
+        {/* Watermelon slice top-left */}
+        <span className="absolute top-8 left-6 text-5xl md:text-6xl select-none rotate-[-15deg] animate-ice-bob"
+          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}
+        >
+          🍉
+        </span>
+
+        {/* Beach ball top-right */}
+        <span className="absolute top-24 right-8 text-5xl md:text-6xl select-none animate-ice-bob"
+          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))", animationDelay: "-1.5s" }}
+        >
+          🏐
+        </span>
+
+        {/* Sunglasses sticker mid-left */}
+        <span className="absolute top-1/3 left-4 text-4xl md:text-5xl select-none rotate-[8deg] opacity-90"
+          style={{ filter: "drop-shadow(2px 2px 0 var(--color-border))" }}
+        >
+          🕶️
+        </span>
+
+        {/* Wave strip bottom */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-40 opacity-40 animate-heat-haze"
+          className="absolute bottom-0 left-0 right-0 h-24 opacity-60"
           style={{
             background:
-              "linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 40%, transparent), transparent)",
+              "repeating-linear-gradient(90deg, color-mix(in oklab, var(--color-secondary) 50%, transparent) 0 24px, transparent 24px 48px), linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 40%, transparent), transparent)",
+          }}
+        />
+
+        {/* Heat haze */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-40 opacity-30 animate-heat-haze"
+          style={{
+            background:
+              "linear-gradient(0deg, color-mix(in oklab, var(--color-primary) 40%, transparent), transparent)",
           }}
         />
 
