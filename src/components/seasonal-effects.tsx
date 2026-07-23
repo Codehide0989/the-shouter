@@ -163,57 +163,125 @@ export function SeasonalEffects() {
   }
 
   if (theme === "summer") {
-    // Beach vibes — palms, watermelon, beach ball, waves, burning ice cube
+    // Tropical ambient — palms, petals, bubbles, butterflies, sun rays, wave shimmer
+    const palmEmojis = ["🌴", "🌿", "🍃"];
+    const tropicalEmojis = ["🌺", "🌸", "🌼", "🍋", "🍊", "🐚"];
     return (
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        {/* Palm silhouettes bottom corners */}
+        {/* Corner palm silhouettes */}
         <span className="absolute -bottom-4 -left-2 text-7xl md:text-8xl select-none opacity-90 rotate-[-12deg]"
-          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}
-        >
-          🌴
-        </span>
+          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}>🌴</span>
         <span className="absolute -bottom-6 -right-2 text-7xl md:text-8xl select-none opacity-90 rotate-[14deg]"
-          style={{ filter: "drop-shadow(-3px 3px 0 var(--color-border))" }}
-        >
-          🌴
-        </span>
+          style={{ filter: "drop-shadow(-3px 3px 0 var(--color-border))" }}>🌴</span>
 
-        {/* Burning clothes falling — smooth like petals/snow */}
-        {burningClothes.map((p, i) => {
-          const items = [burningShirt, burningJeans, burningJacket];
-          const item = items[i % items.length];
-          const px = Math.round(parseFloat(p.size) * 1.8);
-          return (
-            <img
-              key={`cloth-${i}`}
-              src={item}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="absolute -top-24 select-none animate-season-fall will-change-transform"
-              style={{
-                left: p.left,
-                animationDelay: p.delay,
-                animationDuration: p.duration,
-                width: `${px}px`,
-                height: "auto",
-                // @ts-expect-error CSS custom prop
-                "--drift": p.drift,
-                "--spin": p.rotate,
-                filter: "drop-shadow(2px 3px 0 var(--color-border))",
-              }}
-            />
-          );
-        })}
+        {/* Animated sunshine rays top-right */}
+        <div className="absolute -top-24 -right-24 h-96 w-96 opacity-40 animate-sun-ray"
+          style={{
+            background:
+              "conic-gradient(from 0deg, transparent 0 10deg, color-mix(in oklab, var(--color-secondary) 60%, transparent) 10deg 14deg, transparent 14deg 30deg, color-mix(in oklab, var(--color-primary) 55%, transparent) 30deg 34deg, transparent 34deg 60deg, color-mix(in oklab, var(--color-secondary) 55%, transparent) 60deg 64deg, transparent 64deg 90deg)",
+            borderRadius: "9999px",
+            filter: "blur(2px)",
+          }}
+        />
 
-        {/* Sunglasses sticker mid-left */}
-        <span className="absolute top-1/3 left-4 text-4xl md:text-5xl select-none rotate-[8deg] opacity-90"
-          style={{ filter: "drop-shadow(2px 2px 0 var(--color-border))" }}
-        >
-          🕶️
-        </span>
+        {/* Palm leaves gently falling */}
+        {palms.map((p, i) => (
+          <span
+            key={`palm-${i}`}
+            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            style={{
+              left: p.left,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              fontSize: p.size,
+              // @ts-expect-error CSS custom prop
+              "--drift": p.drift,
+              "--spin": p.rotate,
+              filter: "drop-shadow(2px 2px 0 var(--color-border))",
+            }}
+          >
+            {palmEmojis[i % palmEmojis.length]}
+          </span>
+        ))}
 
-        {/* Wave strip bottom */}
+        {/* Tropical flower petals, lemons, shells */}
+        {tropicals.map((p, i) => (
+          <span
+            key={`trop-${i}`}
+            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            style={{
+              left: p.left,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              fontSize: p.size,
+              // @ts-expect-error CSS custom prop
+              "--drift": p.drift,
+              "--spin": p.rotate,
+            }}
+          >
+            {tropicalEmojis[i % tropicalEmojis.length]}
+          </span>
+        ))}
+
+        {/* Floating bubbles rising */}
+        {bubbles.map((p, i) => (
+          <span
+            key={`bub-${i}`}
+            className="absolute select-none animate-summer-bubble will-change-transform"
+            style={{
+              left: p.left,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              width: p.size,
+              height: p.size,
+              borderRadius: "9999px",
+              background:
+                "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), color-mix(in oklab, var(--color-primary) 40%, transparent) 60%, transparent 75%)",
+              boxShadow: "inset 0 0 6px rgba(255,255,255,0.4)",
+              // @ts-expect-error CSS custom prop
+              "--drift": p.drift,
+            }}
+          />
+        ))}
+
+        {/* Tiny butterflies */}
+        {butterflies.map((p, i) => (
+          <span
+            key={`fly-${i}`}
+            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            style={{
+              left: p.left,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              fontSize: p.size,
+              // @ts-expect-error CSS custom prop
+              "--drift": p.drift,
+              "--spin": p.rotate,
+            }}
+          >
+            🦋
+          </span>
+        ))}
+
+        {/* Sparkling sunlight particles */}
+        {sparkles.map((p, i) => (
+          <span
+            key={`spk-${i}`}
+            className="absolute animate-cyber-pulse"
+            style={{
+              left: p.left,
+              top: `${(i * 137) % 100}%`,
+              width: p.size,
+              height: p.size,
+              borderRadius: "9999px",
+              background: "radial-gradient(circle, rgba(255,240,180,1) 0%, transparent 70%)",
+              animationDuration: p.duration,
+              animationDelay: p.delay,
+            }}
+          />
+        ))}
+
+        {/* Ocean wave shimmer */}
         <div
           className="absolute bottom-0 left-0 right-0 h-24 opacity-60"
           style={{
@@ -222,7 +290,7 @@ export function SeasonalEffects() {
           }}
         />
 
-        {/* Heat haze */}
+        {/* Heatwave shimmer */}
         <div
           className="absolute bottom-0 left-0 right-0 h-40 opacity-30 animate-heat-haze"
           style={{
@@ -230,24 +298,106 @@ export function SeasonalEffects() {
               "linear-gradient(0deg, color-mix(in oklab, var(--color-primary) 40%, transparent), transparent)",
           }}
         />
+      </div>
+    );
+  }
 
-        {/* Burning ice cube sticker */}
-        <div className="absolute right-4 bottom-24 md:right-10 md:bottom-32 select-none">
-          <div className="relative">
-            <span className="absolute -inset-6 rounded-full blur-xl opacity-70 animate-ice-flame"
-              style={{ background: "radial-gradient(circle, oklch(0.78 0.24 40) 0%, transparent 60%)" }}
-            />
-            <span className="relative block text-6xl md:text-7xl animate-ice-bob" style={{ filter: "drop-shadow(0 4px 0 var(--color-border))" }}>
-              🧊
-            </span>
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-5xl md:text-6xl animate-ice-flame">
-              🔥
-            </span>
-          </div>
-        </div>
+  if (theme === "cyber") {
+    const shapes = ["◆", "▲", "◼", "◯", "✦", "⬢"];
+    return (
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        {/* Neon horizon glow */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/2 opacity-70"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 100%, color-mix(in oklab, var(--color-secondary) 55%, transparent) 0%, transparent 55%), linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 25%, transparent), transparent 70%)",
+          }}
+        />
+
+        {/* Animated light streaks */}
+        {cyberStreaks.map((p, i) => (
+          <div
+            key={`streak-${i}`}
+            className="absolute h-[2px] w-1/3 animate-cyber-streak will-change-transform"
+            style={{
+              top: `${10 + (i * 79) % 80}%`,
+              left: 0,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              background:
+                "linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-primary) 90%, white) 45%, color-mix(in oklab, var(--color-secondary) 90%, white) 55%, transparent)",
+              boxShadow:
+                "0 0 12px color-mix(in oklab, var(--color-primary) 80%, transparent), 0 0 24px color-mix(in oklab, var(--color-secondary) 60%, transparent)",
+            }}
+          />
+        ))}
+
+        {/* Floating geometric shapes */}
+        {cyberShapes.map((p, i) => (
+          <span
+            key={`shape-${i}`}
+            className="absolute select-none animate-cyber-float"
+            style={{
+              left: p.left,
+              top: `${(i * 173) % 90}%`,
+              fontSize: p.size,
+              animationDuration: p.duration,
+              animationDelay: p.delay,
+              color:
+                i % 3 === 0
+                  ? "color-mix(in oklab, var(--color-primary) 90%, white)"
+                  : i % 3 === 1
+                    ? "color-mix(in oklab, var(--color-secondary) 90%, white)"
+                    : "color-mix(in oklab, var(--color-accent) 90%, white)",
+              // @ts-expect-error CSS custom prop
+              "--spin": p.rotate,
+              filter:
+                "drop-shadow(0 0 8px currentColor) drop-shadow(0 0 16px currentColor)",
+              opacity: 0.85,
+            }}
+          >
+            {shapes[i % shapes.length]}
+          </span>
+        ))}
+
+        {/* Neon particle dots */}
+        {cyberDots.map((p, i) => (
+          <span
+            key={`dot-${i}`}
+            className="absolute rounded-full animate-cyber-pulse"
+            style={{
+              left: p.left,
+              top: `${(i * 113) % 100}%`,
+              width: p.size,
+              height: p.size,
+              background:
+                i % 2 === 0
+                  ? "color-mix(in oklab, var(--color-primary) 95%, white)"
+                  : "color-mix(in oklab, var(--color-secondary) 95%, white)",
+              boxShadow: "0 0 8px currentColor, 0 0 16px currentColor",
+              color:
+                i % 2 === 0
+                  ? "color-mix(in oklab, var(--color-primary) 95%, white)"
+                  : "color-mix(in oklab, var(--color-secondary) 95%, white)",
+              animationDuration: p.duration,
+              animationDelay: p.delay,
+            }}
+          />
+        ))}
+
+        {/* Scanline veil */}
+        <div
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
+          style={{
+            background:
+              "repeating-linear-gradient(0deg, transparent 0 2px, color-mix(in oklab, var(--color-primary) 40%, transparent) 2px 3px)",
+          }}
+        />
       </div>
     );
   }
 
   return null;
 }
+
