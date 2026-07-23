@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard, SectionHeader } from "@/components/neo";
 import { MOCK_EVENTS, TYPE_LABEL, STATUS_LABEL } from "@/lib/mock-data";
-import { Bot, Radio, Palette, ShieldCheck, PlusCircle, ChartBar } from "lucide-react";
+import { Bot, Radio, Palette, ShieldCheck, PlusCircle, BarChart3 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -30,7 +30,7 @@ function Admin() {
           { icon: Radio, label: "Live now", value: 3 },
           { icon: ShieldCheck, label: "Pending approvals", value: 12 },
           { icon: Bot, label: "Bot uptime", value: "99.9%" },
-          { icon: ChartBar, label: "This month", value: 28 },
+          { icon: BarChart3, label: "This month", value: 28 },
         ].map((s) => (
           <NeoCard key={s.label} className="flex items-center gap-4">
             <div className="neo-border bg-accent text-accent-foreground rounded-md p-3">
