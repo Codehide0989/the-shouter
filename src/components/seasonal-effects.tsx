@@ -173,11 +173,11 @@ export function SeasonalEffects() {
           🌴
         </span>
 
-        {/* Burning clothes falling — real 4K photographic images */}
+        {/* Burning clothes falling — smooth like petals/snow */}
         {burningClothes.map((p, i) => {
           const items = [burningShirt, burningJeans, burningJacket];
           const item = items[i % items.length];
-          const px = Math.round(parseFloat(p.size) * 3.4);
+          const px = Math.round(parseFloat(p.size) * 1.8);
           return (
             <img
               key={`cloth-${i}`}
@@ -195,30 +195,11 @@ export function SeasonalEffects() {
                 // @ts-expect-error CSS custom prop
                 "--drift": p.drift,
                 "--spin": p.rotate,
-                filter:
-                  "drop-shadow(0 0 14px oklch(0.78 0.24 40 / 0.85)) drop-shadow(0 0 28px oklch(0.9 0.2 60 / 0.5))",
+                filter: "drop-shadow(2px 3px 0 var(--color-border))",
               }}
             />
           );
         })}
-        {embers.map((p, i) => (
-          <span
-            key={`ember-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
-            style={{
-              left: p.left,
-              animationDelay: p.delay,
-              animationDuration: p.duration,
-              fontSize: p.size,
-              // @ts-expect-error CSS custom prop
-              "--drift": p.drift,
-              "--spin": p.rotate,
-              opacity: 0.85,
-            }}
-          >
-            🔥
-          </span>
-        ))}
 
         {/* Sunglasses sticker mid-left */}
         <span className="absolute top-1/3 left-4 text-4xl md:text-5xl select-none rotate-[8deg] opacity-90"
