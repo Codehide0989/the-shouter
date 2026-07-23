@@ -9,38 +9,289 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as RulesRouteImport } from './routes/rules'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as BotStatusRouteImport } from './routes/bot-status'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RegisterIdRouteImport } from './routes/register.$id'
+import { Route as EventsIdRouteImport } from './routes/events.$id'
+import { Route as RegisterTeamIdRouteImport } from './routes/register.team.$id'
+import { Route as EventsIdLeaderboardRouteImport } from './routes/events.$id.leaderboard'
+import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery'
+import { Route as EventsIdDashboardRouteImport } from './routes/events.$id.dashboard'
+import { Route as EventsIdBracketRouteImport } from './routes/events.$id.bracket'
 
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RulesRoute = RulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BotStatusRoute = BotStatusRouteImport.update({
+  id: '/bot-status',
+  path: '/bot-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegisterIdRoute = RegisterIdRouteImport.update({
+  id: '/register/$id',
+  path: '/register/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsIdRoute = EventsIdRouteImport.update({
+  id: '/events/$id',
+  path: '/events/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterTeamIdRoute = RegisterTeamIdRouteImport.update({
+  id: '/register/team/$id',
+  path: '/register/team/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsIdLeaderboardRoute = EventsIdLeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => EventsIdRoute,
+} as any)
+const EventsIdGalleryRoute = EventsIdGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => EventsIdRoute,
+} as any)
+const EventsIdDashboardRoute = EventsIdDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => EventsIdRoute,
+} as any)
+const EventsIdBracketRoute = EventsIdBracketRouteImport.update({
+  id: '/bracket',
+  path: '/bracket',
+  getParentRoute: () => EventsIdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bot-status': typeof BotStatusRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/rules': typeof RulesRoute
+  '/settings': typeof SettingsRoute
+  '/events/$id': typeof EventsIdRouteWithChildren
+  '/register/$id': typeof RegisterIdRoute
+  '/events/$id/bracket': typeof EventsIdBracketRoute
+  '/events/$id/dashboard': typeof EventsIdDashboardRoute
+  '/events/$id/gallery': typeof EventsIdGalleryRoute
+  '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
+  '/register/team/$id': typeof RegisterTeamIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bot-status': typeof BotStatusRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/rules': typeof RulesRoute
+  '/settings': typeof SettingsRoute
+  '/events/$id': typeof EventsIdRouteWithChildren
+  '/register/$id': typeof RegisterIdRoute
+  '/events/$id/bracket': typeof EventsIdBracketRoute
+  '/events/$id/dashboard': typeof EventsIdDashboardRoute
+  '/events/$id/gallery': typeof EventsIdGalleryRoute
+  '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
+  '/register/team/$id': typeof RegisterTeamIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bot-status': typeof BotStatusRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/rules': typeof RulesRoute
+  '/settings': typeof SettingsRoute
+  '/events/$id': typeof EventsIdRouteWithChildren
+  '/register/$id': typeof RegisterIdRoute
+  '/events/$id/bracket': typeof EventsIdBracketRoute
+  '/events/$id/dashboard': typeof EventsIdDashboardRoute
+  '/events/$id/gallery': typeof EventsIdGalleryRoute
+  '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
+  '/register/team/$id': typeof RegisterTeamIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/bot-status'
+    | '/dashboard'
+    | '/explore'
+    | '/notifications'
+    | '/profile'
+    | '/rules'
+    | '/settings'
+    | '/events/$id'
+    | '/register/$id'
+    | '/events/$id/bracket'
+    | '/events/$id/dashboard'
+    | '/events/$id/gallery'
+    | '/events/$id/leaderboard'
+    | '/register/team/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/bot-status'
+    | '/dashboard'
+    | '/explore'
+    | '/notifications'
+    | '/profile'
+    | '/rules'
+    | '/settings'
+    | '/events/$id'
+    | '/register/$id'
+    | '/events/$id/bracket'
+    | '/events/$id/dashboard'
+    | '/events/$id/gallery'
+    | '/events/$id/leaderboard'
+    | '/register/team/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/bot-status'
+    | '/dashboard'
+    | '/explore'
+    | '/notifications'
+    | '/profile'
+    | '/rules'
+    | '/settings'
+    | '/events/$id'
+    | '/register/$id'
+    | '/events/$id/bracket'
+    | '/events/$id/dashboard'
+    | '/events/$id/gallery'
+    | '/events/$id/leaderboard'
+    | '/register/team/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  BotStatusRoute: typeof BotStatusRoute
+  DashboardRoute: typeof DashboardRoute
+  ExploreRoute: typeof ExploreRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  RulesRoute: typeof RulesRoute
+  SettingsRoute: typeof SettingsRoute
+  EventsIdRoute: typeof EventsIdRouteWithChildren
+  RegisterIdRoute: typeof RegisterIdRoute
+  RegisterTeamIdRoute: typeof RegisterTeamIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rules': {
+      id: '/rules'
+      path: '/rules'
+      fullPath: '/rules'
+      preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bot-status': {
+      id: '/bot-status'
+      path: '/bot-status'
+      fullPath: '/bot-status'
+      preLoaderRoute: typeof BotStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +299,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/register/$id': {
+      id: '/register/$id'
+      path: '/register/$id'
+      fullPath: '/register/$id'
+      preLoaderRoute: typeof RegisterIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$id': {
+      id: '/events/$id'
+      path: '/events/$id'
+      fullPath: '/events/$id'
+      preLoaderRoute: typeof EventsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register/team/$id': {
+      id: '/register/team/$id'
+      path: '/register/team/$id'
+      fullPath: '/register/team/$id'
+      preLoaderRoute: typeof RegisterTeamIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$id/leaderboard': {
+      id: '/events/$id/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/events/$id/leaderboard'
+      preLoaderRoute: typeof EventsIdLeaderboardRouteImport
+      parentRoute: typeof EventsIdRoute
+    }
+    '/events/$id/gallery': {
+      id: '/events/$id/gallery'
+      path: '/gallery'
+      fullPath: '/events/$id/gallery'
+      preLoaderRoute: typeof EventsIdGalleryRouteImport
+      parentRoute: typeof EventsIdRoute
+    }
+    '/events/$id/dashboard': {
+      id: '/events/$id/dashboard'
+      path: '/dashboard'
+      fullPath: '/events/$id/dashboard'
+      preLoaderRoute: typeof EventsIdDashboardRouteImport
+      parentRoute: typeof EventsIdRoute
+    }
+    '/events/$id/bracket': {
+      id: '/events/$id/bracket'
+      path: '/bracket'
+      fullPath: '/events/$id/bracket'
+      preLoaderRoute: typeof EventsIdBracketRouteImport
+      parentRoute: typeof EventsIdRoute
+    }
   }
 }
 
+interface EventsIdRouteChildren {
+  EventsIdBracketRoute: typeof EventsIdBracketRoute
+  EventsIdDashboardRoute: typeof EventsIdDashboardRoute
+  EventsIdGalleryRoute: typeof EventsIdGalleryRoute
+  EventsIdLeaderboardRoute: typeof EventsIdLeaderboardRoute
+}
+
+const EventsIdRouteChildren: EventsIdRouteChildren = {
+  EventsIdBracketRoute: EventsIdBracketRoute,
+  EventsIdDashboardRoute: EventsIdDashboardRoute,
+  EventsIdGalleryRoute: EventsIdGalleryRoute,
+  EventsIdLeaderboardRoute: EventsIdLeaderboardRoute,
+}
+
+const EventsIdRouteWithChildren = EventsIdRoute._addFileChildren(
+  EventsIdRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  BotStatusRoute: BotStatusRoute,
+  DashboardRoute: DashboardRoute,
+  ExploreRoute: ExploreRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  RulesRoute: RulesRoute,
+  SettingsRoute: SettingsRoute,
+  EventsIdRoute: EventsIdRouteWithChildren,
+  RegisterIdRoute: RegisterIdRoute,
+  RegisterTeamIdRoute: RegisterTeamIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
