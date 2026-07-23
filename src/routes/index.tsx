@@ -1,9 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { NeoBadge, NeoButton, NeoCard, SectionHeader } from "@/components/neo";
+import { NeoBadge, NeoButton, SectionHeader } from "@/components/neo";
 import { EventCard } from "@/components/event-card";
 import { MOCK_EVENTS } from "@/lib/mock-data";
 import heroSquad from "@/assets/hero-squad.jpg";
 import heroTrophy from "@/assets/hero-trophy.jpg";
+import coverTournament from "@/assets/cover-tournament.jpg";
+import coverArtwork from "@/assets/cover-artwork.jpg";
+import coverPicbattle from "@/assets/cover-picbattle.jpg";
+import coverCommunity from "@/assets/cover-community.jpg";
 import {
   Bot,
   Users,
@@ -18,6 +22,7 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
