@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { SummerMarquee } from "@/components/summer-marquee";
 import { ThemeProvider } from "@/lib/theme";
 
 function NotFoundComponent() {
@@ -130,6 +131,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <div className="relative min-h-screen flex flex-col bg-noise">
+          <SummerMarquee />
           <div className="theme-decor" aria-hidden />
           <div className="relative z-10 flex flex-col min-h-screen">
             <Nav />

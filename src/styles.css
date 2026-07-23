@@ -222,3 +222,29 @@
   to { background-position: 120px 360px, 100px 340px, 140px 380px; }
 }
 
+/* Summer marquee — infinite horizontal scroll for background image rows.
+   The row duplicates its images, so translating by -50% loops seamlessly. */
+@keyframes summer-marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes summer-marquee-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+@utility animate-summer-marquee-left {
+  animation: summer-marquee-left 60s linear infinite;
+}
+@utility animate-summer-marquee-right {
+  animation: summer-marquee-right 80s linear infinite;
+}
+@utility animate-summer-marquee-slow {
+  animation: summer-marquee-left 110s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-summer-marquee-left,
+  .animate-summer-marquee-right,
+  .animate-summer-marquee-slow { animation: none; }
+}
+
+
