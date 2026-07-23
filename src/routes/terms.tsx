@@ -1,7 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { NeoBadge, NeoCard, SectionHeader } from "@/components/neo";
-import { FileText, Users, ShieldAlert, Gavel, Ban, Sparkles } from "lucide-react";
+import { FileText, Users, ShieldAlert, Gavel, Ban, Sparkles, AlertTriangle, Scale } from "lucide-react";
 import heroUrl from "@/assets/terms-hero.jpg";
+import imgAccept from "@/assets/terms-accept.jpg";
+import imgAccount from "@/assets/terms-account.jpg";
+import imgContent from "@/assets/terms-content.jpg";
+import imgFair from "@/assets/terms-fair.jpg";
+import imgProhibited from "@/assets/terms-prohibited.jpg";
+import imgPrizes from "@/assets/terms-prizes.jpg";
+import imgLiability from "@/assets/terms-liability.jpg";
+import imgLaw from "@/assets/terms-law.jpg";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -20,33 +28,59 @@ export const Route = createFileRoute("/terms")({
 const SECTIONS = [
   {
     icon: FileText,
+    img: imgAccept,
+    tint: "bg-primary text-primary-foreground",
     title: "01 · Acceptance",
     body: "By joining an event, verifying your Discord, or clicking a big loud button on this site, you agree to these terms. If you don't, don't press the button.",
   },
   {
     icon: Users,
+    img: imgAccount,
+    tint: "bg-accent text-accent-foreground",
     title: "02 · Your Account",
     body: "You're responsible for your Discord handle, your squad, and every message the bot posts on your behalf. Share credentials, share the blame.",
   },
   {
     icon: Sparkles,
+    img: imgContent,
+    tint: "bg-secondary text-secondary-foreground",
     title: "03 · Submissions & Content",
     body: "Artwork, screenshots, and clips you upload stay yours. You grant The Shouter a license to display them inside event pages, leaderboards, and social recaps.",
   },
   {
     icon: Gavel,
+    img: imgFair,
+    tint: "bg-primary text-primary-foreground",
     title: "04 · Fair Play",
     body: "Cheats, alt accounts, brigading, and match-fixing get you kicked from the event and the server. Admin decisions on fair play are final.",
   },
   {
     icon: Ban,
+    img: imgProhibited,
+    tint: "bg-accent text-accent-foreground",
     title: "05 · Prohibited Conduct",
     body: "No harassment, hate speech, doxxing, or illegal content — on Discord, in submissions, or in event chats. Zero tolerance, immediate ban.",
   },
   {
     icon: ShieldAlert,
+    img: imgPrizes,
+    tint: "bg-secondary text-secondary-foreground",
     title: "06 · Prizes & Rewards",
     body: "Prizes are awarded to verified winners only. Rewards may change based on sponsor availability. We may withhold prizes if fair play rules were broken.",
+  },
+  {
+    icon: AlertTriangle,
+    img: imgLiability,
+    tint: "bg-primary text-primary-foreground",
+    title: "07 · Liability & Service",
+    body: "The platform ships as-is. Downtime, missed pings, or Discord outages happen — we'll fix them fast, but we can't be held liable for lost matches or bragging rights.",
+  },
+  {
+    icon: Scale,
+    img: imgLaw,
+    tint: "bg-accent text-accent-foreground",
+    title: "08 · Governing Law",
+    body: "These terms are governed by international arbitration norms and the local laws of the operator. Disputes go to a friendly chat first, courts only as a last resort.",
   },
 ];
 
@@ -68,13 +102,16 @@ function Terms() {
 
       <SectionHeader eyebrow="Ground Rules" title="What you agree to" />
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {SECTIONS.map((s) => (
-          <NeoCard key={s.title} className="flex gap-4">
-            <div className="neo-border bg-primary text-primary-foreground rounded-md p-2 h-fit">
-              <s.icon className="h-5 w-5" />
+          <NeoCard key={s.title} className="overflow-hidden p-0">
+            <div className="relative h-40 border-b-4 border-border overflow-hidden bg-muted">
+              <img src={s.img} alt="" loading="lazy" width={1024} height={1024} className="h-full w-full object-cover" />
+              <div className={`absolute top-3 left-3 neo-border rounded-md p-2 ${s.tint}`}>
+                <s.icon className="h-5 w-5" />
+              </div>
             </div>
-            <div>
+            <div className="p-4">
               <h2 className="font-display text-lg leading-tight">{s.title}</h2>
               <p className="text-sm text-muted-foreground mt-2">{s.body}</p>
             </div>

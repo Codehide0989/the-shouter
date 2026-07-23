@@ -1,7 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { NeoBadge, NeoCard, SectionHeader } from "@/components/neo";
-import { Cookie, Database, KeyRound, Eye, Share2, Trash2 } from "lucide-react";
+import { Cookie, Database, KeyRound, Eye, Share2, Trash2, ShieldCheck, Baby } from "lucide-react";
 import heroUrl from "@/assets/privacy-hero.jpg";
+import imgCollect from "@/assets/priv-collect.jpg";
+import imgUse from "@/assets/priv-use.jpg";
+import imgShare from "@/assets/priv-share.jpg";
+import imgCookies from "@/assets/priv-cookies.jpg";
+import imgRights from "@/assets/priv-rights.jpg";
+import imgDelete from "@/assets/priv-delete.jpg";
+import imgSecurity from "@/assets/priv-security.jpg";
+import imgChildren from "@/assets/priv-children.jpg";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -20,33 +28,59 @@ export const Route = createFileRoute("/privacy")({
 const SECTIONS = [
   {
     icon: Database,
+    img: imgCollect,
+    tint: "bg-primary text-primary-foreground",
     title: "01 · What we collect",
     body: "Your Discord ID, username, avatar, server memberships you opt in with, and any event submissions you upload. We don't ask for phone numbers, addresses, or passwords.",
   },
   {
     icon: KeyRound,
+    img: imgUse,
+    tint: "bg-accent text-accent-foreground",
     title: "02 · How we use it",
     body: "To run events, verify teams, post live updates to your server, and show your name on leaderboards. That's it — no ad targeting, no shadow selling.",
   },
   {
     icon: Share2,
+    img: imgShare,
+    tint: "bg-secondary text-secondary-foreground",
     title: "03 · Sharing",
-    body: "We share data with Discord (obviously) and hosting infrastructure we run this platform on. We never sell your data to third parties.",
+    body: "We share data with Discord (obviously) and the hosting infrastructure we run this platform on. We never sell your data to third parties or ad networks.",
   },
   {
     icon: Cookie,
+    img: imgCookies,
+    tint: "bg-primary text-primary-foreground",
     title: "04 · Cookies",
     body: "We store a small session cookie so you stay signed in, plus a theme preference so the site remembers your seasonal vibe. No third-party ad cookies.",
   },
   {
     icon: Eye,
+    img: imgRights,
+    tint: "bg-accent text-accent-foreground",
     title: "05 · Your rights",
-    body: "You can view, export, or delete your data any time from Settings. GDPR/DPDP-friendly requests are honoured within 30 days.",
+    body: "You can view, export, or delete your data any time from Settings. GDPR/DPDP-friendly requests are honoured within 30 days — no forms, no phone calls.",
   },
   {
     icon: Trash2,
+    img: imgDelete,
+    tint: "bg-secondary text-secondary-foreground",
     title: "06 · Deletion",
     body: "Deleting your account removes your profile, teams, and submissions. Leaderboards keep an anonymised placeholder so old brackets still add up.",
+  },
+  {
+    icon: ShieldCheck,
+    img: imgSecurity,
+    tint: "bg-primary text-primary-foreground",
+    title: "07 · Security",
+    body: "All traffic is TLS-encrypted end to end. Tokens rotate on every session, and admin actions require Discord 2FA. We disclose breaches within 72 hours.",
+  },
+  {
+    icon: Baby,
+    img: imgChildren,
+    tint: "bg-accent text-accent-foreground",
+    title: "08 · Age & children",
+    body: "The Shouter is 13+ (16+ in the EU) in line with Discord's ToS. If we learn an underage account slipped in, we remove it and wipe the data.",
   },
 ];
 
@@ -67,13 +101,16 @@ function Privacy() {
 
       <SectionHeader eyebrow="Data Handling" title="What we do with your info" />
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {SECTIONS.map((s) => (
-          <NeoCard key={s.title} className="flex gap-4">
-            <div className="neo-border bg-accent text-accent-foreground rounded-md p-2 h-fit">
-              <s.icon className="h-5 w-5" />
+          <NeoCard key={s.title} className="overflow-hidden p-0">
+            <div className="relative h-40 neo-border-b border-b-4 border-border overflow-hidden bg-muted">
+              <img src={s.img} alt="" loading="lazy" width={1024} height={1024} className="h-full w-full object-cover" />
+              <div className={`absolute top-3 left-3 neo-border rounded-md p-2 ${s.tint}`}>
+                <s.icon className="h-5 w-5" />
+              </div>
             </div>
-            <div>
+            <div className="p-4">
               <h2 className="font-display text-lg leading-tight">{s.title}</h2>
               <p className="text-sm text-muted-foreground mt-2">{s.body}</p>
             </div>
