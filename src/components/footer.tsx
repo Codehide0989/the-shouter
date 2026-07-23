@@ -39,7 +39,7 @@ export function Footer() {
                 <span className="neo-border neo-shadow-sm bg-card text-card-foreground rounded-md p-1.5">
                   <Crosshair className="h-4 w-4" />
                 </span>
-                <span className="font-display text-lg">THE SHOOTERS</span>
+                <span className="font-display text-lg">The Shooter</span>
               </div>
               <p className="mt-3 text-sm opacity-90">
                 Discord-first event platform for tournaments, artwork, and community battles.
