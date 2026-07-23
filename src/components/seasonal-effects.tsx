@@ -39,7 +39,14 @@ export function SeasonalEffects() {
   const pumpkins = useParticles(10, { minSize: 22, maxSize: 40, minDur: 12, maxDur: 22, salt: 3 });
   const bats = useParticles(8, { minSize: 18, maxSize: 30, minDur: 14, maxDur: 26, salt: 4 });
   const flakes = useParticles(40, { minSize: 8, maxSize: 22, minDur: 7, maxDur: 16, salt: 5 });
-  const burningClothes = useParticles(16, { minSize: 14, maxSize: 24, minDur: 12, maxDur: 22, salt: 6 });
+  const palms = useParticles(10, { minSize: 20, maxSize: 34, minDur: 14, maxDur: 24, salt: 6 });
+  const tropicals = useParticles(14, { minSize: 16, maxSize: 26, minDur: 12, maxDur: 22, salt: 7 });
+  const bubbles = useParticles(18, { minSize: 8, maxSize: 20, minDur: 10, maxDur: 20, salt: 8 });
+  const butterflies = useParticles(6, { minSize: 18, maxSize: 26, minDur: 16, maxDur: 26, salt: 9 });
+  const sparkles = useParticles(30, { minSize: 4, maxSize: 10, minDur: 6, maxDur: 14, salt: 10 });
+  const cyberShapes = useParticles(14, { minSize: 22, maxSize: 44, minDur: 10, maxDur: 20, salt: 11 });
+  const cyberDots = useParticles(40, { minSize: 3, maxSize: 8, minDur: 5, maxDur: 12, salt: 12 });
+  const cyberStreaks = useParticles(6, { minSize: 2, maxSize: 4, minDur: 5, maxDur: 11, salt: 13 });
 
   if (theme === "spring") {
     return (
