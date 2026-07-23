@@ -9,7 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TeamsRouteImport } from './routes/teams'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -17,11 +19,28 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as BotStatusRouteImport } from './routes/bot-status'
+import { Route as BotRouteImport } from './routes/bot'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as TournamentsVerificationRouteImport } from './routes/tournaments.verification'
+import { Route as TournamentsScheduleGeneratorRouteImport } from './routes/tournaments.schedule-generator'
+import { Route as TournamentsMatchReportingRouteImport } from './routes/tournaments.match-reporting'
+import { Route as TournamentsBracketGeneratorRouteImport } from './routes/tournaments.bracket-generator'
+import { Route as TournamentsAppealsRouteImport } from './routes/tournaments.appeals'
+import { Route as TournamentsAntiCheatRouteImport } from './routes/tournaments.anti-cheat'
+import { Route as TeamsVerificationRouteImport } from './routes/teams.verification'
+import { Route as TeamsReservesRouteImport } from './routes/teams.reserves'
+import { Route as TeamsReadyCheckRouteImport } from './routes/teams.ready-check'
+import { Route as TeamsNotesRouteImport } from './routes/teams.notes'
+import { Route as TeamsKickReplaceRouteImport } from './routes/teams.kick-replace'
+import { Route as TeamsInvitationsRouteImport } from './routes/teams.invitations'
+import { Route as TeamsCheckInRouteImport } from './routes/teams.check-in'
+import { Route as TeamsChatRouteImport } from './routes/teams.chat'
+import { Route as TeamsCaptainTransferRouteImport } from './routes/teams.captain-transfer'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
 import { Route as DashboardXpRouteImport } from './routes/dashboard.xp'
@@ -73,6 +92,26 @@ import { Route as DashboardAppearanceRouteImport } from './routes/dashboard.appe
 import { Route as DashboardApiKeysRouteImport } from './routes/dashboard.api-keys'
 import { Route as DashboardActivityRouteImport } from './routes/dashboard.activity'
 import { Route as DashboardAchievementsRouteImport } from './routes/dashboard.achievements'
+import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
+import { Route as BotWebhooksRouteImport } from './routes/bot.webhooks'
+import { Route as BotTemplatesRouteImport } from './routes/bot.templates'
+import { Route as BotTempChannelsRouteImport } from './routes/bot.temp-channels'
+import { Route as BotTempCategoriesRouteImport } from './routes/bot.temp-categories'
+import { Route as BotPrefixesRouteImport } from './routes/bot.prefixes'
+import { Route as BotPermissionsRouteImport } from './routes/bot.permissions'
+import { Route as BotModulesRouteImport } from './routes/bot.modules'
+import { Route as BotLogsRouteImport } from './routes/bot.logs'
+import { Route as BotGuildSettingsRouteImport } from './routes/bot.guild-settings'
+import { Route as BotCooldownsRouteImport } from './routes/bot.cooldowns'
+import { Route as BotCommandsRouteImport } from './routes/bot.commands'
+import { Route as BotCleanupRouteImport } from './routes/bot.cleanup'
+import { Route as BotAutoRolesRouteImport } from './routes/bot.auto-roles'
+import { Route as BotAutoChannelsRouteImport } from './routes/bot.auto-channels'
+import { Route as TournamentsFormatsSwissRouteImport } from './routes/tournaments.formats.swiss'
+import { Route as TournamentsFormatsSingleElimRouteImport } from './routes/tournaments.formats.single-elim'
+import { Route as TournamentsFormatsRoundRobinRouteImport } from './routes/tournaments.formats.round-robin'
+import { Route as TournamentsFormatsDoubleElimRouteImport } from './routes/tournaments.formats.double-elim'
+import { Route as TournamentsFormatsBattleRoyaleRouteImport } from './routes/tournaments.formats.battle-royale'
 import { Route as RegisterTeamIdRouteImport } from './routes/register.team.$id'
 import { Route as EventsIdLeaderboardRouteImport } from './routes/events.$id.leaderboard'
 import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery'
@@ -142,9 +181,19 @@ import { Route as AdminAnalyticsGrowthRouteImport } from './routes/admin.analyti
 import { Route as AdminAnalyticsEventsRouteImport } from './routes/admin.analytics.events'
 import { Route as AdminAnalyticsDiscordRouteImport } from './routes/admin.analytics.discord'
 
+const TournamentsRoute = TournamentsRouteImport.update({
+  id: '/tournaments',
+  path: '/tournaments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamsRoute = TeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -182,9 +231,19 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BotStatusRoute = BotStatusRouteImport.update({
   id: '/bot-status',
   path: '/bot-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BotRoute = BotRouteImport.update({
+  id: '/bot',
+  path: '/bot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -206,6 +265,84 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminRoute,
+} as any)
+const TournamentsVerificationRoute = TournamentsVerificationRouteImport.update({
+  id: '/verification',
+  path: '/verification',
+  getParentRoute: () => TournamentsRoute,
+} as any)
+const TournamentsScheduleGeneratorRoute =
+  TournamentsScheduleGeneratorRouteImport.update({
+    id: '/schedule-generator',
+    path: '/schedule-generator',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsMatchReportingRoute =
+  TournamentsMatchReportingRouteImport.update({
+    id: '/match-reporting',
+    path: '/match-reporting',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsBracketGeneratorRoute =
+  TournamentsBracketGeneratorRouteImport.update({
+    id: '/bracket-generator',
+    path: '/bracket-generator',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsAppealsRoute = TournamentsAppealsRouteImport.update({
+  id: '/appeals',
+  path: '/appeals',
+  getParentRoute: () => TournamentsRoute,
+} as any)
+const TournamentsAntiCheatRoute = TournamentsAntiCheatRouteImport.update({
+  id: '/anti-cheat',
+  path: '/anti-cheat',
+  getParentRoute: () => TournamentsRoute,
+} as any)
+const TeamsVerificationRoute = TeamsVerificationRouteImport.update({
+  id: '/verification',
+  path: '/verification',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsReservesRoute = TeamsReservesRouteImport.update({
+  id: '/reserves',
+  path: '/reserves',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsReadyCheckRoute = TeamsReadyCheckRouteImport.update({
+  id: '/ready-check',
+  path: '/ready-check',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsNotesRoute = TeamsNotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsKickReplaceRoute = TeamsKickReplaceRouteImport.update({
+  id: '/kick-replace',
+  path: '/kick-replace',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsInvitationsRoute = TeamsInvitationsRouteImport.update({
+  id: '/invitations',
+  path: '/invitations',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsCheckInRoute = TeamsCheckInRouteImport.update({
+  id: '/check-in',
+  path: '/check-in',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsChatRoute = TeamsChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const TeamsCaptainTransferRoute = TeamsCaptainTransferRouteImport.update({
+  id: '/captain-transfer',
+  path: '/captain-transfer',
+  getParentRoute: () => TeamsRoute,
 } as any)
 const RegisterIdRoute = RegisterIdRouteImport.update({
   id: '/register/$id',
@@ -465,6 +602,110 @@ const DashboardAchievementsRoute = DashboardAchievementsRouteImport.update({
   path: '/achievements',
   getParentRoute: () => DashboardRoute,
 } as any)
+const CategoriesSlugRoute = CategoriesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CategoriesRoute,
+} as any)
+const BotWebhooksRoute = BotWebhooksRouteImport.update({
+  id: '/webhooks',
+  path: '/webhooks',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotTemplatesRoute = BotTemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotTempChannelsRoute = BotTempChannelsRouteImport.update({
+  id: '/temp-channels',
+  path: '/temp-channels',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotTempCategoriesRoute = BotTempCategoriesRouteImport.update({
+  id: '/temp-categories',
+  path: '/temp-categories',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotPrefixesRoute = BotPrefixesRouteImport.update({
+  id: '/prefixes',
+  path: '/prefixes',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotPermissionsRoute = BotPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotModulesRoute = BotModulesRouteImport.update({
+  id: '/modules',
+  path: '/modules',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotLogsRoute = BotLogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotGuildSettingsRoute = BotGuildSettingsRouteImport.update({
+  id: '/guild-settings',
+  path: '/guild-settings',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotCooldownsRoute = BotCooldownsRouteImport.update({
+  id: '/cooldowns',
+  path: '/cooldowns',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotCommandsRoute = BotCommandsRouteImport.update({
+  id: '/commands',
+  path: '/commands',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotCleanupRoute = BotCleanupRouteImport.update({
+  id: '/cleanup',
+  path: '/cleanup',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotAutoRolesRoute = BotAutoRolesRouteImport.update({
+  id: '/auto-roles',
+  path: '/auto-roles',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotAutoChannelsRoute = BotAutoChannelsRouteImport.update({
+  id: '/auto-channels',
+  path: '/auto-channels',
+  getParentRoute: () => BotRoute,
+} as any)
+const TournamentsFormatsSwissRoute = TournamentsFormatsSwissRouteImport.update({
+  id: '/formats/swiss',
+  path: '/formats/swiss',
+  getParentRoute: () => TournamentsRoute,
+} as any)
+const TournamentsFormatsSingleElimRoute =
+  TournamentsFormatsSingleElimRouteImport.update({
+    id: '/formats/single-elim',
+    path: '/formats/single-elim',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsFormatsRoundRobinRoute =
+  TournamentsFormatsRoundRobinRouteImport.update({
+    id: '/formats/round-robin',
+    path: '/formats/round-robin',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsFormatsDoubleElimRoute =
+  TournamentsFormatsDoubleElimRouteImport.update({
+    id: '/formats/double-elim',
+    path: '/formats/double-elim',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
+const TournamentsFormatsBattleRoyaleRoute =
+  TournamentsFormatsBattleRoyaleRouteImport.update({
+    id: '/formats/battle-royale',
+    path: '/formats/battle-royale',
+    getParentRoute: () => TournamentsRoute,
+  } as any)
 const RegisterTeamIdRoute = RegisterTeamIdRouteImport.update({
   id: '/register/team/$id',
   path: '/register/team/$id',
@@ -811,7 +1052,9 @@ const AdminAnalyticsDiscordRoute = AdminAnalyticsDiscordRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
+  '/categories': typeof CategoriesRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
@@ -819,7 +1062,24 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/auto-channels': typeof BotAutoChannelsRoute
+  '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/cleanup': typeof BotCleanupRoute
+  '/bot/commands': typeof BotCommandsRoute
+  '/bot/cooldowns': typeof BotCooldownsRoute
+  '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/logs': typeof BotLogsRoute
+  '/bot/modules': typeof BotModulesRoute
+  '/bot/permissions': typeof BotPermissionsRoute
+  '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/temp-categories': typeof BotTempCategoriesRoute
+  '/bot/temp-channels': typeof BotTempChannelsRoute
+  '/bot/templates': typeof BotTemplatesRoute
+  '/bot/webhooks': typeof BotWebhooksRoute
+  '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/api-keys': typeof DashboardApiKeysRoute
@@ -871,6 +1131,21 @@ export interface FileRoutesByFullPath {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
+  '/teams/chat': typeof TeamsChatRoute
+  '/teams/check-in': typeof TeamsCheckInRoute
+  '/teams/invitations': typeof TeamsInvitationsRoute
+  '/teams/kick-replace': typeof TeamsKickReplaceRoute
+  '/teams/notes': typeof TeamsNotesRoute
+  '/teams/ready-check': typeof TeamsReadyCheckRoute
+  '/teams/reserves': typeof TeamsReservesRoute
+  '/teams/verification': typeof TeamsVerificationRoute
+  '/tournaments/anti-cheat': typeof TournamentsAntiCheatRoute
+  '/tournaments/appeals': typeof TournamentsAppealsRoute
+  '/tournaments/bracket-generator': typeof TournamentsBracketGeneratorRoute
+  '/tournaments/match-reporting': typeof TournamentsMatchReportingRoute
+  '/tournaments/schedule-generator': typeof TournamentsScheduleGeneratorRoute
+  '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
@@ -941,17 +1216,41 @@ export interface FileRoutesByFullPath {
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
+  '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
+  '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
+  '/tournaments/formats/single-elim': typeof TournamentsFormatsSingleElimRoute
+  '/tournaments/formats/swiss': typeof TournamentsFormatsSwissRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
+  '/categories': typeof CategoriesRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/auto-channels': typeof BotAutoChannelsRoute
+  '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/cleanup': typeof BotCleanupRoute
+  '/bot/commands': typeof BotCommandsRoute
+  '/bot/cooldowns': typeof BotCooldownsRoute
+  '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/logs': typeof BotLogsRoute
+  '/bot/modules': typeof BotModulesRoute
+  '/bot/permissions': typeof BotPermissionsRoute
+  '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/temp-categories': typeof BotTempCategoriesRoute
+  '/bot/temp-channels': typeof BotTempChannelsRoute
+  '/bot/templates': typeof BotTemplatesRoute
+  '/bot/webhooks': typeof BotWebhooksRoute
+  '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/api-keys': typeof DashboardApiKeysRoute
@@ -1003,6 +1302,21 @@ export interface FileRoutesByTo {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
+  '/teams/chat': typeof TeamsChatRoute
+  '/teams/check-in': typeof TeamsCheckInRoute
+  '/teams/invitations': typeof TeamsInvitationsRoute
+  '/teams/kick-replace': typeof TeamsKickReplaceRoute
+  '/teams/notes': typeof TeamsNotesRoute
+  '/teams/ready-check': typeof TeamsReadyCheckRoute
+  '/teams/reserves': typeof TeamsReservesRoute
+  '/teams/verification': typeof TeamsVerificationRoute
+  '/tournaments/anti-cheat': typeof TournamentsAntiCheatRoute
+  '/tournaments/appeals': typeof TournamentsAppealsRoute
+  '/tournaments/bracket-generator': typeof TournamentsBracketGeneratorRoute
+  '/tournaments/match-reporting': typeof TournamentsMatchReportingRoute
+  '/tournaments/schedule-generator': typeof TournamentsScheduleGeneratorRoute
+  '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
@@ -1073,12 +1387,19 @@ export interface FileRoutesByTo {
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
+  '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
+  '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
+  '/tournaments/formats/single-elim': typeof TournamentsFormatsSingleElimRoute
+  '/tournaments/formats/swiss': typeof TournamentsFormatsSwissRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
+  '/categories': typeof CategoriesRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
@@ -1086,7 +1407,24 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/auto-channels': typeof BotAutoChannelsRoute
+  '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/cleanup': typeof BotCleanupRoute
+  '/bot/commands': typeof BotCommandsRoute
+  '/bot/cooldowns': typeof BotCooldownsRoute
+  '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/logs': typeof BotLogsRoute
+  '/bot/modules': typeof BotModulesRoute
+  '/bot/permissions': typeof BotPermissionsRoute
+  '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/temp-categories': typeof BotTempCategoriesRoute
+  '/bot/temp-channels': typeof BotTempChannelsRoute
+  '/bot/templates': typeof BotTemplatesRoute
+  '/bot/webhooks': typeof BotWebhooksRoute
+  '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/api-keys': typeof DashboardApiKeysRoute
@@ -1138,6 +1476,21 @@ export interface FileRoutesById {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
+  '/teams/chat': typeof TeamsChatRoute
+  '/teams/check-in': typeof TeamsCheckInRoute
+  '/teams/invitations': typeof TeamsInvitationsRoute
+  '/teams/kick-replace': typeof TeamsKickReplaceRoute
+  '/teams/notes': typeof TeamsNotesRoute
+  '/teams/ready-check': typeof TeamsReadyCheckRoute
+  '/teams/reserves': typeof TeamsReservesRoute
+  '/teams/verification': typeof TeamsVerificationRoute
+  '/tournaments/anti-cheat': typeof TournamentsAntiCheatRoute
+  '/tournaments/appeals': typeof TournamentsAppealsRoute
+  '/tournaments/bracket-generator': typeof TournamentsBracketGeneratorRoute
+  '/tournaments/match-reporting': typeof TournamentsMatchReportingRoute
+  '/tournaments/schedule-generator': typeof TournamentsScheduleGeneratorRoute
+  '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
@@ -1208,13 +1561,20 @@ export interface FileRoutesById {
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
+  '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
+  '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
+  '/tournaments/formats/single-elim': typeof TournamentsFormatsSingleElimRoute
+  '/tournaments/formats/swiss': typeof TournamentsFormatsSwissRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/admin'
+    | '/bot'
     | '/bot-status'
+    | '/categories'
     | '/dashboard'
     | '/explore'
     | '/notifications'
@@ -1222,7 +1582,24 @@ export interface FileRouteTypes {
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/teams'
     | '/terms'
+    | '/tournaments'
+    | '/bot/auto-channels'
+    | '/bot/auto-roles'
+    | '/bot/cleanup'
+    | '/bot/commands'
+    | '/bot/cooldowns'
+    | '/bot/guild-settings'
+    | '/bot/logs'
+    | '/bot/modules'
+    | '/bot/permissions'
+    | '/bot/prefixes'
+    | '/bot/temp-categories'
+    | '/bot/temp-channels'
+    | '/bot/templates'
+    | '/bot/webhooks'
+    | '/categories/$slug'
     | '/dashboard/achievements'
     | '/dashboard/activity'
     | '/dashboard/api-keys'
@@ -1274,6 +1651,21 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/teams/captain-transfer'
+    | '/teams/chat'
+    | '/teams/check-in'
+    | '/teams/invitations'
+    | '/teams/kick-replace'
+    | '/teams/notes'
+    | '/teams/ready-check'
+    | '/teams/reserves'
+    | '/teams/verification'
+    | '/tournaments/anti-cheat'
+    | '/tournaments/appeals'
+    | '/tournaments/bracket-generator'
+    | '/tournaments/match-reporting'
+    | '/tournaments/schedule-generator'
+    | '/tournaments/verification'
     | '/admin/'
     | '/dashboard/'
     | '/admin/analytics/discord'
@@ -1344,17 +1736,41 @@ export interface FileRouteTypes {
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/tournaments/formats/battle-royale'
+    | '/tournaments/formats/double-elim'
+    | '/tournaments/formats/round-robin'
+    | '/tournaments/formats/single-elim'
+    | '/tournaments/formats/swiss'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bot'
     | '/bot-status'
+    | '/categories'
     | '/explore'
     | '/notifications'
     | '/privacy'
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/teams'
     | '/terms'
+    | '/tournaments'
+    | '/bot/auto-channels'
+    | '/bot/auto-roles'
+    | '/bot/cleanup'
+    | '/bot/commands'
+    | '/bot/cooldowns'
+    | '/bot/guild-settings'
+    | '/bot/logs'
+    | '/bot/modules'
+    | '/bot/permissions'
+    | '/bot/prefixes'
+    | '/bot/temp-categories'
+    | '/bot/temp-channels'
+    | '/bot/templates'
+    | '/bot/webhooks'
+    | '/categories/$slug'
     | '/dashboard/achievements'
     | '/dashboard/activity'
     | '/dashboard/api-keys'
@@ -1406,6 +1822,21 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/teams/captain-transfer'
+    | '/teams/chat'
+    | '/teams/check-in'
+    | '/teams/invitations'
+    | '/teams/kick-replace'
+    | '/teams/notes'
+    | '/teams/ready-check'
+    | '/teams/reserves'
+    | '/teams/verification'
+    | '/tournaments/anti-cheat'
+    | '/tournaments/appeals'
+    | '/tournaments/bracket-generator'
+    | '/tournaments/match-reporting'
+    | '/tournaments/schedule-generator'
+    | '/tournaments/verification'
     | '/admin'
     | '/dashboard'
     | '/admin/analytics/discord'
@@ -1476,11 +1907,18 @@ export interface FileRouteTypes {
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/tournaments/formats/battle-royale'
+    | '/tournaments/formats/double-elim'
+    | '/tournaments/formats/round-robin'
+    | '/tournaments/formats/single-elim'
+    | '/tournaments/formats/swiss'
   id:
     | '__root__'
     | '/'
     | '/admin'
+    | '/bot'
     | '/bot-status'
+    | '/categories'
     | '/dashboard'
     | '/explore'
     | '/notifications'
@@ -1488,7 +1926,24 @@ export interface FileRouteTypes {
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/teams'
     | '/terms'
+    | '/tournaments'
+    | '/bot/auto-channels'
+    | '/bot/auto-roles'
+    | '/bot/cleanup'
+    | '/bot/commands'
+    | '/bot/cooldowns'
+    | '/bot/guild-settings'
+    | '/bot/logs'
+    | '/bot/modules'
+    | '/bot/permissions'
+    | '/bot/prefixes'
+    | '/bot/temp-categories'
+    | '/bot/temp-channels'
+    | '/bot/templates'
+    | '/bot/webhooks'
+    | '/categories/$slug'
     | '/dashboard/achievements'
     | '/dashboard/activity'
     | '/dashboard/api-keys'
@@ -1540,6 +1995,21 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/teams/captain-transfer'
+    | '/teams/chat'
+    | '/teams/check-in'
+    | '/teams/invitations'
+    | '/teams/kick-replace'
+    | '/teams/notes'
+    | '/teams/ready-check'
+    | '/teams/reserves'
+    | '/teams/verification'
+    | '/tournaments/anti-cheat'
+    | '/tournaments/appeals'
+    | '/tournaments/bracket-generator'
+    | '/tournaments/match-reporting'
+    | '/tournaments/schedule-generator'
+    | '/tournaments/verification'
     | '/admin/'
     | '/dashboard/'
     | '/admin/analytics/discord'
@@ -1610,12 +2080,19 @@ export interface FileRouteTypes {
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/tournaments/formats/battle-royale'
+    | '/tournaments/formats/double-elim'
+    | '/tournaments/formats/round-robin'
+    | '/tournaments/formats/single-elim'
+    | '/tournaments/formats/swiss'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
+  BotRoute: typeof BotRouteWithChildren
   BotStatusRoute: typeof BotStatusRoute
+  CategoriesRoute: typeof CategoriesRouteWithChildren
   DashboardRoute: typeof DashboardRouteWithChildren
   ExploreRoute: typeof ExploreRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -1623,7 +2100,9 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   RulesRoute: typeof RulesRoute
   SettingsRoute: typeof SettingsRoute
+  TeamsRoute: typeof TeamsRouteWithChildren
   TermsRoute: typeof TermsRoute
+  TournamentsRoute: typeof TournamentsRouteWithChildren
   EventsIdRoute: typeof EventsIdRouteWithChildren
   RegisterIdRoute: typeof RegisterIdRoute
   RegisterTeamIdRoute: typeof RegisterTeamIdRoute
@@ -1631,11 +2110,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tournaments': {
+      id: '/tournaments'
+      path: '/tournaments'
+      fullPath: '/tournaments'
+      preLoaderRoute: typeof TournamentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teams': {
+      id: '/teams'
+      path: '/teams'
+      fullPath: '/teams'
+      preLoaderRoute: typeof TeamsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -1687,11 +2180,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bot-status': {
       id: '/bot-status'
       path: '/bot-status'
       fullPath: '/bot-status'
       preLoaderRoute: typeof BotStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bot': {
+      id: '/bot'
+      path: '/bot'
+      fullPath: '/bot'
+      preLoaderRoute: typeof BotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -1721,6 +2228,111 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/tournaments/verification': {
+      id: '/tournaments/verification'
+      path: '/verification'
+      fullPath: '/tournaments/verification'
+      preLoaderRoute: typeof TournamentsVerificationRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/schedule-generator': {
+      id: '/tournaments/schedule-generator'
+      path: '/schedule-generator'
+      fullPath: '/tournaments/schedule-generator'
+      preLoaderRoute: typeof TournamentsScheduleGeneratorRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/match-reporting': {
+      id: '/tournaments/match-reporting'
+      path: '/match-reporting'
+      fullPath: '/tournaments/match-reporting'
+      preLoaderRoute: typeof TournamentsMatchReportingRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/bracket-generator': {
+      id: '/tournaments/bracket-generator'
+      path: '/bracket-generator'
+      fullPath: '/tournaments/bracket-generator'
+      preLoaderRoute: typeof TournamentsBracketGeneratorRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/appeals': {
+      id: '/tournaments/appeals'
+      path: '/appeals'
+      fullPath: '/tournaments/appeals'
+      preLoaderRoute: typeof TournamentsAppealsRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/anti-cheat': {
+      id: '/tournaments/anti-cheat'
+      path: '/anti-cheat'
+      fullPath: '/tournaments/anti-cheat'
+      preLoaderRoute: typeof TournamentsAntiCheatRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/teams/verification': {
+      id: '/teams/verification'
+      path: '/verification'
+      fullPath: '/teams/verification'
+      preLoaderRoute: typeof TeamsVerificationRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/reserves': {
+      id: '/teams/reserves'
+      path: '/reserves'
+      fullPath: '/teams/reserves'
+      preLoaderRoute: typeof TeamsReservesRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/ready-check': {
+      id: '/teams/ready-check'
+      path: '/ready-check'
+      fullPath: '/teams/ready-check'
+      preLoaderRoute: typeof TeamsReadyCheckRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/notes': {
+      id: '/teams/notes'
+      path: '/notes'
+      fullPath: '/teams/notes'
+      preLoaderRoute: typeof TeamsNotesRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/kick-replace': {
+      id: '/teams/kick-replace'
+      path: '/kick-replace'
+      fullPath: '/teams/kick-replace'
+      preLoaderRoute: typeof TeamsKickReplaceRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/invitations': {
+      id: '/teams/invitations'
+      path: '/invitations'
+      fullPath: '/teams/invitations'
+      preLoaderRoute: typeof TeamsInvitationsRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/check-in': {
+      id: '/teams/check-in'
+      path: '/check-in'
+      fullPath: '/teams/check-in'
+      preLoaderRoute: typeof TeamsCheckInRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/chat': {
+      id: '/teams/chat'
+      path: '/chat'
+      fullPath: '/teams/chat'
+      preLoaderRoute: typeof TeamsChatRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/teams/captain-transfer': {
+      id: '/teams/captain-transfer'
+      path: '/captain-transfer'
+      fullPath: '/teams/captain-transfer'
+      preLoaderRoute: typeof TeamsCaptainTransferRouteImport
+      parentRoute: typeof TeamsRoute
     }
     '/register/$id': {
       id: '/register/$id'
@@ -2078,6 +2690,146 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/achievements'
       preLoaderRoute: typeof DashboardAchievementsRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/categories/$slug': {
+      id: '/categories/$slug'
+      path: '/$slug'
+      fullPath: '/categories/$slug'
+      preLoaderRoute: typeof CategoriesSlugRouteImport
+      parentRoute: typeof CategoriesRoute
+    }
+    '/bot/webhooks': {
+      id: '/bot/webhooks'
+      path: '/webhooks'
+      fullPath: '/bot/webhooks'
+      preLoaderRoute: typeof BotWebhooksRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/templates': {
+      id: '/bot/templates'
+      path: '/templates'
+      fullPath: '/bot/templates'
+      preLoaderRoute: typeof BotTemplatesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/temp-channels': {
+      id: '/bot/temp-channels'
+      path: '/temp-channels'
+      fullPath: '/bot/temp-channels'
+      preLoaderRoute: typeof BotTempChannelsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/temp-categories': {
+      id: '/bot/temp-categories'
+      path: '/temp-categories'
+      fullPath: '/bot/temp-categories'
+      preLoaderRoute: typeof BotTempCategoriesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/prefixes': {
+      id: '/bot/prefixes'
+      path: '/prefixes'
+      fullPath: '/bot/prefixes'
+      preLoaderRoute: typeof BotPrefixesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/permissions': {
+      id: '/bot/permissions'
+      path: '/permissions'
+      fullPath: '/bot/permissions'
+      preLoaderRoute: typeof BotPermissionsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/modules': {
+      id: '/bot/modules'
+      path: '/modules'
+      fullPath: '/bot/modules'
+      preLoaderRoute: typeof BotModulesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/logs': {
+      id: '/bot/logs'
+      path: '/logs'
+      fullPath: '/bot/logs'
+      preLoaderRoute: typeof BotLogsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/guild-settings': {
+      id: '/bot/guild-settings'
+      path: '/guild-settings'
+      fullPath: '/bot/guild-settings'
+      preLoaderRoute: typeof BotGuildSettingsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/cooldowns': {
+      id: '/bot/cooldowns'
+      path: '/cooldowns'
+      fullPath: '/bot/cooldowns'
+      preLoaderRoute: typeof BotCooldownsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/commands': {
+      id: '/bot/commands'
+      path: '/commands'
+      fullPath: '/bot/commands'
+      preLoaderRoute: typeof BotCommandsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/cleanup': {
+      id: '/bot/cleanup'
+      path: '/cleanup'
+      fullPath: '/bot/cleanup'
+      preLoaderRoute: typeof BotCleanupRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/auto-roles': {
+      id: '/bot/auto-roles'
+      path: '/auto-roles'
+      fullPath: '/bot/auto-roles'
+      preLoaderRoute: typeof BotAutoRolesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/auto-channels': {
+      id: '/bot/auto-channels'
+      path: '/auto-channels'
+      fullPath: '/bot/auto-channels'
+      preLoaderRoute: typeof BotAutoChannelsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/tournaments/formats/swiss': {
+      id: '/tournaments/formats/swiss'
+      path: '/formats/swiss'
+      fullPath: '/tournaments/formats/swiss'
+      preLoaderRoute: typeof TournamentsFormatsSwissRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/formats/single-elim': {
+      id: '/tournaments/formats/single-elim'
+      path: '/formats/single-elim'
+      fullPath: '/tournaments/formats/single-elim'
+      preLoaderRoute: typeof TournamentsFormatsSingleElimRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/formats/round-robin': {
+      id: '/tournaments/formats/round-robin'
+      path: '/formats/round-robin'
+      fullPath: '/tournaments/formats/round-robin'
+      preLoaderRoute: typeof TournamentsFormatsRoundRobinRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/formats/double-elim': {
+      id: '/tournaments/formats/double-elim'
+      path: '/formats/double-elim'
+      fullPath: '/tournaments/formats/double-elim'
+      preLoaderRoute: typeof TournamentsFormatsDoubleElimRouteImport
+      parentRoute: typeof TournamentsRoute
+    }
+    '/tournaments/formats/battle-royale': {
+      id: '/tournaments/formats/battle-royale'
+      path: '/formats/battle-royale'
+      fullPath: '/tournaments/formats/battle-royale'
+      preLoaderRoute: typeof TournamentsFormatsBattleRoyaleRouteImport
+      parentRoute: typeof TournamentsRoute
     }
     '/register/team/$id': {
       id: '/register/team/$id'
@@ -2694,6 +3446,54 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface BotRouteChildren {
+  BotAutoChannelsRoute: typeof BotAutoChannelsRoute
+  BotAutoRolesRoute: typeof BotAutoRolesRoute
+  BotCleanupRoute: typeof BotCleanupRoute
+  BotCommandsRoute: typeof BotCommandsRoute
+  BotCooldownsRoute: typeof BotCooldownsRoute
+  BotGuildSettingsRoute: typeof BotGuildSettingsRoute
+  BotLogsRoute: typeof BotLogsRoute
+  BotModulesRoute: typeof BotModulesRoute
+  BotPermissionsRoute: typeof BotPermissionsRoute
+  BotPrefixesRoute: typeof BotPrefixesRoute
+  BotTempCategoriesRoute: typeof BotTempCategoriesRoute
+  BotTempChannelsRoute: typeof BotTempChannelsRoute
+  BotTemplatesRoute: typeof BotTemplatesRoute
+  BotWebhooksRoute: typeof BotWebhooksRoute
+}
+
+const BotRouteChildren: BotRouteChildren = {
+  BotAutoChannelsRoute: BotAutoChannelsRoute,
+  BotAutoRolesRoute: BotAutoRolesRoute,
+  BotCleanupRoute: BotCleanupRoute,
+  BotCommandsRoute: BotCommandsRoute,
+  BotCooldownsRoute: BotCooldownsRoute,
+  BotGuildSettingsRoute: BotGuildSettingsRoute,
+  BotLogsRoute: BotLogsRoute,
+  BotModulesRoute: BotModulesRoute,
+  BotPermissionsRoute: BotPermissionsRoute,
+  BotPrefixesRoute: BotPrefixesRoute,
+  BotTempCategoriesRoute: BotTempCategoriesRoute,
+  BotTempChannelsRoute: BotTempChannelsRoute,
+  BotTemplatesRoute: BotTemplatesRoute,
+  BotWebhooksRoute: BotWebhooksRoute,
+}
+
+const BotRouteWithChildren = BotRoute._addFileChildren(BotRouteChildren)
+
+interface CategoriesRouteChildren {
+  CategoriesSlugRoute: typeof CategoriesSlugRoute
+}
+
+const CategoriesRouteChildren: CategoriesRouteChildren = {
+  CategoriesSlugRoute: CategoriesSlugRoute,
+}
+
+const CategoriesRouteWithChildren = CategoriesRoute._addFileChildren(
+  CategoriesRouteChildren,
+)
+
 interface DashboardRouteChildren {
   DashboardAchievementsRoute: typeof DashboardAchievementsRoute
   DashboardActivityRoute: typeof DashboardActivityRoute
@@ -2804,6 +3604,64 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
   DashboardRouteChildren,
 )
 
+interface TeamsRouteChildren {
+  TeamsCaptainTransferRoute: typeof TeamsCaptainTransferRoute
+  TeamsChatRoute: typeof TeamsChatRoute
+  TeamsCheckInRoute: typeof TeamsCheckInRoute
+  TeamsInvitationsRoute: typeof TeamsInvitationsRoute
+  TeamsKickReplaceRoute: typeof TeamsKickReplaceRoute
+  TeamsNotesRoute: typeof TeamsNotesRoute
+  TeamsReadyCheckRoute: typeof TeamsReadyCheckRoute
+  TeamsReservesRoute: typeof TeamsReservesRoute
+  TeamsVerificationRoute: typeof TeamsVerificationRoute
+}
+
+const TeamsRouteChildren: TeamsRouteChildren = {
+  TeamsCaptainTransferRoute: TeamsCaptainTransferRoute,
+  TeamsChatRoute: TeamsChatRoute,
+  TeamsCheckInRoute: TeamsCheckInRoute,
+  TeamsInvitationsRoute: TeamsInvitationsRoute,
+  TeamsKickReplaceRoute: TeamsKickReplaceRoute,
+  TeamsNotesRoute: TeamsNotesRoute,
+  TeamsReadyCheckRoute: TeamsReadyCheckRoute,
+  TeamsReservesRoute: TeamsReservesRoute,
+  TeamsVerificationRoute: TeamsVerificationRoute,
+}
+
+const TeamsRouteWithChildren = TeamsRoute._addFileChildren(TeamsRouteChildren)
+
+interface TournamentsRouteChildren {
+  TournamentsAntiCheatRoute: typeof TournamentsAntiCheatRoute
+  TournamentsAppealsRoute: typeof TournamentsAppealsRoute
+  TournamentsBracketGeneratorRoute: typeof TournamentsBracketGeneratorRoute
+  TournamentsMatchReportingRoute: typeof TournamentsMatchReportingRoute
+  TournamentsScheduleGeneratorRoute: typeof TournamentsScheduleGeneratorRoute
+  TournamentsVerificationRoute: typeof TournamentsVerificationRoute
+  TournamentsFormatsBattleRoyaleRoute: typeof TournamentsFormatsBattleRoyaleRoute
+  TournamentsFormatsDoubleElimRoute: typeof TournamentsFormatsDoubleElimRoute
+  TournamentsFormatsRoundRobinRoute: typeof TournamentsFormatsRoundRobinRoute
+  TournamentsFormatsSingleElimRoute: typeof TournamentsFormatsSingleElimRoute
+  TournamentsFormatsSwissRoute: typeof TournamentsFormatsSwissRoute
+}
+
+const TournamentsRouteChildren: TournamentsRouteChildren = {
+  TournamentsAntiCheatRoute: TournamentsAntiCheatRoute,
+  TournamentsAppealsRoute: TournamentsAppealsRoute,
+  TournamentsBracketGeneratorRoute: TournamentsBracketGeneratorRoute,
+  TournamentsMatchReportingRoute: TournamentsMatchReportingRoute,
+  TournamentsScheduleGeneratorRoute: TournamentsScheduleGeneratorRoute,
+  TournamentsVerificationRoute: TournamentsVerificationRoute,
+  TournamentsFormatsBattleRoyaleRoute: TournamentsFormatsBattleRoyaleRoute,
+  TournamentsFormatsDoubleElimRoute: TournamentsFormatsDoubleElimRoute,
+  TournamentsFormatsRoundRobinRoute: TournamentsFormatsRoundRobinRoute,
+  TournamentsFormatsSingleElimRoute: TournamentsFormatsSingleElimRoute,
+  TournamentsFormatsSwissRoute: TournamentsFormatsSwissRoute,
+}
+
+const TournamentsRouteWithChildren = TournamentsRoute._addFileChildren(
+  TournamentsRouteChildren,
+)
+
 interface EventsIdRouteChildren {
   EventsIdBracketRoute: typeof EventsIdBracketRoute
   EventsIdDashboardRoute: typeof EventsIdDashboardRoute
@@ -2825,7 +3683,9 @@ const EventsIdRouteWithChildren = EventsIdRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
+  BotRoute: BotRouteWithChildren,
   BotStatusRoute: BotStatusRoute,
+  CategoriesRoute: CategoriesRouteWithChildren,
   DashboardRoute: DashboardRouteWithChildren,
   ExploreRoute: ExploreRoute,
   NotificationsRoute: NotificationsRoute,
@@ -2833,7 +3693,9 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   RulesRoute: RulesRoute,
   SettingsRoute: SettingsRoute,
+  TeamsRoute: TeamsRouteWithChildren,
   TermsRoute: TermsRoute,
+  TournamentsRoute: TournamentsRouteWithChildren,
   EventsIdRoute: EventsIdRouteWithChildren,
   RegisterIdRoute: RegisterIdRoute,
   RegisterTeamIdRoute: RegisterTeamIdRoute,
