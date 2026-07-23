@@ -6,7 +6,7 @@ import { Bot, Radio, Palette, ShieldCheck, PlusCircle, BarChart3 } from "lucide-
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Admin — THE SHOOTERS" },
+      { title: "Admin — The Shooter" },
       { name: "description", content: "Manage events, teams, submissions, and bot sync." },
       { name: "robots", content: "noindex" },
     ],

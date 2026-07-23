@@ -154,9 +154,31 @@ export function SeasonalEffects() {
   }
 
   if (theme === "summer") {
-    // Burning ice cube — sun-and-flame corner sticker
+    // Sun + palms + burning ice cube + heat haze
     return (
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        {/* Blazing sun top-left */}
+        <div className="absolute -top-10 -left-10 h-56 w-56 rounded-full opacity-70 animate-ice-flame"
+          style={{ background: "radial-gradient(circle, oklch(0.9 0.2 85) 0%, oklch(0.8 0.22 55 / 0.5) 40%, transparent 70%)" }}
+        />
+        <span className="absolute top-6 left-6 text-6xl md:text-7xl animate-ice-bob select-none"
+          style={{ filter: "drop-shadow(0 4px 0 var(--color-border))" }}
+        >
+          ☀️
+        </span>
+
+        {/* Palm silhouettes bottom corners */}
+        <span className="absolute -bottom-4 -left-2 text-7xl md:text-8xl select-none opacity-90 rotate-[-12deg]"
+          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}
+        >
+          🌴
+        </span>
+        <span className="absolute -bottom-6 -right-2 text-7xl md:text-8xl select-none opacity-90 rotate-[14deg]"
+          style={{ filter: "drop-shadow(-3px 3px 0 var(--color-border))" }}
+        >
+          🌴
+        </span>
+
         {/* Heat haze bottom */}
         <div
           className="absolute bottom-0 left-0 right-0 h-40 opacity-40 animate-heat-haze"
@@ -165,6 +187,7 @@ export function SeasonalEffects() {
               "linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 40%, transparent), transparent)",
           }}
         />
+
         {/* Burning ice cube sticker */}
         <div className="absolute right-4 bottom-24 md:right-10 md:bottom-32 select-none">
           <div className="relative">

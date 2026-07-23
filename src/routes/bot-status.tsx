@@ -5,7 +5,7 @@ import { Bot, Radio, Zap } from "lucide-react";
 export const Route = createFileRoute("/bot-status")({
   head: () => ({
     meta: [
-      { title: "Bot Status — THE SHOOTERS" },
+      { title: "Bot Status — The Shooter" },
       { name: "description", content: "Live Discord bot uptime, command usage, and sync stats." },
       { property: "og:title", content: "Bot Status" },
       { property: "og:description", content: "Real-time Discord bot health." },

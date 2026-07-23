@@ -7,7 +7,7 @@ import coverArtwork from "@/assets/cover-artwork.jpg";
 export const Route = createFileRoute("/profile")({
   head: () => ({
     meta: [
-      { title: "Profile — THE SHOOTERS" },
+      { title: "Profile — The Shooter" },
       { name: "description", content: "Your public profile, teams, and event history." },
       { name: "robots", content: "noindex" },
     ],
