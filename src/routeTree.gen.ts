@@ -12,17 +12,43 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TeamsRouteImport } from './routes/teams'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as StoreRouteImport } from './routes/store'
+import { Route as StatusRouteImport } from './routes/status'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SeasonPassRouteImport } from './routes/season-pass'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as MediaCenterRouteImport } from './routes/media-center'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as HallOfFameRouteImport } from './routes/hall-of-fame'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as EventArchiveRouteImport } from './routes/event-archive'
+import { Route as DownloadsRouteImport } from './routes/downloads'
+import { Route as DocsRouteImport } from './routes/docs'
+import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as BotStatusRouteImport } from './routes/bot-status'
 import { Route as BotRouteImport } from './routes/bot'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as BadgesRouteImport } from './routes/badges'
+import { Route as ApiDocsRouteImport } from './routes/api-docs'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -196,14 +222,49 @@ const TeamsRoute = TeamsRouteImport.update({
   path: '/teams',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeasonPassRoute = SeasonPassRouteImport.update({
+  id: '/season-pass',
+  path: '/season-pass',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RewardsRoute = RewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -216,9 +277,54 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaCenterRoute = MediaCenterRouteImport.update({
+  id: '/media-center',
+  path: '/media-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HallOfFameRoute = HallOfFameRouteImport.update({
+  id: '/hall-of-fame',
+  path: '/hall-of-fame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExploreRoute = ExploreRouteImport.update({
@@ -226,9 +332,39 @@ const ExploreRoute = ExploreRouteImport.update({
   path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventArchiveRoute = EventArchiveRouteImport.update({
+  id: '/event-archive',
+  path: '/event-archive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownloadsRoute = DownloadsRouteImport.update({
+  id: '/downloads',
+  path: '/downloads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevelopersRoute = DevelopersRouteImport.update({
+  id: '/developers',
+  path: '/developers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CategoriesRoute = CategoriesRouteImport.update({
@@ -246,9 +382,29 @@ const BotRoute = BotRouteImport.update({
   path: '/bot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BadgesRoute = BadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDocsRoute = ApiDocsRouteImport.update({
+  id: '/api-docs',
+  path: '/api-docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AchievementsRoute = AchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -1051,17 +1207,43 @@ const AdminAnalyticsDiscordRoute = AdminAnalyticsDiscordRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/admin': typeof AdminRouteWithChildren
+  '/api-docs': typeof ApiDocsRoute
+  '/badges': typeof BadgesRoute
+  '/blog': typeof BlogRoute
   '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
   '/categories': typeof CategoriesRouteWithChildren
+  '/changelog': typeof ChangelogRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/downloads': typeof DownloadsRoute
+  '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/help': typeof HelpRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
+  '/partners': typeof PartnersRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/status': typeof StatusRoute
+  '/store': typeof StoreRoute
+  '/support': typeof SupportRoute
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
@@ -1224,15 +1406,41 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
+  '/api-docs': typeof ApiDocsRoute
+  '/badges': typeof BadgesRoute
+  '/blog': typeof BlogRoute
   '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
   '/categories': typeof CategoriesRouteWithChildren
+  '/changelog': typeof ChangelogRoute
+  '/contact': typeof ContactRoute
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/downloads': typeof DownloadsRoute
+  '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/help': typeof HelpRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
+  '/partners': typeof PartnersRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/status': typeof StatusRoute
+  '/store': typeof StoreRoute
+  '/support': typeof SupportRoute
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
@@ -1396,17 +1604,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/admin': typeof AdminRouteWithChildren
+  '/api-docs': typeof ApiDocsRoute
+  '/badges': typeof BadgesRoute
+  '/blog': typeof BlogRoute
   '/bot': typeof BotRouteWithChildren
   '/bot-status': typeof BotStatusRoute
   '/categories': typeof CategoriesRouteWithChildren
+  '/changelog': typeof ChangelogRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/downloads': typeof DownloadsRoute
+  '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/hall-of-fame': typeof HallOfFameRoute
+  '/help': typeof HelpRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
+  '/partners': typeof PartnersRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/status': typeof StatusRoute
+  '/store': typeof StoreRoute
+  '/support': typeof SupportRoute
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
@@ -1571,17 +1805,43 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/achievements'
     | '/admin'
+    | '/api-docs'
+    | '/badges'
+    | '/blog'
     | '/bot'
     | '/bot-status'
     | '/categories'
+    | '/changelog'
+    | '/contact'
     | '/dashboard'
+    | '/developers'
+    | '/docs'
+    | '/downloads'
+    | '/event-archive'
     | '/explore'
+    | '/faq'
+    | '/gallery'
+    | '/hall-of-fame'
+    | '/help'
+    | '/leaderboard'
+    | '/media-center'
     | '/notifications'
+    | '/partners'
+    | '/premium'
+    | '/pricing'
     | '/privacy'
     | '/profile'
+    | '/rewards'
+    | '/roadmap'
     | '/rules'
+    | '/season-pass'
     | '/settings'
+    | '/sponsors'
+    | '/status'
+    | '/store'
+    | '/support'
     | '/teams'
     | '/terms'
     | '/tournaments'
@@ -1744,15 +2004,41 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/achievements'
+    | '/api-docs'
+    | '/badges'
+    | '/blog'
     | '/bot'
     | '/bot-status'
     | '/categories'
+    | '/changelog'
+    | '/contact'
+    | '/developers'
+    | '/docs'
+    | '/downloads'
+    | '/event-archive'
     | '/explore'
+    | '/faq'
+    | '/gallery'
+    | '/hall-of-fame'
+    | '/help'
+    | '/leaderboard'
+    | '/media-center'
     | '/notifications'
+    | '/partners'
+    | '/premium'
+    | '/pricing'
     | '/privacy'
     | '/profile'
+    | '/rewards'
+    | '/roadmap'
     | '/rules'
+    | '/season-pass'
     | '/settings'
+    | '/sponsors'
+    | '/status'
+    | '/store'
+    | '/support'
     | '/teams'
     | '/terms'
     | '/tournaments'
@@ -1915,17 +2201,43 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/achievements'
     | '/admin'
+    | '/api-docs'
+    | '/badges'
+    | '/blog'
     | '/bot'
     | '/bot-status'
     | '/categories'
+    | '/changelog'
+    | '/contact'
     | '/dashboard'
+    | '/developers'
+    | '/docs'
+    | '/downloads'
+    | '/event-archive'
     | '/explore'
+    | '/faq'
+    | '/gallery'
+    | '/hall-of-fame'
+    | '/help'
+    | '/leaderboard'
+    | '/media-center'
     | '/notifications'
+    | '/partners'
+    | '/premium'
+    | '/pricing'
     | '/privacy'
     | '/profile'
+    | '/rewards'
+    | '/roadmap'
     | '/rules'
+    | '/season-pass'
     | '/settings'
+    | '/sponsors'
+    | '/status'
+    | '/store'
+    | '/support'
     | '/teams'
     | '/terms'
     | '/tournaments'
@@ -2089,17 +2401,43 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AchievementsRoute: typeof AchievementsRoute
   AdminRoute: typeof AdminRouteWithChildren
+  ApiDocsRoute: typeof ApiDocsRoute
+  BadgesRoute: typeof BadgesRoute
+  BlogRoute: typeof BlogRoute
   BotRoute: typeof BotRouteWithChildren
   BotStatusRoute: typeof BotStatusRoute
   CategoriesRoute: typeof CategoriesRouteWithChildren
+  ChangelogRoute: typeof ChangelogRoute
+  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  DevelopersRoute: typeof DevelopersRoute
+  DocsRoute: typeof DocsRoute
+  DownloadsRoute: typeof DownloadsRoute
+  EventArchiveRoute: typeof EventArchiveRoute
   ExploreRoute: typeof ExploreRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
+  HallOfFameRoute: typeof HallOfFameRoute
+  HelpRoute: typeof HelpRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  MediaCenterRoute: typeof MediaCenterRoute
   NotificationsRoute: typeof NotificationsRoute
+  PartnersRoute: typeof PartnersRoute
+  PremiumRoute: typeof PremiumRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
+  RewardsRoute: typeof RewardsRoute
+  RoadmapRoute: typeof RoadmapRoute
   RulesRoute: typeof RulesRoute
+  SeasonPassRoute: typeof SeasonPassRoute
   SettingsRoute: typeof SettingsRoute
+  SponsorsRoute: typeof SponsorsRoute
+  StatusRoute: typeof StatusRoute
+  StoreRoute: typeof StoreRoute
+  SupportRoute: typeof SupportRoute
   TeamsRoute: typeof TeamsRouteWithChildren
   TermsRoute: typeof TermsRoute
   TournamentsRoute: typeof TournamentsRouteWithChildren
@@ -2131,6 +2469,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeamsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -2138,11 +2504,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/season-pass': {
+      id: '/season-pass'
+      path: '/season-pass'
+      fullPath: '/season-pass'
+      preLoaderRoute: typeof SeasonPassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rules': {
       id: '/rules'
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rewards': {
+      id: '/rewards'
+      path: '/rewards'
+      fullPath: '/rewards'
+      preLoaderRoute: typeof RewardsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -2159,11 +2546,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media-center': {
+      id: '/media-center'
+      path: '/media-center'
+      fullPath: '/media-center'
+      preLoaderRoute: typeof MediaCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hall-of-fame': {
+      id: '/hall-of-fame'
+      path: '/hall-of-fame'
+      fullPath: '/hall-of-fame'
+      preLoaderRoute: typeof HallOfFameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/explore': {
@@ -2173,11 +2623,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/event-archive': {
+      id: '/event-archive'
+      path: '/event-archive'
+      fullPath: '/event-archive'
+      preLoaderRoute: typeof EventArchiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/downloads': {
+      id: '/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
+      preLoaderRoute: typeof DownloadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developers': {
+      id: '/developers'
+      path: '/developers'
+      fullPath: '/developers'
+      preLoaderRoute: typeof DevelopersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/categories': {
@@ -2201,11 +2693,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/badges': {
+      id: '/badges'
+      path: '/badges'
+      fullPath: '/badges'
+      preLoaderRoute: typeof BadgesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api-docs': {
+      id: '/api-docs'
+      path: '/api-docs'
+      fullPath: '/api-docs'
+      preLoaderRoute: typeof ApiDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/achievements': {
+      id: '/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AchievementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -3682,17 +4202,43 @@ const EventsIdRouteWithChildren = EventsIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AchievementsRoute: AchievementsRoute,
   AdminRoute: AdminRouteWithChildren,
+  ApiDocsRoute: ApiDocsRoute,
+  BadgesRoute: BadgesRoute,
+  BlogRoute: BlogRoute,
   BotRoute: BotRouteWithChildren,
   BotStatusRoute: BotStatusRoute,
   CategoriesRoute: CategoriesRouteWithChildren,
+  ChangelogRoute: ChangelogRoute,
+  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  DevelopersRoute: DevelopersRoute,
+  DocsRoute: DocsRoute,
+  DownloadsRoute: DownloadsRoute,
+  EventArchiveRoute: EventArchiveRoute,
   ExploreRoute: ExploreRoute,
+  FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
+  HallOfFameRoute: HallOfFameRoute,
+  HelpRoute: HelpRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  MediaCenterRoute: MediaCenterRoute,
   NotificationsRoute: NotificationsRoute,
+  PartnersRoute: PartnersRoute,
+  PremiumRoute: PremiumRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
+  RewardsRoute: RewardsRoute,
+  RoadmapRoute: RoadmapRoute,
   RulesRoute: RulesRoute,
+  SeasonPassRoute: SeasonPassRoute,
   SettingsRoute: SettingsRoute,
+  SponsorsRoute: SponsorsRoute,
+  StatusRoute: StatusRoute,
+  StoreRoute: StoreRoute,
+  SupportRoute: SupportRoute,
   TeamsRoute: TeamsRouteWithChildren,
   TermsRoute: TermsRoute,
   TournamentsRoute: TournamentsRouteWithChildren,
