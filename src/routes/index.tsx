@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard, SectionHeader } from "@/components/neo";
 import { EventCard } from "@/components/event-card";
 import { MOCK_EVENTS } from "@/lib/mock-data";
+import heroSquad from "@/assets/hero-squad.jpg";
+import heroTrophy from "@/assets/hero-trophy.jpg";
 import {
   Bot,
   Users,
@@ -13,6 +15,8 @@ import {
   ArrowRight,
   Radio,
   ShieldCheck,
+  Sparkles,
+  Star,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -32,17 +36,65 @@ export const Route = createFileRoute("/")({
 });
 
 const EVENT_TYPES = [
-  { icon: Palette, title: "Artwork Showcase", copy: "Drop your art. Community votes on Discord." },
-  { icon: Camera, title: "Pic Battle", copy: "1v1 bracketed photo battles with live reactions." },
-  { icon: Gamepad2, title: "Game Tournaments", copy: "BGMI, Free Fire, Minecraft, Roblox and more." },
-  { icon: Users, title: "Community Events", copy: "Custom formats for your server. Fully configurable." },
+  {
+    icon: Palette,
+    title: "Artwork Showcase",
+    copy: "Drop your art. Community votes on Discord in real time.",
+    tag: "Creative",
+    accent: "bg-secondary text-secondary-foreground",
+    stat: "1.2k drops",
+  },
+  {
+    icon: Camera,
+    title: "Pic Battle",
+    copy: "1v1 bracketed photo battles with live reactions & judges.",
+    tag: "Bracket",
+    accent: "bg-accent text-accent-foreground",
+    stat: "64-slot",
+  },
+  {
+    icon: Gamepad2,
+    title: "Game Tournaments",
+    copy: "BGMI, Free Fire, Minecraft, Roblox — auto lobbies included.",
+    tag: "Esports",
+    accent: "bg-primary text-primary-foreground",
+    stat: "Prize pools",
+  },
+  {
+    icon: Users,
+    title: "Community Events",
+    copy: "Custom formats for your server. Fully configurable modules.",
+    tag: "Flex",
+    accent: "bg-[color:var(--success)] text-black",
+    stat: "Any size",
+  },
 ];
 
 const FEATURES = [
-  { icon: Bot, title: "Bot-Powered", copy: "Prefix commands, Canva-style cards, temp event channels." },
-  { icon: Radio, title: "Live Sync", copy: "Reactions, registrations, and team updates mirrored instantly." },
-  { icon: Trophy, title: "Team Registration", copy: "Configurable team sizes with Discord verification per member." },
-  { icon: ShieldCheck, title: "Admin Control", copy: "Manage events, teams, submissions, themes, and bot sync." },
+  {
+    icon: Bot,
+    title: "Bot-Powered",
+    copy: "Prefix commands, Canva-style embeds, temp event channels spun up on demand.",
+    number: "01",
+  },
+  {
+    icon: Radio,
+    title: "Live Sync",
+    copy: "Reactions, registrations, and team updates mirrored to the dashboard instantly.",
+    number: "02",
+  },
+  {
+    icon: Trophy,
+    title: "Team Registration",
+    copy: "Configurable squad sizes with per-member Discord verification & waitlists.",
+    number: "03",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Admin Control",
+    copy: "Manage events, teams, submissions, themes and bot sync from one console.",
+    number: "04",
+  },
 ];
 
 function Landing() {
