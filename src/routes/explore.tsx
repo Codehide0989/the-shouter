@@ -8,7 +8,7 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/explore")({
   head: () => ({
     meta: [
-      { title: "Explore Events — The Shooter" },
+      { title: "Explore Events — The Shouter" },
       { name: "description", content: "Browse live tournaments, artwork showcases, pic battles, and community events across Discord servers." },
       { property: "og:title", content: "Explore Events" },
       { property: "og:description", content: "Find your next Discord battleground." },

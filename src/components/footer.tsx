@@ -39,7 +39,7 @@ export function Footer() {
                 <span className="neo-border neo-shadow-sm bg-card text-card-foreground rounded-md p-1.5">
                   <Crosshair className="h-4 w-4" />
                 </span>
-                <span className="font-display text-lg">The Shooter</span>
+                <span className="font-display text-lg">The Shouter</span>
               </div>
               <p className="mt-3 text-sm opacity-90">
                 Discord-first event platform for tournaments, artwork, and community battles.
@@ -73,7 +73,7 @@ export function Footer() {
           {/* Big wordmark + socials */}
           <div className="mt-10 flex items-end justify-between gap-4 flex-wrap">
             <h2 className="font-display text-6xl sm:text-7xl md:text-9xl leading-none text-primary-foreground tracking-tighter">
-              shooters<span className="text-accent">.</span>
+              shouters<span className="text-accent">.</span>
             </h2>
             <div className="flex gap-2">
               {[
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t-4 border-border py-4 text-center text-xs uppercase font-display tracking-widest text-primary-foreground/80">
-          © 2026 The Shooter — Locked & Loaded
+          © 2026 The Shouter — Locked & Loaded
         </div>
       </div>
     </footer>

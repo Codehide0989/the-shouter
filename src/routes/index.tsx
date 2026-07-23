@@ -32,13 +32,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Shooter — Discord Event Platform" },
+      { title: "The Shouter — Discord Event Platform" },
       {
         name: "description",
         content:
           "Run tournaments, artwork showcases, and pic battles from Discord. Team registration, live reaction sync, admin tooling — all in one bold neobrutalist hub.",
       },
-      { property: "og:title", content: "The Shooter" },
+      { property: "og:title", content: "The Shouter" },
       { property: "og:description", content: "Discord-first event platform for creators and squads." },
     ],
   }),
@@ -308,7 +308,7 @@ function Landing() {
       {/* FEATURES / WHY SHOOTERS */}
       <section className="mx-auto max-w-7xl px-4 py-16">
         <SectionHeader
-          eyebrow="Why Shooters"
+          eyebrow="Why Shouters"
           title="Discord is the source of truth"
           subtitle="Built for community managers who want less spreadsheet, more hype."
         />

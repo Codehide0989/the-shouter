@@ -21,10 +21,10 @@ import ruleRewards from "@/assets/rule-rewards.jpg";
 export const Route = createFileRoute("/rules")({
   head: () => ({
     meta: [
-      { title: "Rules — The Shooter" },
+      { title: "Rules — The Shouter" },
       { name: "description", content: "Community rules, event guidelines, and fair play policy." },
       { property: "og:title", content: "Rules" },
-      { property: "og:description", content: "How events work on The Shooter." },
+      { property: "og:description", content: "How events work on The Shouter." },
     ],
   }),
   component: Rules,
