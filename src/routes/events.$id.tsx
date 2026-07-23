@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
 import { eventById, STATUS_LABEL, TYPE_LABEL, type MockEvent } from "@/lib/mock-data";
+import { EVENT_IMAGE } from "@/lib/event-images";
 import { Users, Trophy, Radio, Calendar, Hash, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/events/$id")({
@@ -40,19 +41,27 @@ function EventDetail() {
   const isTeam = event.type === "tournament";
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className={`neo-border neo-shadow-lg bg-gradient-to-br ${event.cover} rounded-lg p-8 md:p-12`}>
-        <div className="flex flex-wrap gap-2 mb-4">
-          <NeoBadge variant="secondary">{TYPE_LABEL[event.type]}</NeoBadge>
-          {event.game && <NeoBadge variant="accent">{event.game}</NeoBadge>}
-          {event.status === "live" && (
-            <NeoBadge variant="destructive"><Radio className="h-3 w-3" /> Live</NeoBadge>
-          )}
-          {event.status !== "live" && <NeoBadge variant="muted">{STATUS_LABEL[event.status]}</NeoBadge>}
+      <div className={`relative overflow-hidden neo-border neo-shadow-lg bg-gradient-to-br ${event.cover} rounded-lg p-8 md:p-12`}>
+        <img
+          src={EVENT_IMAGE[event.type]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover mix-blend-multiply opacity-80"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="relative">
+          <div className="flex flex-wrap gap-2 mb-4">
+            <NeoBadge variant="secondary">{TYPE_LABEL[event.type]}</NeoBadge>
+            {event.game && <NeoBadge variant="accent">{event.game}</NeoBadge>}
+            {event.status === "live" && (
+              <NeoBadge variant="destructive"><Radio className="h-3 w-3" /> Live</NeoBadge>
+            )}
+            {event.status !== "live" && <NeoBadge variant="muted">{STATUS_LABEL[event.status]}</NeoBadge>}
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl text-white drop-shadow-[4px_4px_0_rgba(0,0,0,0.5)]">
+            {event.title}
+          </h1>
+          <p className="mt-3 text-white/90 max-w-2xl">{event.description}</p>
         </div>
-        <h1 className="text-5xl md:text-7xl text-white drop-shadow-[4px_4px_0_rgba(0,0,0,0.4)]">
-          {event.title}
-        </h1>
-        <p className="mt-3 text-white/90 max-w-2xl">{event.description}</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
