@@ -35,7 +35,8 @@ export const Route = createFileRoute("/events/$id")({
 });
 
 function EventDetail() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: MockEvent };
+
   const isTeam = event.type === "tournament";
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
