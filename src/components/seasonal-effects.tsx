@@ -1,8 +1,6 @@
 import { useTheme } from "@/lib/theme";
 import { useMemo } from "react";
-import burningShirt from "@/assets/summer-burning-shirt.png";
-import burningJeans from "@/assets/summer-burning-jeans.png";
-import burningJacket from "@/assets/summer-burning-jacket.png";
+
 
 // Deterministic pseudo-random from index — avoids SSR hydration mismatch.
 const rand = (i: number, salt = 0) => {
