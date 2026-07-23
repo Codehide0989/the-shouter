@@ -237,6 +237,15 @@
     radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--color-accent) 20%, transparent) 0, transparent 28%);
   background-size: cover;
 }
+.theme-cyber .theme-decor {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-primary) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-secondary) 22%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-accent) 35%, transparent) 0, transparent 30%),
+    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-secondary) 30%, transparent) 0, transparent 30%);
+  background-size: 48px 48px, 48px 48px, cover, cover;
+  opacity: 0.6;
+}
 
 /* Falling particle animation used by SeasonalEffects (spring/halloween/winter) */
 @keyframes season-fall {
