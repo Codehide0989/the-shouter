@@ -5,13 +5,35 @@ import { NeoButton, NeoBadge } from "./neo";
 import { ThemeSwitcher } from "./theme-switcher";
 import { cn } from "@/lib/utils";
 import logoUrl from "@/assets/logo.png";
+import imgExplore from "@/assets/cover-tournament.jpg";
+import imgRules from "@/assets/rules-hero.jpg";
+import imgBot from "@/assets/bot-mascot.jpg";
+import imgDash from "@/assets/dashboard-hero.jpg";
+import imgAdmin from "@/assets/admin-hero.jpg";
+import imgTeams from "@/assets/dash-team.jpg";
+import imgTourney from "@/assets/dash-tournament.jpg";
+import imgGallery from "@/assets/cover-artwork.jpg";
+import imgLeader from "@/assets/stat-wins.jpg";
+import imgNotif from "@/assets/notice-hero.jpg";
+import imgProfile from "@/assets/avatar-shadow.jpg";
+import imgSettings from "@/assets/settings-hero.jpg";
 
 const LINKS = [
-  { to: "/explore", label: "Explore" },
-  { to: "/rules", label: "Rules" },
-  { to: "/bot-status", label: "Bot" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/admin", label: "Admin" },
+  { to: "/explore", label: "Explore", img: imgExplore },
+  { to: "/rules", label: "Rules", img: imgRules },
+  { to: "/bot-status", label: "Bot", img: imgBot },
+  { to: "/dashboard", label: "Dashboard", img: imgDash },
+  { to: "/admin", label: "Admin", img: imgAdmin },
+];
+
+const MOBILE_EXTRA = [
+  { to: "/tournaments", label: "Tournaments", img: imgTourney },
+  { to: "/teams", label: "Teams", img: imgTeams },
+  { to: "/gallery", label: "Gallery", img: imgGallery },
+  { to: "/leaderboard", label: "Leaderboard", img: imgLeader },
+  { to: "/notifications", label: "Notifications", img: imgNotif },
+  { to: "/profile", label: "Profile", img: imgProfile },
+  { to: "/settings", label: "Settings", img: imgSettings },
 ];
 
 export function Nav() {
@@ -115,26 +137,36 @@ export function Nav() {
 
       {open && (
         <div className="md:hidden -mt-3 border-t-4 border-border bg-card animate-in slide-in-from-top-2 duration-200">
-          <nav className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
-            {LINKS.map((l) => (
+          <nav className="mx-auto max-w-7xl px-4 py-4 grid grid-cols-2 gap-2.5">
+            {[...LINKS, ...MOBILE_EXTRA].map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-md font-display text-sm uppercase tracking-wide hover:bg-muted neo-border border-transparent hover:border-border"
-                activeProps={{ className: "bg-secondary text-secondary-foreground neo-border" }}
+                className="group relative overflow-hidden neo-border neo-shadow-sm neo-press-hover rounded-md bg-background aspect-[5/3]"
+                activeProps={{ className: "ring-2 ring-primary" }}
               >
-                {l.label}
+                <img
+                  src={l.img}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+                <span className="absolute bottom-1.5 left-2 right-2 font-display text-xs uppercase tracking-wide leading-tight">
+                  {l.label}
+                </span>
               </Link>
             ))}
-            <Link to="/profile" onClick={() => setOpen(false)}>
-              <NeoButton size="sm" variant="primary" className="w-full mt-2">
+            <Link to="/profile" onClick={() => setOpen(false)} className="col-span-2">
+              <NeoButton size="sm" variant="primary" className="w-full mt-1">
                 Login with Discord
               </NeoButton>
             </Link>
           </nav>
         </div>
       )}
+
     </header>
   );
 }

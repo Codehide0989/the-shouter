@@ -33,15 +33,15 @@ export function Footer() {
           </span>
 
           {/* Links row */}
-          <div className="grid gap-8 md:grid-cols-4 text-primary-foreground">
-            <div>
+          <div className="grid gap-8 md:grid-cols-5 text-primary-foreground">
+            <div className="md:col-span-2">
               <div className="flex items-center gap-2">
                 <span className="neo-border neo-shadow-sm bg-card text-card-foreground rounded-md p-1.5">
                   <Crosshair className="h-4 w-4" />
                 </span>
                 <span className="font-display text-lg">The Shouter</span>
               </div>
-              <p className="mt-3 text-sm opacity-90">
+              <p className="mt-3 text-sm opacity-90 max-w-sm">
                 Discord-first event platform for tournaments, artwork, and community battles.
               </p>
             </div>
@@ -49,6 +49,12 @@ export function Footer() {
               <p className="font-display text-sm uppercase mb-3">Platform</p>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/explore" className="hover:underline">Explore events</Link></li>
+                <li><Link to="/categories" className="hover:underline">Categories</Link></li>
+                <li><Link to="/tournaments" className="hover:underline">Tournaments</Link></li>
+                <li><Link to="/teams" className="hover:underline">Teams</Link></li>
+                <li><Link to="/leaderboard" className="hover:underline">Leaderboard</Link></li>
+                <li><Link to="/gallery" className="hover:underline">Gallery</Link></li>
+                <li><Link to="/hall-of-fame" className="hover:underline">Hall of Fame</Link></li>
                 <li><Link to="/rules" className="hover:underline">Rules</Link></li>
                 <li><Link to="/bot-status" className="hover:underline">Bot status</Link></li>
               </ul>
@@ -58,10 +64,36 @@ export function Footer() {
               <ul className="space-y-2 text-sm">
                 <li><Link to="/dashboard" className="hover:underline">Dashboard</Link></li>
                 <li><Link to="/profile" className="hover:underline">Profile</Link></li>
+                <li><Link to="/notifications" className="hover:underline">Notifications</Link></li>
                 <li><Link to="/settings" className="hover:underline">Settings</Link></li>
+                <li><Link to="/achievements" className="hover:underline">Achievements</Link></li>
+                <li><Link to="/badges" className="hover:underline">Badges</Link></li>
+                <li><Link to="/rewards" className="hover:underline">Rewards</Link></li>
+                <li><Link to="/premium" className="hover:underline">Premium</Link></li>
+                <li><Link to="/season-pass" className="hover:underline">Season Pass</Link></li>
               </ul>
             </div>
             <div>
+              <p className="font-display text-sm uppercase mb-3">Resources</p>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
+                <li><Link to="/help" className="hover:underline">Help Center</Link></li>
+                <li><Link to="/support" className="hover:underline">Support</Link></li>
+                <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+                <li><Link to="/docs" className="hover:underline">Docs</Link></li>
+                <li><Link to="/api-docs" className="hover:underline">API Docs</Link></li>
+                <li><Link to="/developers" className="hover:underline">Developers</Link></li>
+                <li><Link to="/blog" className="hover:underline">Blog</Link></li>
+                <li><Link to="/changelog" className="hover:underline">Changelog</Link></li>
+                <li><Link to="/roadmap" className="hover:underline">Roadmap</Link></li>
+                <li><Link to="/status" className="hover:underline">Status</Link></li>
+                <li><Link to="/pricing" className="hover:underline">Pricing</Link></li>
+                <li><Link to="/partners" className="hover:underline">Partners</Link></li>
+                <li><Link to="/sponsors" className="hover:underline">Sponsors</Link></li>
+                <li><Link to="/store" className="hover:underline">Store</Link></li>
+              </ul>
+            </div>
+            <div className="md:col-start-5">
               <p className="font-display text-sm uppercase mb-3">Legal</p>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/terms" className="hover:underline">Terms & Conditions</Link></li>
@@ -70,6 +102,7 @@ export function Footer() {
               </ul>
             </div>
           </div>
+
 
           {/* Big wordmark + socials */}
           <div className="mt-10 flex items-end justify-between gap-4 flex-wrap">
