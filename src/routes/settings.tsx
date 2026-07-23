@@ -110,43 +110,22 @@ function Settings() {
         </div>
       </NeoCard>
 
-      {/* Audio + Discord */}
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <NeoCard>
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 neo-border rounded-md bg-secondary text-secondary-foreground flex items-center justify-center">
-              <Volume2 className="h-5 w-5" />
-            </div>
-            <h2 className="text-2xl">Sound</h2>
+      {/* Discord */}
+      <NeoCard className="mt-6">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 neo-border rounded-md bg-[color:var(--color-accent)] text-accent-foreground flex items-center justify-center">
+            <MessageSquare className="h-5 w-5" />
           </div>
-          <div className="mt-4 space-y-3">
-            <label className="block text-sm font-display uppercase tracking-widest">
-              Notification volume
-              <input type="range" defaultValue={70} className="mt-2 w-full accent-[color:var(--color-primary)]" />
-            </label>
-            <label className="flex items-center gap-3 neo-border rounded-md p-2 bg-muted">
-              <input type="checkbox" defaultChecked className="h-4 w-4" />
-              <span className="text-sm">Play megaphone chime on event start</span>
-            </label>
-          </div>
-        </NeoCard>
-
-        <NeoCard>
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 neo-border rounded-md bg-[color:var(--color-accent)] text-accent-foreground flex items-center justify-center">
-              <MessageSquare className="h-5 w-5" />
-            </div>
-            <h2 className="text-2xl">Discord</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            Connected as <b className="text-foreground">shadow#0001</b> · 3 servers synced.
-          </p>
-          <div className="mt-4 flex gap-2 flex-wrap">
-            <NeoButton size="sm" variant="secondary">Reconnect Discord</NeoButton>
-            <NeoButton size="sm" variant="ghost">Disconnect</NeoButton>
-          </div>
-        </NeoCard>
-      </div>
+          <h2 className="text-2xl">Discord</h2>
+        </div>
+        <p className="text-sm text-muted-foreground mt-2">
+          Connected as <b className="text-foreground">shadow#0001</b> · 3 servers synced.
+        </p>
+        <div className="mt-4 flex gap-2 flex-wrap">
+          <NeoButton size="sm" variant="secondary">Reconnect Discord</NeoButton>
+          <NeoButton size="sm" variant="ghost">Disconnect</NeoButton>
+        </div>
+      </NeoCard>
     </div>
   );
 }
