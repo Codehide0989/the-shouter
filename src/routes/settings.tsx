@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
 import { THEMES, useTheme } from "@/lib/theme";
-import { Bell, MessageSquare, Palette, Shield, Volume2, Zap } from "lucide-react";
+import { Bell, MessageSquare, Palette, Shield, Zap } from "lucide-react";
 import settingsHero from "@/assets/settings-hero.jpg";
 
 export const Route = createFileRoute("/settings")({
