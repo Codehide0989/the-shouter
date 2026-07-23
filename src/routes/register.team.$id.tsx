@@ -2,7 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
 import { eventById, type MockEvent } from "@/lib/mock-data";
+import { EVENT_IMAGE } from "@/lib/event-images";
 import { Check, Clock, X } from "lucide-react";
+import teamImg from "@/assets/register-team.jpg";
 
 export const Route = createFileRoute("/register/team/$id")({
   loader: ({ params }) => {
@@ -43,11 +45,33 @@ function TeamRegister() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <NeoBadge variant="accent">Team Registration</NeoBadge>
-      <h1 className="text-4xl mt-3">{event.title}</h1>
-      <p className="text-muted-foreground mt-1">
-        Team size: <b>{size}</b>. Leader adds Discord tags. Each member confirms via bot DM.
-      </p>
+      {/* Hero banner */}
+      <div className={`relative overflow-hidden neo-border neo-shadow rounded-lg bg-gradient-to-br ${event.cover} p-5 md:p-6`}>
+        <img
+          src={EVENT_IMAGE[event.type]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover mix-blend-multiply opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+        <div className="relative grid md:grid-cols-[1fr_160px] gap-4 items-center">
+          <div>
+            <NeoBadge variant="accent">Team Registration</NeoBadge>
+            <h1 className="text-3xl md:text-4xl mt-2 text-white drop-shadow-[3px_3px_0_rgba(0,0,0,0.6)]">{event.title}</h1>
+            <p className="text-white/90 text-sm mt-1">
+              Team size: <b>{size}</b>. Leader adds Discord tags. Each member confirms via bot DM.
+            </p>
+          </div>
+          <img
+            src={teamImg}
+            alt=""
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="hidden md:block h-32 w-32 object-contain drop-shadow-[4px_4px_0_var(--color-border)]"
+          />
+        </div>
+      </div>
+
 
       <NeoCard className="mt-6">
         <label className="block">

@@ -2,7 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
 import { eventById, type MockEvent } from "@/lib/mock-data";
-import { Check } from "lucide-react";
+import { EVENT_IMAGE } from "@/lib/event-images";
+import { Check, ShieldCheck, ClipboardList, PartyPopper } from "lucide-react";
+import verifyImg from "@/assets/register-verify.jpg";
+import detailsImg from "@/assets/register-details.jpg";
+import successImg from "@/assets/register-success.jpg";
 
 export const Route = createFileRoute("/register/$id")({
   loader: ({ params }) => {
@@ -24,64 +28,121 @@ export const Route = createFileRoute("/register/$id")({
   component: Register,
 });
 
+const STEPS = [
+  { n: 1, label: "Verify", icon: ShieldCheck },
+  { n: 2, label: "Details", icon: ClipboardList },
+  { n: 3, label: "Locked in", icon: PartyPopper },
+];
+
 function Register() {
   const { event } = Route.useLoaderData() as { event: MockEvent };
   const [step, setStep] = useState(1);
-  return (
-    <div className="mx-auto max-w-2xl px-4 py-10">
-      <NeoBadge variant="accent">Registration</NeoBadge>
-      <h1 className="text-4xl mt-3">{event.title}</h1>
-      <p className="text-muted-foreground mt-1">Complete these steps to lock your spot.</p>
 
-      <div className="mt-6 flex gap-2">
-        {[1, 2, 3].map((s) => (
-          <div
-            key={s}
-            className={`h-2 flex-1 neo-border rounded-full ${
-              s <= step ? "bg-primary" : "bg-muted"
-            }`}
-          />
-        ))}
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-10">
+      {/* Event mini-banner */}
+      <div className={`relative overflow-hidden neo-border neo-shadow rounded-lg bg-gradient-to-br ${event.cover} p-5`}>
+        <img
+          src={EVENT_IMAGE[event.type]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover mix-blend-multiply opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
+        <div className="relative">
+          <NeoBadge variant="accent">Registration</NeoBadge>
+          <h1 className="text-3xl md:text-4xl mt-2 text-white drop-shadow-[3px_3px_0_rgba(0,0,0,0.6)]">
+            {event.title}
+          </h1>
+          <p className="text-white/90 text-sm mt-1">Complete these steps to lock your spot.</p>
+        </div>
+      </div>
+
+      {/* Step indicator */}
+      <div className="mt-6 grid grid-cols-3 gap-2">
+        {STEPS.map(({ n, label, icon: Icon }) => {
+          const done = step >= n;
+          return (
+            <div
+              key={n}
+              className={`neo-border rounded-md p-3 text-center transition-all ${
+                done ? "bg-primary text-primary-foreground neo-shadow-sm" : "bg-muted text-muted-foreground"
+              }`}
+            >
+              <Icon className="h-5 w-5 mx-auto" />
+              <div className="mt-1 font-display uppercase text-xs tracking-widest">
+                {n}. {label}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <NeoCard className="mt-6">
         {step === 1 && (
-          <div>
-            <h2 className="text-2xl">1. Verify Discord</h2>
-            <p className="text-sm text-muted-foreground mt-2">
-              We'll check you're in <b>{event.server}</b> before locking you in.
-            </p>
-            <div className="mt-4 neo-border rounded-md bg-muted p-3 text-sm">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-primary neo-border" />
-                <div>
-                  <div className="font-bold">shadow#0001</div>
-                  <div className="text-xs text-muted-foreground">Member since 2023 · Verified ✅</div>
+          <div className="grid md:grid-cols-[1fr_180px] gap-6 items-center">
+            <div>
+              <h2 className="text-2xl">Verify Discord</h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                We'll check you're in <b className="text-foreground">{event.server}</b> before locking you in.
+              </p>
+              <div className="mt-4 neo-border rounded-md bg-muted p-3 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-full bg-primary neo-border" />
+                  <div>
+                    <div className="font-bold">shadow#0001</div>
+                    <div className="text-xs text-muted-foreground">Member since 2023 · Verified ✅</div>
+                  </div>
                 </div>
               </div>
+              <NeoButton className="mt-5 w-full" onClick={() => setStep(2)}>Continue</NeoButton>
             </div>
-            <NeoButton className="mt-5 w-full" onClick={() => setStep(2)}>Continue</NeoButton>
+            <img
+              src={verifyImg}
+              alt=""
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="h-40 w-40 md:h-44 md:w-44 mx-auto object-contain drop-shadow-[4px_4px_0_var(--color-border)]"
+            />
           </div>
         )}
         {step === 2 && (
-          <div>
-            <h2 className="text-2xl">2. Event details</h2>
-            <p className="text-sm text-muted-foreground mt-2">Optional info the organizer requested.</p>
-            <div className="mt-4 space-y-3">
-              <Field label="Display name" placeholder="How you want to appear" />
-              <Field label="Region" placeholder="e.g. IN, EU, NA" />
-              {event.type === "artwork" && <Field label="Submission title" placeholder="Optional" />}
+          <div className="grid md:grid-cols-[1fr_180px] gap-6 items-start">
+            <div>
+              <h2 className="text-2xl">Event details</h2>
+              <p className="text-sm text-muted-foreground mt-2">Optional info the organizer requested.</p>
+              <div className="mt-4 space-y-3">
+                <Field label="Display name" placeholder="How you want to appear" />
+                <Field label="Region" placeholder="e.g. IN, EU, NA" />
+                {event.type === "artwork" && <Field label="Submission title" placeholder="Optional" />}
+              </div>
+              <div className="mt-5 flex gap-2">
+                <NeoButton variant="ghost" className="flex-1" onClick={() => setStep(1)}>Back</NeoButton>
+                <NeoButton className="flex-1" onClick={() => setStep(3)}>Continue</NeoButton>
+              </div>
             </div>
-            <div className="mt-5 flex gap-2">
-              <NeoButton variant="ghost" className="flex-1" onClick={() => setStep(1)}>Back</NeoButton>
-              <NeoButton className="flex-1" onClick={() => setStep(3)}>Continue</NeoButton>
-            </div>
+            <img
+              src={detailsImg}
+              alt=""
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="h-40 w-40 md:h-44 md:w-44 mx-auto object-contain drop-shadow-[4px_4px_0_var(--color-border)]"
+            />
           </div>
         )}
         {step === 3 && (
           <div className="text-center">
-            <div className="mx-auto neo-border neo-shadow bg-[color:var(--success)] text-black rounded-full h-16 w-16 flex items-center justify-center">
-              <Check className="h-8 w-8" />
+            <img
+              src={successImg}
+              alt=""
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="h-48 w-48 mx-auto object-contain drop-shadow-[6px_6px_0_var(--color-border)]"
+            />
+            <div className="mx-auto mt-2 neo-border neo-shadow bg-[color:var(--success)] text-black rounded-full h-14 w-14 flex items-center justify-center">
+              <Check className="h-7 w-7" />
             </div>
             <h2 className="text-3xl mt-4">You're in!</h2>
             <p className="text-muted-foreground mt-2">
