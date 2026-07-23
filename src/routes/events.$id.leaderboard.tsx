@@ -55,7 +55,7 @@ function Leaderboard() {
           </thead>
           <tbody>
             {rest.map((r) => (
-              <tr key={r.name} className="border-t-3 border-border">
+              <tr key={r.name} className="border-t-4 border-border">
                 <td className="p-3 font-display">#{r.rank}</td>
                 <td className="p-3">{r.name}</td>
                 <td className="p-3 text-right font-bold">{r.points}</td>

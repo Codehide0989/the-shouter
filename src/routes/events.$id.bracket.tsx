@@ -55,7 +55,7 @@ function Bracket() {
             {r.matches.map((m, i) => (
               <NeoCard key={i} className="p-0 overflow-hidden">
                 {m.map((team, j) => (
-                  <div key={team} className={`px-4 py-3 flex items-center justify-between ${j === 0 ? "border-b-3 border-border bg-primary/10" : ""}`}>
+                  <div key={team} className={`px-4 py-3 flex items-center justify-between ${j === 0 ? "border-b-4 border-border bg-primary/10" : ""}`}>
                     <span className="font-bold text-sm">{team}</span>
                     <span className="font-display text-lg">{Math.floor(Math.random() * 3)}</span>
                   </div>
