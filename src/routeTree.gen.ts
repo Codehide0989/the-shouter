@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -26,6 +28,11 @@ import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery
 import { Route as EventsIdDashboardRouteImport } from './routes/events.$id.dashboard'
 import { Route as EventsIdBracketRouteImport } from './routes/events.$id.bracket'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -39,6 +46,11 @@ const RulesRoute = RulesRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotificationsRoute = NotificationsRouteImport.update({
@@ -114,9 +126,11 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
@@ -132,9 +146,11 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
@@ -151,9 +167,11 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
@@ -171,9 +189,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/explore'
     | '/notifications'
+    | '/privacy'
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/terms'
     | '/events/$id'
     | '/register/$id'
     | '/events/$id/bracket'
@@ -189,9 +209,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/explore'
     | '/notifications'
+    | '/privacy'
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/terms'
     | '/events/$id'
     | '/register/$id'
     | '/events/$id/bracket'
@@ -207,9 +229,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/explore'
     | '/notifications'
+    | '/privacy'
     | '/profile'
     | '/rules'
     | '/settings'
+    | '/terms'
     | '/events/$id'
     | '/register/$id'
     | '/events/$id/bracket'
@@ -226,9 +250,11 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   ExploreRoute: typeof ExploreRoute
   NotificationsRoute: typeof NotificationsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
   RulesRoute: typeof RulesRoute
   SettingsRoute: typeof SettingsRoute
+  TermsRoute: typeof TermsRoute
   EventsIdRoute: typeof EventsIdRouteWithChildren
   RegisterIdRoute: typeof RegisterIdRoute
   RegisterTeamIdRoute: typeof RegisterTeamIdRoute
@@ -236,6 +262,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -255,6 +288,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notifications': {
@@ -376,9 +416,11 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   ExploreRoute: ExploreRoute,
   NotificationsRoute: NotificationsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
   RulesRoute: RulesRoute,
   SettingsRoute: SettingsRoute,
+  TermsRoute: TermsRoute,
   EventsIdRoute: EventsIdRouteWithChildren,
   RegisterIdRoute: RegisterIdRoute,
   RegisterTeamIdRoute: RegisterTeamIdRoute,
