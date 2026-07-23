@@ -59,7 +59,7 @@ function Admin() {
             </thead>
             <tbody>
               {MOCK_EVENTS.map((e) => (
-                <tr key={e.id} className="border-t-3 border-border">
+                <tr key={e.id} className="border-t-4 border-border">
                   <td className="p-3">
                     <Link to="/events/$id" params={{ id: e.id }} className="font-bold hover:underline">{e.title}</Link>
                     <div className="text-xs text-muted-foreground">{e.server}</div>
