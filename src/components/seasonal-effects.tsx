@@ -38,6 +38,8 @@ export function SeasonalEffects() {
   const pumpkins = useParticles(10, { minSize: 22, maxSize: 40, minDur: 12, maxDur: 22, salt: 3 });
   const bats = useParticles(8, { minSize: 18, maxSize: 30, minDur: 14, maxDur: 26, salt: 4 });
   const flakes = useParticles(40, { minSize: 8, maxSize: 22, minDur: 7, maxDur: 16, salt: 5 });
+  const burningClothes = useParticles(14, { minSize: 26, maxSize: 44, minDur: 10, maxDur: 20, salt: 6 });
+  const embers = useParticles(28, { minSize: 8, maxSize: 16, minDur: 6, maxDur: 14, salt: 7 });
 
   if (theme === "spring") {
     return (
@@ -169,19 +171,50 @@ export function SeasonalEffects() {
           🌴
         </span>
 
-        {/* Watermelon slice top-left */}
-        <span className="absolute top-8 left-6 text-5xl md:text-6xl select-none rotate-[-15deg] animate-ice-bob"
-          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}
-        >
-          🍉
-        </span>
-
-        {/* Beach ball top-right */}
-        <span className="absolute top-24 right-8 text-5xl md:text-6xl select-none animate-ice-bob"
-          style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))", animationDelay: "-1.5s" }}
-        >
-          🏐
-        </span>
+        {/* Burning clothes falling */}
+        {burningClothes.map((p, i) => {
+          const items = ["👕", "👖", "🧥", "👗", "🧢"];
+          const item = items[i % items.length];
+          return (
+            <span
+              key={`cloth-${i}`}
+              className="absolute -top-10 select-none animate-season-fall will-change-transform"
+              style={{
+                left: p.left,
+                animationDelay: p.delay,
+                animationDuration: p.duration,
+                fontSize: p.size,
+                // @ts-expect-error CSS custom prop
+                "--drift": p.drift,
+                "--spin": p.rotate,
+                filter: "drop-shadow(0 0 10px oklch(0.78 0.24 40 / 0.85)) drop-shadow(0 0 4px oklch(0.9 0.2 60 / 0.9))",
+              }}
+            >
+              <span className="relative inline-block">
+                {item}
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[0.7em] animate-ice-flame">🔥</span>
+              </span>
+            </span>
+          );
+        })}
+        {embers.map((p, i) => (
+          <span
+            key={`ember-${i}`}
+            className="absolute -top-10 select-none animate-season-fall will-change-transform"
+            style={{
+              left: p.left,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              fontSize: p.size,
+              // @ts-expect-error CSS custom prop
+              "--drift": p.drift,
+              "--spin": p.rotate,
+              opacity: 0.85,
+            }}
+          >
+            🔥
+          </span>
+        ))}
 
         {/* Sunglasses sticker mid-left */}
         <span className="absolute top-1/3 left-4 text-4xl md:text-5xl select-none rotate-[8deg] opacity-90"
