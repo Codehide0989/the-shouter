@@ -41,8 +41,7 @@ export function SeasonalEffects() {
   const pumpkins = useParticles(10, { minSize: 22, maxSize: 40, minDur: 12, maxDur: 22, salt: 3 });
   const bats = useParticles(8, { minSize: 18, maxSize: 30, minDur: 14, maxDur: 26, salt: 4 });
   const flakes = useParticles(40, { minSize: 8, maxSize: 22, minDur: 7, maxDur: 16, salt: 5 });
-  const burningClothes = useParticles(14, { minSize: 26, maxSize: 44, minDur: 10, maxDur: 20, salt: 6 });
-  const embers = useParticles(28, { minSize: 8, maxSize: 16, minDur: 6, maxDur: 14, salt: 7 });
+  const burningClothes = useParticles(16, { minSize: 14, maxSize: 24, minDur: 12, maxDur: 22, salt: 6 });
 
   if (theme === "spring") {
     return (
@@ -174,11 +173,11 @@ export function SeasonalEffects() {
           🌴
         </span>
 
-        {/* Burning clothes falling — real 4K photographic images */}
+        {/* Burning clothes falling — smooth like petals/snow */}
         {burningClothes.map((p, i) => {
           const items = [burningShirt, burningJeans, burningJacket];
           const item = items[i % items.length];
-          const px = Math.round(parseFloat(p.size) * 3.4);
+          const px = Math.round(parseFloat(p.size) * 1.8);
           return (
             <img
               key={`cloth-${i}`}
@@ -196,30 +195,11 @@ export function SeasonalEffects() {
                 // @ts-expect-error CSS custom prop
                 "--drift": p.drift,
                 "--spin": p.rotate,
-                filter:
-                  "drop-shadow(0 0 14px oklch(0.78 0.24 40 / 0.85)) drop-shadow(0 0 28px oklch(0.9 0.2 60 / 0.5))",
+                filter: "drop-shadow(2px 3px 0 var(--color-border))",
               }}
             />
           );
         })}
-        {embers.map((p, i) => (
-          <span
-            key={`ember-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
-            style={{
-              left: p.left,
-              animationDelay: p.delay,
-              animationDuration: p.duration,
-              fontSize: p.size,
-              // @ts-expect-error CSS custom prop
-              "--drift": p.drift,
-              "--spin": p.rotate,
-              opacity: 0.85,
-            }}
-          >
-            🔥
-          </span>
-        ))}
 
         {/* Sunglasses sticker mid-left */}
         <span className="absolute top-1/3 left-4 text-4xl md:text-5xl select-none rotate-[8deg] opacity-90"
