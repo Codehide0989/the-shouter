@@ -14,7 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { SummerMarquee } from "@/components/summer-marquee";
+import { SeasonalEffects } from "@/components/seasonal-effects";
 import { ThemeProvider } from "@/lib/theme";
+
 
 function NotFoundComponent() {
   return (
@@ -132,8 +134,10 @@ function RootComponent() {
       <ThemeProvider>
         <div className="relative min-h-screen flex flex-col bg-noise">
           <SummerMarquee />
+          <SeasonalEffects />
           <div className="theme-decor" aria-hidden />
           <div className="relative z-10 flex flex-col min-h-screen">
+
             <Nav />
             <main className="flex-1">
               <Outlet />

@@ -200,30 +200,52 @@
 }
 .theme-winter .theme-decor {
   background-image:
-    radial-gradient(circle 2px at 20px 30px, color-mix(in oklab, white 90%, transparent) 100%, transparent),
-    radial-gradient(circle 1.5px at 70px 80px, color-mix(in oklab, white 80%, transparent) 100%, transparent),
-    radial-gradient(circle 1px at 100px 20px, color-mix(in oklab, white 70%, transparent) 100%, transparent),
-    radial-gradient(circle 2px at 50px 100px, color-mix(in oklab, white 90%, transparent) 100%, transparent);
-  animation: snow-drift 20s linear infinite;
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-primary) 22%, transparent) 0, transparent 30%),
+    radial-gradient(circle at 80% 60%, color-mix(in oklab, white 12%, transparent) 0, transparent 30%),
+    linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-primary) 10%, transparent) 100%);
+  background-size: cover;
 }
 .theme-spring .theme-decor {
   background-image:
-    radial-gradient(ellipse 6px 3px at 30px 40px, color-mix(in oklab, var(--color-primary) 70%, transparent) 100%, transparent),
-    radial-gradient(ellipse 5px 3px at 90px 90px, color-mix(in oklab, var(--color-accent) 70%, transparent) 100%, transparent),
-    radial-gradient(ellipse 4px 2px at 60px 20px, color-mix(in oklab, var(--color-secondary) 70%, transparent) 100%, transparent);
-  animation: petal-drift 30s linear infinite;
-}
-@keyframes snow-drift {
-  from { background-position: 0 0, 0 0, 0 0, 0 0; }
-  to { background-position: 40px 240px, 60px 220px, 80px 260px, 30px 280px; }
-}
-@keyframes petal-drift {
-  from { background-position: 0 0, 0 0, 0 0; }
-  to { background-position: 120px 360px, 100px 340px, 140px 380px; }
+    radial-gradient(circle at 25% 25%, color-mix(in oklab, var(--color-primary) 20%, transparent) 0, transparent 28%),
+    radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--color-accent) 20%, transparent) 0, transparent 28%);
+  background-size: cover;
 }
 
-/* Summer marquee — infinite horizontal scroll for background image rows.
-   The row duplicates its images, so translating by -50% loops seamlessly. */
+/* Falling particle animation used by SeasonalEffects (spring/halloween/winter) */
+@keyframes season-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(var(--spin, 0deg));
+  }
+  50% {
+    transform: translate3d(var(--drift, 0px), 50vh, 0) rotate(calc(var(--spin, 0deg) + 180deg));
+  }
+  100% {
+    transform: translate3d(0, 110vh, 0) rotate(calc(var(--spin, 0deg) + 360deg));
+  }
+}
+@utility animate-season-fall {
+  animation: season-fall linear infinite;
+}
+
+/* Summer burning-ice cube animations */
+@keyframes ice-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+@keyframes ice-flame {
+  0%, 100% { transform: scale(1) rotate(-4deg); opacity: 0.95; }
+  50% { transform: scale(1.15) rotate(4deg); opacity: 1; }
+}
+@keyframes heat-haze {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50% { opacity: 0.55; transform: translateY(-4px); }
+}
+@utility animate-ice-bob { animation: ice-bob 3.2s ease-in-out infinite; }
+@utility animate-ice-flame { animation: ice-flame 1.6s ease-in-out infinite; }
+@utility animate-heat-haze { animation: heat-haze 4s ease-in-out infinite; }
+
+/* Summer marquee — infinite horizontal scroll for background image rows. */
 @keyframes summer-marquee-left {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-50%, 0, 0); }
@@ -244,7 +266,12 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-summer-marquee-left,
   .animate-summer-marquee-right,
-  .animate-summer-marquee-slow { animation: none; }
+  .animate-summer-marquee-slow,
+  .animate-season-fall,
+  .animate-ice-bob,
+  .animate-ice-flame,
+  .animate-heat-haze { animation: none; }
 }
+
 
 
