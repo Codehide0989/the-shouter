@@ -20,6 +20,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BotStatusRouteImport } from './routes/bot-status'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
 import { Route as RegisterTeamIdRouteImport } from './routes/register.team.$id'
@@ -83,6 +84,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const RegisterIdRoute = RegisterIdRouteImport.update({
   id: '/register/$id',
   path: '/register/$id',
@@ -123,7 +129,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -133,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -143,7 +150,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -153,6 +159,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -164,7 +171,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
   '/privacy': typeof PrivacyRoute
@@ -174,6 +181,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -196,6 +204,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -206,7 +215,6 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/bot-status'
-    | '/dashboard'
     | '/explore'
     | '/notifications'
     | '/privacy'
@@ -216,6 +224,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/events/$id'
     | '/register/$id'
+    | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -247,7 +257,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   BotStatusRoute: typeof BotStatusRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   ExploreRoute: typeof ExploreRoute
   NotificationsRoute: typeof NotificationsRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -339,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/register/$id': {
       id: '/register/$id'
       path: '/register/$id'
@@ -391,6 +408,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 interface EventsIdRouteChildren {
   EventsIdBracketRoute: typeof EventsIdBracketRoute
   EventsIdDashboardRoute: typeof EventsIdDashboardRoute
@@ -413,7 +442,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   BotStatusRoute: BotStatusRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   ExploreRoute: ExploreRoute,
   NotificationsRoute: NotificationsRoute,
   PrivacyRoute: PrivacyRoute,
