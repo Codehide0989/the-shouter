@@ -62,10 +62,11 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="font-display text-sm uppercase mb-3">Admin</p>
+              <p className="font-display text-sm uppercase mb-3">Legal</p>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/admin" className="hover:underline">Admin dashboard</Link></li>
-                <li><Link to="/notifications" className="hover:underline">Notifications</Link></li>
+                <li><Link to="/terms" className="hover:underline">Terms & Conditions</Link></li>
+                <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
+                <li><Link to="/admin" className="hover:underline">Admin</Link></li>
               </ul>
             </div>
           </div>

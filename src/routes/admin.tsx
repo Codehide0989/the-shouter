@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard, SectionHeader } from "@/components/neo";
 import { MOCK_EVENTS, TYPE_LABEL, STATUS_LABEL } from "@/lib/mock-data";
 import { Bot, Radio, Palette, ShieldCheck, PlusCircle, BarChart3 } from "lucide-react";
+import { EVENT_IMAGE } from "@/lib/event-images";
 import heroUrl from "@/assets/admin-hero.jpg";
 import liveImg from "@/assets/feature-live.jpg";
 import approvalsImg from "@/assets/feature-admin.jpg";
@@ -84,8 +85,20 @@ function Admin() {
               {MOCK_EVENTS.map((e) => (
                 <tr key={e.id} className="border-t-4 border-border">
                   <td className="p-3">
-                    <Link to="/events/$id" params={{ id: e.id }} className="font-bold hover:underline">{e.title}</Link>
-                    <div className="text-xs text-muted-foreground">{e.server}</div>
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-12 w-16 shrink-0 neo-border rounded-md overflow-hidden bg-muted">
+                        <img
+                          src={EVENT_IMAGE[e.type]}
+                          alt=""
+                          className="absolute inset-0 h-full w-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <Link to="/events/$id" params={{ id: e.id }} className="font-bold hover:underline block truncate">{e.title}</Link>
+                        <div className="text-xs text-muted-foreground truncate">{e.server}</div>
+                      </div>
+                    </div>
                   </td>
                   <td className="p-3">{TYPE_LABEL[e.type]}</td>
                   <td className="p-3"><NeoBadge variant={e.status === "live" ? "destructive" : e.status === "upcoming" ? "secondary" : "muted"}>{STATUS_LABEL[e.status]}</NeoBadge></td>
