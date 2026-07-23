@@ -129,12 +129,15 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <div className="min-h-screen flex flex-col bg-noise">
-          <Nav />
-          <main className="flex-1">
-            <Outlet />
-          </main>
-          <Footer />
+        <div className="relative min-h-screen flex flex-col bg-noise">
+          <div className="theme-decor" aria-hidden />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Nav />
+            <main className="flex-1">
+              <Outlet />
+            </main>
+            <Footer />
+          </div>
         </div>
       </ThemeProvider>
     </QueryClientProvider>
