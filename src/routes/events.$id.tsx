@@ -1,10 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
-import { eventById, STATUS_LABEL, TYPE_LABEL } from "@/lib/mock-data";
+import { eventById, STATUS_LABEL, TYPE_LABEL, type MockEvent } from "@/lib/mock-data";
 import { Users, Trophy, Radio, Calendar, Hash, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/events/$id")({
-  loader: ({ params }) => {
+  loader: ({ params }): { event: MockEvent } => {
     const event = eventById(params.id);
     if (!event) throw notFound();
     return { event };
