@@ -103,7 +103,17 @@ function Landing() {
     <div>
       {/* HERO */}
       <section className="relative overflow-hidden border-b-4 border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+        {/* Decorative background scribbles */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "radial-gradient(currentColor 1.5px, transparent 1.5px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-14 md:py-24 grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
             <NeoBadge variant="accent" className="mb-5">
               <Zap className="h-3 w-3" /> Discord-First Event Platform
@@ -150,61 +160,57 @@ function Landing() {
             </div>
           </div>
 
-          {/* Discord card mock */}
+          {/* Hero image collage */}
           <div className="relative">
-            <div className="neo-border neo-shadow-lg bg-card rounded-lg p-5 rotate-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 rounded-full neo-border bg-primary flex items-center justify-center">
-                  <Bot className="h-5 w-5 text-primary-foreground" />
+            <div className="relative neo-border neo-shadow-lg bg-card rounded-lg overflow-hidden rotate-1">
+              <img
+                src={heroSquad}
+                alt="Squad of gamers with headsets in a bold neobrutalist collage"
+                width={1600}
+                height={1600}
+                className="block w-full h-auto aspect-square object-cover"
+              />
+              {/* Sticker overlay: bot card */}
+              <div className="absolute left-3 bottom-3 right-3 neo-border neo-shadow bg-background/95 backdrop-blur rounded-md p-3 flex items-center gap-3">
+                <div className="h-9 w-9 rounded-full neo-border bg-primary flex items-center justify-center shrink-0">
+                  <Bot className="h-4 w-4 text-primary-foreground" />
                 </div>
-                <div>
-                  <div className="font-display text-sm">SHOOTERS BOT</div>
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                    Today at 20:00
+                <div className="min-w-0 flex-1">
+                  <div className="font-display text-xs truncate">BGMI CLASH #14 — LIVE</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                    62 / 64 squads · ₹25,000
                   </div>
                 </div>
-                <NeoBadge variant="accent" className="ml-auto">BOT</NeoBadge>
-              </div>
-              <div className="neo-border rounded-md bg-gradient-to-br from-orange-500 to-rose-600 p-5">
-                <div className="text-white/90 text-[10px] uppercase font-black tracking-widest">
-                  Registration Card
-                </div>
-                <div className="mt-2 font-display text-white text-3xl leading-none">
-                  BGMI CLASH #14
-                </div>
-                <div className="mt-3 flex items-center gap-4 text-white text-sm">
-                  <span className="flex items-center gap-1">
-                    <Users className="h-4 w-4" /> 62 / 64 squads
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Trophy className="h-4 w-4" /> ₹25,000
-                  </span>
-                </div>
-                <div className="mt-4 flex gap-2">
-                  <span className="neo-border neo-shadow-sm rounded-md bg-white text-black px-3 py-1 text-xs font-black uppercase">
-                    !register
-                  </span>
-                  <span className="neo-border neo-shadow-sm rounded-md bg-black text-white px-3 py-1 text-xs font-black uppercase">
-                    !bracket
-                  </span>
-                </div>
-              </div>
-              <div className="mt-3 flex gap-2 flex-wrap">
-                {["🔥 128", "⚔️ 74", "🎯 41", "👑 22"].map((r) => (
-                  <span
-                    key={r}
-                    className="neo-border rounded-md bg-background px-2 py-1 text-xs font-bold"
-                  >
-                    {r}
-                  </span>
-                ))}
+                <NeoBadge variant="destructive" className="animate-pulse">Live</NeoBadge>
               </div>
             </div>
-            <div className="absolute -bottom-6 -left-6 neo-border neo-shadow bg-secondary text-secondary-foreground rounded-md p-3 -rotate-3 hidden md:block">
-              <div className="font-display text-xs">LIVE FEED</div>
+
+            {/* Floating trophy sticker */}
+            <div className="absolute -top-4 -right-3 md:-right-6 w-24 md:w-32 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
+              <img
+                src={heroTrophy}
+                alt="Neobrutalist trophy and controller"
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="block w-full h-auto"
+              />
+            </div>
+
+            {/* Live feed chip */}
+            <div className="absolute -bottom-5 -left-3 md:-left-6 neo-border neo-shadow bg-secondary text-secondary-foreground rounded-md p-3 -rotate-3 hidden sm:block">
+              <div className="font-display text-xs flex items-center gap-1">
+                <Radio className="h-3 w-3" /> LIVE FEED
+              </div>
               <div className="text-[10px]">shadow#0001 joined</div>
               <div className="text-[10px]">raven#4210 joined</div>
               <div className="text-[10px]">kite#9910 joined</div>
+            </div>
+
+            {/* Rating sticker */}
+            <div className="absolute top-6 -left-3 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-3 py-2 -rotate-12 hidden md:flex items-center gap-1">
+              <Star className="h-4 w-4 fill-current" />
+              <span className="font-display text-sm">4.9</span>
             </div>
           </div>
         </div>
