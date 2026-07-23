@@ -21,6 +21,7 @@ import { Route as BotStatusRouteImport } from './routes/bot-status'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
 import { Route as DashboardXpRouteImport } from './routes/dashboard.xp'
@@ -137,6 +138,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => DashboardRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const RegisterIdRoute = RegisterIdRouteImport.update({
   id: '/register/$id',
@@ -424,7 +430,7 @@ const EventsIdBracketRoute = EventsIdBracketRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/bot-status': typeof BotStatusRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
@@ -485,6 +491,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
@@ -494,7 +501,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/bot-status': typeof BotStatusRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
@@ -554,6 +560,7 @@ export interface FileRoutesByTo {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
@@ -564,7 +571,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/bot-status': typeof BotStatusRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/explore': typeof ExploreRoute
@@ -625,6 +632,7 @@ export interface FileRoutesById {
   '/dashboard/xp': typeof DashboardXpRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
@@ -697,6 +705,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/admin/'
     | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
@@ -706,7 +715,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/admin'
     | '/bot-status'
     | '/explore'
     | '/notifications'
@@ -766,6 +774,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/admin'
     | '/dashboard'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
@@ -836,6 +845,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/events/$id'
     | '/register/$id'
+    | '/admin/'
     | '/dashboard/'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
@@ -846,7 +856,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   BotStatusRoute: typeof BotStatusRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   ExploreRoute: typeof ExploreRoute
@@ -946,6 +956,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/register/$id': {
       id: '/register/$id'
@@ -1342,6 +1359,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface DashboardRouteChildren {
   DashboardAchievementsRoute: typeof DashboardAchievementsRoute
   DashboardActivityRoute: typeof DashboardActivityRoute
@@ -1472,7 +1499,7 @@ const EventsIdRouteWithChildren = EventsIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   BotStatusRoute: BotStatusRoute,
   DashboardRoute: DashboardRouteWithChildren,
   ExploreRoute: ExploreRoute,
@@ -1489,13 +1516,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
