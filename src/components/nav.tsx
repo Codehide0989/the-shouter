@@ -5,13 +5,35 @@ import { NeoButton, NeoBadge } from "./neo";
 import { ThemeSwitcher } from "./theme-switcher";
 import { cn } from "@/lib/utils";
 import logoUrl from "@/assets/logo.png";
+import imgExplore from "@/assets/cover-tournament.jpg";
+import imgRules from "@/assets/rules-hero.jpg";
+import imgBot from "@/assets/bot-mascot.jpg";
+import imgDash from "@/assets/dashboard-hero.jpg";
+import imgAdmin from "@/assets/admin-hero.jpg";
+import imgTeams from "@/assets/dash-team.jpg";
+import imgTourney from "@/assets/dash-tournament.jpg";
+import imgGallery from "@/assets/cover-artwork.jpg";
+import imgLeader from "@/assets/stat-wins.jpg";
+import imgNotif from "@/assets/notice-hero.jpg";
+import imgProfile from "@/assets/avatar-shadow.jpg";
+import imgSettings from "@/assets/settings-hero.jpg";
 
 const LINKS = [
-  { to: "/explore", label: "Explore" },
-  { to: "/rules", label: "Rules" },
-  { to: "/bot-status", label: "Bot" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/admin", label: "Admin" },
+  { to: "/explore", label: "Explore", img: imgExplore },
+  { to: "/rules", label: "Rules", img: imgRules },
+  { to: "/bot-status", label: "Bot", img: imgBot },
+  { to: "/dashboard", label: "Dashboard", img: imgDash },
+  { to: "/admin", label: "Admin", img: imgAdmin },
+];
+
+const MOBILE_EXTRA = [
+  { to: "/tournaments", label: "Tournaments", img: imgTourney },
+  { to: "/teams", label: "Teams", img: imgTeams },
+  { to: "/gallery", label: "Gallery", img: imgGallery },
+  { to: "/leaderboard", label: "Leaderboard", img: imgLeader },
+  { to: "/notifications", label: "Notifications", img: imgNotif },
+  { to: "/profile", label: "Profile", img: imgProfile },
+  { to: "/settings", label: "Settings", img: imgSettings },
 ];
 
 export function Nav() {
