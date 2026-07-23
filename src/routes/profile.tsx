@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { NeoBadge, NeoButton, NeoCard } from "@/components/neo";
 import { Trophy, Flame, Users, Star } from "lucide-react";
+import avatarShadow from "@/assets/avatar-shadow.jpg";
+import coverArtwork from "@/assets/cover-artwork.jpg";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({
@@ -16,9 +18,25 @@ export const Route = createFileRoute("/profile")({
 function Profile() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <NeoCard className="flex flex-col sm:flex-row items-start gap-5">
-        <div className="h-24 w-24 rounded-md neo-border neo-shadow bg-gradient-to-br from-orange-500 to-rose-600" />
-        <div className="flex-1">
+      <div className="relative neo-border neo-shadow-lg rounded-lg overflow-hidden mb-6 h-40 bg-gradient-to-br from-orange-500 to-rose-600">
+        <img
+          src={coverArtwork}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover mix-blend-multiply opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
+
+      <NeoCard className="flex flex-col sm:flex-row items-start gap-5 -mt-20 relative">
+        <img
+          src={avatarShadow}
+          alt="shadow"
+          width={768}
+          height={768}
+          className="h-28 w-28 rounded-md neo-border neo-shadow object-cover shrink-0"
+        />
+        <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-3xl">shadow#0001</h1>
             <NeoBadge variant="secondary">Verified</NeoBadge>
@@ -32,7 +50,7 @@ function Profile() {
         </div>
       </NeoCard>
 
-      <div className="grid gap-4 sm:grid-cols-4 mt-6">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-4 mt-6">
         {[
           { icon: Trophy, k: 12, v: "Wins" },
           { icon: Flame, k: 4, v: "Streak" },
