@@ -22,11 +22,11 @@ export function Nav() {
       <div className="bg-card/95 backdrop-blur border-b-0">
         <div className="mx-auto max-w-7xl px-4 py-2 flex items-center gap-3">
           <Link to="/" className="flex items-center gap-2 shrink-0 group">
-            <span className="neo-border neo-shadow-sm bg-primary text-primary-foreground rounded-md p-1 rotate-[-6deg] group-hover:rotate-[6deg] transition-transform">
-              <Crosshair className="h-4 w-4" strokeWidth={2.5} />
+            <span className="neo-border neo-shadow-sm bg-background rounded-md p-0.5 rotate-[-4deg] group-hover:rotate-[4deg] transition-transform">
+              <img src={logoUrl} alt="The Shouter" width={28} height={28} className="h-7 w-7 block" />
             </span>
             <span className="font-display text-base sm:text-lg tracking-tight leading-none">
-              The<span className="sm:ml-1">Shooter</span>
+              The<span className="sm:ml-1">Shouter</span>
             </span>
             <NeoBadge variant="accent" className="hidden sm:inline-flex">Beta</NeoBadge>
           </Link>
