@@ -184,23 +184,23 @@ function Landing() {
                 height={1600}
                 className="block w-full h-auto aspect-square object-cover"
               />
-              {/* Sticker overlay: bot card */}
-              <div className="absolute left-3 bottom-3 right-3 neo-border neo-shadow bg-background/95 backdrop-blur rounded-md p-3 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full neo-border bg-primary flex items-center justify-center shrink-0">
-                  <Bot className="h-4 w-4 text-primary-foreground" />
+              {/* Sticker overlay: bot card — compact */}
+              <div className="absolute left-2 bottom-2 right-2 sm:left-3 sm:bottom-3 sm:right-auto sm:max-w-[70%] neo-border neo-shadow-sm bg-background/90 backdrop-blur rounded-md px-2 py-1.5 flex items-center gap-2">
+                <div className="h-6 w-6 rounded-full neo-border bg-primary flex items-center justify-center shrink-0">
+                  <Bot className="h-3 w-3 text-primary-foreground" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-display text-xs truncate">BGMI CLASH #14 — LIVE</div>
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                    62 / 64 squads · ₹25,000
+                  <div className="font-display text-[10px] truncate leading-tight">BGMI CLASH #14</div>
+                  <div className="text-[8px] uppercase tracking-widest text-muted-foreground leading-tight">
+                    62/64 · ₹25k
                   </div>
                 </div>
-                <NeoBadge variant="destructive" className="animate-pulse">Live</NeoBadge>
+                <span className="text-[9px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-destructive text-white neo-border animate-pulse">Live</span>
               </div>
             </div>
 
             {/* Floating trophy sticker */}
-            <div className="absolute -top-4 -right-3 md:-right-6 w-24 md:w-32 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
+            <div className="absolute -top-4 -right-3 md:-right-6 w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
               <img
                 src={heroTrophy}
                 alt="Neobrutalist trophy and controller"
@@ -211,15 +211,16 @@ function Landing() {
               />
             </div>
 
-            {/* Live feed chip */}
-            <div className="absolute -bottom-5 -left-3 md:-left-6 neo-border neo-shadow bg-secondary text-secondary-foreground rounded-md p-3 -rotate-3 hidden sm:block">
-              <div className="font-display text-xs flex items-center gap-1">
-                <Radio className="h-3 w-3" /> LIVE FEED
-              </div>
-              <div className="text-[10px]">shadow#0001 joined</div>
-              <div className="text-[10px]">raven#4210 joined</div>
-              <div className="text-[10px]">kite#9910 joined</div>
+            {/* Live feed chip — compact */}
+            <div className="absolute -bottom-4 -left-2 md:-left-5 neo-border neo-shadow-sm bg-secondary text-secondary-foreground rounded-md px-2 py-1 -rotate-3 hidden sm:flex items-center gap-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-destructive" />
+              </span>
+              <Radio className="h-3 w-3" />
+              <span className="font-display text-[10px] uppercase tracking-widest">Live feed</span>
             </div>
+
 
             {/* Rating sticker */}
             <div className="absolute top-6 -left-3 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-3 py-2 -rotate-12 hidden md:flex items-center gap-1">
@@ -241,30 +242,41 @@ function Landing() {
           {EVENT_TYPES.map((t, i) => (
             <div
               key={t.title}
-              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md p-5 flex flex-col gap-4 transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg"
+              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md overflow-hidden flex flex-col transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg"
             >
-              <span className="absolute top-3 right-3 font-display text-xs opacity-40">
-                0{i + 1}
-              </span>
-              <div className="flex items-center gap-3">
-                <div className={`neo-border neo-shadow-sm rounded-md p-3 ${t.accent}`}>
-                  <t.icon className="h-6 w-6" strokeWidth={2.5} />
-                </div>
-                <NeoBadge variant="muted">{t.tag}</NeoBadge>
-              </div>
-              <div>
-                <h3 className="font-display text-xl uppercase leading-tight">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.copy}</p>
-              </div>
-              <div className="mt-auto pt-3 border-t-2 border-dashed border-border/60 flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-widest font-black">
-                  {t.stat}
+              {/* Image header */}
+              <div className="relative h-32 overflow-hidden border-b-4 border-border">
+                <img
+                  src={t.image}
+                  alt={t.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+                <span className="absolute top-2 right-2 font-display text-xs bg-background/90 neo-border rounded px-1.5 py-0.5">
+                  0{i + 1}
                 </span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <div className="absolute bottom-2 left-2 flex items-center gap-2">
+                  <div className={`neo-border neo-shadow-sm rounded-md p-2 ${t.accent}`}>
+                    <t.icon className="h-4 w-4" strokeWidth={2.5} />
+                  </div>
+                  <NeoBadge variant="muted">{t.tag}</NeoBadge>
+                </div>
+              </div>
+              <div className="p-5 flex flex-col gap-3 flex-1">
+                <h3 className="font-display text-xl uppercase leading-tight tracking-tight">{t.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t.copy}</p>
+                <div className="mt-auto pt-3 border-t-2 border-dashed border-border/60 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-widest font-black">
+                    {t.stat}
+                  </span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
               </div>
             </div>
           ))}
         </div>
+
       </section>
 
       {/* FEATURED EVENTS */}
@@ -298,19 +310,26 @@ function Landing() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md overflow-hidden transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg"
+              className="group relative neo-border neo-shadow bg-card text-card-foreground rounded-md overflow-hidden transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:neo-shadow-lg flex flex-col"
             >
-              {/* Top color strip */}
-              <div className="h-2 bg-accent border-b-4 border-border" />
-              <div className="p-5">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="neo-border neo-shadow-sm rounded-md bg-background p-3">
-                    <f.icon className="h-6 w-6 text-accent" strokeWidth={2.5} />
-                  </div>
-                  <span className="font-display text-3xl leading-none opacity-20">
-                    {f.number}
-                  </span>
+              {/* Image header with duotone treatment */}
+              <div className="relative h-28 overflow-hidden border-b-4 border-border">
+                <img
+                  src={f.image}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover mix-blend-luminosity opacity-70 transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/50 via-transparent to-primary/40" />
+                <span className="absolute top-2 right-3 font-display text-4xl leading-none text-background/90 drop-shadow-[2px_2px_0_var(--color-border)]">
+                  {f.number}
+                </span>
+                <div className="absolute -bottom-4 left-3 neo-border neo-shadow-sm rounded-md bg-background p-2.5">
+                  <f.icon className="h-5 w-5 text-accent" strokeWidth={2.5} />
                 </div>
+              </div>
+              <div className="p-5 pt-6 flex-1 flex flex-col">
                 <h3 className="font-display text-lg uppercase leading-tight">{f.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.copy}</p>
                 <div className="mt-4 inline-flex items-center gap-1 text-[10px] uppercase tracking-widest font-black text-accent">
@@ -320,6 +339,7 @@ function Landing() {
             </div>
           ))}
         </div>
+
       </section>
 
       {/* CTA */}
