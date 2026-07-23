@@ -11,6 +11,10 @@ import {
   Filter,
   type LucideIcon,
 } from "lucide-react";
+import coverTournament from "@/assets/cover-tournament.jpg";
+import coverArtwork from "@/assets/cover-artwork.jpg";
+import coverPicbattle from "@/assets/cover-picbattle.jpg";
+import coverCommunity from "@/assets/cover-community.jpg";
 
 export const Route = createFileRoute("/notifications")({
   head: () => ({
@@ -26,51 +30,50 @@ export const Route = createFileRoute("/notifications")({
 type NoteKind = {
   icon: LucideIcon;
   label: string;
-  tone: string; // tailwind classes for icon tile
+  tone: string;
   chip: "primary" | "secondary" | "accent" | "muted" | "success" | "destructive";
+  bg: string;
 };
 
 const KINDS: NoteKind[] = [
-  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary" },
-  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary" },
-  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent" },
-  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success" },
+  { icon: Users, label: "Team", tone: "bg-secondary text-secondary-foreground", chip: "secondary", bg: coverCommunity },
+  { icon: Trophy, label: "Match", tone: "bg-primary text-primary-foreground", chip: "primary", bg: coverTournament },
+  { icon: Heart, label: "Reaction", tone: "bg-accent text-accent-foreground", chip: "accent", bg: coverArtwork },
+  { icon: Sparkles, label: "New Drop", tone: "bg-[color:var(--success)] text-black", chip: "success", bg: coverPicbattle },
 ];
 
 function Notifications() {
   const unreadCount = MOCK_NOTIFICATIONS.filter((n) => n.unread).length;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-2xl px-4 py-8">
       {/* Header */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <NeoBadge variant="accent">
             <Bell className="h-3 w-3" /> Alerts
           </NeoBadge>
-          <h1 className="text-4xl md:text-5xl mt-3 leading-none">Notifications</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            You have{" "}
-            <span className="font-black text-foreground">{unreadCount} unread</span> updates
-            from your squads.
+          <h1 className="text-3xl md:text-4xl mt-2 leading-none">Notifications</h1>
+          <p className="mt-1.5 text-xs text-muted-foreground">
+            <span className="font-black text-foreground">{unreadCount} unread</span> · Bot synced 12s ago
           </p>
         </div>
         <div className="flex gap-2">
           <NeoButton size="sm" variant="ghost">
-            <Filter className="h-3 w-3" /> Filter
+            <Filter className="h-3 w-3" />
           </NeoButton>
           <NeoButton size="sm" variant="secondary">
-            <Check className="h-3 w-3" /> Mark all read
+            <Check className="h-3 w-3" /> Read all
           </NeoButton>
         </div>
       </div>
 
       {/* Filter chips */}
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap gap-1.5">
         {["All", "Unread", "Team", "Match", "Reaction"].map((f, i) => (
           <button
             key={f}
-            className={`neo-border neo-shadow-sm rounded-md px-3 py-1.5 text-[11px] font-black uppercase tracking-widest ${
+            className={`neo-border neo-shadow-sm rounded-md px-2.5 py-1 text-[10px] font-black uppercase tracking-widest ${
               i === 0 ? "bg-foreground text-background" : "bg-card"
             }`}
           >
@@ -79,69 +82,81 @@ function Notifications() {
         ))}
       </div>
 
-      {/* Notifications list */}
-      <div className="mt-6 space-y-3">
+      {/* Notifications list — compact cards with embedded bg image */}
+      <div className="mt-4 space-y-2.5">
         {MOCK_NOTIFICATIONS.map((n, idx) => {
           const kind = KINDS[idx % KINDS.length];
           const Icon = kind.icon;
           return (
             <article
               key={n.id}
-              className={`group relative neo-border ${
-                n.unread ? "neo-shadow bg-card" : "neo-shadow-sm bg-muted/50"
-              } rounded-md p-4 flex gap-4 transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5`}
+              className={`group relative overflow-hidden neo-border rounded-md transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 ${
+                n.unread ? "neo-shadow" : "neo-shadow-sm opacity-90"
+              }`}
             >
-              {/* Left color rail for unread */}
+              {/* Embedded background image */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${kind.bg})` }}
+              />
+              {/* Readability veil — theme-aware */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background: n.unread
+                    ? "linear-gradient(90deg, color-mix(in oklab, var(--color-card) 92%, transparent) 0%, color-mix(in oklab, var(--color-card) 72%, transparent) 60%, color-mix(in oklab, var(--color-card) 30%, transparent) 100%)"
+                    : "linear-gradient(90deg, color-mix(in oklab, var(--color-muted) 95%, transparent) 0%, color-mix(in oklab, var(--color-muted) 80%, transparent) 100%)",
+                }}
+              />
+              {/* Left accent rail for unread */}
               {n.unread && (
-                <span className="absolute left-0 top-0 bottom-0 w-1.5 bg-destructive border-r-2 border-border rounded-l-md" />
+                <span className="absolute left-0 top-0 bottom-0 w-1 bg-destructive border-r-2 border-border z-10" />
               )}
 
-              <div
-                className={`shrink-0 neo-border neo-shadow-sm rounded-md p-2.5 ${kind.tone}`}
-              >
-                <Icon className="h-5 w-5" strokeWidth={2.5} />
-              </div>
+              <div className="relative z-10 p-3 flex gap-3 items-center">
+                <div className={`shrink-0 neo-border neo-shadow-sm rounded-md p-2 ${kind.tone}`}>
+                  <Icon className="h-4 w-4" strokeWidth={2.5} />
+                </div>
 
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <NeoBadge variant={kind.chip}>{kind.label}</NeoBadge>
-                  {n.unread && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-destructive">
-                      <span className="h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
-                      New
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <NeoBadge variant={kind.chip} className="!text-[9px] !px-1.5 !py-0">
+                      {kind.label}
+                    </NeoBadge>
+                    <span className="text-[9px] uppercase tracking-widest text-muted-foreground">
+                      {n.time}
                     </span>
-                  )}
-                </div>
-                <p
-                  className={`text-sm leading-snug ${
-                    n.unread ? "font-bold text-foreground" : "text-muted-foreground"
-                  }`}
-                >
-                  {n.text}
-                </p>
-                <div className="mt-2 flex items-center justify-between gap-3">
-                  <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {n.time}
-                  </span>
-                  <div className="flex gap-2">
-                    <button className="text-[10px] font-black uppercase tracking-widest underline-offset-4 hover:underline">
-                      View
-                    </button>
-                    <button className="text-[10px] font-black uppercase tracking-widest opacity-60 hover:opacity-100">
-                      Dismiss
-                    </button>
+                    {n.unread && (
+                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
+                    )}
                   </div>
+                  <p
+                    className={`text-xs leading-snug line-clamp-2 ${
+                      n.unread ? "font-bold text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {n.text}
+                  </p>
                 </div>
+
+                <button
+                  aria-label="View"
+                  className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity neo-border neo-shadow-sm rounded-md bg-background text-[9px] font-black uppercase tracking-widest px-2 py-1"
+                >
+                  View
+                </button>
               </div>
             </article>
           );
         })}
       </div>
 
-      {/* Empty-state footer chip */}
-      <div className="mt-8 neo-border neo-shadow-sm bg-card rounded-md p-4 text-center">
-        <p className="text-xs uppercase tracking-widest font-black text-muted-foreground">
-          You're all caught up · Bot last synced 12s ago
+      {/* Footer chip */}
+      <div className="mt-6 neo-border neo-shadow-sm bg-card rounded-md p-2.5 text-center">
+        <p className="text-[10px] uppercase tracking-widest font-black text-muted-foreground">
+          You're all caught up
         </p>
       </div>
     </div>
