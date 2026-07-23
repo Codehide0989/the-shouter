@@ -15,25 +15,47 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { SummerMarquee } from "@/components/summer-marquee";
 import { SeasonalEffects } from "@/components/seasonal-effects";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/lib/theme";
+import notFoundHero from "@/assets/notfound-hero.jpg";
 
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-8xl">404</h1>
-        <h2 className="mt-4 text-2xl">Off Target</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're aiming for doesn't exist.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="neo-border neo-shadow-sm inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-display uppercase tracking-wide text-primary-foreground"
-          >
-            Back to base
-          </Link>
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-16">
+      <div className="grid max-w-4xl gap-8 md:grid-cols-2 md:items-center">
+        <div className="neo-border neo-shadow rotate-[-2deg] overflow-hidden rounded-2xl bg-card">
+          <img
+            src={notFoundHero}
+            alt="Broken target with off-course arrow"
+            width={1024}
+            height={1024}
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="text-left">
+          <div className="inline-block neo-border neo-shadow-sm rounded-full bg-accent px-3 py-1 text-xs font-display uppercase tracking-widest">
+            Error 404
+          </div>
+          <h1 className="mt-4 text-6xl md:text-7xl font-display leading-none">Off Target</h1>
+          <p className="mt-4 text-base text-muted-foreground">
+            The page you were aiming for isn't here. Maybe it moved, maybe it never existed.
+            Reload your quiver and pick another route.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              to="/"
+              className="neo-border neo-shadow-sm inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-display uppercase tracking-wide text-primary-foreground hover:translate-y-[1px] transition"
+            >
+              Back to base
+            </Link>
+            <Link
+              to="/explore"
+              className="neo-border neo-shadow-sm inline-flex items-center justify-center rounded-md bg-card px-5 py-2.5 text-sm font-display uppercase tracking-wide"
+            >
+              Explore events
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -132,6 +154,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <ScrollToTop />
         <div className="relative min-h-screen flex flex-col bg-noise">
           <SummerMarquee />
           <SeasonalEffects />

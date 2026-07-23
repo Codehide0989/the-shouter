@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc><priority>1.0</priority></url>
+  <url><loc>/explore</loc><priority>0.9</priority></url>
+  <url><loc>/categories</loc><priority>0.8</priority></url>
+  <url><loc>/tournaments</loc><priority>0.8</priority></url>
+  <url><loc>/teams</loc><priority>0.7</priority></url>
+  <url><loc>/leaderboard</loc><priority>0.7</priority></url>
+  <url><loc>/hall-of-fame</loc><priority>0.6</priority></url>
+  <url><loc>/gallery</loc><priority>0.6</priority></url>
+  <url><loc>/blog</loc><priority>0.6</priority></url>
+  <url><loc>/faq</loc><priority>0.6</priority></url>
+  <url><loc>/pricing</loc><priority>0.6</priority></url>
+  <url><loc>/premium</loc><priority>0.6</priority></url>
+  <url><loc>/season-pass</loc><priority>0.5</priority></url>
+  <url><loc>/roadmap</loc><priority>0.5</priority></url>
+  <url><loc>/changelog</loc><priority>0.5</priority></url>
+  <url><loc>/status</loc><priority>0.4</priority></url>
+  <url><loc>/docs</loc><priority>0.6</priority></url>
+  <url><loc>/api-docs</loc><priority>0.5</priority></url>
+  <url><loc>/developers</loc><priority>0.5</priority></url>
+  <url><loc>/partners</loc><priority>0.4</priority></url>
+  <url><loc>/sponsors</loc><priority>0.4</priority></url>
+  <url><loc>/support</loc><priority>0.5</priority></url>
+  <url><loc>/contact</loc><priority>0.5</priority></url>
+  <url><loc>/help</loc><priority>0.5</priority></url>
+  <url><loc>/rules</loc><priority>0.5</priority></url>
+  <url><loc>/terms</loc><priority>0.3</priority></url>
+  <url><loc>/privacy</loc><priority>0.3</priority></url>
+</urlset>
