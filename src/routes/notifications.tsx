@@ -15,6 +15,7 @@ import noticeTeam from "@/assets/notice-team.jpg";
 import noticeMatch from "@/assets/notice-match.jpg";
 import noticeReaction from "@/assets/notice-reaction.jpg";
 import noticeDrop from "@/assets/notice-drop.jpg";
+import noticeHero from "@/assets/notice-hero.jpg";
 
 
 export const Route = createFileRoute("/notifications")({
@@ -49,26 +50,42 @@ function Notifications() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      {/* Header */}
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <NeoBadge variant="accent">
-            <Bell className="h-3 w-3" /> Alerts
-          </NeoBadge>
-          <h1 className="text-3xl md:text-4xl mt-2 leading-none">Notifications</h1>
-          <p className="mt-1.5 text-xs text-muted-foreground">
-            <span className="font-black text-foreground">{unreadCount} unread</span> · Bot synced 12s ago
-          </p>
+      {/* Hero banner */}
+      <section className="relative neo-border neo-shadow bg-card overflow-hidden rounded-lg mb-5">
+        <div className="grid grid-cols-[1.4fr_1fr] items-stretch">
+          <div className="p-4 md:p-6 flex flex-col justify-center">
+            <NeoBadge variant="accent">
+              <Bell className="h-3 w-3" /> Alerts
+            </NeoBadge>
+            <h1 className="font-display text-3xl md:text-4xl mt-2 leading-none tracking-tight">
+              INBOX<br />
+              <span className="text-primary">RING RING</span>
+            </h1>
+            <p className="mt-2 text-xs text-muted-foreground">
+              <span className="font-black text-foreground">{unreadCount} unread</span> · Bot synced 12s ago
+            </p>
+            <div className="mt-3 flex gap-2">
+              <NeoButton size="sm" variant="ghost">
+                <Filter className="h-3 w-3" />
+              </NeoButton>
+              <NeoButton size="sm" variant="secondary">
+                <Check className="h-3 w-3" /> Read all
+              </NeoButton>
+            </div>
+          </div>
+          <div className="relative border-l-4 border-border bg-secondary/30 overflow-hidden">
+            <img
+              src={noticeHero}
+              alt="Notification bell"
+              width={1024}
+              height={1024}
+              className="absolute inset-0 h-full w-full object-contain p-2"
+            />
+            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive animate-pulse" />
+          </div>
         </div>
-        <div className="flex gap-2">
-          <NeoButton size="sm" variant="ghost">
-            <Filter className="h-3 w-3" />
-          </NeoButton>
-          <NeoButton size="sm" variant="secondary">
-            <Check className="h-3 w-3" /> Read all
-          </NeoButton>
-        </div>
-      </div>
+      </section>
+
 
       {/* Filter chips */}
       <div className="mt-5 flex flex-wrap gap-1.5">
