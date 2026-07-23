@@ -78,6 +78,69 @@ import { Route as EventsIdLeaderboardRouteImport } from './routes/events.$id.lea
 import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery'
 import { Route as EventsIdDashboardRouteImport } from './routes/events.$id.dashboard'
 import { Route as EventsIdBracketRouteImport } from './routes/events.$id.bracket'
+import { Route as AdminToolsSeasonRouteImport } from './routes/admin.tools.season'
+import { Route as AdminToolsSearchRouteImport } from './routes/admin.tools.search'
+import { Route as AdminToolsScheduleRouteImport } from './routes/admin.tools.schedule'
+import { Route as AdminToolsPingRouteImport } from './routes/admin.tools.ping'
+import { Route as AdminToolsMaintenanceRouteImport } from './routes/admin.tools.maintenance'
+import { Route as AdminToolsImportRouteImport } from './routes/admin.tools.import'
+import { Route as AdminToolsFlagsRouteImport } from './routes/admin.tools.flags'
+import { Route as AdminToolsExportRouteImport } from './routes/admin.tools.export'
+import { Route as AdminToolsBroadcastRouteImport } from './routes/admin.tools.broadcast'
+import { Route as AdminToolsAutomationRouteImport } from './routes/admin.tools.automation'
+import { Route as AdminToolsAnnouncementsRouteImport } from './routes/admin.tools.announcements'
+import { Route as AdminToolsActivityRouteImport } from './routes/admin.tools.activity'
+import { Route as AdminTemplatesSnippetsRouteImport } from './routes/admin.templates.snippets'
+import { Route as AdminTemplatesNotificationsRouteImport } from './routes/admin.templates.notifications'
+import { Route as AdminTemplatesEmailRouteImport } from './routes/admin.templates.email'
+import { Route as AdminTemplatesDiscordRouteImport } from './routes/admin.templates.discord'
+import { Route as AdminTemplatesCanvaRouteImport } from './routes/admin.templates.canva'
+import { Route as AdminRealtimeVotesRouteImport } from './routes/admin.realtime.votes'
+import { Route as AdminRealtimeVisitorsRouteImport } from './routes/admin.realtime.visitors'
+import { Route as AdminRealtimeSyncRouteImport } from './routes/admin.realtime.sync'
+import { Route as AdminRealtimeRegistrationsRouteImport } from './routes/admin.realtime.registrations'
+import { Route as AdminRealtimeReactionsRouteImport } from './routes/admin.realtime.reactions'
+import { Route as AdminRealtimeBotRouteImport } from './routes/admin.realtime.bot'
+import { Route as AdminOpsWebhooksRouteImport } from './routes/admin.ops.webhooks'
+import { Route as AdminOpsQueuesRouteImport } from './routes/admin.ops.queues'
+import { Route as AdminOpsHealthRouteImport } from './routes/admin.ops.health'
+import { Route as AdminOpsErrorsRouteImport } from './routes/admin.ops.errors'
+import { Route as AdminOpsBotLogsRouteImport } from './routes/admin.ops.bot-logs'
+import { Route as AdminOpsAuditRouteImport } from './routes/admin.ops.audit'
+import { Route as AdminOpsApiRouteImport } from './routes/admin.ops.api'
+import { Route as AdminManageUsersRouteImport } from './routes/admin.manage.users'
+import { Route as AdminManageUploadsRouteImport } from './routes/admin.manage.uploads'
+import { Route as AdminManageTournamentsRouteImport } from './routes/admin.manage.tournaments'
+import { Route as AdminManageTeamsRouteImport } from './routes/admin.manage.teams'
+import { Route as AdminManageStaffRouteImport } from './routes/admin.manage.staff'
+import { Route as AdminManageRolesRouteImport } from './routes/admin.manage.roles'
+import { Route as AdminManageReportsRouteImport } from './routes/admin.manage.reports'
+import { Route as AdminManagePermissionsRouteImport } from './routes/admin.manage.permissions'
+import { Route as AdminManageModerationRouteImport } from './routes/admin.manage.moderation'
+import { Route as AdminManageBattlesRouteImport } from './routes/admin.manage.battles'
+import { Route as AdminManageArtworkRouteImport } from './routes/admin.manage.artwork'
+import { Route as AdminManageAppealsRouteImport } from './routes/admin.manage.appeals'
+import { Route as AdminInfraStorageRouteImport } from './routes/admin.infra.storage'
+import { Route as AdminInfraRedisRouteImport } from './routes/admin.infra.redis'
+import { Route as AdminInfraImagekitRouteImport } from './routes/admin.infra.imagekit'
+import { Route as AdminInfraGroqRouteImport } from './routes/admin.infra.groq'
+import { Route as AdminInfraGeminiRouteImport } from './routes/admin.infra.gemini'
+import { Route as AdminInfraDatabaseRouteImport } from './routes/admin.infra.database'
+import { Route as AdminInfraCloudflareRouteImport } from './routes/admin.infra.cloudflare'
+import { Route as AdminInfraCdnRouteImport } from './routes/admin.infra.cdn'
+import { Route as AdminInfraBackupsRouteImport } from './routes/admin.infra.backups'
+import { Route as AdminInfraAiRouteImport } from './routes/admin.infra.ai'
+import { Route as AdminCmsThemesRouteImport } from './routes/admin.cms.themes'
+import { Route as AdminCmsNavRouteImport } from './routes/admin.cms.nav'
+import { Route as AdminCmsHomepageRouteImport } from './routes/admin.cms.homepage'
+import { Route as AdminCmsHeroRouteImport } from './routes/admin.cms.hero'
+import { Route as AdminCmsFooterRouteImport } from './routes/admin.cms.footer'
+import { Route as AdminCmsBannersRouteImport } from './routes/admin.cms.banners'
+import { Route as AdminAnalyticsUsersRouteImport } from './routes/admin.analytics.users'
+import { Route as AdminAnalyticsTrafficRouteImport } from './routes/admin.analytics.traffic'
+import { Route as AdminAnalyticsGrowthRouteImport } from './routes/admin.analytics.growth'
+import { Route as AdminAnalyticsEventsRouteImport } from './routes/admin.analytics.events'
+import { Route as AdminAnalyticsDiscordRouteImport } from './routes/admin.analytics.discord'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -427,6 +490,323 @@ const EventsIdBracketRoute = EventsIdBracketRouteImport.update({
   path: '/bracket',
   getParentRoute: () => EventsIdRoute,
 } as any)
+const AdminToolsSeasonRoute = AdminToolsSeasonRouteImport.update({
+  id: '/tools/season',
+  path: '/tools/season',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsSearchRoute = AdminToolsSearchRouteImport.update({
+  id: '/tools/search',
+  path: '/tools/search',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsScheduleRoute = AdminToolsScheduleRouteImport.update({
+  id: '/tools/schedule',
+  path: '/tools/schedule',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsPingRoute = AdminToolsPingRouteImport.update({
+  id: '/tools/ping',
+  path: '/tools/ping',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsMaintenanceRoute = AdminToolsMaintenanceRouteImport.update({
+  id: '/tools/maintenance',
+  path: '/tools/maintenance',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsImportRoute = AdminToolsImportRouteImport.update({
+  id: '/tools/import',
+  path: '/tools/import',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsFlagsRoute = AdminToolsFlagsRouteImport.update({
+  id: '/tools/flags',
+  path: '/tools/flags',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsExportRoute = AdminToolsExportRouteImport.update({
+  id: '/tools/export',
+  path: '/tools/export',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsBroadcastRoute = AdminToolsBroadcastRouteImport.update({
+  id: '/tools/broadcast',
+  path: '/tools/broadcast',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsAutomationRoute = AdminToolsAutomationRouteImport.update({
+  id: '/tools/automation',
+  path: '/tools/automation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsAnnouncementsRoute = AdminToolsAnnouncementsRouteImport.update({
+  id: '/tools/announcements',
+  path: '/tools/announcements',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminToolsActivityRoute = AdminToolsActivityRouteImport.update({
+  id: '/tools/activity',
+  path: '/tools/activity',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplatesSnippetsRoute = AdminTemplatesSnippetsRouteImport.update({
+  id: '/templates/snippets',
+  path: '/templates/snippets',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplatesNotificationsRoute =
+  AdminTemplatesNotificationsRouteImport.update({
+    id: '/templates/notifications',
+    path: '/templates/notifications',
+    getParentRoute: () => AdminRoute,
+  } as any)
+const AdminTemplatesEmailRoute = AdminTemplatesEmailRouteImport.update({
+  id: '/templates/email',
+  path: '/templates/email',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplatesDiscordRoute = AdminTemplatesDiscordRouteImport.update({
+  id: '/templates/discord',
+  path: '/templates/discord',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplatesCanvaRoute = AdminTemplatesCanvaRouteImport.update({
+  id: '/templates/canva',
+  path: '/templates/canva',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRealtimeVotesRoute = AdminRealtimeVotesRouteImport.update({
+  id: '/realtime/votes',
+  path: '/realtime/votes',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRealtimeVisitorsRoute = AdminRealtimeVisitorsRouteImport.update({
+  id: '/realtime/visitors',
+  path: '/realtime/visitors',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRealtimeSyncRoute = AdminRealtimeSyncRouteImport.update({
+  id: '/realtime/sync',
+  path: '/realtime/sync',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRealtimeRegistrationsRoute =
+  AdminRealtimeRegistrationsRouteImport.update({
+    id: '/realtime/registrations',
+    path: '/realtime/registrations',
+    getParentRoute: () => AdminRoute,
+  } as any)
+const AdminRealtimeReactionsRoute = AdminRealtimeReactionsRouteImport.update({
+  id: '/realtime/reactions',
+  path: '/realtime/reactions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRealtimeBotRoute = AdminRealtimeBotRouteImport.update({
+  id: '/realtime/bot',
+  path: '/realtime/bot',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsWebhooksRoute = AdminOpsWebhooksRouteImport.update({
+  id: '/ops/webhooks',
+  path: '/ops/webhooks',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsQueuesRoute = AdminOpsQueuesRouteImport.update({
+  id: '/ops/queues',
+  path: '/ops/queues',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsHealthRoute = AdminOpsHealthRouteImport.update({
+  id: '/ops/health',
+  path: '/ops/health',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsErrorsRoute = AdminOpsErrorsRouteImport.update({
+  id: '/ops/errors',
+  path: '/ops/errors',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsBotLogsRoute = AdminOpsBotLogsRouteImport.update({
+  id: '/ops/bot-logs',
+  path: '/ops/bot-logs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsAuditRoute = AdminOpsAuditRouteImport.update({
+  id: '/ops/audit',
+  path: '/ops/audit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpsApiRoute = AdminOpsApiRouteImport.update({
+  id: '/ops/api',
+  path: '/ops/api',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageUsersRoute = AdminManageUsersRouteImport.update({
+  id: '/manage/users',
+  path: '/manage/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageUploadsRoute = AdminManageUploadsRouteImport.update({
+  id: '/manage/uploads',
+  path: '/manage/uploads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageTournamentsRoute = AdminManageTournamentsRouteImport.update({
+  id: '/manage/tournaments',
+  path: '/manage/tournaments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageTeamsRoute = AdminManageTeamsRouteImport.update({
+  id: '/manage/teams',
+  path: '/manage/teams',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageStaffRoute = AdminManageStaffRouteImport.update({
+  id: '/manage/staff',
+  path: '/manage/staff',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageRolesRoute = AdminManageRolesRouteImport.update({
+  id: '/manage/roles',
+  path: '/manage/roles',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageReportsRoute = AdminManageReportsRouteImport.update({
+  id: '/manage/reports',
+  path: '/manage/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManagePermissionsRoute = AdminManagePermissionsRouteImport.update({
+  id: '/manage/permissions',
+  path: '/manage/permissions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageModerationRoute = AdminManageModerationRouteImport.update({
+  id: '/manage/moderation',
+  path: '/manage/moderation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageBattlesRoute = AdminManageBattlesRouteImport.update({
+  id: '/manage/battles',
+  path: '/manage/battles',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageArtworkRoute = AdminManageArtworkRouteImport.update({
+  id: '/manage/artwork',
+  path: '/manage/artwork',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminManageAppealsRoute = AdminManageAppealsRouteImport.update({
+  id: '/manage/appeals',
+  path: '/manage/appeals',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraStorageRoute = AdminInfraStorageRouteImport.update({
+  id: '/infra/storage',
+  path: '/infra/storage',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraRedisRoute = AdminInfraRedisRouteImport.update({
+  id: '/infra/redis',
+  path: '/infra/redis',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraImagekitRoute = AdminInfraImagekitRouteImport.update({
+  id: '/infra/imagekit',
+  path: '/infra/imagekit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraGroqRoute = AdminInfraGroqRouteImport.update({
+  id: '/infra/groq',
+  path: '/infra/groq',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraGeminiRoute = AdminInfraGeminiRouteImport.update({
+  id: '/infra/gemini',
+  path: '/infra/gemini',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraDatabaseRoute = AdminInfraDatabaseRouteImport.update({
+  id: '/infra/database',
+  path: '/infra/database',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraCloudflareRoute = AdminInfraCloudflareRouteImport.update({
+  id: '/infra/cloudflare',
+  path: '/infra/cloudflare',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraCdnRoute = AdminInfraCdnRouteImport.update({
+  id: '/infra/cdn',
+  path: '/infra/cdn',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraBackupsRoute = AdminInfraBackupsRouteImport.update({
+  id: '/infra/backups',
+  path: '/infra/backups',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInfraAiRoute = AdminInfraAiRouteImport.update({
+  id: '/infra/ai',
+  path: '/infra/ai',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsThemesRoute = AdminCmsThemesRouteImport.update({
+  id: '/cms/themes',
+  path: '/cms/themes',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsNavRoute = AdminCmsNavRouteImport.update({
+  id: '/cms/nav',
+  path: '/cms/nav',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsHomepageRoute = AdminCmsHomepageRouteImport.update({
+  id: '/cms/homepage',
+  path: '/cms/homepage',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsHeroRoute = AdminCmsHeroRouteImport.update({
+  id: '/cms/hero',
+  path: '/cms/hero',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsFooterRoute = AdminCmsFooterRouteImport.update({
+  id: '/cms/footer',
+  path: '/cms/footer',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsBannersRoute = AdminCmsBannersRouteImport.update({
+  id: '/cms/banners',
+  path: '/cms/banners',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsUsersRoute = AdminAnalyticsUsersRouteImport.update({
+  id: '/analytics/users',
+  path: '/analytics/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsTrafficRoute = AdminAnalyticsTrafficRouteImport.update({
+  id: '/analytics/traffic',
+  path: '/analytics/traffic',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsGrowthRoute = AdminAnalyticsGrowthRouteImport.update({
+  id: '/analytics/growth',
+  path: '/analytics/growth',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsEventsRoute = AdminAnalyticsEventsRouteImport.update({
+  id: '/analytics/events',
+  path: '/analytics/events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsDiscordRoute = AdminAnalyticsDiscordRouteImport.update({
+  id: '/analytics/discord',
+  path: '/analytics/discord',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -493,6 +873,69 @@ export interface FileRoutesByFullPath {
   '/register/$id': typeof RegisterIdRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
+  '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
+  '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
+  '/admin/analytics/traffic': typeof AdminAnalyticsTrafficRoute
+  '/admin/analytics/users': typeof AdminAnalyticsUsersRoute
+  '/admin/cms/banners': typeof AdminCmsBannersRoute
+  '/admin/cms/footer': typeof AdminCmsFooterRoute
+  '/admin/cms/hero': typeof AdminCmsHeroRoute
+  '/admin/cms/homepage': typeof AdminCmsHomepageRoute
+  '/admin/cms/nav': typeof AdminCmsNavRoute
+  '/admin/cms/themes': typeof AdminCmsThemesRoute
+  '/admin/infra/ai': typeof AdminInfraAiRoute
+  '/admin/infra/backups': typeof AdminInfraBackupsRoute
+  '/admin/infra/cdn': typeof AdminInfraCdnRoute
+  '/admin/infra/cloudflare': typeof AdminInfraCloudflareRoute
+  '/admin/infra/database': typeof AdminInfraDatabaseRoute
+  '/admin/infra/gemini': typeof AdminInfraGeminiRoute
+  '/admin/infra/groq': typeof AdminInfraGroqRoute
+  '/admin/infra/imagekit': typeof AdminInfraImagekitRoute
+  '/admin/infra/redis': typeof AdminInfraRedisRoute
+  '/admin/infra/storage': typeof AdminInfraStorageRoute
+  '/admin/manage/appeals': typeof AdminManageAppealsRoute
+  '/admin/manage/artwork': typeof AdminManageArtworkRoute
+  '/admin/manage/battles': typeof AdminManageBattlesRoute
+  '/admin/manage/moderation': typeof AdminManageModerationRoute
+  '/admin/manage/permissions': typeof AdminManagePermissionsRoute
+  '/admin/manage/reports': typeof AdminManageReportsRoute
+  '/admin/manage/roles': typeof AdminManageRolesRoute
+  '/admin/manage/staff': typeof AdminManageStaffRoute
+  '/admin/manage/teams': typeof AdminManageTeamsRoute
+  '/admin/manage/tournaments': typeof AdminManageTournamentsRoute
+  '/admin/manage/uploads': typeof AdminManageUploadsRoute
+  '/admin/manage/users': typeof AdminManageUsersRoute
+  '/admin/ops/api': typeof AdminOpsApiRoute
+  '/admin/ops/audit': typeof AdminOpsAuditRoute
+  '/admin/ops/bot-logs': typeof AdminOpsBotLogsRoute
+  '/admin/ops/errors': typeof AdminOpsErrorsRoute
+  '/admin/ops/health': typeof AdminOpsHealthRoute
+  '/admin/ops/queues': typeof AdminOpsQueuesRoute
+  '/admin/ops/webhooks': typeof AdminOpsWebhooksRoute
+  '/admin/realtime/bot': typeof AdminRealtimeBotRoute
+  '/admin/realtime/reactions': typeof AdminRealtimeReactionsRoute
+  '/admin/realtime/registrations': typeof AdminRealtimeRegistrationsRoute
+  '/admin/realtime/sync': typeof AdminRealtimeSyncRoute
+  '/admin/realtime/visitors': typeof AdminRealtimeVisitorsRoute
+  '/admin/realtime/votes': typeof AdminRealtimeVotesRoute
+  '/admin/templates/canva': typeof AdminTemplatesCanvaRoute
+  '/admin/templates/discord': typeof AdminTemplatesDiscordRoute
+  '/admin/templates/email': typeof AdminTemplatesEmailRoute
+  '/admin/templates/notifications': typeof AdminTemplatesNotificationsRoute
+  '/admin/templates/snippets': typeof AdminTemplatesSnippetsRoute
+  '/admin/tools/activity': typeof AdminToolsActivityRoute
+  '/admin/tools/announcements': typeof AdminToolsAnnouncementsRoute
+  '/admin/tools/automation': typeof AdminToolsAutomationRoute
+  '/admin/tools/broadcast': typeof AdminToolsBroadcastRoute
+  '/admin/tools/export': typeof AdminToolsExportRoute
+  '/admin/tools/flags': typeof AdminToolsFlagsRoute
+  '/admin/tools/import': typeof AdminToolsImportRoute
+  '/admin/tools/maintenance': typeof AdminToolsMaintenanceRoute
+  '/admin/tools/ping': typeof AdminToolsPingRoute
+  '/admin/tools/schedule': typeof AdminToolsScheduleRoute
+  '/admin/tools/search': typeof AdminToolsSearchRoute
+  '/admin/tools/season': typeof AdminToolsSeasonRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -562,6 +1005,69 @@ export interface FileRoutesByTo {
   '/register/$id': typeof RegisterIdRoute
   '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
+  '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
+  '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
+  '/admin/analytics/traffic': typeof AdminAnalyticsTrafficRoute
+  '/admin/analytics/users': typeof AdminAnalyticsUsersRoute
+  '/admin/cms/banners': typeof AdminCmsBannersRoute
+  '/admin/cms/footer': typeof AdminCmsFooterRoute
+  '/admin/cms/hero': typeof AdminCmsHeroRoute
+  '/admin/cms/homepage': typeof AdminCmsHomepageRoute
+  '/admin/cms/nav': typeof AdminCmsNavRoute
+  '/admin/cms/themes': typeof AdminCmsThemesRoute
+  '/admin/infra/ai': typeof AdminInfraAiRoute
+  '/admin/infra/backups': typeof AdminInfraBackupsRoute
+  '/admin/infra/cdn': typeof AdminInfraCdnRoute
+  '/admin/infra/cloudflare': typeof AdminInfraCloudflareRoute
+  '/admin/infra/database': typeof AdminInfraDatabaseRoute
+  '/admin/infra/gemini': typeof AdminInfraGeminiRoute
+  '/admin/infra/groq': typeof AdminInfraGroqRoute
+  '/admin/infra/imagekit': typeof AdminInfraImagekitRoute
+  '/admin/infra/redis': typeof AdminInfraRedisRoute
+  '/admin/infra/storage': typeof AdminInfraStorageRoute
+  '/admin/manage/appeals': typeof AdminManageAppealsRoute
+  '/admin/manage/artwork': typeof AdminManageArtworkRoute
+  '/admin/manage/battles': typeof AdminManageBattlesRoute
+  '/admin/manage/moderation': typeof AdminManageModerationRoute
+  '/admin/manage/permissions': typeof AdminManagePermissionsRoute
+  '/admin/manage/reports': typeof AdminManageReportsRoute
+  '/admin/manage/roles': typeof AdminManageRolesRoute
+  '/admin/manage/staff': typeof AdminManageStaffRoute
+  '/admin/manage/teams': typeof AdminManageTeamsRoute
+  '/admin/manage/tournaments': typeof AdminManageTournamentsRoute
+  '/admin/manage/uploads': typeof AdminManageUploadsRoute
+  '/admin/manage/users': typeof AdminManageUsersRoute
+  '/admin/ops/api': typeof AdminOpsApiRoute
+  '/admin/ops/audit': typeof AdminOpsAuditRoute
+  '/admin/ops/bot-logs': typeof AdminOpsBotLogsRoute
+  '/admin/ops/errors': typeof AdminOpsErrorsRoute
+  '/admin/ops/health': typeof AdminOpsHealthRoute
+  '/admin/ops/queues': typeof AdminOpsQueuesRoute
+  '/admin/ops/webhooks': typeof AdminOpsWebhooksRoute
+  '/admin/realtime/bot': typeof AdminRealtimeBotRoute
+  '/admin/realtime/reactions': typeof AdminRealtimeReactionsRoute
+  '/admin/realtime/registrations': typeof AdminRealtimeRegistrationsRoute
+  '/admin/realtime/sync': typeof AdminRealtimeSyncRoute
+  '/admin/realtime/visitors': typeof AdminRealtimeVisitorsRoute
+  '/admin/realtime/votes': typeof AdminRealtimeVotesRoute
+  '/admin/templates/canva': typeof AdminTemplatesCanvaRoute
+  '/admin/templates/discord': typeof AdminTemplatesDiscordRoute
+  '/admin/templates/email': typeof AdminTemplatesEmailRoute
+  '/admin/templates/notifications': typeof AdminTemplatesNotificationsRoute
+  '/admin/templates/snippets': typeof AdminTemplatesSnippetsRoute
+  '/admin/tools/activity': typeof AdminToolsActivityRoute
+  '/admin/tools/announcements': typeof AdminToolsAnnouncementsRoute
+  '/admin/tools/automation': typeof AdminToolsAutomationRoute
+  '/admin/tools/broadcast': typeof AdminToolsBroadcastRoute
+  '/admin/tools/export': typeof AdminToolsExportRoute
+  '/admin/tools/flags': typeof AdminToolsFlagsRoute
+  '/admin/tools/import': typeof AdminToolsImportRoute
+  '/admin/tools/maintenance': typeof AdminToolsMaintenanceRoute
+  '/admin/tools/ping': typeof AdminToolsPingRoute
+  '/admin/tools/schedule': typeof AdminToolsScheduleRoute
+  '/admin/tools/search': typeof AdminToolsSearchRoute
+  '/admin/tools/season': typeof AdminToolsSeasonRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -634,6 +1140,69 @@ export interface FileRoutesById {
   '/register/$id': typeof RegisterIdRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
+  '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
+  '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
+  '/admin/analytics/traffic': typeof AdminAnalyticsTrafficRoute
+  '/admin/analytics/users': typeof AdminAnalyticsUsersRoute
+  '/admin/cms/banners': typeof AdminCmsBannersRoute
+  '/admin/cms/footer': typeof AdminCmsFooterRoute
+  '/admin/cms/hero': typeof AdminCmsHeroRoute
+  '/admin/cms/homepage': typeof AdminCmsHomepageRoute
+  '/admin/cms/nav': typeof AdminCmsNavRoute
+  '/admin/cms/themes': typeof AdminCmsThemesRoute
+  '/admin/infra/ai': typeof AdminInfraAiRoute
+  '/admin/infra/backups': typeof AdminInfraBackupsRoute
+  '/admin/infra/cdn': typeof AdminInfraCdnRoute
+  '/admin/infra/cloudflare': typeof AdminInfraCloudflareRoute
+  '/admin/infra/database': typeof AdminInfraDatabaseRoute
+  '/admin/infra/gemini': typeof AdminInfraGeminiRoute
+  '/admin/infra/groq': typeof AdminInfraGroqRoute
+  '/admin/infra/imagekit': typeof AdminInfraImagekitRoute
+  '/admin/infra/redis': typeof AdminInfraRedisRoute
+  '/admin/infra/storage': typeof AdminInfraStorageRoute
+  '/admin/manage/appeals': typeof AdminManageAppealsRoute
+  '/admin/manage/artwork': typeof AdminManageArtworkRoute
+  '/admin/manage/battles': typeof AdminManageBattlesRoute
+  '/admin/manage/moderation': typeof AdminManageModerationRoute
+  '/admin/manage/permissions': typeof AdminManagePermissionsRoute
+  '/admin/manage/reports': typeof AdminManageReportsRoute
+  '/admin/manage/roles': typeof AdminManageRolesRoute
+  '/admin/manage/staff': typeof AdminManageStaffRoute
+  '/admin/manage/teams': typeof AdminManageTeamsRoute
+  '/admin/manage/tournaments': typeof AdminManageTournamentsRoute
+  '/admin/manage/uploads': typeof AdminManageUploadsRoute
+  '/admin/manage/users': typeof AdminManageUsersRoute
+  '/admin/ops/api': typeof AdminOpsApiRoute
+  '/admin/ops/audit': typeof AdminOpsAuditRoute
+  '/admin/ops/bot-logs': typeof AdminOpsBotLogsRoute
+  '/admin/ops/errors': typeof AdminOpsErrorsRoute
+  '/admin/ops/health': typeof AdminOpsHealthRoute
+  '/admin/ops/queues': typeof AdminOpsQueuesRoute
+  '/admin/ops/webhooks': typeof AdminOpsWebhooksRoute
+  '/admin/realtime/bot': typeof AdminRealtimeBotRoute
+  '/admin/realtime/reactions': typeof AdminRealtimeReactionsRoute
+  '/admin/realtime/registrations': typeof AdminRealtimeRegistrationsRoute
+  '/admin/realtime/sync': typeof AdminRealtimeSyncRoute
+  '/admin/realtime/visitors': typeof AdminRealtimeVisitorsRoute
+  '/admin/realtime/votes': typeof AdminRealtimeVotesRoute
+  '/admin/templates/canva': typeof AdminTemplatesCanvaRoute
+  '/admin/templates/discord': typeof AdminTemplatesDiscordRoute
+  '/admin/templates/email': typeof AdminTemplatesEmailRoute
+  '/admin/templates/notifications': typeof AdminTemplatesNotificationsRoute
+  '/admin/templates/snippets': typeof AdminTemplatesSnippetsRoute
+  '/admin/tools/activity': typeof AdminToolsActivityRoute
+  '/admin/tools/announcements': typeof AdminToolsAnnouncementsRoute
+  '/admin/tools/automation': typeof AdminToolsAutomationRoute
+  '/admin/tools/broadcast': typeof AdminToolsBroadcastRoute
+  '/admin/tools/export': typeof AdminToolsExportRoute
+  '/admin/tools/flags': typeof AdminToolsFlagsRoute
+  '/admin/tools/import': typeof AdminToolsImportRoute
+  '/admin/tools/maintenance': typeof AdminToolsMaintenanceRoute
+  '/admin/tools/ping': typeof AdminToolsPingRoute
+  '/admin/tools/schedule': typeof AdminToolsScheduleRoute
+  '/admin/tools/search': typeof AdminToolsSearchRoute
+  '/admin/tools/season': typeof AdminToolsSeasonRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
@@ -707,6 +1276,69 @@ export interface FileRouteTypes {
     | '/register/$id'
     | '/admin/'
     | '/dashboard/'
+    | '/admin/analytics/discord'
+    | '/admin/analytics/events'
+    | '/admin/analytics/growth'
+    | '/admin/analytics/traffic'
+    | '/admin/analytics/users'
+    | '/admin/cms/banners'
+    | '/admin/cms/footer'
+    | '/admin/cms/hero'
+    | '/admin/cms/homepage'
+    | '/admin/cms/nav'
+    | '/admin/cms/themes'
+    | '/admin/infra/ai'
+    | '/admin/infra/backups'
+    | '/admin/infra/cdn'
+    | '/admin/infra/cloudflare'
+    | '/admin/infra/database'
+    | '/admin/infra/gemini'
+    | '/admin/infra/groq'
+    | '/admin/infra/imagekit'
+    | '/admin/infra/redis'
+    | '/admin/infra/storage'
+    | '/admin/manage/appeals'
+    | '/admin/manage/artwork'
+    | '/admin/manage/battles'
+    | '/admin/manage/moderation'
+    | '/admin/manage/permissions'
+    | '/admin/manage/reports'
+    | '/admin/manage/roles'
+    | '/admin/manage/staff'
+    | '/admin/manage/teams'
+    | '/admin/manage/tournaments'
+    | '/admin/manage/uploads'
+    | '/admin/manage/users'
+    | '/admin/ops/api'
+    | '/admin/ops/audit'
+    | '/admin/ops/bot-logs'
+    | '/admin/ops/errors'
+    | '/admin/ops/health'
+    | '/admin/ops/queues'
+    | '/admin/ops/webhooks'
+    | '/admin/realtime/bot'
+    | '/admin/realtime/reactions'
+    | '/admin/realtime/registrations'
+    | '/admin/realtime/sync'
+    | '/admin/realtime/visitors'
+    | '/admin/realtime/votes'
+    | '/admin/templates/canva'
+    | '/admin/templates/discord'
+    | '/admin/templates/email'
+    | '/admin/templates/notifications'
+    | '/admin/templates/snippets'
+    | '/admin/tools/activity'
+    | '/admin/tools/announcements'
+    | '/admin/tools/automation'
+    | '/admin/tools/broadcast'
+    | '/admin/tools/export'
+    | '/admin/tools/flags'
+    | '/admin/tools/import'
+    | '/admin/tools/maintenance'
+    | '/admin/tools/ping'
+    | '/admin/tools/schedule'
+    | '/admin/tools/search'
+    | '/admin/tools/season'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -776,6 +1408,69 @@ export interface FileRouteTypes {
     | '/register/$id'
     | '/admin'
     | '/dashboard'
+    | '/admin/analytics/discord'
+    | '/admin/analytics/events'
+    | '/admin/analytics/growth'
+    | '/admin/analytics/traffic'
+    | '/admin/analytics/users'
+    | '/admin/cms/banners'
+    | '/admin/cms/footer'
+    | '/admin/cms/hero'
+    | '/admin/cms/homepage'
+    | '/admin/cms/nav'
+    | '/admin/cms/themes'
+    | '/admin/infra/ai'
+    | '/admin/infra/backups'
+    | '/admin/infra/cdn'
+    | '/admin/infra/cloudflare'
+    | '/admin/infra/database'
+    | '/admin/infra/gemini'
+    | '/admin/infra/groq'
+    | '/admin/infra/imagekit'
+    | '/admin/infra/redis'
+    | '/admin/infra/storage'
+    | '/admin/manage/appeals'
+    | '/admin/manage/artwork'
+    | '/admin/manage/battles'
+    | '/admin/manage/moderation'
+    | '/admin/manage/permissions'
+    | '/admin/manage/reports'
+    | '/admin/manage/roles'
+    | '/admin/manage/staff'
+    | '/admin/manage/teams'
+    | '/admin/manage/tournaments'
+    | '/admin/manage/uploads'
+    | '/admin/manage/users'
+    | '/admin/ops/api'
+    | '/admin/ops/audit'
+    | '/admin/ops/bot-logs'
+    | '/admin/ops/errors'
+    | '/admin/ops/health'
+    | '/admin/ops/queues'
+    | '/admin/ops/webhooks'
+    | '/admin/realtime/bot'
+    | '/admin/realtime/reactions'
+    | '/admin/realtime/registrations'
+    | '/admin/realtime/sync'
+    | '/admin/realtime/visitors'
+    | '/admin/realtime/votes'
+    | '/admin/templates/canva'
+    | '/admin/templates/discord'
+    | '/admin/templates/email'
+    | '/admin/templates/notifications'
+    | '/admin/templates/snippets'
+    | '/admin/tools/activity'
+    | '/admin/tools/announcements'
+    | '/admin/tools/automation'
+    | '/admin/tools/broadcast'
+    | '/admin/tools/export'
+    | '/admin/tools/flags'
+    | '/admin/tools/import'
+    | '/admin/tools/maintenance'
+    | '/admin/tools/ping'
+    | '/admin/tools/schedule'
+    | '/admin/tools/search'
+    | '/admin/tools/season'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -847,6 +1542,69 @@ export interface FileRouteTypes {
     | '/register/$id'
     | '/admin/'
     | '/dashboard/'
+    | '/admin/analytics/discord'
+    | '/admin/analytics/events'
+    | '/admin/analytics/growth'
+    | '/admin/analytics/traffic'
+    | '/admin/analytics/users'
+    | '/admin/cms/banners'
+    | '/admin/cms/footer'
+    | '/admin/cms/hero'
+    | '/admin/cms/homepage'
+    | '/admin/cms/nav'
+    | '/admin/cms/themes'
+    | '/admin/infra/ai'
+    | '/admin/infra/backups'
+    | '/admin/infra/cdn'
+    | '/admin/infra/cloudflare'
+    | '/admin/infra/database'
+    | '/admin/infra/gemini'
+    | '/admin/infra/groq'
+    | '/admin/infra/imagekit'
+    | '/admin/infra/redis'
+    | '/admin/infra/storage'
+    | '/admin/manage/appeals'
+    | '/admin/manage/artwork'
+    | '/admin/manage/battles'
+    | '/admin/manage/moderation'
+    | '/admin/manage/permissions'
+    | '/admin/manage/reports'
+    | '/admin/manage/roles'
+    | '/admin/manage/staff'
+    | '/admin/manage/teams'
+    | '/admin/manage/tournaments'
+    | '/admin/manage/uploads'
+    | '/admin/manage/users'
+    | '/admin/ops/api'
+    | '/admin/ops/audit'
+    | '/admin/ops/bot-logs'
+    | '/admin/ops/errors'
+    | '/admin/ops/health'
+    | '/admin/ops/queues'
+    | '/admin/ops/webhooks'
+    | '/admin/realtime/bot'
+    | '/admin/realtime/reactions'
+    | '/admin/realtime/registrations'
+    | '/admin/realtime/sync'
+    | '/admin/realtime/visitors'
+    | '/admin/realtime/votes'
+    | '/admin/templates/canva'
+    | '/admin/templates/discord'
+    | '/admin/templates/email'
+    | '/admin/templates/notifications'
+    | '/admin/templates/snippets'
+    | '/admin/tools/activity'
+    | '/admin/tools/announcements'
+    | '/admin/tools/automation'
+    | '/admin/tools/broadcast'
+    | '/admin/tools/export'
+    | '/admin/tools/flags'
+    | '/admin/tools/import'
+    | '/admin/tools/maintenance'
+    | '/admin/tools/ping'
+    | '/admin/tools/schedule'
+    | '/admin/tools/search'
+    | '/admin/tools/season'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
@@ -1356,15 +2114,582 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsIdBracketRouteImport
       parentRoute: typeof EventsIdRoute
     }
+    '/admin/tools/season': {
+      id: '/admin/tools/season'
+      path: '/tools/season'
+      fullPath: '/admin/tools/season'
+      preLoaderRoute: typeof AdminToolsSeasonRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/search': {
+      id: '/admin/tools/search'
+      path: '/tools/search'
+      fullPath: '/admin/tools/search'
+      preLoaderRoute: typeof AdminToolsSearchRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/schedule': {
+      id: '/admin/tools/schedule'
+      path: '/tools/schedule'
+      fullPath: '/admin/tools/schedule'
+      preLoaderRoute: typeof AdminToolsScheduleRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/ping': {
+      id: '/admin/tools/ping'
+      path: '/tools/ping'
+      fullPath: '/admin/tools/ping'
+      preLoaderRoute: typeof AdminToolsPingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/maintenance': {
+      id: '/admin/tools/maintenance'
+      path: '/tools/maintenance'
+      fullPath: '/admin/tools/maintenance'
+      preLoaderRoute: typeof AdminToolsMaintenanceRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/import': {
+      id: '/admin/tools/import'
+      path: '/tools/import'
+      fullPath: '/admin/tools/import'
+      preLoaderRoute: typeof AdminToolsImportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/flags': {
+      id: '/admin/tools/flags'
+      path: '/tools/flags'
+      fullPath: '/admin/tools/flags'
+      preLoaderRoute: typeof AdminToolsFlagsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/export': {
+      id: '/admin/tools/export'
+      path: '/tools/export'
+      fullPath: '/admin/tools/export'
+      preLoaderRoute: typeof AdminToolsExportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/broadcast': {
+      id: '/admin/tools/broadcast'
+      path: '/tools/broadcast'
+      fullPath: '/admin/tools/broadcast'
+      preLoaderRoute: typeof AdminToolsBroadcastRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/automation': {
+      id: '/admin/tools/automation'
+      path: '/tools/automation'
+      fullPath: '/admin/tools/automation'
+      preLoaderRoute: typeof AdminToolsAutomationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/announcements': {
+      id: '/admin/tools/announcements'
+      path: '/tools/announcements'
+      fullPath: '/admin/tools/announcements'
+      preLoaderRoute: typeof AdminToolsAnnouncementsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tools/activity': {
+      id: '/admin/tools/activity'
+      path: '/tools/activity'
+      fullPath: '/admin/tools/activity'
+      preLoaderRoute: typeof AdminToolsActivityRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/templates/snippets': {
+      id: '/admin/templates/snippets'
+      path: '/templates/snippets'
+      fullPath: '/admin/templates/snippets'
+      preLoaderRoute: typeof AdminTemplatesSnippetsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/templates/notifications': {
+      id: '/admin/templates/notifications'
+      path: '/templates/notifications'
+      fullPath: '/admin/templates/notifications'
+      preLoaderRoute: typeof AdminTemplatesNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/templates/email': {
+      id: '/admin/templates/email'
+      path: '/templates/email'
+      fullPath: '/admin/templates/email'
+      preLoaderRoute: typeof AdminTemplatesEmailRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/templates/discord': {
+      id: '/admin/templates/discord'
+      path: '/templates/discord'
+      fullPath: '/admin/templates/discord'
+      preLoaderRoute: typeof AdminTemplatesDiscordRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/templates/canva': {
+      id: '/admin/templates/canva'
+      path: '/templates/canva'
+      fullPath: '/admin/templates/canva'
+      preLoaderRoute: typeof AdminTemplatesCanvaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/votes': {
+      id: '/admin/realtime/votes'
+      path: '/realtime/votes'
+      fullPath: '/admin/realtime/votes'
+      preLoaderRoute: typeof AdminRealtimeVotesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/visitors': {
+      id: '/admin/realtime/visitors'
+      path: '/realtime/visitors'
+      fullPath: '/admin/realtime/visitors'
+      preLoaderRoute: typeof AdminRealtimeVisitorsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/sync': {
+      id: '/admin/realtime/sync'
+      path: '/realtime/sync'
+      fullPath: '/admin/realtime/sync'
+      preLoaderRoute: typeof AdminRealtimeSyncRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/registrations': {
+      id: '/admin/realtime/registrations'
+      path: '/realtime/registrations'
+      fullPath: '/admin/realtime/registrations'
+      preLoaderRoute: typeof AdminRealtimeRegistrationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/reactions': {
+      id: '/admin/realtime/reactions'
+      path: '/realtime/reactions'
+      fullPath: '/admin/realtime/reactions'
+      preLoaderRoute: typeof AdminRealtimeReactionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/realtime/bot': {
+      id: '/admin/realtime/bot'
+      path: '/realtime/bot'
+      fullPath: '/admin/realtime/bot'
+      preLoaderRoute: typeof AdminRealtimeBotRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/webhooks': {
+      id: '/admin/ops/webhooks'
+      path: '/ops/webhooks'
+      fullPath: '/admin/ops/webhooks'
+      preLoaderRoute: typeof AdminOpsWebhooksRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/queues': {
+      id: '/admin/ops/queues'
+      path: '/ops/queues'
+      fullPath: '/admin/ops/queues'
+      preLoaderRoute: typeof AdminOpsQueuesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/health': {
+      id: '/admin/ops/health'
+      path: '/ops/health'
+      fullPath: '/admin/ops/health'
+      preLoaderRoute: typeof AdminOpsHealthRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/errors': {
+      id: '/admin/ops/errors'
+      path: '/ops/errors'
+      fullPath: '/admin/ops/errors'
+      preLoaderRoute: typeof AdminOpsErrorsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/bot-logs': {
+      id: '/admin/ops/bot-logs'
+      path: '/ops/bot-logs'
+      fullPath: '/admin/ops/bot-logs'
+      preLoaderRoute: typeof AdminOpsBotLogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/audit': {
+      id: '/admin/ops/audit'
+      path: '/ops/audit'
+      fullPath: '/admin/ops/audit'
+      preLoaderRoute: typeof AdminOpsAuditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ops/api': {
+      id: '/admin/ops/api'
+      path: '/ops/api'
+      fullPath: '/admin/ops/api'
+      preLoaderRoute: typeof AdminOpsApiRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/users': {
+      id: '/admin/manage/users'
+      path: '/manage/users'
+      fullPath: '/admin/manage/users'
+      preLoaderRoute: typeof AdminManageUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/uploads': {
+      id: '/admin/manage/uploads'
+      path: '/manage/uploads'
+      fullPath: '/admin/manage/uploads'
+      preLoaderRoute: typeof AdminManageUploadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/tournaments': {
+      id: '/admin/manage/tournaments'
+      path: '/manage/tournaments'
+      fullPath: '/admin/manage/tournaments'
+      preLoaderRoute: typeof AdminManageTournamentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/teams': {
+      id: '/admin/manage/teams'
+      path: '/manage/teams'
+      fullPath: '/admin/manage/teams'
+      preLoaderRoute: typeof AdminManageTeamsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/staff': {
+      id: '/admin/manage/staff'
+      path: '/manage/staff'
+      fullPath: '/admin/manage/staff'
+      preLoaderRoute: typeof AdminManageStaffRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/roles': {
+      id: '/admin/manage/roles'
+      path: '/manage/roles'
+      fullPath: '/admin/manage/roles'
+      preLoaderRoute: typeof AdminManageRolesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/reports': {
+      id: '/admin/manage/reports'
+      path: '/manage/reports'
+      fullPath: '/admin/manage/reports'
+      preLoaderRoute: typeof AdminManageReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/permissions': {
+      id: '/admin/manage/permissions'
+      path: '/manage/permissions'
+      fullPath: '/admin/manage/permissions'
+      preLoaderRoute: typeof AdminManagePermissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/moderation': {
+      id: '/admin/manage/moderation'
+      path: '/manage/moderation'
+      fullPath: '/admin/manage/moderation'
+      preLoaderRoute: typeof AdminManageModerationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/battles': {
+      id: '/admin/manage/battles'
+      path: '/manage/battles'
+      fullPath: '/admin/manage/battles'
+      preLoaderRoute: typeof AdminManageBattlesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/artwork': {
+      id: '/admin/manage/artwork'
+      path: '/manage/artwork'
+      fullPath: '/admin/manage/artwork'
+      preLoaderRoute: typeof AdminManageArtworkRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/manage/appeals': {
+      id: '/admin/manage/appeals'
+      path: '/manage/appeals'
+      fullPath: '/admin/manage/appeals'
+      preLoaderRoute: typeof AdminManageAppealsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/storage': {
+      id: '/admin/infra/storage'
+      path: '/infra/storage'
+      fullPath: '/admin/infra/storage'
+      preLoaderRoute: typeof AdminInfraStorageRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/redis': {
+      id: '/admin/infra/redis'
+      path: '/infra/redis'
+      fullPath: '/admin/infra/redis'
+      preLoaderRoute: typeof AdminInfraRedisRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/imagekit': {
+      id: '/admin/infra/imagekit'
+      path: '/infra/imagekit'
+      fullPath: '/admin/infra/imagekit'
+      preLoaderRoute: typeof AdminInfraImagekitRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/groq': {
+      id: '/admin/infra/groq'
+      path: '/infra/groq'
+      fullPath: '/admin/infra/groq'
+      preLoaderRoute: typeof AdminInfraGroqRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/gemini': {
+      id: '/admin/infra/gemini'
+      path: '/infra/gemini'
+      fullPath: '/admin/infra/gemini'
+      preLoaderRoute: typeof AdminInfraGeminiRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/database': {
+      id: '/admin/infra/database'
+      path: '/infra/database'
+      fullPath: '/admin/infra/database'
+      preLoaderRoute: typeof AdminInfraDatabaseRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/cloudflare': {
+      id: '/admin/infra/cloudflare'
+      path: '/infra/cloudflare'
+      fullPath: '/admin/infra/cloudflare'
+      preLoaderRoute: typeof AdminInfraCloudflareRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/cdn': {
+      id: '/admin/infra/cdn'
+      path: '/infra/cdn'
+      fullPath: '/admin/infra/cdn'
+      preLoaderRoute: typeof AdminInfraCdnRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/backups': {
+      id: '/admin/infra/backups'
+      path: '/infra/backups'
+      fullPath: '/admin/infra/backups'
+      preLoaderRoute: typeof AdminInfraBackupsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/infra/ai': {
+      id: '/admin/infra/ai'
+      path: '/infra/ai'
+      fullPath: '/admin/infra/ai'
+      preLoaderRoute: typeof AdminInfraAiRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/themes': {
+      id: '/admin/cms/themes'
+      path: '/cms/themes'
+      fullPath: '/admin/cms/themes'
+      preLoaderRoute: typeof AdminCmsThemesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/nav': {
+      id: '/admin/cms/nav'
+      path: '/cms/nav'
+      fullPath: '/admin/cms/nav'
+      preLoaderRoute: typeof AdminCmsNavRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/homepage': {
+      id: '/admin/cms/homepage'
+      path: '/cms/homepage'
+      fullPath: '/admin/cms/homepage'
+      preLoaderRoute: typeof AdminCmsHomepageRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/hero': {
+      id: '/admin/cms/hero'
+      path: '/cms/hero'
+      fullPath: '/admin/cms/hero'
+      preLoaderRoute: typeof AdminCmsHeroRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/footer': {
+      id: '/admin/cms/footer'
+      path: '/cms/footer'
+      fullPath: '/admin/cms/footer'
+      preLoaderRoute: typeof AdminCmsFooterRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms/banners': {
+      id: '/admin/cms/banners'
+      path: '/cms/banners'
+      fullPath: '/admin/cms/banners'
+      preLoaderRoute: typeof AdminCmsBannersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics/users': {
+      id: '/admin/analytics/users'
+      path: '/analytics/users'
+      fullPath: '/admin/analytics/users'
+      preLoaderRoute: typeof AdminAnalyticsUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics/traffic': {
+      id: '/admin/analytics/traffic'
+      path: '/analytics/traffic'
+      fullPath: '/admin/analytics/traffic'
+      preLoaderRoute: typeof AdminAnalyticsTrafficRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics/growth': {
+      id: '/admin/analytics/growth'
+      path: '/analytics/growth'
+      fullPath: '/admin/analytics/growth'
+      preLoaderRoute: typeof AdminAnalyticsGrowthRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics/events': {
+      id: '/admin/analytics/events'
+      path: '/analytics/events'
+      fullPath: '/admin/analytics/events'
+      preLoaderRoute: typeof AdminAnalyticsEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics/discord': {
+      id: '/admin/analytics/discord'
+      path: '/analytics/discord'
+      fullPath: '/admin/analytics/discord'
+      preLoaderRoute: typeof AdminAnalyticsDiscordRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminAnalyticsDiscordRoute: typeof AdminAnalyticsDiscordRoute
+  AdminAnalyticsEventsRoute: typeof AdminAnalyticsEventsRoute
+  AdminAnalyticsGrowthRoute: typeof AdminAnalyticsGrowthRoute
+  AdminAnalyticsTrafficRoute: typeof AdminAnalyticsTrafficRoute
+  AdminAnalyticsUsersRoute: typeof AdminAnalyticsUsersRoute
+  AdminCmsBannersRoute: typeof AdminCmsBannersRoute
+  AdminCmsFooterRoute: typeof AdminCmsFooterRoute
+  AdminCmsHeroRoute: typeof AdminCmsHeroRoute
+  AdminCmsHomepageRoute: typeof AdminCmsHomepageRoute
+  AdminCmsNavRoute: typeof AdminCmsNavRoute
+  AdminCmsThemesRoute: typeof AdminCmsThemesRoute
+  AdminInfraAiRoute: typeof AdminInfraAiRoute
+  AdminInfraBackupsRoute: typeof AdminInfraBackupsRoute
+  AdminInfraCdnRoute: typeof AdminInfraCdnRoute
+  AdminInfraCloudflareRoute: typeof AdminInfraCloudflareRoute
+  AdminInfraDatabaseRoute: typeof AdminInfraDatabaseRoute
+  AdminInfraGeminiRoute: typeof AdminInfraGeminiRoute
+  AdminInfraGroqRoute: typeof AdminInfraGroqRoute
+  AdminInfraImagekitRoute: typeof AdminInfraImagekitRoute
+  AdminInfraRedisRoute: typeof AdminInfraRedisRoute
+  AdminInfraStorageRoute: typeof AdminInfraStorageRoute
+  AdminManageAppealsRoute: typeof AdminManageAppealsRoute
+  AdminManageArtworkRoute: typeof AdminManageArtworkRoute
+  AdminManageBattlesRoute: typeof AdminManageBattlesRoute
+  AdminManageModerationRoute: typeof AdminManageModerationRoute
+  AdminManagePermissionsRoute: typeof AdminManagePermissionsRoute
+  AdminManageReportsRoute: typeof AdminManageReportsRoute
+  AdminManageRolesRoute: typeof AdminManageRolesRoute
+  AdminManageStaffRoute: typeof AdminManageStaffRoute
+  AdminManageTeamsRoute: typeof AdminManageTeamsRoute
+  AdminManageTournamentsRoute: typeof AdminManageTournamentsRoute
+  AdminManageUploadsRoute: typeof AdminManageUploadsRoute
+  AdminManageUsersRoute: typeof AdminManageUsersRoute
+  AdminOpsApiRoute: typeof AdminOpsApiRoute
+  AdminOpsAuditRoute: typeof AdminOpsAuditRoute
+  AdminOpsBotLogsRoute: typeof AdminOpsBotLogsRoute
+  AdminOpsErrorsRoute: typeof AdminOpsErrorsRoute
+  AdminOpsHealthRoute: typeof AdminOpsHealthRoute
+  AdminOpsQueuesRoute: typeof AdminOpsQueuesRoute
+  AdminOpsWebhooksRoute: typeof AdminOpsWebhooksRoute
+  AdminRealtimeBotRoute: typeof AdminRealtimeBotRoute
+  AdminRealtimeReactionsRoute: typeof AdminRealtimeReactionsRoute
+  AdminRealtimeRegistrationsRoute: typeof AdminRealtimeRegistrationsRoute
+  AdminRealtimeSyncRoute: typeof AdminRealtimeSyncRoute
+  AdminRealtimeVisitorsRoute: typeof AdminRealtimeVisitorsRoute
+  AdminRealtimeVotesRoute: typeof AdminRealtimeVotesRoute
+  AdminTemplatesCanvaRoute: typeof AdminTemplatesCanvaRoute
+  AdminTemplatesDiscordRoute: typeof AdminTemplatesDiscordRoute
+  AdminTemplatesEmailRoute: typeof AdminTemplatesEmailRoute
+  AdminTemplatesNotificationsRoute: typeof AdminTemplatesNotificationsRoute
+  AdminTemplatesSnippetsRoute: typeof AdminTemplatesSnippetsRoute
+  AdminToolsActivityRoute: typeof AdminToolsActivityRoute
+  AdminToolsAnnouncementsRoute: typeof AdminToolsAnnouncementsRoute
+  AdminToolsAutomationRoute: typeof AdminToolsAutomationRoute
+  AdminToolsBroadcastRoute: typeof AdminToolsBroadcastRoute
+  AdminToolsExportRoute: typeof AdminToolsExportRoute
+  AdminToolsFlagsRoute: typeof AdminToolsFlagsRoute
+  AdminToolsImportRoute: typeof AdminToolsImportRoute
+  AdminToolsMaintenanceRoute: typeof AdminToolsMaintenanceRoute
+  AdminToolsPingRoute: typeof AdminToolsPingRoute
+  AdminToolsScheduleRoute: typeof AdminToolsScheduleRoute
+  AdminToolsSearchRoute: typeof AdminToolsSearchRoute
+  AdminToolsSeasonRoute: typeof AdminToolsSeasonRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
+  AdminAnalyticsDiscordRoute: AdminAnalyticsDiscordRoute,
+  AdminAnalyticsEventsRoute: AdminAnalyticsEventsRoute,
+  AdminAnalyticsGrowthRoute: AdminAnalyticsGrowthRoute,
+  AdminAnalyticsTrafficRoute: AdminAnalyticsTrafficRoute,
+  AdminAnalyticsUsersRoute: AdminAnalyticsUsersRoute,
+  AdminCmsBannersRoute: AdminCmsBannersRoute,
+  AdminCmsFooterRoute: AdminCmsFooterRoute,
+  AdminCmsHeroRoute: AdminCmsHeroRoute,
+  AdminCmsHomepageRoute: AdminCmsHomepageRoute,
+  AdminCmsNavRoute: AdminCmsNavRoute,
+  AdminCmsThemesRoute: AdminCmsThemesRoute,
+  AdminInfraAiRoute: AdminInfraAiRoute,
+  AdminInfraBackupsRoute: AdminInfraBackupsRoute,
+  AdminInfraCdnRoute: AdminInfraCdnRoute,
+  AdminInfraCloudflareRoute: AdminInfraCloudflareRoute,
+  AdminInfraDatabaseRoute: AdminInfraDatabaseRoute,
+  AdminInfraGeminiRoute: AdminInfraGeminiRoute,
+  AdminInfraGroqRoute: AdminInfraGroqRoute,
+  AdminInfraImagekitRoute: AdminInfraImagekitRoute,
+  AdminInfraRedisRoute: AdminInfraRedisRoute,
+  AdminInfraStorageRoute: AdminInfraStorageRoute,
+  AdminManageAppealsRoute: AdminManageAppealsRoute,
+  AdminManageArtworkRoute: AdminManageArtworkRoute,
+  AdminManageBattlesRoute: AdminManageBattlesRoute,
+  AdminManageModerationRoute: AdminManageModerationRoute,
+  AdminManagePermissionsRoute: AdminManagePermissionsRoute,
+  AdminManageReportsRoute: AdminManageReportsRoute,
+  AdminManageRolesRoute: AdminManageRolesRoute,
+  AdminManageStaffRoute: AdminManageStaffRoute,
+  AdminManageTeamsRoute: AdminManageTeamsRoute,
+  AdminManageTournamentsRoute: AdminManageTournamentsRoute,
+  AdminManageUploadsRoute: AdminManageUploadsRoute,
+  AdminManageUsersRoute: AdminManageUsersRoute,
+  AdminOpsApiRoute: AdminOpsApiRoute,
+  AdminOpsAuditRoute: AdminOpsAuditRoute,
+  AdminOpsBotLogsRoute: AdminOpsBotLogsRoute,
+  AdminOpsErrorsRoute: AdminOpsErrorsRoute,
+  AdminOpsHealthRoute: AdminOpsHealthRoute,
+  AdminOpsQueuesRoute: AdminOpsQueuesRoute,
+  AdminOpsWebhooksRoute: AdminOpsWebhooksRoute,
+  AdminRealtimeBotRoute: AdminRealtimeBotRoute,
+  AdminRealtimeReactionsRoute: AdminRealtimeReactionsRoute,
+  AdminRealtimeRegistrationsRoute: AdminRealtimeRegistrationsRoute,
+  AdminRealtimeSyncRoute: AdminRealtimeSyncRoute,
+  AdminRealtimeVisitorsRoute: AdminRealtimeVisitorsRoute,
+  AdminRealtimeVotesRoute: AdminRealtimeVotesRoute,
+  AdminTemplatesCanvaRoute: AdminTemplatesCanvaRoute,
+  AdminTemplatesDiscordRoute: AdminTemplatesDiscordRoute,
+  AdminTemplatesEmailRoute: AdminTemplatesEmailRoute,
+  AdminTemplatesNotificationsRoute: AdminTemplatesNotificationsRoute,
+  AdminTemplatesSnippetsRoute: AdminTemplatesSnippetsRoute,
+  AdminToolsActivityRoute: AdminToolsActivityRoute,
+  AdminToolsAnnouncementsRoute: AdminToolsAnnouncementsRoute,
+  AdminToolsAutomationRoute: AdminToolsAutomationRoute,
+  AdminToolsBroadcastRoute: AdminToolsBroadcastRoute,
+  AdminToolsExportRoute: AdminToolsExportRoute,
+  AdminToolsFlagsRoute: AdminToolsFlagsRoute,
+  AdminToolsImportRoute: AdminToolsImportRoute,
+  AdminToolsMaintenanceRoute: AdminToolsMaintenanceRoute,
+  AdminToolsPingRoute: AdminToolsPingRoute,
+  AdminToolsScheduleRoute: AdminToolsScheduleRoute,
+  AdminToolsSearchRoute: AdminToolsSearchRoute,
+  AdminToolsSeasonRoute: AdminToolsSeasonRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
