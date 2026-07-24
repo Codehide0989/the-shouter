@@ -4,7 +4,9 @@ import { NeoCard, NeoBadge, NeoButton, SectionHeader } from "@/components/neo";
 import { heroUrl } from "@/components/dashboard-page";
 import {
   Handshake, Cpu, Gamepad2, Users, Newspaper, Plug, Sparkles, CheckCircle2, ArrowRight,
+  Camera, Radio, Trophy, Palette, Rocket, Globe2, Zap,
 } from "lucide-react";
+import { PARTNERS, type Partner, PARTNER_BENEFITS } from "@/lib/partners-data";
 
 export const Route = createFileRoute("/partners")({
   head: () => ({
@@ -22,30 +24,20 @@ export const Route = createFileRoute("/partners")({
   component: Page,
 });
 
-type Tier = "Featured" | "Technology" | "Gaming" | "Community" | "Media" | "Integration";
+const CAT_ICON: Record<string, typeof Cpu> = {
+  Featured: Sparkles, Technology: Cpu, Gaming: Gamepad2,
+  Community: Users, Media: Newspaper, Integration: Plug,
+};
 
-const PARTNERS: { name: string; tier: Tier; icon: typeof Cpu; blurb: string; tint: string }[] = [
-  { name: "PixelForge Studio", tier: "Featured", icon: Sparkles, blurb: "Indie art collective — 2M followers, sponsors Art Battle Season 4.", tint: "from-accent/30" },
-  { name: "Neon Arena", tier: "Featured", icon: Gamepad2, blurb: "LAN tournament chain across 14 cities.", tint: "from-primary/30" },
-  { name: "Cloudflare", tier: "Technology", icon: Cpu, blurb: "Global edge network and DDoS shield.", tint: "from-secondary/25" },
-  { name: "Neon Postgres", tier: "Technology", icon: Cpu, blurb: "Serverless Postgres with branching.", tint: "from-primary/25" },
-  { name: "Upstash Redis", tier: "Technology", icon: Cpu, blurb: "Ultra-low latency KV + realtime pub/sub.", tint: "from-accent/25" },
-  { name: "Riot Community", tier: "Gaming", icon: Gamepad2, blurb: "Official partner for League community cups.", tint: "from-primary/30" },
-  { name: "SupercellHub", tier: "Gaming", icon: Gamepad2, blurb: "Clash & Brawl bracket integrations.", tint: "from-secondary/30" },
-  { name: "Shouters United", tier: "Community", icon: Users, blurb: "12K-member creator alliance.", tint: "from-accent/25" },
-  { name: "Discord Devs", tier: "Community", icon: Users, blurb: "Verified bot developer program.", tint: "from-secondary/25" },
-  { name: "TwitchWaves", tier: "Media", icon: Newspaper, blurb: "Weekly stream coverage of finals.", tint: "from-primary/25" },
-  { name: "The Shoutcast", tier: "Media", icon: Newspaper, blurb: "Podcast network — 480K downloads/mo.", tint: "from-accent/30" },
-  { name: "Zapier", tier: "Integration", icon: Plug, blurb: "1000+ downstream automations.", tint: "from-secondary/25" },
-  { name: "Notion", tier: "Integration", icon: Plug, blurb: "Auto-sync brackets to team wikis.", tint: "from-primary/20" },
-];
+const BENEFIT_ICON: Record<string, typeof Sparkles> = {
+  Sparkles, Radio, Camera, Trophy, Palette, Rocket, Globe2, Zap,
+  Users, Cpu, Newspaper, Plug, Handshake,
+};
 
-const BENEFITS = [
-  { icon: Sparkles, title: "Co-branded events", desc: "Custom banners, embeds, and dashboards with your logo front and center." },
-  { icon: Users, title: "Audience access", desc: "48K+ monthly active Discord users across 480 partnered guilds." },
-  { icon: Cpu, title: "API + webhook priority", desc: "Higher rate limits, early access to new bot endpoints, dedicated support." },
-  { icon: Newspaper, title: "Editorial features", desc: "Blog spotlight, podcast slot, and quarterly Shoutcast segment." },
-];
+function TierPill({ tier }: { tier: Partner["tier"] }) {
+  const cls = tier === "Featured" ? "accent" : tier === "Technology" ? "primary" : tier === "Gaming" ? "secondary" : "muted";
+  return <NeoBadge variant={cls as never}>{tier}</NeoBadge>;
+}
 
 const REQUIREMENTS = [
   "Active Discord server (≥ 1K members) or shipping product/service in the gaming/creator space",
@@ -54,19 +46,14 @@ const REQUIREMENTS = [
   "Verified brand identity (domain, socials, or Discord partner badge)",
 ];
 
-function TierPill({ tier }: { tier: Tier }) {
-  const cls = tier === "Featured" ? "accent" : tier === "Technology" ? "primary" : tier === "Gaming" ? "secondary" : "muted";
-  return <NeoBadge variant={cls as never}>{tier}</NeoBadge>;
-}
-
 function Page() {
-  const [tier, setTier] = useState<Tier | "All">("All");
+  const [tier, setTier] = useState<Partner["tier"] | "All">("All");
   const filtered = tier === "All" ? PARTNERS : PARTNERS.filter((p) => p.tier === tier);
-  const tiers: (Tier | "All")[] = ["All", "Featured", "Technology", "Gaming", "Community", "Media", "Integration"];
+  const tiers: (Partner["tier"] | "All")[] = ["All", "Featured", "Technology", "Gaming", "Community", "Media", "Integration"];
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
-      {/* Hero — split with sticker */}
+      {/* Hero */}
       <div className="relative neo-border neo-shadow-lg rounded-lg overflow-hidden bg-card">
         <img src={heroUrl("dash-team")} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent" />
@@ -108,43 +95,80 @@ function Page() {
         ))}
       </div>
 
-      {/* Partners grid */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Partners grid — richer cards with cover art */}
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((p) => {
-          const Icon = p.icon;
+          const CatIcon = CAT_ICON[p.tier] ?? Handshake;
           return (
-            <NeoCard key={p.name} className="p-0 overflow-hidden h-full transition-transform hover:-translate-y-1 hover:neo-shadow-lg">
-              <div className={`relative h-24 bg-gradient-to-br ${p.tint} to-background border-b-[3px] border-border`}>
-                <div className="absolute inset-0 opacity-30" style={{
-                  backgroundImage: "repeating-linear-gradient(-45deg, var(--color-border) 0 1px, transparent 1px 10px)",
-                }} />
-                <div className="absolute -bottom-6 left-4 neo-border neo-shadow-sm bg-card rounded-md h-12 w-12 grid place-items-center">
-                  <Icon className="h-5 w-5" />
+            <Link
+              key={p.slug}
+              to="/partners/$slug"
+              params={{ slug: p.slug }}
+              className="group block"
+            >
+              <NeoCard className="p-0 overflow-hidden h-full transition-transform hover:-translate-y-1 hover:neo-shadow-lg">
+                {/* Cover */}
+                <div className="relative h-36 overflow-hidden border-b-[3px] border-border">
+                  <img src={heroUrl(p.cover)} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${p.tint} to-background/85`} />
+                  {p.featured && (
+                    <span className="absolute -top-1 -left-1 rotate-[-6deg] neo-border neo-shadow-sm bg-accent text-accent-foreground font-display text-[10px] uppercase tracking-widest px-2 py-1">
+                      ★ Featured
+                    </span>
+                  )}
+                  <div className="absolute top-3 right-3"><TierPill tier={p.tier} /></div>
+                  {/* Logo mark */}
+                  <div className="absolute -bottom-6 left-4 neo-border neo-shadow-sm bg-card rounded-md h-14 w-14 grid place-items-center font-display text-lg">
+                    {p.mark}
+                  </div>
                 </div>
-                <div className="absolute top-2 right-2"><TierPill tier={p.tier} /></div>
-              </div>
-              <div className="pt-8 p-4 space-y-2">
-                <div className="font-display text-base">{p.name}</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{p.blurb}</p>
-              </div>
-            </NeoCard>
+                <div className="pt-9 p-4 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="font-display text-base">{p.name}</div>
+                    <CatIcon className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{p.blurb}</p>
+                  {/* Mini stat row */}
+                  <div className="pt-2 mt-2 border-t-2 border-border/60 flex items-center justify-between text-[10px] font-display uppercase tracking-widest text-muted-foreground">
+                    <span>Since {p.since}</span>
+                    <span className="inline-flex items-center gap-1 group-hover:text-foreground">
+                      View <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </div>
+              </NeoCard>
+            </Link>
           );
         })}
       </div>
 
-      {/* Benefits */}
+      {/* Benefits — Bento */}
       <div>
-        <SectionHeader eyebrow="Why partner" title="What you get" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {BENEFITS.map((b) => {
-            const Icon = b.icon;
+        <SectionHeader eyebrow="Why partner" title="What you get" subtitle="Every partnership ships with real distribution, real integrations and real audiences." />
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto]">
+          {PARTNER_BENEFITS.map((b, i) => {
+            const Icon = BENEFIT_ICON[b.icon] ?? Sparkles;
+            // Bento sizing: first item spans 2 cols on lg, third spans 2 rows
+            const span =
+              i === 0 ? "lg:col-span-2" :
+              i === 3 ? "lg:row-span-2" :
+              "";
             return (
-              <NeoCard key={b.title} className="p-5 h-full">
-                <span className="neo-border neo-shadow-sm bg-accent text-accent-foreground rounded-md h-10 w-10 grid place-items-center rotate-[-4deg] inline-flex">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <div className="font-display text-lg mt-3">{b.title}</div>
-                <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{b.desc}</p>
+              <NeoCard key={b.title} className={`p-0 overflow-hidden h-full transition-transform hover:-translate-y-1 ${span}`}>
+                <div className="relative h-32 sm:h-36 overflow-hidden border-b-[3px] border-border">
+                  <img src={heroUrl(b.cover)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${b.tint} to-background/80`} />
+                  <span className="absolute top-3 left-3 neo-border neo-shadow-sm bg-background rounded-md h-10 w-10 grid place-items-center rotate-[-4deg]">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="absolute top-3 right-3 font-display text-[10px] uppercase tracking-widest bg-background/85 px-2 py-1 rounded-md neo-border">
+                    0{i + 1}
+                  </span>
+                </div>
+                <div className="p-4 sm:p-5">
+                  <div className="font-display text-lg leading-tight">{b.title}</div>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">{b.desc}</p>
+                </div>
               </NeoCard>
             );
           })}
