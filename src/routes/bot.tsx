@@ -69,7 +69,7 @@ function BotCard({ c }: { c: Cat }) {
   const Icon = c.icon;
   return (
     <Link
-      to="/bot/$slug".replace("$slug", "") + c.slug as never}
+      to={`/bot/${c.slug}` as never}
       className="block h-full group focus:outline-none"
     >
       <NeoCard className="relative overflow-hidden p-0 h-full transition-transform duration-200 group-hover:-translate-y-1 group-hover:neo-shadow-lg">
