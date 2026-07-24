@@ -67,6 +67,7 @@ import { Route as TeamsCheckInRouteImport } from './routes/teams.check-in'
 import { Route as TeamsChatRouteImport } from './routes/teams.chat'
 import { Route as TeamsCaptainTransferRouteImport } from './routes/teams.captain-transfer'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
+import { Route as PartnersSlugRouteImport } from './routes/partners.$slug'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
 import { Route as DocsSlugRouteImport } from './routes/docs.$slug'
 import { Route as DashboardXpRouteImport } from './routes/dashboard.xp'
@@ -507,6 +508,11 @@ const RegisterIdRoute = RegisterIdRouteImport.update({
   id: '/register/$id',
   path: '/register/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersSlugRoute = PartnersSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PartnersRoute,
 } as any)
 const EventsIdRoute = EventsIdRouteImport.update({
   id: '/events/$id',
@@ -1278,7 +1284,7 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
-  '/partners': typeof PartnersRoute
+  '/partners': typeof PartnersRouteWithChildren
   '/premium': typeof PremiumRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -1368,6 +1374,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/xp': typeof DashboardXpRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
+  '/partners/$slug': typeof PartnersSlugRoute
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
   '/teams/chat': typeof TeamsChatRoute
@@ -1483,7 +1490,7 @@ export interface FileRoutesByTo {
   '/leaderboard': typeof LeaderboardRoute
   '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
-  '/partners': typeof PartnersRoute
+  '/partners': typeof PartnersRouteWithChildren
   '/premium': typeof PremiumRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -1573,6 +1580,7 @@ export interface FileRoutesByTo {
   '/dashboard/xp': typeof DashboardXpRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
+  '/partners/$slug': typeof PartnersSlugRoute
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
   '/teams/chat': typeof TeamsChatRoute
@@ -1691,7 +1699,7 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/media-center': typeof MediaCenterRoute
   '/notifications': typeof NotificationsRoute
-  '/partners': typeof PartnersRoute
+  '/partners': typeof PartnersRouteWithChildren
   '/premium': typeof PremiumRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -1781,6 +1789,7 @@ export interface FileRoutesById {
   '/dashboard/xp': typeof DashboardXpRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
+  '/partners/$slug': typeof PartnersSlugRoute
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
   '/teams/chat': typeof TeamsChatRoute
@@ -1990,6 +1999,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/docs/$slug'
     | '/events/$id'
+    | '/partners/$slug'
     | '/register/$id'
     | '/teams/captain-transfer'
     | '/teams/chat'
@@ -2195,6 +2205,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/docs/$slug'
     | '/events/$id'
+    | '/partners/$slug'
     | '/register/$id'
     | '/teams/captain-transfer'
     | '/teams/chat'
@@ -2402,6 +2413,7 @@ export interface FileRouteTypes {
     | '/dashboard/xp'
     | '/docs/$slug'
     | '/events/$id'
+    | '/partners/$slug'
     | '/register/$id'
     | '/teams/captain-transfer'
     | '/teams/chat'
@@ -2520,7 +2532,7 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   MediaCenterRoute: typeof MediaCenterRoute
   NotificationsRoute: typeof NotificationsRoute
-  PartnersRoute: typeof PartnersRoute
+  PartnersRoute: typeof PartnersRouteWithChildren
   PremiumRoute: typeof PremiumRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -2948,6 +2960,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/register/$id'
       preLoaderRoute: typeof RegisterIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/partners/$slug': {
+      id: '/partners/$slug'
+      path: '/$slug'
+      fullPath: '/partners/$slug'
+      preLoaderRoute: typeof PartnersSlugRouteImport
+      parentRoute: typeof PartnersRoute
     }
     '/events/$id': {
       id: '/events/$id'
@@ -4301,6 +4320,18 @@ const DocsRouteChildren: DocsRouteChildren = {
 
 const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 
+interface PartnersRouteChildren {
+  PartnersSlugRoute: typeof PartnersSlugRoute
+}
+
+const PartnersRouteChildren: PartnersRouteChildren = {
+  PartnersSlugRoute: PartnersSlugRoute,
+}
+
+const PartnersRouteWithChildren = PartnersRoute._addFileChildren(
+  PartnersRouteChildren,
+)
+
 interface TeamsRouteChildren {
   TeamsCaptainTransferRoute: typeof TeamsCaptainTransferRoute
   TeamsChatRoute: typeof TeamsChatRoute
@@ -4402,7 +4433,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   MediaCenterRoute: MediaCenterRoute,
   NotificationsRoute: NotificationsRoute,
-  PartnersRoute: PartnersRoute,
+  PartnersRoute: PartnersRouteWithChildren,
   PremiumRoute: PremiumRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
