@@ -119,19 +119,27 @@ import { Route as DashboardActivityRouteImport } from './routes/dashboard.activi
 import { Route as DashboardAchievementsRouteImport } from './routes/dashboard.achievements'
 import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
 import { Route as BotWebhooksRouteImport } from './routes/bot.webhooks'
+import { Route as BotTournamentRouteImport } from './routes/bot.tournament'
 import { Route as BotTemplatesRouteImport } from './routes/bot.templates'
 import { Route as BotTempChannelsRouteImport } from './routes/bot.temp-channels'
 import { Route as BotTempCategoriesRouteImport } from './routes/bot.temp-categories'
+import { Route as BotSettingsRouteImport } from './routes/bot.settings'
+import { Route as BotSecurityRouteImport } from './routes/bot.security'
+import { Route as BotRegistrationRouteImport } from './routes/bot.registration'
 import { Route as BotPrefixesRouteImport } from './routes/bot.prefixes'
 import { Route as BotPermissionsRouteImport } from './routes/bot.permissions'
 import { Route as BotModulesRouteImport } from './routes/bot.modules'
+import { Route as BotModerationRouteImport } from './routes/bot.moderation'
 import { Route as BotLogsRouteImport } from './routes/bot.logs'
+import { Route as BotLeaderboardRouteImport } from './routes/bot.leaderboard'
 import { Route as BotGuildSettingsRouteImport } from './routes/bot.guild-settings'
 import { Route as BotCooldownsRouteImport } from './routes/bot.cooldowns'
 import { Route as BotCommandsRouteImport } from './routes/bot.commands'
 import { Route as BotCleanupRouteImport } from './routes/bot.cleanup'
+import { Route as BotAutoThreadsRouteImport } from './routes/bot.auto-threads'
 import { Route as BotAutoRolesRouteImport } from './routes/bot.auto-roles'
 import { Route as BotAutoChannelsRouteImport } from './routes/bot.auto-channels'
+import { Route as BotAnnouncementsRouteImport } from './routes/bot.announcements'
 import { Route as TournamentsFormatsSwissRouteImport } from './routes/tournaments.formats.swiss'
 import { Route as TournamentsFormatsSingleElimRouteImport } from './routes/tournaments.formats.single-elim'
 import { Route as TournamentsFormatsRoundRobinRouteImport } from './routes/tournaments.formats.round-robin'
@@ -762,6 +770,11 @@ const BotWebhooksRoute = BotWebhooksRouteImport.update({
   path: '/webhooks',
   getParentRoute: () => BotRoute,
 } as any)
+const BotTournamentRoute = BotTournamentRouteImport.update({
+  id: '/tournament',
+  path: '/tournament',
+  getParentRoute: () => BotRoute,
+} as any)
 const BotTemplatesRoute = BotTemplatesRouteImport.update({
   id: '/templates',
   path: '/templates',
@@ -775,6 +788,21 @@ const BotTempChannelsRoute = BotTempChannelsRouteImport.update({
 const BotTempCategoriesRoute = BotTempCategoriesRouteImport.update({
   id: '/temp-categories',
   path: '/temp-categories',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotSettingsRoute = BotSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotSecurityRoute = BotSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotRegistrationRoute = BotRegistrationRouteImport.update({
+  id: '/registration',
+  path: '/registration',
   getParentRoute: () => BotRoute,
 } as any)
 const BotPrefixesRoute = BotPrefixesRouteImport.update({
@@ -792,9 +820,19 @@ const BotModulesRoute = BotModulesRouteImport.update({
   path: '/modules',
   getParentRoute: () => BotRoute,
 } as any)
+const BotModerationRoute = BotModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
+  getParentRoute: () => BotRoute,
+} as any)
 const BotLogsRoute = BotLogsRouteImport.update({
   id: '/logs',
   path: '/logs',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotLeaderboardRoute = BotLeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => BotRoute,
 } as any)
 const BotGuildSettingsRoute = BotGuildSettingsRouteImport.update({
@@ -817,6 +855,11 @@ const BotCleanupRoute = BotCleanupRouteImport.update({
   path: '/cleanup',
   getParentRoute: () => BotRoute,
 } as any)
+const BotAutoThreadsRoute = BotAutoThreadsRouteImport.update({
+  id: '/auto-threads',
+  path: '/auto-threads',
+  getParentRoute: () => BotRoute,
+} as any)
 const BotAutoRolesRoute = BotAutoRolesRouteImport.update({
   id: '/auto-roles',
   path: '/auto-roles',
@@ -825,6 +868,11 @@ const BotAutoRolesRoute = BotAutoRolesRouteImport.update({
 const BotAutoChannelsRoute = BotAutoChannelsRouteImport.update({
   id: '/auto-channels',
   path: '/auto-channels',
+  getParentRoute: () => BotRoute,
+} as any)
+const BotAnnouncementsRoute = BotAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
   getParentRoute: () => BotRoute,
 } as any)
 const TournamentsFormatsSwissRoute = TournamentsFormatsSwissRouteImport.update({
@@ -1240,19 +1288,27 @@ export interface FileRoutesByFullPath {
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/announcements': typeof BotAnnouncementsRoute
   '/bot/auto-channels': typeof BotAutoChannelsRoute
   '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/auto-threads': typeof BotAutoThreadsRoute
   '/bot/cleanup': typeof BotCleanupRoute
   '/bot/commands': typeof BotCommandsRoute
   '/bot/cooldowns': typeof BotCooldownsRoute
   '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/leaderboard': typeof BotLeaderboardRoute
   '/bot/logs': typeof BotLogsRoute
+  '/bot/moderation': typeof BotModerationRoute
   '/bot/modules': typeof BotModulesRoute
   '/bot/permissions': typeof BotPermissionsRoute
   '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/registration': typeof BotRegistrationRoute
+  '/bot/security': typeof BotSecurityRoute
+  '/bot/settings': typeof BotSettingsRoute
   '/bot/temp-categories': typeof BotTempCategoriesRoute
   '/bot/temp-channels': typeof BotTempChannelsRoute
   '/bot/templates': typeof BotTemplatesRoute
+  '/bot/tournament': typeof BotTournamentRoute
   '/bot/webhooks': typeof BotWebhooksRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
@@ -1436,19 +1492,27 @@ export interface FileRoutesByTo {
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/announcements': typeof BotAnnouncementsRoute
   '/bot/auto-channels': typeof BotAutoChannelsRoute
   '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/auto-threads': typeof BotAutoThreadsRoute
   '/bot/cleanup': typeof BotCleanupRoute
   '/bot/commands': typeof BotCommandsRoute
   '/bot/cooldowns': typeof BotCooldownsRoute
   '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/leaderboard': typeof BotLeaderboardRoute
   '/bot/logs': typeof BotLogsRoute
+  '/bot/moderation': typeof BotModerationRoute
   '/bot/modules': typeof BotModulesRoute
   '/bot/permissions': typeof BotPermissionsRoute
   '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/registration': typeof BotRegistrationRoute
+  '/bot/security': typeof BotSecurityRoute
+  '/bot/settings': typeof BotSettingsRoute
   '/bot/temp-categories': typeof BotTempCategoriesRoute
   '/bot/temp-channels': typeof BotTempChannelsRoute
   '/bot/templates': typeof BotTemplatesRoute
+  '/bot/tournament': typeof BotTournamentRoute
   '/bot/webhooks': typeof BotWebhooksRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
@@ -1635,19 +1699,27 @@ export interface FileRoutesById {
   '/teams': typeof TeamsRouteWithChildren
   '/terms': typeof TermsRoute
   '/tournaments': typeof TournamentsRouteWithChildren
+  '/bot/announcements': typeof BotAnnouncementsRoute
   '/bot/auto-channels': typeof BotAutoChannelsRoute
   '/bot/auto-roles': typeof BotAutoRolesRoute
+  '/bot/auto-threads': typeof BotAutoThreadsRoute
   '/bot/cleanup': typeof BotCleanupRoute
   '/bot/commands': typeof BotCommandsRoute
   '/bot/cooldowns': typeof BotCooldownsRoute
   '/bot/guild-settings': typeof BotGuildSettingsRoute
+  '/bot/leaderboard': typeof BotLeaderboardRoute
   '/bot/logs': typeof BotLogsRoute
+  '/bot/moderation': typeof BotModerationRoute
   '/bot/modules': typeof BotModulesRoute
   '/bot/permissions': typeof BotPermissionsRoute
   '/bot/prefixes': typeof BotPrefixesRoute
+  '/bot/registration': typeof BotRegistrationRoute
+  '/bot/security': typeof BotSecurityRoute
+  '/bot/settings': typeof BotSettingsRoute
   '/bot/temp-categories': typeof BotTempCategoriesRoute
   '/bot/temp-channels': typeof BotTempChannelsRoute
   '/bot/templates': typeof BotTemplatesRoute
+  '/bot/tournament': typeof BotTournamentRoute
   '/bot/webhooks': typeof BotWebhooksRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/dashboard/achievements': typeof DashboardAchievementsRoute
@@ -1835,19 +1907,27 @@ export interface FileRouteTypes {
     | '/teams'
     | '/terms'
     | '/tournaments'
+    | '/bot/announcements'
     | '/bot/auto-channels'
     | '/bot/auto-roles'
+    | '/bot/auto-threads'
     | '/bot/cleanup'
     | '/bot/commands'
     | '/bot/cooldowns'
     | '/bot/guild-settings'
+    | '/bot/leaderboard'
     | '/bot/logs'
+    | '/bot/moderation'
     | '/bot/modules'
     | '/bot/permissions'
     | '/bot/prefixes'
+    | '/bot/registration'
+    | '/bot/security'
+    | '/bot/settings'
     | '/bot/temp-categories'
     | '/bot/temp-channels'
     | '/bot/templates'
+    | '/bot/tournament'
     | '/bot/webhooks'
     | '/categories/$slug'
     | '/dashboard/achievements'
@@ -2031,19 +2111,27 @@ export interface FileRouteTypes {
     | '/teams'
     | '/terms'
     | '/tournaments'
+    | '/bot/announcements'
     | '/bot/auto-channels'
     | '/bot/auto-roles'
+    | '/bot/auto-threads'
     | '/bot/cleanup'
     | '/bot/commands'
     | '/bot/cooldowns'
     | '/bot/guild-settings'
+    | '/bot/leaderboard'
     | '/bot/logs'
+    | '/bot/moderation'
     | '/bot/modules'
     | '/bot/permissions'
     | '/bot/prefixes'
+    | '/bot/registration'
+    | '/bot/security'
+    | '/bot/settings'
     | '/bot/temp-categories'
     | '/bot/temp-channels'
     | '/bot/templates'
+    | '/bot/tournament'
     | '/bot/webhooks'
     | '/categories/$slug'
     | '/dashboard/achievements'
@@ -2229,19 +2317,27 @@ export interface FileRouteTypes {
     | '/teams'
     | '/terms'
     | '/tournaments'
+    | '/bot/announcements'
     | '/bot/auto-channels'
     | '/bot/auto-roles'
+    | '/bot/auto-threads'
     | '/bot/cleanup'
     | '/bot/commands'
     | '/bot/cooldowns'
     | '/bot/guild-settings'
+    | '/bot/leaderboard'
     | '/bot/logs'
+    | '/bot/moderation'
     | '/bot/modules'
     | '/bot/permissions'
     | '/bot/prefixes'
+    | '/bot/registration'
+    | '/bot/security'
+    | '/bot/settings'
     | '/bot/temp-categories'
     | '/bot/temp-channels'
     | '/bot/templates'
+    | '/bot/tournament'
     | '/bot/webhooks'
     | '/categories/$slug'
     | '/dashboard/achievements'
@@ -3205,6 +3301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BotWebhooksRouteImport
       parentRoute: typeof BotRoute
     }
+    '/bot/tournament': {
+      id: '/bot/tournament'
+      path: '/tournament'
+      fullPath: '/bot/tournament'
+      preLoaderRoute: typeof BotTournamentRouteImport
+      parentRoute: typeof BotRoute
+    }
     '/bot/templates': {
       id: '/bot/templates'
       path: '/templates'
@@ -3224,6 +3327,27 @@ declare module '@tanstack/react-router' {
       path: '/temp-categories'
       fullPath: '/bot/temp-categories'
       preLoaderRoute: typeof BotTempCategoriesRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/settings': {
+      id: '/bot/settings'
+      path: '/settings'
+      fullPath: '/bot/settings'
+      preLoaderRoute: typeof BotSettingsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/security': {
+      id: '/bot/security'
+      path: '/security'
+      fullPath: '/bot/security'
+      preLoaderRoute: typeof BotSecurityRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/registration': {
+      id: '/bot/registration'
+      path: '/registration'
+      fullPath: '/bot/registration'
+      preLoaderRoute: typeof BotRegistrationRouteImport
       parentRoute: typeof BotRoute
     }
     '/bot/prefixes': {
@@ -3247,11 +3371,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BotModulesRouteImport
       parentRoute: typeof BotRoute
     }
+    '/bot/moderation': {
+      id: '/bot/moderation'
+      path: '/moderation'
+      fullPath: '/bot/moderation'
+      preLoaderRoute: typeof BotModerationRouteImport
+      parentRoute: typeof BotRoute
+    }
     '/bot/logs': {
       id: '/bot/logs'
       path: '/logs'
       fullPath: '/bot/logs'
       preLoaderRoute: typeof BotLogsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/leaderboard': {
+      id: '/bot/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/bot/leaderboard'
+      preLoaderRoute: typeof BotLeaderboardRouteImport
       parentRoute: typeof BotRoute
     }
     '/bot/guild-settings': {
@@ -3282,6 +3420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BotCleanupRouteImport
       parentRoute: typeof BotRoute
     }
+    '/bot/auto-threads': {
+      id: '/bot/auto-threads'
+      path: '/auto-threads'
+      fullPath: '/bot/auto-threads'
+      preLoaderRoute: typeof BotAutoThreadsRouteImport
+      parentRoute: typeof BotRoute
+    }
     '/bot/auto-roles': {
       id: '/bot/auto-roles'
       path: '/auto-roles'
@@ -3294,6 +3439,13 @@ declare module '@tanstack/react-router' {
       path: '/auto-channels'
       fullPath: '/bot/auto-channels'
       preLoaderRoute: typeof BotAutoChannelsRouteImport
+      parentRoute: typeof BotRoute
+    }
+    '/bot/announcements': {
+      id: '/bot/announcements'
+      path: '/announcements'
+      fullPath: '/bot/announcements'
+      preLoaderRoute: typeof BotAnnouncementsRouteImport
       parentRoute: typeof BotRoute
     }
     '/tournaments/formats/swiss': {
@@ -3947,36 +4099,52 @@ const AdminRouteChildren: AdminRouteChildren = {
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface BotRouteChildren {
+  BotAnnouncementsRoute: typeof BotAnnouncementsRoute
   BotAutoChannelsRoute: typeof BotAutoChannelsRoute
   BotAutoRolesRoute: typeof BotAutoRolesRoute
+  BotAutoThreadsRoute: typeof BotAutoThreadsRoute
   BotCleanupRoute: typeof BotCleanupRoute
   BotCommandsRoute: typeof BotCommandsRoute
   BotCooldownsRoute: typeof BotCooldownsRoute
   BotGuildSettingsRoute: typeof BotGuildSettingsRoute
+  BotLeaderboardRoute: typeof BotLeaderboardRoute
   BotLogsRoute: typeof BotLogsRoute
+  BotModerationRoute: typeof BotModerationRoute
   BotModulesRoute: typeof BotModulesRoute
   BotPermissionsRoute: typeof BotPermissionsRoute
   BotPrefixesRoute: typeof BotPrefixesRoute
+  BotRegistrationRoute: typeof BotRegistrationRoute
+  BotSecurityRoute: typeof BotSecurityRoute
+  BotSettingsRoute: typeof BotSettingsRoute
   BotTempCategoriesRoute: typeof BotTempCategoriesRoute
   BotTempChannelsRoute: typeof BotTempChannelsRoute
   BotTemplatesRoute: typeof BotTemplatesRoute
+  BotTournamentRoute: typeof BotTournamentRoute
   BotWebhooksRoute: typeof BotWebhooksRoute
 }
 
 const BotRouteChildren: BotRouteChildren = {
+  BotAnnouncementsRoute: BotAnnouncementsRoute,
   BotAutoChannelsRoute: BotAutoChannelsRoute,
   BotAutoRolesRoute: BotAutoRolesRoute,
+  BotAutoThreadsRoute: BotAutoThreadsRoute,
   BotCleanupRoute: BotCleanupRoute,
   BotCommandsRoute: BotCommandsRoute,
   BotCooldownsRoute: BotCooldownsRoute,
   BotGuildSettingsRoute: BotGuildSettingsRoute,
+  BotLeaderboardRoute: BotLeaderboardRoute,
   BotLogsRoute: BotLogsRoute,
+  BotModerationRoute: BotModerationRoute,
   BotModulesRoute: BotModulesRoute,
   BotPermissionsRoute: BotPermissionsRoute,
   BotPrefixesRoute: BotPrefixesRoute,
+  BotRegistrationRoute: BotRegistrationRoute,
+  BotSecurityRoute: BotSecurityRoute,
+  BotSettingsRoute: BotSettingsRoute,
   BotTempCategoriesRoute: BotTempCategoriesRoute,
   BotTempChannelsRoute: BotTempChannelsRoute,
   BotTemplatesRoute: BotTemplatesRoute,
+  BotTournamentRoute: BotTournamentRoute,
   BotWebhooksRoute: BotWebhooksRoute,
 }
 
