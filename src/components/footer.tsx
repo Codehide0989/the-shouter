@@ -79,18 +79,11 @@ export function Footer() {
                 <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
                 <li><Link to="/help" className="hover:underline">Help Center</Link></li>
                 <li><Link to="/support" className="hover:underline">Support</Link></li>
-                <li><Link to="/contact" className="hover:underline">Contact</Link></li>
                 <li><Link to="/docs" className="hover:underline">Docs</Link></li>
-                <li><Link to="/api-docs" className="hover:underline">API Docs</Link></li>
-                <li><Link to="/developers" className="hover:underline">Developers</Link></li>
-                <li><Link to="/blog" className="hover:underline">Blog</Link></li>
-                <li><Link to="/changelog" className="hover:underline">Changelog</Link></li>
                 <li><Link to="/roadmap" className="hover:underline">Roadmap</Link></li>
                 <li><Link to="/status" className="hover:underline">Status</Link></li>
-                <li><Link to="/pricing" className="hover:underline">Pricing</Link></li>
                 <li><Link to="/partners" className="hover:underline">Partners</Link></li>
                 <li><Link to="/sponsors" className="hover:underline">Sponsors</Link></li>
-                <li><Link to="/store" className="hover:underline">Store</Link></li>
               </ul>
             </div>
             <div className="md:col-start-5">
