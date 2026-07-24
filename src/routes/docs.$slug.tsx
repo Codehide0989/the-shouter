@@ -1,9 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NeoCard, NeoBadge, NeoButton, SectionHeader } from "@/components/neo";
 import { heroUrl } from "@/components/dashboard-page";
 import { DOC_ARTICLES, type DocBlock } from "@/lib/docs-data";
-import { Clock, Copy, Check, ArrowLeft, ArrowRight, Share2, Info, Lightbulb, AlertTriangle, ThumbsUp, ThumbsDown } from "lucide-react";
+import {
+  Clock, Copy, Check, ArrowLeft, ArrowRight, Share2, Info, Lightbulb, AlertTriangle,
+  ThumbsUp, ThumbsDown, Bookmark, Printer, Link2, Twitter, Facebook, Linkedin, Calendar, User,
+} from "lucide-react";
 
 export const Route = createFileRoute("/docs/$slug")({
   loader: ({ params }) => {
@@ -108,132 +111,209 @@ function Block({ block }: { block: DocBlock }) {
   }
 }
 
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      setProgress(total > 0 ? Math.min(100, Math.max(0, (h.scrollTop / total) * 100)) : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return progress;
+}
+
 function Article() {
   const { article } = Route.useLoaderData() as { article: (typeof DOC_ARTICLES)[number] };
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
-  const [shared, setShared] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
+  const progress = useScrollProgress();
 
   const idx = DOC_ARTICLES.findIndex((a) => a.slug === article.slug);
   const prev = idx > 0 ? DOC_ARTICLES[idx - 1] : null;
   const next = idx < DOC_ARTICLES.length - 1 ? DOC_ARTICLES[idx + 1] : null;
   const related = DOC_ARTICLES.filter((a) => a.slug !== article.slug && a.category === article.category).slice(0, 3);
 
+  const copyLink = () => {
+    navigator.clipboard.writeText(typeof window !== "undefined" ? window.location.href : "");
+    setCopied(true); setTimeout(() => setCopied(false), 1500);
+  };
+  const printPage = () => { if (typeof window !== "undefined") window.print(); };
+  const shareUrl = typeof window !== "undefined" ? encodeURIComponent(window.location.href) : "";
+  const shareTitle = encodeURIComponent(article.title);
+
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      {/* Breadcrumb */}
-      <div className="text-xs text-muted-foreground mb-4">
-        <Link to="/docs" className="hover:text-foreground">Docs</Link>
-        <span className="mx-2">/</span>
-        <span>{article.category}</span>
+    <>
+      {/* Reading progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-40 h-1 bg-transparent pointer-events-none">
+        <div className="h-full bg-accent neo-border-r-0 transition-[width] duration-100" style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Hero */}
-      <div className="relative neo-border neo-shadow-lg rounded-lg overflow-hidden bg-card mb-8">
-        <img src={heroUrl(article.heroKey)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-background/40" />
-        <div className="relative p-6 sm:p-10">
-          <div className="flex flex-wrap items-center gap-2">
-            <NeoBadge variant="accent">{article.category}</NeoBadge>
-            <NeoBadge variant="muted">{article.difficulty}</NeoBadge>
-            <span className="text-[11px] text-muted-foreground inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readMin} min · updated {article.updated}</span>
-          </div>
-          <h1 className="font-display text-3xl sm:text-5xl mt-3 leading-tight max-w-3xl">{article.title}</h1>
-          <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">{article.description}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {article.tags.map((t) => <NeoBadge key={t} variant="muted">#{t}</NeoBadge>)}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Breadcrumb */}
+        <div className="text-xs text-muted-foreground mb-4">
+          <Link to="/docs" className="hover:text-foreground">Docs</Link>
+          <span className="mx-2">/</span>
+          <Link to="/docs/category/$slug" params={{ slug: article.category.toLowerCase() }} className="hover:text-foreground">{article.category}</Link>
+          <span className="mx-2">/</span>
+          <span className="text-foreground line-clamp-1 inline-block max-w-[220px] align-bottom">{article.title}</span>
+        </div>
+
+        {/* Hero */}
+        <div className="relative neo-border neo-shadow-lg rounded-lg overflow-hidden bg-card mb-8">
+          <img src={heroUrl(article.heroKey)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-background/40" />
+          <div className="relative p-6 sm:p-10">
+            <div className="flex flex-wrap items-center gap-2">
+              <NeoBadge variant="accent">{article.category}</NeoBadge>
+              <NeoBadge variant="muted">{article.difficulty}</NeoBadge>
+              <span className="text-[11px] text-muted-foreground inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readMin} min · updated {article.updated}</span>
+            </div>
+            <h1 className="font-display text-3xl sm:text-5xl mt-3 leading-tight max-w-3xl">{article.title}</h1>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">{article.description}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {article.tags.map((t) => <NeoBadge key={t} variant="muted">#{t}</NeoBadge>)}
+            </div>
+
+            {/* Action bar */}
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <button onClick={() => setBookmarked((b) => !b)}
+                className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
+                <Bookmark className="h-3.5 w-3.5" /> {bookmarked ? "Saved" : "Bookmark"}
+              </button>
+              <button onClick={copyLink} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
+                {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Link2 className="h-3.5 w-3.5" /> Copy link</>}
+              </button>
+              <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
+                <Printer className="h-3.5 w-3.5" /> Print
+              </button>
+              <a href={`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Twitter className="h-3.5 w-3.5" /></a>
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Linkedin className="h-3.5 w-3.5" /></a>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Facebook className="h-3.5 w-3.5" /></a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_260px]">
-        {/* Body */}
-        <article className="min-w-0 space-y-4">
-          {article.body.map((b, i) => <Block key={i} block={b} />)}
-
-          {/* Feedback */}
-          <NeoCard className="mt-10 p-5 flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <div className="font-display text-sm uppercase tracking-widest">Was this helpful?</div>
-              <p className="text-xs text-muted-foreground mt-1">Feedback tunes what we write next.</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setFeedback("up")}
-                className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${feedback === "up" ? "bg-[color:var(--success)] text-background" : "bg-card"}`}
-              >
-                <ThumbsUp className="h-3.5 w-3.5" /> Yes
-              </button>
-              <button
-                onClick={() => setFeedback("down")}
-                className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${feedback === "down" ? "bg-destructive text-destructive-foreground" : "bg-card"}`}
-              >
-                <ThumbsDown className="h-3.5 w-3.5" /> No
-              </button>
-              <button
-                onClick={() => { navigator.clipboard.writeText(typeof window !== "undefined" ? window.location.href : ""); setShared(true); setTimeout(() => setShared(false), 1500); }}
-                className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"
-              >
-                {shared ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Share2 className="h-3.5 w-3.5" /> Share</>}
-              </button>
-            </div>
-          </NeoCard>
-
-          {/* Prev / Next */}
-          <div className="grid gap-3 sm:grid-cols-2 mt-6">
-            {prev ? (
-              <Link to="/docs/$slug" params={{ slug: prev.slug }} className="neo-border neo-shadow-sm rounded-md p-4 bg-card hover:-translate-y-0.5 transition-transform">
-                <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1"><ArrowLeft className="h-3 w-3" /> Previous</div>
-                <div className="font-display text-sm mt-1 line-clamp-1">{prev.title}</div>
-              </Link>
-            ) : <div />}
-            {next ? (
-              <Link to="/docs/$slug" params={{ slug: next.slug }} className="neo-border neo-shadow-sm rounded-md p-4 bg-card text-right hover:-translate-y-0.5 transition-transform">
-                <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1 justify-end w-full">Next <ArrowRight className="h-3 w-3" /></div>
-                <div className="font-display text-sm mt-1 line-clamp-1">{next.title}</div>
-              </Link>
-            ) : <div />}
-          </div>
-
-          {/* Related */}
-          {related.length > 0 && (
-            <div className="pt-8">
-              <SectionHeader eyebrow="More in this category" title="Related articles" />
-              <div className="grid gap-4 sm:grid-cols-3">
-                {related.map((r) => (
-                  <Link key={r.slug} to="/docs/$slug" params={{ slug: r.slug }} className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-card hover:-translate-y-0.5 transition-transform">
-                    <div className="aspect-[16/9] relative">
-                      <img src={heroUrl(r.heroKey)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-                    </div>
-                    <div className="p-3">
-                      <div className="font-display text-sm line-clamp-2">{r.title}</div>
-                      <div className="text-[10px] text-muted-foreground mt-1">{r.readMin} min</div>
-                    </div>
-                  </Link>
-                ))}
+        <div className="grid gap-8 lg:grid-cols-[1fr_260px]">
+          {/* Body */}
+          <article className="min-w-0 space-y-4">
+            {/* Author card */}
+            <NeoCard className="p-4 flex flex-wrap items-center gap-4">
+              <div className="neo-border neo-shadow-sm bg-primary text-primary-foreground rounded-md h-12 w-12 grid place-items-center shrink-0">
+                <User className="h-5 w-5" />
               </div>
-            </div>
-          )}
-        </article>
+              <div className="min-w-0 flex-1">
+                <div className="font-display text-sm">The Shouter Docs Team</div>
+                <div className="text-[11px] text-muted-foreground inline-flex items-center gap-3 mt-0.5">
+                  <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" /> Updated {article.updated}</span>
+                  <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readMin} min read</span>
+                </div>
+              </div>
+              <NeoBadge variant="muted">{article.difficulty}</NeoBadge>
+            </NeoCard>
 
-        {/* Sticky sidebar TOC */}
-        <aside className="lg:sticky lg:top-24 lg:self-start">
-          <NeoCard className="p-4">
-            <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground">On this page</div>
-            <ul className="mt-3 space-y-1.5 text-sm">
-              {article.toc.map((t) => (
-                <li key={t.id}>
-                  <a href={`#${t.id}`} className="text-muted-foreground hover:text-primary transition-colors line-clamp-1">
-                    {t.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4 pt-4 border-t-2 border-border text-[11px] text-muted-foreground">
-              Updated {article.updated}
+            {article.body.map((b, i) => <Block key={i} block={b} />)}
+
+            {/* Feedback */}
+            <NeoCard className="mt-10 p-5 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="font-display text-sm uppercase tracking-widest">Was this helpful?</div>
+                <p className="text-xs text-muted-foreground mt-1">Feedback tunes what we write next.</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setFeedback("up")}
+                  className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${feedback === "up" ? "bg-[color:var(--success)] text-background" : "bg-card"}`}
+                >
+                  <ThumbsUp className="h-3.5 w-3.5" /> Yes
+                </button>
+                <button
+                  onClick={() => setFeedback("down")}
+                  className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${feedback === "down" ? "bg-destructive text-destructive-foreground" : "bg-card"}`}
+                >
+                  <ThumbsDown className="h-3.5 w-3.5" /> No
+                </button>
+                <button onClick={copyLink}
+                  className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
+                  {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Share2 className="h-3.5 w-3.5" /> Share</>}
+                </button>
+              </div>
+            </NeoCard>
+
+            {/* Prev / Next */}
+            <div className="grid gap-3 sm:grid-cols-2 mt-6">
+              {prev ? (
+                <Link to="/docs/$slug" params={{ slug: prev.slug }} className="neo-border neo-shadow-sm rounded-md p-4 bg-card hover:-translate-y-0.5 transition-transform">
+                  <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1"><ArrowLeft className="h-3 w-3" /> Previous</div>
+                  <div className="font-display text-sm mt-1 line-clamp-1">{prev.title}</div>
+                </Link>
+              ) : <div />}
+              {next ? (
+                <Link to="/docs/$slug" params={{ slug: next.slug }} className="neo-border neo-shadow-sm rounded-md p-4 bg-card text-right hover:-translate-y-0.5 transition-transform">
+                  <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground inline-flex items-center gap-1 justify-end w-full">Next <ArrowRight className="h-3 w-3" /></div>
+                  <div className="font-display text-sm mt-1 line-clamp-1">{next.title}</div>
+                </Link>
+              ) : <div />}
             </div>
-          </NeoCard>
-        </aside>
+
+            {/* Related */}
+            {related.length > 0 && (
+              <div className="pt-8">
+                <SectionHeader eyebrow="More in this category" title="Related articles" />
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {related.map((r) => (
+                    <Link key={r.slug} to="/docs/$slug" params={{ slug: r.slug }} className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-card hover:-translate-y-0.5 transition-transform">
+                      <div className="aspect-[16/9] relative">
+                        <img src={heroUrl(r.heroKey)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                      </div>
+                      <div className="p-3">
+                        <div className="font-display text-sm line-clamp-2">{r.title}</div>
+                        <div className="text-[10px] text-muted-foreground mt-1">{r.readMin} min</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </article>
+
+          {/* Sticky sidebar TOC */}
+          <aside className="lg:sticky lg:top-24 lg:self-start space-y-4">
+            <NeoCard className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="text-[10px] font-display uppercase tracking-widest text-muted-foreground">On this page</div>
+                <div className="text-[10px] font-display text-accent">{Math.round(progress)}%</div>
+              </div>
+              <div className="mt-2 h-1 rounded-full bg-muted overflow-hidden">
+                <div className="h-full bg-accent transition-[width] duration-100" style={{ width: `${progress}%` }} />
+              </div>
+              <ul className="mt-3 space-y-1.5 text-sm">
+                {article.toc.map((t) => (
+                  <li key={t.id}>
+                    <a href={`#${t.id}`} className="text-muted-foreground hover:text-primary transition-colors line-clamp-1">
+                      {t.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 pt-4 border-t-2 border-border grid grid-cols-2 gap-2">
+                <button onClick={() => setBookmarked((b) => !b)}
+                  className={`neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
+                  <Bookmark className="h-3 w-3" /> Save
+                </button>
+                <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 bg-card">
+                  <Printer className="h-3 w-3" /> Print
+                </button>
+              </div>
+              <div className="mt-3 text-[11px] text-muted-foreground">Updated {article.updated}</div>
+            </NeoCard>
+          </aside>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

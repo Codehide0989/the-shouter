@@ -147,11 +147,13 @@ import { Route as TournamentsFormatsSingleElimRouteImport } from './routes/tourn
 import { Route as TournamentsFormatsRoundRobinRouteImport } from './routes/tournaments.formats.round-robin'
 import { Route as TournamentsFormatsDoubleElimRouteImport } from './routes/tournaments.formats.double-elim'
 import { Route as TournamentsFormatsBattleRoyaleRouteImport } from './routes/tournaments.formats.battle-royale'
+import { Route as SponsorsPackageSlugRouteImport } from './routes/sponsors.package.$slug'
 import { Route as RegisterTeamIdRouteImport } from './routes/register.team.$id'
 import { Route as EventsIdLeaderboardRouteImport } from './routes/events.$id.leaderboard'
 import { Route as EventsIdGalleryRouteImport } from './routes/events.$id.gallery'
 import { Route as EventsIdDashboardRouteImport } from './routes/events.$id.dashboard'
 import { Route as EventsIdBracketRouteImport } from './routes/events.$id.bracket'
+import { Route as DocsCategorySlugRouteImport } from './routes/docs.category.$slug'
 import { Route as AdminToolsSeasonRouteImport } from './routes/admin.tools.season'
 import { Route as AdminToolsSearchRouteImport } from './routes/admin.tools.search'
 import { Route as AdminToolsScheduleRouteImport } from './routes/admin.tools.schedule'
@@ -916,6 +918,11 @@ const TournamentsFormatsBattleRoyaleRoute =
     path: '/formats/battle-royale',
     getParentRoute: () => TournamentsRoute,
   } as any)
+const SponsorsPackageSlugRoute = SponsorsPackageSlugRouteImport.update({
+  id: '/package/$slug',
+  path: '/package/$slug',
+  getParentRoute: () => SponsorsRoute,
+} as any)
 const RegisterTeamIdRoute = RegisterTeamIdRouteImport.update({
   id: '/register/team/$id',
   path: '/register/team/$id',
@@ -940,6 +947,11 @@ const EventsIdBracketRoute = EventsIdBracketRouteImport.update({
   id: '/bracket',
   path: '/bracket',
   getParentRoute: () => EventsIdRoute,
+} as any)
+const DocsCategorySlugRoute = DocsCategorySlugRouteImport.update({
+  id: '/category/$slug',
+  path: '/category/$slug',
+  getParentRoute: () => DocsRoute,
 } as any)
 const AdminToolsSeasonRoute = AdminToolsSeasonRouteImport.update({
   id: '/tools/season',
@@ -1293,7 +1305,7 @@ export interface FileRoutesByFullPath {
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
-  '/sponsors': typeof SponsorsRoute
+  '/sponsors': typeof SponsorsRouteWithChildren
   '/status': typeof StatusRoute
   '/store': typeof StoreRoute
   '/support': typeof SupportRoute
@@ -1456,11 +1468,13 @@ export interface FileRoutesByFullPath {
   '/admin/tools/schedule': typeof AdminToolsScheduleRoute
   '/admin/tools/search': typeof AdminToolsSearchRoute
   '/admin/tools/season': typeof AdminToolsSeasonRoute
+  '/docs/category/$slug': typeof DocsCategorySlugRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/sponsors/package/$slug': typeof SponsorsPackageSlugRoute
   '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
   '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
   '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
@@ -1499,7 +1513,7 @@ export interface FileRoutesByTo {
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
-  '/sponsors': typeof SponsorsRoute
+  '/sponsors': typeof SponsorsRouteWithChildren
   '/status': typeof StatusRoute
   '/store': typeof StoreRoute
   '/support': typeof SupportRoute
@@ -1662,11 +1676,13 @@ export interface FileRoutesByTo {
   '/admin/tools/schedule': typeof AdminToolsScheduleRoute
   '/admin/tools/search': typeof AdminToolsSearchRoute
   '/admin/tools/season': typeof AdminToolsSeasonRoute
+  '/docs/category/$slug': typeof DocsCategorySlugRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/sponsors/package/$slug': typeof SponsorsPackageSlugRoute
   '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
   '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
   '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
@@ -1708,7 +1724,7 @@ export interface FileRoutesById {
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
-  '/sponsors': typeof SponsorsRoute
+  '/sponsors': typeof SponsorsRouteWithChildren
   '/status': typeof StatusRoute
   '/store': typeof StoreRoute
   '/support': typeof SupportRoute
@@ -1871,11 +1887,13 @@ export interface FileRoutesById {
   '/admin/tools/schedule': typeof AdminToolsScheduleRoute
   '/admin/tools/search': typeof AdminToolsSearchRoute
   '/admin/tools/season': typeof AdminToolsSeasonRoute
+  '/docs/category/$slug': typeof DocsCategorySlugRoute
   '/events/$id/bracket': typeof EventsIdBracketRoute
   '/events/$id/dashboard': typeof EventsIdDashboardRoute
   '/events/$id/gallery': typeof EventsIdGalleryRoute
   '/events/$id/leaderboard': typeof EventsIdLeaderboardRoute
   '/register/team/$id': typeof RegisterTeamIdRoute
+  '/sponsors/package/$slug': typeof SponsorsPackageSlugRoute
   '/tournaments/formats/battle-royale': typeof TournamentsFormatsBattleRoyaleRoute
   '/tournaments/formats/double-elim': typeof TournamentsFormatsDoubleElimRoute
   '/tournaments/formats/round-robin': typeof TournamentsFormatsRoundRobinRoute
@@ -2081,11 +2099,13 @@ export interface FileRouteTypes {
     | '/admin/tools/schedule'
     | '/admin/tools/search'
     | '/admin/tools/season'
+    | '/docs/category/$slug'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/sponsors/package/$slug'
     | '/tournaments/formats/battle-royale'
     | '/tournaments/formats/double-elim'
     | '/tournaments/formats/round-robin'
@@ -2287,11 +2307,13 @@ export interface FileRouteTypes {
     | '/admin/tools/schedule'
     | '/admin/tools/search'
     | '/admin/tools/season'
+    | '/docs/category/$slug'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/sponsors/package/$slug'
     | '/tournaments/formats/battle-royale'
     | '/tournaments/formats/double-elim'
     | '/tournaments/formats/round-robin'
@@ -2495,11 +2517,13 @@ export interface FileRouteTypes {
     | '/admin/tools/schedule'
     | '/admin/tools/search'
     | '/admin/tools/season'
+    | '/docs/category/$slug'
     | '/events/$id/bracket'
     | '/events/$id/dashboard'
     | '/events/$id/gallery'
     | '/events/$id/leaderboard'
     | '/register/team/$id'
+    | '/sponsors/package/$slug'
     | '/tournaments/formats/battle-royale'
     | '/tournaments/formats/double-elim'
     | '/tournaments/formats/round-robin'
@@ -2541,7 +2565,7 @@ export interface RootRouteChildren {
   RulesRoute: typeof RulesRoute
   SeasonPassRoute: typeof SeasonPassRoute
   SettingsRoute: typeof SettingsRoute
-  SponsorsRoute: typeof SponsorsRoute
+  SponsorsRoute: typeof SponsorsRouteWithChildren
   StatusRoute: typeof StatusRoute
   StoreRoute: typeof StoreRoute
   SupportRoute: typeof SupportRoute
@@ -3521,6 +3545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TournamentsFormatsBattleRoyaleRouteImport
       parentRoute: typeof TournamentsRoute
     }
+    '/sponsors/package/$slug': {
+      id: '/sponsors/package/$slug'
+      path: '/package/$slug'
+      fullPath: '/sponsors/package/$slug'
+      preLoaderRoute: typeof SponsorsPackageSlugRouteImport
+      parentRoute: typeof SponsorsRoute
+    }
     '/register/team/$id': {
       id: '/register/team/$id'
       path: '/register/team/$id'
@@ -3555,6 +3586,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/events/$id/bracket'
       preLoaderRoute: typeof EventsIdBracketRouteImport
       parentRoute: typeof EventsIdRoute
+    }
+    '/docs/category/$slug': {
+      id: '/docs/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/docs/category/$slug'
+      preLoaderRoute: typeof DocsCategorySlugRouteImport
+      parentRoute: typeof DocsRoute
     }
     '/admin/tools/season': {
       id: '/admin/tools/season'
@@ -4312,10 +4350,12 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 interface DocsRouteChildren {
   DocsSlugRoute: typeof DocsSlugRoute
+  DocsCategorySlugRoute: typeof DocsCategorySlugRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
   DocsSlugRoute: DocsSlugRoute,
+  DocsCategorySlugRoute: DocsCategorySlugRoute,
 }
 
 const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
@@ -4330,6 +4370,18 @@ const PartnersRouteChildren: PartnersRouteChildren = {
 
 const PartnersRouteWithChildren = PartnersRoute._addFileChildren(
   PartnersRouteChildren,
+)
+
+interface SponsorsRouteChildren {
+  SponsorsPackageSlugRoute: typeof SponsorsPackageSlugRoute
+}
+
+const SponsorsRouteChildren: SponsorsRouteChildren = {
+  SponsorsPackageSlugRoute: SponsorsPackageSlugRoute,
+}
+
+const SponsorsRouteWithChildren = SponsorsRoute._addFileChildren(
+  SponsorsRouteChildren,
 )
 
 interface TeamsRouteChildren {
@@ -4442,7 +4494,7 @@ const rootRouteChildren: RootRouteChildren = {
   RulesRoute: RulesRoute,
   SeasonPassRoute: SeasonPassRoute,
   SettingsRoute: SettingsRoute,
-  SponsorsRoute: SponsorsRoute,
+  SponsorsRoute: SponsorsRouteWithChildren,
   StatusRoute: StatusRoute,
   StoreRoute: StoreRoute,
   SupportRoute: SupportRoute,
