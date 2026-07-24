@@ -80,7 +80,7 @@ export function Footer() {
                 <li><Link to="/help" className="hover:underline">Help Center</Link></li>
                 <li><Link to="/support" className="hover:underline">Support</Link></li>
                 <li><Link to="/docs" className="hover:underline">Docs</Link></li>
-                <li><Link to="/roadmap" className="hover:underline">Roadmap</Link></li>
+                
                 <li><Link to="/status" className="hover:underline">Status</Link></li>
                 <li><Link to="/partners" className="hover:underline">Partners</Link></li>
                 <li><Link to="/sponsors" className="hover:underline">Sponsors</Link></li>
