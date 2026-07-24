@@ -19,7 +19,6 @@ import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SeasonPassRouteImport } from './routes/season-pass'
 import { Route as RulesRouteImport } from './routes/rules'
-import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -255,11 +254,6 @@ const SeasonPassRoute = SeasonPassRouteImport.update({
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RoadmapRoute = RoadmapRouteImport.update({
-  id: '/roadmap',
-  path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RewardsRoute = RewardsRouteImport.update({
@@ -1236,7 +1230,6 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRoute
-  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
@@ -1433,7 +1426,6 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRoute
-  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
@@ -1633,7 +1625,6 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRoute
-  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
   '/season-pass': typeof SeasonPassRoute
   '/settings': typeof SettingsRoute
@@ -1834,7 +1825,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/profile'
     | '/rewards'
-    | '/roadmap'
     | '/rules'
     | '/season-pass'
     | '/settings'
@@ -2031,7 +2021,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/profile'
     | '/rewards'
-    | '/roadmap'
     | '/rules'
     | '/season-pass'
     | '/settings'
@@ -2230,7 +2219,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/profile'
     | '/rewards'
-    | '/roadmap'
     | '/rules'
     | '/season-pass'
     | '/settings'
@@ -2430,7 +2418,6 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
   RewardsRoute: typeof RewardsRoute
-  RoadmapRoute: typeof RoadmapRoute
   RulesRoute: typeof RulesRoute
   SeasonPassRoute: typeof SeasonPassRoute
   SettingsRoute: typeof SettingsRoute
@@ -2516,13 +2503,6 @@ declare module '@tanstack/react-router' {
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/roadmap': {
-      id: '/roadmap'
-      path: '/roadmap'
-      fullPath: '/roadmap'
-      preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rewards': {
@@ -4231,7 +4211,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
   RewardsRoute: RewardsRoute,
-  RoadmapRoute: RoadmapRoute,
   RulesRoute: RulesRoute,
   SeasonPassRoute: SeasonPassRoute,
   SettingsRoute: SettingsRoute,
