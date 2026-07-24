@@ -13,7 +13,7 @@
   <url><loc>/pricing</loc><priority>0.6</priority></url>
   <url><loc>/premium</loc><priority>0.6</priority></url>
   <url><loc>/season-pass</loc><priority>0.5</priority></url>
-  <url><loc>/roadmap</loc><priority>0.5</priority></url>
+  
   <url><loc>/changelog</loc><priority>0.5</priority></url>
   <url><loc>/status</loc><priority>0.4</priority></url>
   <url><loc>/docs</loc><priority>0.6</priority></url>
