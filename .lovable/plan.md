@@ -1,30 +1,63 @@
-This request is enormous — hundreds of pages, dashboards, bot management, tournament systems, and integrations. Building it all in one turn would produce shallow, placeholder-heavy work, which you explicitly don't want. I'll extend the project in focused, high-quality phases so every page keeps the Neobrutalism polish, gets its own illustrations, and reuses the existing components (NeoCard, NeoButton, footer, nav, seasonal effects, themes including Cyber Nights).
+# Production Polish Plan
 
-Nothing existing will be removed or redesigned. Each phase ships complete, production-feeling pages with hero art, section illustrations, empty states, and full theme adaptation.
+Scope is very large. To ship quality (not shallow passes), I'll split into 6 focused phases. Each phase is committed and previewable before starting the next. Reply "go phase X" to advance, or "go all" and I'll run them back-to-back.
 
-## Phase 1 — User Dashboard expansion (this turn)
-Rebuild `/dashboard` as a shell with a persistent sidebar and add real sub-routes under `/dashboard/*`:
-- overview, upcoming, registered, live, tournaments, artwork, picture-battles, voting, reactions, discord, achievements, xp-coins, rewards, badges, season-rank, team, invitations, stats, match-history, submissions, notifications, tickets, downloads, bookmarks, favorites, saved-teams, activity, calendar, quick-actions, uploads, profile, referrals, security, sessions, appearance, privacy, api-keys, linked-accounts, delete-account
+---
 
-Each page: hero illustration, themed cards, empty states, mock data from `mock-data.ts` (extended).
+## Phase A — Global Responsive Audit + Remove Roadmap
 
-## Phase 2 — Admin panel expansion
-`/admin/*` with sidebar: analytics (events/discord/users/traffic), realtime (visitors/registrations/votes/reactions/sync/bot), manage (users/staff/roles/permissions/teams/tournaments/artwork/battles/uploads/reports/appeals/moderation), CMS (themes/banners/hero/homepage/nav/footer), infra (AI/gemini/groq/cdn/storage/imagekit/cloudflare/redis/database/backups), ops (audit/errors/health/api/webhooks/bot-logs/queues), templates (email/discord/canva/notifications), tools (search/export/import/maintenance/flags/season/announcements/broadcast/ping/schedule/automation).
+**Responsive fixes (site-wide)**
+- Tighten container padding scale: `px-4 sm:px-6 lg:px-8`, cap max-width, prevent overflow via `overflow-x-hidden` on body + `min-w-0` on flex/grid text cells.
+- Typography scale: `text-2xl sm:text-3xl lg:text-5xl` for headings; body clamps.
+- Grids: audit every `grid-cols-*` for a 1-col mobile base with `sm:` and `lg:` promotions.
+- Cards: enforce `h-full` in every grid, uniform padding, min touch target 44px on all interactive elements.
+- Header/nav: reduce mobile height, ensure logo + menu button don't collide at 320px.
+- Footer: convert to `grid-cols-2 sm:grid-cols-3 lg:grid-cols-5` with balanced spacing.
+- Hero images: `object-cover` with `aspect-*` per breakpoint; ultrawide caps.
+- Landscape phone: reduce hero min-height when `@media (orientation:landscape) and (max-height:500px)`.
 
-## Phase 3 — Events, Tournament, Team, Bot
-- New event categories: photography, video, minecraft, logo, banner, meme, tournament, community, voice, movie-night, music, streaming, quiz, custom — each with unique artwork.
-- Tournament formats pages: swiss, round-robin, double-elim, single-elim, battle-royale + bracket/schedule generator, match reporting, appeals, verification, anti-cheat.
-- Team system: invitations, verification, captain transfer, kick/replace, reserves, chat, notes, ready-check, check-in.
-- Bot page expansion: commands, permissions, prefixes, cooldowns, modules, logs, guild settings, auto roles/channels, temp channels/categories, cleanup, webhooks, all template types.
+**Roadmap removal**
+- Delete `src/routes/roadmap.tsx`, nav link, footer link, any references.
 
-## Phase 4 — Public/marketing pages
-FAQ, Help Center, Documentation, Developers, API Docs, Partners, Sponsors, Blog, Roadmap, Changelog, Status, Support, Contact, Pricing, Premium, Rewards, Store, Achievements, Badges, Leaderboard, Season Pass, Hall of Fame, Event Archive, Media Center, Gallery, Downloads — each with hero + section illustrations.
+## Phase B — Bot Control Redesign + Command Detail Template
 
-## Phase 5 — Polish
-404/500/loading/success/error graphics, page transitions, confetti, skeleton loaders, season transition animation, live counters, more Cyber Nights refinements.
+- Rewrite `/bot` cards: illustration, background artwork, icon, description, live status badge, command count, last-updated, hover lift, animated shine bg.
+- Add 9 missing categories (Auto Threads, Moderation, Security, Announcements, Registration, Tournament, Leaderboard, Settings) — create route stubs.
+- Build reusable `BotCategoryDetail` component: hero, search, filter chips, command list (syntax, usage, examples, permissions, cooldown, aliases, args, expected output, copy button, code block).
+- Populate `/bot/commands` with 20+ realistic commands; other sections get category-appropriate detail content.
 
-## Notes on scope & tech
-- I'll keep everything frontend + mock data (matching current project). Real NestJS/Prisma/Discord.js/Socket.IO/Redis/ImageKit backends are outside a Lovable TanStack Start project — I'll simulate realtime with animated counters and mocked feeds so the UI looks production-ready. If you later want a real backend, we can wire Lovable Cloud (Postgres + auth + storage + functions) into it.
-- Illustrations are generated per page in small batches to keep quality high.
+## Phase C — Docs Redesign + Article Template
 
-**Starting with Phase 1 (User Dashboard) as soon as you approve.** Reply "go" (or tell me which phase to prioritize) and I'll ship it.
+- Rebuild `/docs` highlight cards: illustration, thumbnail, category icon, reading time, difficulty badge, hover.
+- Create `src/routes/docs.$slug.tsx` article template: hero, TOC, sticky sidebar, prose, code blocks, callouts (note/tip/warning), related articles, prev/next, copy/share, feedback.
+- Seed 8-10 articles.
+
+## Phase D — Status Page Redesign
+
+- Full rebuild `/status`: hero, animated heartbeat header, service grid (Discord API, Bot, DB, Redis, CDN, Storage, Socket.IO, Railway, Vercel, Neon, Upstash, ImageKit, Cloudflare, Gemini, Groq), uptime cards, response time sparkline SVGs, latency graph, incident + maintenance history, live log preview, deployment feed, region map, health score gauge, animated counters.
+- Simulated realtime refresh (setInterval, deterministic).
+
+## Phase E — Partners + Sponsors + Footer-Page Identity Pass
+
+- **Partners**: hero, featured, tech/gaming/community/media/integration tiers, become-a-partner CTA, benefits, requirements, application form.
+- **Sponsors**: hero, featured/current/past, packages (Bronze→Diamond), benefits, brand exposure, audience stats, showcase, application form.
+- **FAQ / Help / Support / Docs / Status / Partners / Sponsors**: give each a unique hero silhouette, banner shape, section background pattern, accent color, and CTA style so they don't feel same-y (keeping the neobrutalist system).
+
+## Phase F — Animations + Final Polish
+
+- Add reveal-on-scroll utility (IntersectionObserver hook).
+- Counter animation hook (`useCountUp`).
+- Card hover: consistent `hover:-translate-y-1 hover:neo-shadow-lg` across all cards.
+- Micro-interactions on buttons (active scale).
+- Sticky nav shadow on scroll.
+- Verify build + walk pages at 360/768/1440.
+
+---
+
+**Technical notes**
+- Reuse existing `NeoCard`, `NeoBadge`, `NeoButton`, `heroUrl()` — no new design system.
+- No new image gen unless a page has zero relevant asset; prefer remixing the existing 40+ illustrations we already have.
+- No backend changes; all data mocked deterministically.
+- Roadmap deletion is destructive but requested — will grep for stragglers.
+
+Reply **go phase A** to start, or **go all** to run through end-to-end (longer single response, less checkpointing).
