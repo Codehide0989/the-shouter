@@ -109,7 +109,7 @@ function Block({ block }: { block: DocBlock }) {
 }
 
 function Article() {
-  const { article } = Route.useLoaderData();
+  const { article } = Route.useLoaderData() as { article: (typeof DOC_ARTICLES)[number] };
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
   const [shared, setShared] = useState(false);
 

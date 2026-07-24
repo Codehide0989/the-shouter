@@ -68,6 +68,7 @@ import { Route as TeamsChatRouteImport } from './routes/teams.chat'
 import { Route as TeamsCaptainTransferRouteImport } from './routes/teams.captain-transfer'
 import { Route as RegisterIdRouteImport } from './routes/register.$id'
 import { Route as EventsIdRouteImport } from './routes/events.$id'
+import { Route as DocsSlugRouteImport } from './routes/docs.$slug'
 import { Route as DashboardXpRouteImport } from './routes/dashboard.xp'
 import { Route as DashboardWinRateRouteImport } from './routes/dashboard.win-rate'
 import { Route as DashboardVotingRouteImport } from './routes/dashboard.voting'
@@ -511,6 +512,11 @@ const EventsIdRoute = EventsIdRouteImport.update({
   id: '/events/$id',
   path: '/events/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DocsSlugRoute = DocsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => DocsRoute,
 } as any)
 const DashboardXpRoute = DashboardXpRouteImport.update({
   id: '/xp',
@@ -1261,7 +1267,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/developers': typeof DevelopersRoute
-  '/docs': typeof DocsRoute
+  '/docs': typeof DocsRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
@@ -1360,6 +1366,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/voting': typeof DashboardVotingRoute
   '/dashboard/win-rate': typeof DashboardWinRateRoute
   '/dashboard/xp': typeof DashboardXpRoute
+  '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
@@ -1465,7 +1472,7 @@ export interface FileRoutesByTo {
   '/changelog': typeof ChangelogRoute
   '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
-  '/docs': typeof DocsRoute
+  '/docs': typeof DocsRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
@@ -1564,6 +1571,7 @@ export interface FileRoutesByTo {
   '/dashboard/voting': typeof DashboardVotingRoute
   '/dashboard/win-rate': typeof DashboardWinRateRoute
   '/dashboard/xp': typeof DashboardXpRoute
+  '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
@@ -1672,7 +1680,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/developers': typeof DevelopersRoute
-  '/docs': typeof DocsRoute
+  '/docs': typeof DocsRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
@@ -1771,6 +1779,7 @@ export interface FileRoutesById {
   '/dashboard/voting': typeof DashboardVotingRoute
   '/dashboard/win-rate': typeof DashboardWinRateRoute
   '/dashboard/xp': typeof DashboardXpRoute
+  '/docs/$slug': typeof DocsSlugRoute
   '/events/$id': typeof EventsIdRouteWithChildren
   '/register/$id': typeof RegisterIdRoute
   '/teams/captain-transfer': typeof TeamsCaptainTransferRoute
@@ -1979,6 +1988,7 @@ export interface FileRouteTypes {
     | '/dashboard/voting'
     | '/dashboard/win-rate'
     | '/dashboard/xp'
+    | '/docs/$slug'
     | '/events/$id'
     | '/register/$id'
     | '/teams/captain-transfer'
@@ -2183,6 +2193,7 @@ export interface FileRouteTypes {
     | '/dashboard/voting'
     | '/dashboard/win-rate'
     | '/dashboard/xp'
+    | '/docs/$slug'
     | '/events/$id'
     | '/register/$id'
     | '/teams/captain-transfer'
@@ -2389,6 +2400,7 @@ export interface FileRouteTypes {
     | '/dashboard/voting'
     | '/dashboard/win-rate'
     | '/dashboard/xp'
+    | '/docs/$slug'
     | '/events/$id'
     | '/register/$id'
     | '/teams/captain-transfer'
@@ -2497,7 +2509,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   DevelopersRoute: typeof DevelopersRoute
-  DocsRoute: typeof DocsRoute
+  DocsRoute: typeof DocsRouteWithChildren
   DownloadsRoute: typeof DownloadsRoute
   EventArchiveRoute: typeof EventArchiveRoute
   ExploreRoute: typeof ExploreRoute
@@ -2943,6 +2955,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/events/$id'
       preLoaderRoute: typeof EventsIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/docs/$slug': {
+      id: '/docs/$slug'
+      path: '/$slug'
+      fullPath: '/docs/$slug'
+      preLoaderRoute: typeof DocsSlugRouteImport
+      parentRoute: typeof DocsRoute
     }
     '/dashboard/xp': {
       id: '/dashboard/xp'
@@ -4272,6 +4291,16 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
   DashboardRouteChildren,
 )
 
+interface DocsRouteChildren {
+  DocsSlugRoute: typeof DocsSlugRoute
+}
+
+const DocsRouteChildren: DocsRouteChildren = {
+  DocsSlugRoute: DocsSlugRoute,
+}
+
+const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
+
 interface TeamsRouteChildren {
   TeamsCaptainTransferRoute: typeof TeamsCaptainTransferRoute
   TeamsChatRoute: typeof TeamsChatRoute
@@ -4362,7 +4391,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
   DevelopersRoute: DevelopersRoute,
-  DocsRoute: DocsRoute,
+  DocsRoute: DocsRouteWithChildren,
   DownloadsRoute: DownloadsRoute,
   EventArchiveRoute: EventArchiveRoute,
   ExploreRoute: ExploreRoute,
