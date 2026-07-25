@@ -19,17 +19,32 @@ export const Route = createFileRoute("/season-pass")({
 const CURRENT_TIER = 34;
 const MAX_TIER = 90;
 
-const TIER_REWARDS: Array<{ tier: number; free: { i: string; n: string }; premium: { i: string; n: string; legendary?: boolean } }> = [
-  { tier: 1, free: { i: "🪙", n: "100 coins" }, premium: { i: "🎨", n: "Frame" } },
-  { tier: 5, free: { i: "⚡", n: "XP boost" }, premium: { i: "👤", n: "Avatar" } },
-  { tier: 10, free: { i: "🎟️", n: "Raffle" }, premium: { i: "🏷️", n: "Title" } },
-  { tier: 15, free: { i: "🪙", n: "250 coins" }, premium: { i: "✨", n: "Effect" } },
-  { tier: 20, free: { i: "🎁", n: "Chest" }, premium: { i: "🎨", n: "Legend Skin", legendary: true } },
-  { tier: 25, free: { i: "🥉", n: "Badge" }, premium: { i: "👑", n: "Crown Frame" } },
-  { tier: 30, free: { i: "⚡", n: "2x XP" }, premium: { i: "🎬", n: "Emote pack" } },
-  { tier: 35, free: { i: "🪙", n: "500 coins" }, premium: { i: "🎨", n: "Banner set" } },
-  { tier: 40, free: { i: "🎟️", n: "Ticket x3" }, premium: { i: "💎", n: "50 gems" } },
-  { tier: 45, free: { i: "🥈", n: "Badge" }, premium: { i: "🐉", n: "Mythic Avatar", legendary: true } },
+type Reward = { i: string; n: string; xp: number; orbit: string[]; grad: string; legendary?: boolean };
+const TIER_REWARDS: Array<{ tier: number; free: Reward; premium: Reward }> = [
+  { tier: 1,  free: { i: "🪙", n: "100 coins",   xp: 500,  orbit: ["💰","✨"],       grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🎨", n: "Frame",     xp: 500,  orbit: ["🖼️","✨"],       grad: "from-primary/25 to-secondary/10" } },
+  { tier: 5,  free: { i: "⚡", n: "XP boost",     xp: 1200, orbit: ["🔥","💫"],       grad: "from-primary/25 to-accent/10" },
+              premium: { i: "👤", n: "Avatar",    xp: 1200, orbit: ["🎭","✨"],       grad: "from-secondary/25 to-primary/10" } },
+  { tier: 10, free: { i: "🎟️", n: "Raffle",     xp: 2000, orbit: ["🎊","🎉"],       grad: "from-accent/25 to-primary/10" },
+              premium: { i: "🏷️", n: "Title",    xp: 2000, orbit: ["⭐","👑"],       grad: "from-secondary/30 to-accent/10" } },
+  { tier: 15, free: { i: "🪙", n: "250 coins",   xp: 3200, orbit: ["💰","💰"],       grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🌈", n: "Name color",xp: 3200, orbit: ["✨","💫"],       grad: "from-pink-500/25 to-purple-600/10" } },
+  { tier: 20, free: { i: "🎁", n: "Loot box",    xp: 4500, orbit: ["🎀","✨"],       grad: "from-primary/25 to-secondary/10" },
+              premium: { i: "🐉", n: "Legend Skin", xp: 4500, orbit: ["🔥","👑","💎"], grad: "from-accent/40 to-primary/20", legendary: true } },
+  { tier: 25, free: { i: "🥉", n: "Bronze badge",xp: 6000, orbit: ["🏅","✨"],       grad: "from-amber-700/25 to-yellow-900/10" },
+              premium: { i: "👑", n: "Crown frame",xp: 6000, orbit: ["💎","✨"],      grad: "from-yellow-500/30 to-amber-600/10" } },
+  { tier: 30, free: { i: "⚡", n: "2x XP boost", xp: 7500, orbit: ["🔥","💫"],       grad: "from-primary/25 to-accent/10" },
+              premium: { i: "😂", n: "Emote pack",xp: 7500, orbit: ["🎭","💬"],       grad: "from-secondary/25 to-primary/10" } },
+  { tier: 35, free: { i: "🪙", n: "500 coins",   xp: 9000, orbit: ["💰","💰","✨"],  grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🎌", n: "Banner set",xp: 9000, orbit: ["✨","🎨"],       grad: "from-primary/25 to-secondary/10" } },
+  { tier: 40, free: { i: "🎟️", n: "Tickets x3", xp: 10500,orbit: ["🎊","🎉"],       grad: "from-accent/25 to-primary/10" },
+              premium: { i: "💎", n: "50 gems",   xp: 10500,orbit: ["💠","✨"],       grad: "from-cyan-500/25 to-blue-600/10" } },
+  { tier: 45, free: { i: "🥈", n: "Silver badge",xp: 12000,orbit: ["🏅","✨"],       grad: "from-slate-400/25 to-slate-600/10" },
+              premium: { i: "🐲", n: "Mythic Avatar", xp: 12000, orbit: ["🔥","👑","💎"], grad: "from-accent/40 to-primary/20", legendary: true } },
+  { tier: 50, free: { i: "🎁", n: "Chest",       xp: 13800,orbit: ["🎀","✨"],       grad: "from-primary/25 to-secondary/10" },
+              premium: { i: "🐾", n: "Pet",       xp: 13800,orbit: ["✨","💫"],       grad: "from-pink-500/25 to-rose-600/10" } },
+  { tier: 55, free: { i: "🎨", n: "Sticker set", xp: 15500,orbit: ["🖌️","🌈"],      grad: "from-purple-500/25 to-pink-500/10" },
+              premium: { i: "🎭", n: "Theme unlock",xp:15500,orbit: ["🌌","✨"],       grad: "from-secondary/30 to-accent/10" } },
 ];
 
 const MISSIONS_DAILY = [
@@ -98,41 +113,66 @@ function Page() {
 
       {/* TIER GRID — dual track scroll */}
       <section>
-        <SectionHeader eyebrow="Rewards" title="Tier Track" subtitle="Free track above, Premium track below. Legendary tiers glow." />
+        <SectionHeader eyebrow="Rewards" title="Tier Track" subtitle="Free track above, premium below. Connected by the ascension timeline." />
         <div className="overflow-x-auto pb-4 -mx-4 px-4">
-          <div className="flex gap-3 min-w-max">
+          <div className="inline-flex gap-2 min-w-max relative">
             {TIER_REWARDS.map((r) => {
               const claimedFree = r.tier <= CURRENT_TIER;
               const claimedPrem = r.tier <= CURRENT_TIER - 5; // demo
-              return (
-                <div key={r.tier} className="w-28 shrink-0 space-y-2 text-center">
-                  {/* Free */}
-                  <NeoCard className={`p-3 aspect-square flex flex-col items-center justify-center ${claimedFree ? "" : "opacity-60"}`}>
-                    <div className="text-3xl">{r.free.i}</div>
-                    <div className="text-[10px] mt-1">{r.free.n}</div>
-                    {claimedFree && <div className="text-[9px] font-display uppercase text-primary mt-1">✓</div>}
-                  </NeoCard>
-                  {/* Tier number */}
-                  <div className={`neo-border neo-shadow-sm rounded-full h-8 w-8 mx-auto grid place-items-center font-display text-xs ${r.tier === CURRENT_TIER ? "bg-accent text-accent-foreground animate-pulse" : "bg-card"}`}>
-                    {r.tier}
+              const isCurrent = r.tier === CURRENT_TIER;
+              const RewardTile = ({ rw, claimed, ribbon, ribbonCls }: { rw: Reward; claimed: boolean; ribbon: string; ribbonCls: string }) => (
+                <div className={`group relative w-32 shrink-0 neo-border neo-shadow-sm rounded-md overflow-hidden bg-gradient-to-br ${rw.grad} ${rw.legendary ? "shadow-[0_0_22px_hsl(var(--accent)/0.55)] ring-2 ring-accent" : ""} ${claimed ? "" : "opacity-60"} transition-transform hover:-translate-y-1`}>
+                  {/* ribbon */}
+                  <div className={`absolute top-1 left-1 z-10 text-[8px] font-display uppercase tracking-widest px-1.5 py-0.5 rounded ${ribbonCls}`}>{ribbon}</div>
+                  {/* claim state */}
+                  {claimed ? (
+                    <div className="absolute top-1 right-1 z-10 text-[9px] font-display bg-[color:var(--success)] text-background rounded px-1.5 py-0.5">✓</div>
+                  ) : (
+                    <div className="absolute top-1 right-1 z-10 text-[10px]">🔒</div>
+                  )}
+                  {/* art */}
+                  <div className="relative h-20 grid place-items-center">
+                    {rw.orbit.map((e, i) => (
+                      <span key={i} className="absolute text-xs animate-bounce" style={{
+                        top: `${15 + (i * 25) % 60}%`,
+                        left: `${i % 2 === 0 ? 10 : 78}%`,
+                        animationDelay: `${i * 200}ms`,
+                        animationDuration: `${2 + (i % 3)}s`,
+                      }}>{e}</span>
+                    ))}
+                    <span className="text-4xl drop-shadow-[2px_2px_0_hsl(var(--foreground)/0.3)] transition-transform group-hover:scale-110 group-hover:-rotate-6">{rw.i}</span>
+                    {rw.legendary && <span className="absolute bottom-0 right-0 text-[8px] font-display uppercase bg-accent text-accent-foreground px-1 rounded">LGD</span>}
                   </div>
-                  {/* Premium */}
-                  <NeoCard className={`p-3 aspect-square flex flex-col items-center justify-center ${r.premium.legendary ? "bg-accent text-accent-foreground shadow-[0_0_20px_hsl(var(--accent)/0.5)]" : "bg-secondary text-secondary-foreground"} ${claimedPrem ? "" : "opacity-70"}`}>
-                    <div className="text-3xl">{r.premium.i}</div>
-                    <div className="text-[10px] mt-1">{r.premium.n}</div>
-                    {r.premium.legendary && <div className="text-[8px] font-display uppercase mt-1">LEGENDARY</div>}
-                  </NeoCard>
+                  <div className="px-2 py-1.5 border-t-2 border-border bg-background/70">
+                    <div className="text-[10px] font-display leading-tight line-clamp-1">{rw.n}</div>
+                    <div className="text-[9px] text-muted-foreground">{rw.xp.toLocaleString()} XP</div>
+                  </div>
+                </div>
+              );
+              return (
+                <div key={r.tier} className="flex flex-col items-center gap-1.5 shrink-0">
+                  <RewardTile rw={r.free} claimed={claimedFree} ribbon="Free" ribbonCls="bg-muted text-foreground" />
+                  {/* timeline connector node */}
+                  <div className="relative w-32 flex items-center justify-center">
+                    <div className="absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-primary via-accent to-secondary neo-border" />
+                    <div className={`relative neo-border neo-shadow-sm rounded-full h-9 w-9 grid place-items-center font-display text-xs ${isCurrent ? "bg-accent text-accent-foreground animate-pulse ring-2 ring-accent" : claimedFree ? "bg-primary text-primary-foreground" : "bg-card"}`}>
+                      {r.tier}
+                    </div>
+                  </div>
+                  <RewardTile rw={r.premium} claimed={claimedPrem} ribbon="Premium" ribbonCls="bg-accent text-accent-foreground" />
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="mt-3 flex gap-4 text-[11px] text-muted-foreground">
+        <div className="mt-3 flex flex-wrap gap-4 text-[11px] text-muted-foreground">
           <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-muted neo-border" /> Free</span>
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-secondary neo-border" /> Premium</span>
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border" /> Legendary</span>
+          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border" /> Premium</span>
+          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border shadow-[0_0_10px_hsl(var(--accent))]" /> Legendary</span>
+          <span className="flex items-center gap-1">✓ Claimed · 🔒 Locked</span>
         </div>
       </section>
+
 
       {/* MISSIONS + CHALLENGES */}
       <section className="grid gap-5 lg:grid-cols-3">
