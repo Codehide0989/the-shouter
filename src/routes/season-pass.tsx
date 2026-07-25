@@ -113,41 +113,66 @@ function Page() {
 
       {/* TIER GRID — dual track scroll */}
       <section>
-        <SectionHeader eyebrow="Rewards" title="Tier Track" subtitle="Free track above, Premium track below. Legendary tiers glow." />
+        <SectionHeader eyebrow="Rewards" title="Tier Track" subtitle="Free track above, premium below. Connected by the ascension timeline." />
         <div className="overflow-x-auto pb-4 -mx-4 px-4">
-          <div className="flex gap-3 min-w-max">
+          <div className="inline-flex gap-2 min-w-max relative">
             {TIER_REWARDS.map((r) => {
               const claimedFree = r.tier <= CURRENT_TIER;
               const claimedPrem = r.tier <= CURRENT_TIER - 5; // demo
-              return (
-                <div key={r.tier} className="w-28 shrink-0 space-y-2 text-center">
-                  {/* Free */}
-                  <NeoCard className={`p-3 aspect-square flex flex-col items-center justify-center ${claimedFree ? "" : "opacity-60"}`}>
-                    <div className="text-3xl">{r.free.i}</div>
-                    <div className="text-[10px] mt-1">{r.free.n}</div>
-                    {claimedFree && <div className="text-[9px] font-display uppercase text-primary mt-1">✓</div>}
-                  </NeoCard>
-                  {/* Tier number */}
-                  <div className={`neo-border neo-shadow-sm rounded-full h-8 w-8 mx-auto grid place-items-center font-display text-xs ${r.tier === CURRENT_TIER ? "bg-accent text-accent-foreground animate-pulse" : "bg-card"}`}>
-                    {r.tier}
+              const isCurrent = r.tier === CURRENT_TIER;
+              const RewardTile = ({ rw, claimed, ribbon, ribbonCls }: { rw: Reward; claimed: boolean; ribbon: string; ribbonCls: string }) => (
+                <div className={`group relative w-32 shrink-0 neo-border neo-shadow-sm rounded-md overflow-hidden bg-gradient-to-br ${rw.grad} ${rw.legendary ? "shadow-[0_0_22px_hsl(var(--accent)/0.55)] ring-2 ring-accent" : ""} ${claimed ? "" : "opacity-60"} transition-transform hover:-translate-y-1`}>
+                  {/* ribbon */}
+                  <div className={`absolute top-1 left-1 z-10 text-[8px] font-display uppercase tracking-widest px-1.5 py-0.5 rounded ${ribbonCls}`}>{ribbon}</div>
+                  {/* claim state */}
+                  {claimed ? (
+                    <div className="absolute top-1 right-1 z-10 text-[9px] font-display bg-[color:var(--success)] text-background rounded px-1.5 py-0.5">✓</div>
+                  ) : (
+                    <div className="absolute top-1 right-1 z-10 text-[10px]">🔒</div>
+                  )}
+                  {/* art */}
+                  <div className="relative h-20 grid place-items-center">
+                    {rw.orbit.map((e, i) => (
+                      <span key={i} className="absolute text-xs animate-bounce" style={{
+                        top: `${15 + (i * 25) % 60}%`,
+                        left: `${i % 2 === 0 ? 10 : 78}%`,
+                        animationDelay: `${i * 200}ms`,
+                        animationDuration: `${2 + (i % 3)}s`,
+                      }}>{e}</span>
+                    ))}
+                    <span className="text-4xl drop-shadow-[2px_2px_0_hsl(var(--foreground)/0.3)] transition-transform group-hover:scale-110 group-hover:-rotate-6">{rw.i}</span>
+                    {rw.legendary && <span className="absolute bottom-0 right-0 text-[8px] font-display uppercase bg-accent text-accent-foreground px-1 rounded">LGD</span>}
                   </div>
-                  {/* Premium */}
-                  <NeoCard className={`p-3 aspect-square flex flex-col items-center justify-center ${r.premium.legendary ? "bg-accent text-accent-foreground shadow-[0_0_20px_hsl(var(--accent)/0.5)]" : "bg-secondary text-secondary-foreground"} ${claimedPrem ? "" : "opacity-70"}`}>
-                    <div className="text-3xl">{r.premium.i}</div>
-                    <div className="text-[10px] mt-1">{r.premium.n}</div>
-                    {r.premium.legendary && <div className="text-[8px] font-display uppercase mt-1">LEGENDARY</div>}
-                  </NeoCard>
+                  <div className="px-2 py-1.5 border-t-2 border-border bg-background/70">
+                    <div className="text-[10px] font-display leading-tight line-clamp-1">{rw.n}</div>
+                    <div className="text-[9px] text-muted-foreground">{rw.xp.toLocaleString()} XP</div>
+                  </div>
+                </div>
+              );
+              return (
+                <div key={r.tier} className="flex flex-col items-center gap-1.5 shrink-0">
+                  <RewardTile rw={r.free} claimed={claimedFree} ribbon="Free" ribbonCls="bg-muted text-foreground" />
+                  {/* timeline connector node */}
+                  <div className="relative w-32 flex items-center justify-center">
+                    <div className="absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-primary via-accent to-secondary neo-border" />
+                    <div className={`relative neo-border neo-shadow-sm rounded-full h-9 w-9 grid place-items-center font-display text-xs ${isCurrent ? "bg-accent text-accent-foreground animate-pulse ring-2 ring-accent" : claimedFree ? "bg-primary text-primary-foreground" : "bg-card"}`}>
+                      {r.tier}
+                    </div>
+                  </div>
+                  <RewardTile rw={r.premium} claimed={claimedPrem} ribbon="Premium" ribbonCls="bg-accent text-accent-foreground" />
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="mt-3 flex gap-4 text-[11px] text-muted-foreground">
+        <div className="mt-3 flex flex-wrap gap-4 text-[11px] text-muted-foreground">
           <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-muted neo-border" /> Free</span>
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-secondary neo-border" /> Premium</span>
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border" /> Legendary</span>
+          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border" /> Premium</span>
+          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-accent neo-border shadow-[0_0_10px_hsl(var(--accent))]" /> Legendary</span>
+          <span className="flex items-center gap-1">✓ Claimed · 🔒 Locked</span>
         </div>
       </section>
+
 
       {/* MISSIONS + CHALLENGES */}
       <section className="grid gap-5 lg:grid-cols-3">
