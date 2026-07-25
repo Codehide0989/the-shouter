@@ -19,17 +19,32 @@ export const Route = createFileRoute("/season-pass")({
 const CURRENT_TIER = 34;
 const MAX_TIER = 90;
 
-const TIER_REWARDS: Array<{ tier: number; free: { i: string; n: string }; premium: { i: string; n: string; legendary?: boolean } }> = [
-  { tier: 1, free: { i: "🪙", n: "100 coins" }, premium: { i: "🎨", n: "Frame" } },
-  { tier: 5, free: { i: "⚡", n: "XP boost" }, premium: { i: "👤", n: "Avatar" } },
-  { tier: 10, free: { i: "🎟️", n: "Raffle" }, premium: { i: "🏷️", n: "Title" } },
-  { tier: 15, free: { i: "🪙", n: "250 coins" }, premium: { i: "✨", n: "Effect" } },
-  { tier: 20, free: { i: "🎁", n: "Chest" }, premium: { i: "🎨", n: "Legend Skin", legendary: true } },
-  { tier: 25, free: { i: "🥉", n: "Badge" }, premium: { i: "👑", n: "Crown Frame" } },
-  { tier: 30, free: { i: "⚡", n: "2x XP" }, premium: { i: "🎬", n: "Emote pack" } },
-  { tier: 35, free: { i: "🪙", n: "500 coins" }, premium: { i: "🎨", n: "Banner set" } },
-  { tier: 40, free: { i: "🎟️", n: "Ticket x3" }, premium: { i: "💎", n: "50 gems" } },
-  { tier: 45, free: { i: "🥈", n: "Badge" }, premium: { i: "🐉", n: "Mythic Avatar", legendary: true } },
+type Reward = { i: string; n: string; xp: number; orbit: string[]; grad: string; legendary?: boolean };
+const TIER_REWARDS: Array<{ tier: number; free: Reward; premium: Reward }> = [
+  { tier: 1,  free: { i: "🪙", n: "100 coins",   xp: 500,  orbit: ["💰","✨"],       grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🎨", n: "Frame",     xp: 500,  orbit: ["🖼️","✨"],       grad: "from-primary/25 to-secondary/10" } },
+  { tier: 5,  free: { i: "⚡", n: "XP boost",     xp: 1200, orbit: ["🔥","💫"],       grad: "from-primary/25 to-accent/10" },
+              premium: { i: "👤", n: "Avatar",    xp: 1200, orbit: ["🎭","✨"],       grad: "from-secondary/25 to-primary/10" } },
+  { tier: 10, free: { i: "🎟️", n: "Raffle",     xp: 2000, orbit: ["🎊","🎉"],       grad: "from-accent/25 to-primary/10" },
+              premium: { i: "🏷️", n: "Title",    xp: 2000, orbit: ["⭐","👑"],       grad: "from-secondary/30 to-accent/10" } },
+  { tier: 15, free: { i: "🪙", n: "250 coins",   xp: 3200, orbit: ["💰","💰"],       grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🌈", n: "Name color",xp: 3200, orbit: ["✨","💫"],       grad: "from-pink-500/25 to-purple-600/10" } },
+  { tier: 20, free: { i: "🎁", n: "Loot box",    xp: 4500, orbit: ["🎀","✨"],       grad: "from-primary/25 to-secondary/10" },
+              premium: { i: "🐉", n: "Legend Skin", xp: 4500, orbit: ["🔥","👑","💎"], grad: "from-accent/40 to-primary/20", legendary: true } },
+  { tier: 25, free: { i: "🥉", n: "Bronze badge",xp: 6000, orbit: ["🏅","✨"],       grad: "from-amber-700/25 to-yellow-900/10" },
+              premium: { i: "👑", n: "Crown frame",xp: 6000, orbit: ["💎","✨"],      grad: "from-yellow-500/30 to-amber-600/10" } },
+  { tier: 30, free: { i: "⚡", n: "2x XP boost", xp: 7500, orbit: ["🔥","💫"],       grad: "from-primary/25 to-accent/10" },
+              premium: { i: "😂", n: "Emote pack",xp: 7500, orbit: ["🎭","💬"],       grad: "from-secondary/25 to-primary/10" } },
+  { tier: 35, free: { i: "🪙", n: "500 coins",   xp: 9000, orbit: ["💰","💰","✨"],  grad: "from-yellow-500/25 to-amber-600/10" },
+              premium: { i: "🎌", n: "Banner set",xp: 9000, orbit: ["✨","🎨"],       grad: "from-primary/25 to-secondary/10" } },
+  { tier: 40, free: { i: "🎟️", n: "Tickets x3", xp: 10500,orbit: ["🎊","🎉"],       grad: "from-accent/25 to-primary/10" },
+              premium: { i: "💎", n: "50 gems",   xp: 10500,orbit: ["💠","✨"],       grad: "from-cyan-500/25 to-blue-600/10" } },
+  { tier: 45, free: { i: "🥈", n: "Silver badge",xp: 12000,orbit: ["🏅","✨"],       grad: "from-slate-400/25 to-slate-600/10" },
+              premium: { i: "🐲", n: "Mythic Avatar", xp: 12000, orbit: ["🔥","👑","💎"], grad: "from-accent/40 to-primary/20", legendary: true } },
+  { tier: 50, free: { i: "🎁", n: "Chest",       xp: 13800,orbit: ["🎀","✨"],       grad: "from-primary/25 to-secondary/10" },
+              premium: { i: "🐾", n: "Pet",       xp: 13800,orbit: ["✨","💫"],       grad: "from-pink-500/25 to-rose-600/10" } },
+  { tier: 55, free: { i: "🎨", n: "Sticker set", xp: 15500,orbit: ["🖌️","🌈"],      grad: "from-purple-500/25 to-pink-500/10" },
+              premium: { i: "🎭", n: "Theme unlock",xp:15500,orbit: ["🌌","✨"],       grad: "from-secondary/30 to-accent/10" } },
 ];
 
 const MISSIONS_DAILY = [
