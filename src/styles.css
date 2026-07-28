@@ -250,6 +250,15 @@
   opacity: 0.6;
 }
 
+/* Emoji glyph fallback — laptops without a system emoji font render tofu
+   boxes for our seasonal particles, so force the loaded web emoji font. */
+.emoji-glyph {
+  font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Twemoji Mozilla", "Android Emoji", sans-serif;
+  font-variant-emoji: emoji;
+  line-height: 1;
+}
+
 /* Falling particle animation used by SeasonalEffects (spring/halloween/winter) */
 @keyframes season-fall {
   0% {
