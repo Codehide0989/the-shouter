@@ -54,7 +54,7 @@ export function SeasonalEffects() {
         {petals.map((p, i) => (
           <span
             key={`petal-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-season-fall will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -71,7 +71,7 @@ export function SeasonalEffects() {
         {leaves.map((p, i) => (
           <span
             key={`leaf-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-season-fall will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -100,7 +100,7 @@ export function SeasonalEffects() {
         {pumpkins.map((p, i) => (
           <span
             key={`pumpkin-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-season-fall will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -118,7 +118,7 @@ export function SeasonalEffects() {
         {bats.map((p, i) => (
           <span
             key={`bat-${i}`}
-            className="absolute -top-10 select-none animate-season-fall will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-season-fall will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -142,7 +142,7 @@ export function SeasonalEffects() {
         {flakes.map((p, i) => (
           <span
             key={`flake-${i}`}
-            className="absolute -top-10 select-none text-white animate-season-fall will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none text-white animate-season-fall will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -169,9 +169,9 @@ export function SeasonalEffects() {
     return (
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         {/* Corner palm silhouettes */}
-        <span className="absolute -bottom-4 -left-2 text-7xl md:text-8xl select-none opacity-90 rotate-[-12deg]"
+        <span className="emoji-glyph absolute -bottom-4 -left-2 text-7xl md:text-8xl select-none opacity-90 rotate-[-12deg]"
           style={{ filter: "drop-shadow(3px 3px 0 var(--color-border))" }}>🌴</span>
-        <span className="absolute -bottom-6 -right-2 text-7xl md:text-8xl select-none opacity-90 rotate-[14deg]"
+        <span className="emoji-glyph absolute -bottom-6 -right-2 text-7xl md:text-8xl select-none opacity-90 rotate-[14deg]"
           style={{ filter: "drop-shadow(-3px 3px 0 var(--color-border))" }}>🌴</span>
 
         {/* Animated sunshine rays top-right */}
@@ -188,7 +188,7 @@ export function SeasonalEffects() {
         {palms.map((p, i) => (
           <span
             key={`palm-${i}`}
-            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-summer-drift will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -208,7 +208,7 @@ export function SeasonalEffects() {
         {tropicals.map((p, i) => (
           <span
             key={`trop-${i}`}
-            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-summer-drift will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -248,7 +248,7 @@ export function SeasonalEffects() {
         {butterflies.map((p, i) => (
           <span
             key={`fly-${i}`}
-            className="absolute -top-10 select-none animate-summer-drift will-change-transform"
+            className="emoji-glyph absolute -top-10 select-none animate-summer-drift will-change-transform"
             style={{
               left: p.left,
               animationDelay: p.delay,
@@ -337,7 +337,7 @@ export function SeasonalEffects() {
         {cyberShapes.map((p, i) => (
           <span
             key={`shape-${i}`}
-            className="absolute select-none animate-cyber-float"
+            className="emoji-glyph absolute select-none animate-cyber-float"
             style={{
               left: p.left,
               top: `${(i * 173) % 90}%`,
