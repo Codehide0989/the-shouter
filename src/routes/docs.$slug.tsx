@@ -292,15 +292,6 @@ function Article() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 pt-4 border-t-2 border-border grid grid-cols-2 gap-2">
-                <button onClick={() => setBookmarked((b) => !b)}
-                  className={`neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
-                  <Bookmark className="h-3 w-3" /> Save
-                </button>
-                <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 bg-card">
-                  <Printer className="h-3 w-3" /> Print
-                </button>
-              </div>
               <div className="mt-3 text-[11px] text-muted-foreground">Updated {article.updated}</div>
             </NeoCard>
           </aside>
