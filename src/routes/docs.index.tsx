@@ -113,11 +113,38 @@ function Page() {
               <div className="font-display text-2xl sm:text-3xl leading-tight">{featured.title}</div>
               <p className="text-sm text-muted-foreground">{featured.description}</p>
               <div className="inline-flex items-center gap-2 text-sm font-display uppercase tracking-widest">
-                Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Read full article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </div>
           </div>
         </Link>
+      </div>
+
+      {/* Browse by category */}
+      <div>
+        <SectionHeader eyebrow="Browse" title="Categories" />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {DOC_CATEGORIES.map((c) => {
+            const items = DOC_ARTICLES.filter((a) => a.category === c);
+            const Icon = CAT_ICON[items[0]?.categoryIcon ?? "BookOpen"] ?? BookOpen;
+            return (
+              <Link
+                key={c}
+                to="/docs/category/$slug"
+                params={{ slug: c.toLowerCase() }}
+                className="neo-border neo-shadow rounded-lg bg-card p-4 flex items-center gap-3 hover:-translate-y-1 transition-transform"
+              >
+                <span className="neo-border neo-shadow-sm bg-background rounded-md h-10 w-10 grid place-items-center shrink-0">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-sm leading-tight">{c}</span>
+                  <span className="block text-[11px] text-muted-foreground">{items.length} article{items.length === 1 ? "" : "s"}</span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       {/* Category chips */}
@@ -175,7 +202,7 @@ function Page() {
                     <div className="mt-auto pt-2 flex items-center justify-between text-[11px] text-muted-foreground">
                       <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {a.readMin} min</span>
                       <span className="inline-flex items-center gap-1 font-display uppercase tracking-widest group-hover:text-foreground">
-                        Read <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                        Read full article <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </span>
                     </div>
                   </div>
