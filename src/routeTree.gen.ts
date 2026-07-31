@@ -49,6 +49,7 @@ import { Route as ApiDocsRouteImport } from './routes/api-docs'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DocsIndexRouteImport } from './routes/docs.index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as TournamentsVerificationRouteImport } from './routes/tournaments.verification'
@@ -417,6 +418,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DocsIndexRoute = DocsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DocsRoute,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
@@ -1405,6 +1411,7 @@ export interface FileRoutesByFullPath {
   '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/docs/': typeof DocsIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
   '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
   '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
@@ -1493,7 +1500,6 @@ export interface FileRoutesByTo {
   '/changelog': typeof ChangelogRoute
   '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
-  '/docs': typeof DocsRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/event-archive': typeof EventArchiveRoute
   '/explore': typeof ExploreRoute
@@ -1613,6 +1619,7 @@ export interface FileRoutesByTo {
   '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/docs': typeof DocsIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
   '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
   '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
@@ -1824,6 +1831,7 @@ export interface FileRoutesById {
   '/tournaments/verification': typeof TournamentsVerificationRoute
   '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/docs/': typeof DocsIndexRoute
   '/admin/analytics/discord': typeof AdminAnalyticsDiscordRoute
   '/admin/analytics/events': typeof AdminAnalyticsEventsRoute
   '/admin/analytics/growth': typeof AdminAnalyticsGrowthRoute
@@ -2036,6 +2044,7 @@ export interface FileRouteTypes {
     | '/tournaments/verification'
     | '/admin/'
     | '/dashboard/'
+    | '/docs/'
     | '/admin/analytics/discord'
     | '/admin/analytics/events'
     | '/admin/analytics/growth'
@@ -2124,7 +2133,6 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/contact'
     | '/developers'
-    | '/docs'
     | '/downloads'
     | '/event-archive'
     | '/explore'
@@ -2244,6 +2252,7 @@ export interface FileRouteTypes {
     | '/tournaments/verification'
     | '/admin'
     | '/dashboard'
+    | '/docs'
     | '/admin/analytics/discord'
     | '/admin/analytics/events'
     | '/admin/analytics/growth'
@@ -2454,6 +2463,7 @@ export interface FileRouteTypes {
     | '/tournaments/verification'
     | '/admin/'
     | '/dashboard/'
+    | '/docs/'
     | '/admin/analytics/discord'
     | '/admin/analytics/events'
     | '/admin/analytics/growth'
@@ -2858,6 +2868,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/docs/': {
+      id: '/docs/'
+      path: '/'
+      fullPath: '/docs/'
+      preLoaderRoute: typeof DocsIndexRouteImport
+      parentRoute: typeof DocsRoute
     }
     '/dashboard/': {
       id: '/dashboard/'
@@ -4350,11 +4367,13 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 interface DocsRouteChildren {
   DocsSlugRoute: typeof DocsSlugRoute
+  DocsIndexRoute: typeof DocsIndexRoute
   DocsCategorySlugRoute: typeof DocsCategorySlugRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
   DocsSlugRoute: DocsSlugRoute,
+  DocsIndexRoute: DocsIndexRoute,
   DocsCategorySlugRoute: DocsCategorySlugRoute,
 }
 
