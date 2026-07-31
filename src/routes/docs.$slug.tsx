@@ -130,7 +130,6 @@ function Article() {
   const { article } = Route.useLoaderData() as { article: (typeof DOC_ARTICLES)[number] };
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
   const [copied, setCopied] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const progress = useScrollProgress();
 
   const idx = DOC_ARTICLES.findIndex((a) => a.slug === article.slug);
