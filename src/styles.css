@@ -203,51 +203,52 @@
     );
 }
 
-/* Themed atmospheric layer — sits behind content, per-season vibe */
+/* Themed atmospheric layer — static, per-season vibe (no animation) */
 .theme-decor {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
-  background-repeat: repeat;
-  background-size: 120px 120px;
+  opacity: 0.6;
 }
 .theme-summer .theme-decor {
   background-image:
-    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-secondary) 40%, transparent) 0, transparent 22%),
-    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-accent) 40%, transparent) 0, transparent 22%),
-    linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-primary) 8%, transparent) 100%);
-  background-size: cover;
+    radial-gradient(circle at 85% 8%, color-mix(in oklab, var(--color-accent) 55%, transparent) 0, transparent 26%),
+    radial-gradient(circle at 12% 22%, color-mix(in oklab, var(--color-secondary) 40%, transparent) 0, transparent 24%),
+    repeating-linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 7%, transparent) 0 14px, transparent 14px 34px),
+    linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 10%, transparent) 0%, transparent 45%, color-mix(in oklab, var(--color-secondary) 12%, transparent) 100%);
 }
 .theme-halloween .theme-decor {
   background-image:
-    radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--color-accent) 35%, transparent) 0, transparent 18%),
-    radial-gradient(circle at 75% 65%, color-mix(in oklab, var(--color-primary) 30%, transparent) 0, transparent 20%),
-    linear-gradient(180deg, transparent 0%, color-mix(in oklab, black 40%, transparent) 100%);
-  background-size: cover;
+    radial-gradient(circle at 82% 10%, color-mix(in oklab, var(--color-accent) 45%, transparent) 0, transparent 22%),
+    radial-gradient(circle at 18% 70%, color-mix(in oklab, var(--color-primary) 35%, transparent) 0, transparent 26%),
+    repeating-linear-gradient(45deg, color-mix(in oklab, black 14%, transparent) 0 10px, transparent 10px 26px),
+    linear-gradient(180deg, transparent 0%, color-mix(in oklab, black 45%, transparent) 100%);
 }
 .theme-winter .theme-decor {
   background-image:
-    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-primary) 22%, transparent) 0, transparent 30%),
-    radial-gradient(circle at 80% 60%, color-mix(in oklab, white 12%, transparent) 0, transparent 30%),
-    linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-primary) 10%, transparent) 100%);
-  background-size: cover;
+    radial-gradient(circle at 50% -5%, color-mix(in oklab, white 30%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 15% 35%, color-mix(in oklab, var(--color-primary) 25%, transparent) 0, transparent 28%),
+    repeating-linear-gradient(90deg, color-mix(in oklab, white 10%, transparent) 0 2px, transparent 2px 40px),
+    linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--color-primary) 14%, transparent) 100%);
 }
 .theme-spring .theme-decor {
   background-image:
-    radial-gradient(circle at 25% 25%, color-mix(in oklab, var(--color-primary) 20%, transparent) 0, transparent 28%),
-    radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--color-accent) 20%, transparent) 0, transparent 28%);
-  background-size: cover;
+    radial-gradient(circle at 20% 12%, color-mix(in oklab, var(--color-primary) 28%, transparent) 0, transparent 26%),
+    radial-gradient(circle at 82% 66%, color-mix(in oklab, var(--color-accent) 26%, transparent) 0, transparent 26%),
+    radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--color-secondary) 10%, transparent) 0 6px, transparent 7px),
+    linear-gradient(180deg, transparent 60%, color-mix(in oklab, var(--color-primary) 10%, transparent) 100%);
+  background-size: cover, cover, 90px 90px, cover;
 }
 .theme-cyber .theme-decor {
   background-image:
-    linear-gradient(color-mix(in oklab, var(--color-primary) 22%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--color-secondary) 22%, transparent) 1px, transparent 1px),
-    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-accent) 35%, transparent) 0, transparent 30%),
-    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--color-secondary) 30%, transparent) 0, transparent 30%);
-  background-size: 48px 48px, 48px 48px, cover, cover;
-  opacity: 0.6;
+    linear-gradient(color-mix(in oklab, var(--color-primary) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-secondary) 20%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 18% 22%, color-mix(in oklab, var(--color-accent) 40%, transparent) 0, transparent 30%),
+    radial-gradient(circle at 84% 74%, color-mix(in oklab, var(--color-secondary) 35%, transparent) 0, transparent 30%),
+    linear-gradient(180deg, color-mix(in oklab, black 25%, transparent) 0%, transparent 40%);
+  background-size: 46px 46px, 46px 46px, cover, cover, cover;
+  opacity: 0.65;
 }
 
 /* Emoji glyph fallback — laptops without a system emoji font render tofu
