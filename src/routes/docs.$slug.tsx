@@ -180,15 +180,8 @@ function Article() {
 
             {/* Action bar */}
             <div className="mt-6 flex flex-wrap items-center gap-2">
-              <button onClick={() => setBookmarked((b) => !b)}
-                className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
-                <Bookmark className="h-3.5 w-3.5" /> {bookmarked ? "Saved" : "Bookmark"}
-              </button>
               <button onClick={copyLink} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
                 {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Link2 className="h-3.5 w-3.5" /> Copy link</>}
-              </button>
-              <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
-                <Printer className="h-3.5 w-3.5" /> Print
               </button>
               <a href={`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Twitter className="h-3.5 w-3.5" /></a>
               <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Linkedin className="h-3.5 w-3.5" /></a>
