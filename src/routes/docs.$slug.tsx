@@ -5,7 +5,7 @@ import { heroUrl } from "@/components/dashboard-page";
 import { DOC_ARTICLES, type DocBlock } from "@/lib/docs-data";
 import {
   Clock, Copy, Check, ArrowLeft, ArrowRight, Share2, Info, Lightbulb, AlertTriangle,
-  ThumbsUp, ThumbsDown, Bookmark, Printer, Link2, Twitter, Facebook, Linkedin, Calendar, User,
+  ThumbsUp, ThumbsDown, Link2, Twitter, Facebook, Linkedin, Calendar, User,
 } from "lucide-react";
 
 export const Route = createFileRoute("/docs/$slug")({
@@ -130,7 +130,6 @@ function Article() {
   const { article } = Route.useLoaderData() as { article: (typeof DOC_ARTICLES)[number] };
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
   const [copied, setCopied] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const progress = useScrollProgress();
 
   const idx = DOC_ARTICLES.findIndex((a) => a.slug === article.slug);
@@ -181,15 +180,8 @@ function Article() {
 
             {/* Action bar */}
             <div className="mt-6 flex flex-wrap items-center gap-2">
-              <button onClick={() => setBookmarked((b) => !b)}
-                className={`neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
-                <Bookmark className="h-3.5 w-3.5" /> {bookmarked ? "Saved" : "Bookmark"}
-              </button>
               <button onClick={copyLink} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
                 {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Link2 className="h-3.5 w-3.5" /> Copy link</>}
-              </button>
-              <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
-                <Printer className="h-3.5 w-3.5" /> Print
               </button>
               <a href={`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Twitter className="h-3.5 w-3.5" /></a>
               <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Linkedin className="h-3.5 w-3.5" /></a>
@@ -300,15 +292,6 @@ function Article() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 pt-4 border-t-2 border-border grid grid-cols-2 gap-2">
-                <button onClick={() => setBookmarked((b) => !b)}
-                  className={`neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 ${bookmarked ? "bg-accent text-accent-foreground" : "bg-card"}`}>
-                  <Bookmark className="h-3 w-3" /> Save
-                </button>
-                <button onClick={printPage} className="neo-border neo-shadow-sm rounded-md px-2 py-1.5 text-[10px] font-display uppercase tracking-widest inline-flex items-center justify-center gap-1 bg-card">
-                  <Printer className="h-3 w-3" /> Print
-                </button>
-              </div>
               <div className="mt-3 text-[11px] text-muted-foreground">Updated {article.updated}</div>
             </NeoCard>
           </aside>
