@@ -5,7 +5,7 @@ import { heroUrl } from "@/components/dashboard-page";
 import { DOC_ARTICLES, type DocBlock } from "@/lib/docs-data";
 import {
   Clock, Copy, Check, ArrowLeft, ArrowRight, Share2, Info, Lightbulb, AlertTriangle,
-  ThumbsUp, ThumbsDown, Bookmark, Printer, Link2, Twitter, Facebook, Linkedin, Calendar, User,
+  ThumbsUp, ThumbsDown, Link2, Twitter, Facebook, Linkedin, Calendar, User,
 } from "lucide-react";
 
 export const Route = createFileRoute("/docs/$slug")({
