@@ -131,7 +131,7 @@ function Page() {
         <SectionHeader eyebrow="Tiers" title="Sponsorship packages" subtitle="Every tier ships with exit anytime, monthly invoicing, and quarterly performance report." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {SPONSOR_PACKAGES.map((p) => {
-            const Icon = PACKAGE_ICONS[p.slug] ?? Star;
+            const tierArt = PACKAGE_ART[p.slug] ?? p.cover;
             return (
               <Link key={p.slug} to="/sponsors/package/$slug" params={{ slug: p.slug }} className="group block h-full">
                 <NeoCard className="p-0 overflow-hidden h-full flex flex-col transition-transform hover:-translate-y-1 hover:neo-shadow-lg">
@@ -149,7 +149,7 @@ function Page() {
                       </span>
                     )}
                     <div className="absolute -bottom-6 right-4 neo-border neo-shadow-sm bg-card rounded-md h-14 w-14 grid place-items-center overflow-hidden">
-                      <img src={heroUrl(PACKAGE_ART[p.slug] ?? p.cover)} alt={`${p.name} tier crest`} loading="lazy" width={768} height={768} className="h-11 w-11 object-contain" />
+                      <img src={heroUrl(tierArt)} alt={`${p.name} tier crest`} loading="lazy" width={768} height={768} className="h-11 w-11 object-contain" />
                     </div>
                   </div>
                   <div className="p-4 pt-6 flex-1 flex flex-col">

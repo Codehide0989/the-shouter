@@ -5,6 +5,9 @@ import { SPONSOR_PACKAGES } from "@/lib/partners-data";
 import { ArrowLeft, ArrowRight, CheckCircle2, Trophy, Star, Crown, Gem, Sparkles, Mail } from "lucide-react";
 
 const PACKAGE_ICONS: Record<string, typeof Star> = { bronze: Star, silver: Trophy, gold: Crown, platinum: Gem, diamond: Sparkles };
+const PACKAGE_ART: Record<string, string> = {
+  bronze: "rank-bronze", silver: "rank-silver", gold: "rank-gold", platinum: "tier-platinum", diamond: "tier-diamond",
+};
 
 export const Route = createFileRoute("/sponsors/package/$slug")({
   loader: ({ params }) => {
