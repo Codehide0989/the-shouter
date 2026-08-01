@@ -5,6 +5,9 @@ import { SPONSOR_PACKAGES } from "@/lib/partners-data";
 import { ArrowLeft, ArrowRight, CheckCircle2, Trophy, Star, Crown, Gem, Sparkles, Mail } from "lucide-react";
 
 const PACKAGE_ICONS: Record<string, typeof Star> = { bronze: Star, silver: Trophy, gold: Crown, platinum: Gem, diamond: Sparkles };
+const PACKAGE_ART: Record<string, string> = {
+  bronze: "rank-bronze", silver: "rank-silver", gold: "rank-gold", platinum: "tier-platinum", diamond: "tier-diamond",
+};
 
 export const Route = createFileRoute("/sponsors/package/$slug")({
   loader: ({ params }) => {
@@ -41,7 +44,7 @@ function NotFoundPkg() {
 
 function PackageDetail() {
   const { pkg } = Route.useLoaderData() as { pkg: (typeof SPONSOR_PACKAGES)[number] };
-  const Icon = PACKAGE_ICONS[pkg.slug] ?? Star;
+  
   const idx = SPONSOR_PACKAGES.findIndex((p) => p.slug === pkg.slug);
   const others = SPONSOR_PACKAGES.filter((p) => p.slug !== pkg.slug);
   const next = SPONSOR_PACKAGES[(idx + 1) % SPONSOR_PACKAGES.length];
@@ -69,8 +72,8 @@ function PackageDetail() {
               {pkg.ribbon && <NeoBadge variant="primary">{pkg.ribbon}</NeoBadge>}
             </div>
             <div className="flex items-center gap-4 mt-4">
-              <div className="neo-border neo-shadow-sm bg-card rounded-md h-16 w-16 grid place-items-center shrink-0">
-                <Icon className="h-8 w-8" />
+              <div className="neo-border neo-shadow-sm bg-card rounded-md h-20 w-20 grid place-items-center shrink-0 overflow-hidden">
+                <img src={heroUrl(PACKAGE_ART[pkg.slug] ?? pkg.cover)} alt={`${pkg.name} tier crest`} width={768} height={768} className="h-16 w-16 object-contain" />
               </div>
               <div className="min-w-0">
                 <h1 className="font-display text-3xl sm:text-5xl leading-tight">{pkg.name} sponsorship</h1>

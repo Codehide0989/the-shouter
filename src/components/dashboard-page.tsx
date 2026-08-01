@@ -24,6 +24,11 @@ import statWins from "@/assets/stat-wins.jpg";
 import statTeams from "@/assets/stat-teams.jpg";
 import statReactions from "@/assets/stat-reactions.jpg";
 import statStreak from "@/assets/stat-streak.jpg";
+import rankGold from "@/assets/rank-gold.jpg";
+import rankSilver from "@/assets/rank-silver.jpg";
+import rankBronze from "@/assets/rank-bronze.jpg";
+import tierPlatinum from "@/assets/tier-platinum.jpg";
+import tierDiamond from "@/assets/tier-diamond.jpg";
 
 const HERO_MAP: Record<string, string> = {
   "dash-overview": overview,
@@ -43,6 +48,11 @@ const HERO_MAP: Record<string, string> = {
   "admin-hero": admin,
   "dashboard-hero": profile,
   "settings-hero": settings,
+  "rank-gold": rankGold,
+  "rank-silver": rankSilver,
+  "rank-bronze": rankBronze,
+  "tier-platinum": tierPlatinum,
+  "tier-diamond": tierDiamond,
 };
 
 // Themed stat card artwork rotation — keyed by label keyword

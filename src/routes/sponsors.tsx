@@ -57,6 +57,14 @@ const BENEFITS = [
 
 const PACKAGE_ICONS: Record<string, typeof Star> = { bronze: Star, silver: Trophy, gold: Crown, platinum: Gem, diamond: Sparkles };
 
+export const PACKAGE_ART: Record<string, string> = {
+  bronze: "rank-bronze",
+  silver: "rank-silver",
+  gold: "rank-gold",
+  platinum: "tier-platinum",
+  diamond: "tier-diamond",
+};
+
 const TIER_STYLE: Record<string, "accent" | "primary" | "secondary" | "muted"> = {
   Diamond: "accent", Platinum: "primary", Gold: "primary", Silver: "secondary", Bronze: "muted",
 };
@@ -123,7 +131,7 @@ function Page() {
         <SectionHeader eyebrow="Tiers" title="Sponsorship packages" subtitle="Every tier ships with exit anytime, monthly invoicing, and quarterly performance report." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {SPONSOR_PACKAGES.map((p) => {
-            const Icon = PACKAGE_ICONS[p.slug] ?? Star;
+            const tierArt = PACKAGE_ART[p.slug] ?? p.cover;
             return (
               <Link key={p.slug} to="/sponsors/package/$slug" params={{ slug: p.slug }} className="group block h-full">
                 <NeoCard className="p-0 overflow-hidden h-full flex flex-col transition-transform hover:-translate-y-1 hover:neo-shadow-lg">
@@ -140,8 +148,8 @@ function Page() {
                         {p.ribbon}
                       </span>
                     )}
-                    <div className="absolute -bottom-6 right-4 neo-border neo-shadow-sm bg-card rounded-md h-14 w-14 grid place-items-center">
-                      <Icon className="h-6 w-6" />
+                    <div className="absolute -bottom-6 right-4 neo-border neo-shadow-sm bg-card rounded-md h-14 w-14 grid place-items-center overflow-hidden">
+                      <img src={heroUrl(tierArt)} alt={`${p.name} tier crest`} loading="lazy" width={768} height={768} className="h-11 w-11 object-contain" />
                     </div>
                   </div>
                   <div className="p-4 pt-6 flex-1 flex flex-col">
