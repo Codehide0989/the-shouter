@@ -229,7 +229,6 @@ function Article() {
             </div>
           </div>
         </div>
-        </div>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_260px]">
           {/* Body */}
