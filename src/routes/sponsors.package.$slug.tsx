@@ -44,7 +44,7 @@ function NotFoundPkg() {
 
 function PackageDetail() {
   const { pkg } = Route.useLoaderData() as { pkg: (typeof SPONSOR_PACKAGES)[number] };
-  const Icon = PACKAGE_ICONS[pkg.slug] ?? Star;
+  
   const idx = SPONSOR_PACKAGES.findIndex((p) => p.slug === pkg.slug);
   const others = SPONSOR_PACKAGES.filter((p) => p.slug !== pkg.slug);
   const next = SPONSOR_PACKAGES[(idx + 1) % SPONSOR_PACKAGES.length];
