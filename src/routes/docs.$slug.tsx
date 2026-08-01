@@ -52,18 +52,40 @@ function NotFound() {
 
 function CodeBlock({ code, lang }: { code: string; lang: string }) {
   const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = code;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
   return (
-    <div className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-background">
-      <div className="flex items-center justify-between px-3 py-1.5 border-b-2 border-border bg-muted/40">
-        <span className="text-[10px] font-display uppercase tracking-widest text-muted-foreground">{lang}</span>
+    <div className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-background max-w-full">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-1.5 border-b-2 border-border bg-muted/40">
+        <span className="truncate text-[10px] font-display uppercase tracking-widest text-muted-foreground">{lang}</span>
         <button
-          onClick={() => { navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-          className="text-[10px] font-display uppercase tracking-widest inline-flex items-center gap-1 hover:text-primary"
+          type="button"
+          onClick={copy}
+          aria-label={copied ? "Code copied to clipboard" : "Copy code to clipboard"}
+          className={`shrink-0 neo-border rounded-md px-2 py-1 text-[10px] font-display uppercase tracking-widest inline-flex items-center gap-1 transition-colors ${
+            copied ? "bg-[color:var(--success)] text-black" : "bg-card hover:bg-primary hover:text-primary-foreground"
+          }`}
         >
           {copied ? <><Check className="h-3 w-3" /> Copied</> : <><Copy className="h-3 w-3" /> Copy</>}
         </button>
       </div>
-      <pre className="p-3 text-[12px] font-mono overflow-x-auto"><code>{code}</code></pre>
+      <pre className="p-3 text-[11px] sm:text-[12px] leading-relaxed font-mono overflow-x-auto max-w-full [-webkit-overflow-scrolling:touch]">
+        <code className="whitespace-pre block min-w-0">{code}</code>
+      </pre>
     </div>
   );
 }
@@ -165,27 +187,45 @@ function Article() {
         {/* Hero */}
         <div className="relative neo-border neo-shadow-lg rounded-lg overflow-hidden bg-card mb-8">
           <img src={heroUrl(article.heroKey)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-background/40" />
-          <div className="relative p-6 sm:p-10">
-            <div className="flex flex-wrap items-center gap-2">
-              <NeoBadge variant="accent">{article.category}</NeoBadge>
-              <NeoBadge variant="muted">{article.difficulty}</NeoBadge>
-              <span className="text-[11px] text-muted-foreground inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readMin} min · updated {article.updated}</span>
-            </div>
-            <h1 className="font-display text-3xl sm:text-5xl mt-3 leading-tight max-w-3xl">{article.title}</h1>
-            <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">{article.description}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {article.tags.map((t) => <NeoBadge key={t} variant="muted">#{t}</NeoBadge>)}
+          <div className="absolute inset-0 bg-gradient-to-br from-background/96 via-background/88 to-background/45" />
+          <div className="absolute inset-0 opacity-[0.12] [background-image:repeating-linear-gradient(45deg,currentColor_0_2px,transparent_2px_10px)]" />
+          <div className="relative grid gap-6 p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center lg:p-10">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <NeoBadge variant="accent">{article.category}</NeoBadge>
+                <NeoBadge variant="muted">{article.difficulty}</NeoBadge>
+                <span className="text-[11px] text-muted-foreground inline-flex items-center gap-1"><Clock className="h-3 w-3 shrink-0" /> {article.readMin} min · updated {article.updated}</span>
+              </div>
+              <h1 className="font-display text-[26px] leading-[1.1] sm:text-4xl lg:text-5xl mt-3 max-w-3xl break-words">{article.title}</h1>
+              <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-2xl">{article.description}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {article.tags.map((t) => <NeoBadge key={t} variant="muted">#{t}</NeoBadge>)}
+              </div>
+
+              {/* Action bar */}
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                <button onClick={copyLink} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
+                  {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Link2 className="h-3.5 w-3.5" /> Copy link</>}
+                </button>
+                <a href={`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on X" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Twitter className="h-3.5 w-3.5" /></a>
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Linkedin className="h-3.5 w-3.5" /></a>
+                <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Facebook" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Facebook className="h-3.5 w-3.5" /></a>
+              </div>
             </div>
 
-            {/* Action bar */}
-            <div className="mt-6 flex flex-wrap items-center gap-2">
-              <button onClick={copyLink} className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card">
-                {copied ? <><Check className="h-3.5 w-3.5" /> Copied</> : <><Link2 className="h-3.5 w-3.5" /> Copy link</>}
-              </button>
-              <a href={`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Twitter className="h-3.5 w-3.5" /></a>
-              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Linkedin className="h-3.5 w-3.5" /></a>
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noreferrer" className="neo-border neo-shadow-sm rounded-md px-3 py-2 inline-flex items-center gap-1.5 text-xs font-display uppercase bg-card"><Facebook className="h-3.5 w-3.5" /></a>
+            {/* Artwork panel */}
+            <div className="hidden lg:block neo-border neo-shadow rounded-md overflow-hidden bg-card">
+              <img src={heroUrl(article.heroKey)} alt="" className="h-44 w-full object-cover" />
+              <div className="grid grid-cols-2 divide-x-2 divide-border border-t-2 border-border text-center">
+                <div className="p-2">
+                  <div className="font-display text-lg">{article.readMin}</div>
+                  <div className="text-[9px] uppercase tracking-widest text-muted-foreground">Min read</div>
+                </div>
+                <div className="p-2">
+                  <div className="font-display text-lg">{article.toc.length}</div>
+                  <div className="text-[9px] uppercase tracking-widest text-muted-foreground">Sections</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
