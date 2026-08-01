@@ -72,8 +72,8 @@ function PackageDetail() {
               {pkg.ribbon && <NeoBadge variant="primary">{pkg.ribbon}</NeoBadge>}
             </div>
             <div className="flex items-center gap-4 mt-4">
-              <div className="neo-border neo-shadow-sm bg-card rounded-md h-16 w-16 grid place-items-center shrink-0">
-                <Icon className="h-8 w-8" />
+              <div className="neo-border neo-shadow-sm bg-card rounded-md h-20 w-20 grid place-items-center shrink-0 overflow-hidden">
+                <img src={heroUrl(PACKAGE_ART[pkg.slug] ?? pkg.cover)} alt={`${pkg.name} tier crest`} width={768} height={768} className="h-16 w-16 object-contain" />
               </div>
               <div className="min-w-0">
                 <h1 className="font-display text-3xl sm:text-5xl leading-tight">{pkg.name} sponsorship</h1>
