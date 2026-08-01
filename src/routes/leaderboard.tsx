@@ -69,17 +69,31 @@ function Page() {
           </div>
         </div>
 
-        {/* Mini podium */}
+        {/* Mini podium with rank artwork */}
         <div className="grid grid-cols-3 gap-2 items-end">
           {[top3[1], top3[0], top3[2]].filter(Boolean).map((p, idx) => {
             const rank = p.rank;
-            const heights = ["h-32 sm:h-40", "h-44 sm:h-56", "h-24 sm:h-32"];
+            const heights = ["h-28 sm:h-36", "h-36 sm:h-48", "h-20 sm:h-28"];
+            const art = rank === 1 ? "rank-gold" : rank === 2 ? "rank-silver" : "rank-bronze";
             const bg = rank === 1 ? "bg-accent text-accent-foreground" : rank === 2 ? "bg-secondary text-secondary-foreground" : "bg-primary/80 text-primary-foreground";
             return (
-              <div key={p.name}>
-                <NeoCard className="p-2 mb-2 text-center">
-                  <div className="font-display text-xs truncate">{p.name}</div>
-                  <div className="text-[10px] text-muted-foreground">{p.xp.toLocaleString()}</div>
+              <div key={p.name} className="min-w-0">
+                <NeoCard className="p-0 mb-2 overflow-hidden text-center">
+                  <div className="relative bg-muted/40 border-b-[3px] border-border">
+                    <img
+                      src={heroUrl(art)}
+                      alt={`Rank ${rank} medal`}
+                      loading="lazy"
+                      width={768}
+                      height={768}
+                      className={`mx-auto object-contain ${rank === 1 ? "h-20 sm:h-24" : "h-14 sm:h-20"}`}
+                    />
+                    <span className="absolute top-1 left-1 neo-border bg-card rounded-md px-1.5 text-[10px] font-display">#{rank}</span>
+                  </div>
+                  <div className="p-2">
+                    <div className="font-display text-xs truncate">{p.name}</div>
+                    <div className="text-[10px] text-muted-foreground">{p.xp.toLocaleString()}</div>
+                  </div>
                 </NeoCard>
                 <div className={`neo-border neo-shadow ${bg} ${heights[idx]} rounded-t-lg grid place-items-center font-display text-3xl sm:text-5xl`}>{rank}</div>
               </div>
@@ -87,6 +101,34 @@ function Page() {
           })}
         </div>
       </div>
+
+      {/* Top 3 spotlight */}
+      {top3.length === 3 && (
+        <div className="grid gap-4 sm:grid-cols-3">
+          {top3.map((p) => {
+            const art = p.rank === 1 ? "rank-gold" : p.rank === 2 ? "rank-silver" : "rank-bronze";
+            const label = p.rank === 1 ? "Champion" : p.rank === 2 ? "Runner-up" : "Third place";
+            return (
+              <NeoCard key={p.name} className="p-0 overflow-hidden transition-transform hover:-translate-y-1">
+                <div className="relative h-40 bg-muted/40 border-b-[3px] border-border grid place-items-center">
+                  <img src={heroUrl(art)} alt={`${label} medal`} loading="lazy" width={768} height={768} className="h-32 w-auto object-contain" />
+                  <span className="absolute top-2 left-2"><NeoBadge variant={p.rank === 1 ? "accent" : p.rank === 2 ? "secondary" : "muted"}>{label}</NeoBadge></span>
+                </div>
+                <div className="p-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+                  <div className="min-w-0">
+                    <div className="font-display text-lg truncate">{p.name}</div>
+                    <div className="text-[11px] text-muted-foreground truncate">{p.team} · {p.wr}% winrate</div>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="font-display text-lg">{p.xp.toLocaleString()}</div>
+                    <div className="text-[9px] uppercase tracking-widest text-muted-foreground">XP</div>
+                  </div>
+                </div>
+              </NeoCard>
+            );
+          })}
+        </div>
+      )}
 
       {/* Category tabs — horizontal scroll */}
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0">
