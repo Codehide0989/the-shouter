@@ -52,18 +52,40 @@ function NotFound() {
 
 function CodeBlock({ code, lang }: { code: string; lang: string }) {
   const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = code;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
   return (
-    <div className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-background">
-      <div className="flex items-center justify-between px-3 py-1.5 border-b-2 border-border bg-muted/40">
-        <span className="text-[10px] font-display uppercase tracking-widest text-muted-foreground">{lang}</span>
+    <div className="neo-border neo-shadow-sm rounded-md overflow-hidden bg-background max-w-full">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-1.5 border-b-2 border-border bg-muted/40">
+        <span className="truncate text-[10px] font-display uppercase tracking-widest text-muted-foreground">{lang}</span>
         <button
-          onClick={() => { navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-          className="text-[10px] font-display uppercase tracking-widest inline-flex items-center gap-1 hover:text-primary"
+          type="button"
+          onClick={copy}
+          aria-label={copied ? "Code copied to clipboard" : "Copy code to clipboard"}
+          className={`shrink-0 neo-border rounded-md px-2 py-1 text-[10px] font-display uppercase tracking-widest inline-flex items-center gap-1 transition-colors ${
+            copied ? "bg-[color:var(--success)] text-black" : "bg-card hover:bg-primary hover:text-primary-foreground"
+          }`}
         >
           {copied ? <><Check className="h-3 w-3" /> Copied</> : <><Copy className="h-3 w-3" /> Copy</>}
         </button>
       </div>
-      <pre className="p-3 text-[12px] font-mono overflow-x-auto"><code>{code}</code></pre>
+      <pre className="p-3 text-[11px] sm:text-[12px] leading-relaxed font-mono overflow-x-auto max-w-full [-webkit-overflow-scrolling:touch]">
+        <code className="whitespace-pre block min-w-0">{code}</code>
+      </pre>
     </div>
   );
 }
