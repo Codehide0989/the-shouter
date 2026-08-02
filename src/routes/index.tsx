@@ -312,7 +312,7 @@ function Landing() {
 
 
             {/* Floating trophy sticker */}
-            <div className="absolute -top-4 -right-3 md:-right-6 w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
+            <div className="absolute top-1 right-0 sm:right-1 lg:-right-2 w-16 sm:w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
               <img
                 src={heroTrophy}
                 alt="Neobrutalist trophy and controller"
@@ -324,7 +324,7 @@ function Landing() {
             </div>
 
             {/* Live feed chip — compact */}
-            <div className="absolute -bottom-4 -left-2 md:-left-5 neo-border neo-shadow-sm bg-secondary text-secondary-foreground rounded-md px-2 py-1 -rotate-3 hidden sm:flex items-center gap-1.5">
+            <div className="absolute bottom-1 left-0 sm:left-1 lg:left-2 neo-border neo-shadow-sm bg-secondary text-secondary-foreground rounded-md px-2 py-1 -rotate-3 flex items-center gap-1.5">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75 animate-ping" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-destructive" />
@@ -335,10 +335,11 @@ function Landing() {
 
 
             {/* Rating sticker */}
-            <div className="absolute top-6 -left-3 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-3 py-2 -rotate-12 hidden md:flex items-center gap-1">
-              <Star className="h-4 w-4 fill-current" />
-              <span className="font-display text-sm">4.9</span>
+            <div className="absolute top-10 sm:top-14 left-0 sm:left-1 lg:left-2 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-2.5 py-1.5 sm:px-3 sm:py-2 -rotate-12 flex items-center gap-1">
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />
+              <span className="font-display text-xs sm:text-sm">4.9</span>
             </div>
+
           </div>
         </div>
       </section>
