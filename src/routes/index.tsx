@@ -285,15 +285,16 @@ function Landing() {
           </div>
 
           {/* Hero image collage */}
-          <div className="relative mt-4 lg:mt-0 lg:pl-6">
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none px-3 sm:px-5 pt-6 pb-6 lg:mt-0 lg:pl-6">
             <div className="relative neo-border neo-shadow-lg bg-card rounded-lg overflow-hidden rotate-1">
               <img
                 src={heroSquad}
                 alt="Squad of gamers with headsets in a bold neobrutalist collage"
                 width={1600}
                 height={1600}
-                className="block w-full h-auto aspect-square object-cover"
+                className="block w-full h-auto aspect-[4/5] sm:aspect-square object-cover"
               />
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/80 to-transparent" />
               {/* Sticker overlay: bot card — compact */}
               <div className="absolute left-2 bottom-2 right-2 sm:left-3 sm:bottom-3 sm:right-auto sm:max-w-[70%] neo-border neo-shadow-sm bg-background/90 backdrop-blur rounded-md px-2 py-1.5 flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full neo-border bg-primary flex items-center justify-center shrink-0">
@@ -308,6 +309,7 @@ function Landing() {
                 <span className="text-[9px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-destructive text-white neo-border animate-pulse">Live</span>
               </div>
             </div>
+
 
             {/* Floating trophy sticker */}
             <div className="absolute -top-4 -right-3 md:-right-6 w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
