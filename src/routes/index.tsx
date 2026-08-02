@@ -285,15 +285,16 @@ function Landing() {
           </div>
 
           {/* Hero image collage */}
-          <div className="relative mt-4 lg:mt-0 lg:pl-6">
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none px-3 sm:px-5 pt-6 pb-6 lg:mt-0 lg:pl-6">
             <div className="relative neo-border neo-shadow-lg bg-card rounded-lg overflow-hidden rotate-1">
               <img
                 src={heroSquad}
                 alt="Squad of gamers with headsets in a bold neobrutalist collage"
                 width={1600}
                 height={1600}
-                className="block w-full h-auto aspect-square object-cover"
+                className="block w-full h-auto aspect-[4/5] sm:aspect-square object-cover"
               />
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/80 to-transparent" />
               {/* Sticker overlay: bot card — compact */}
               <div className="absolute left-2 bottom-2 right-2 sm:left-3 sm:bottom-3 sm:right-auto sm:max-w-[70%] neo-border neo-shadow-sm bg-background/90 backdrop-blur rounded-md px-2 py-1.5 flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full neo-border bg-primary flex items-center justify-center shrink-0">
@@ -309,8 +310,9 @@ function Landing() {
               </div>
             </div>
 
+
             {/* Floating trophy sticker */}
-            <div className="absolute -top-4 -right-3 md:-right-6 w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
+            <div className="absolute top-1 right-0 sm:right-1 lg:-right-2 w-16 sm:w-20 md:w-28 neo-border neo-shadow bg-card rounded-md overflow-hidden -rotate-6">
               <img
                 src={heroTrophy}
                 alt="Neobrutalist trophy and controller"
@@ -322,7 +324,7 @@ function Landing() {
             </div>
 
             {/* Live feed chip — compact */}
-            <div className="absolute -bottom-4 -left-2 md:-left-5 neo-border neo-shadow-sm bg-secondary text-secondary-foreground rounded-md px-2 py-1 -rotate-3 hidden sm:flex items-center gap-1.5">
+            <div className="absolute bottom-1 left-0 sm:left-1 lg:left-2 neo-border neo-shadow-sm bg-secondary text-secondary-foreground rounded-md px-2 py-1 -rotate-3 flex items-center gap-1.5">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75 animate-ping" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-destructive" />
@@ -333,10 +335,11 @@ function Landing() {
 
 
             {/* Rating sticker */}
-            <div className="absolute top-6 -left-3 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-3 py-2 -rotate-12 hidden md:flex items-center gap-1">
-              <Star className="h-4 w-4 fill-current" />
-              <span className="font-display text-sm">4.9</span>
+            <div className="absolute top-10 sm:top-14 left-0 sm:left-1 lg:left-2 neo-border neo-shadow bg-accent text-accent-foreground rounded-md px-2.5 py-1.5 sm:px-3 sm:py-2 -rotate-12 flex items-center gap-1">
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />
+              <span className="font-display text-xs sm:text-sm">4.9</span>
             </div>
+
           </div>
         </div>
       </section>
