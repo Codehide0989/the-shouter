@@ -321,8 +321,8 @@ function EventDetail() {
             <h3 className="text-lg">Need help?</h3>
             <p className="text-xs text-muted-foreground mt-1">Ping a mod or open a ticket if registration fails.</p>
             <div className="mt-3 grid gap-2">
-              <Link to="/support"><NeoButton variant="outline" className="w-full">Open support</NeoButton></Link>
-              <Link to="/faq"><NeoButton variant="outline" className="w-full">Read FAQ</NeoButton></Link>
+              <Link to="/support"><NeoButton variant="ghost" className="w-full">Open support</NeoButton></Link>
+              <Link to="/faq"><NeoButton variant="ghost" className="w-full">Read FAQ</NeoButton></Link>
             </div>
           </NeoCard>
         </aside>
